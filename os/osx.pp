@@ -1,0 +1,5 @@
+# osx.pp
+
+class osx {
+
+}
