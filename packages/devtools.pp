@@ -68,7 +68,8 @@ define install_devtools($version, $creates) {
     
     download_file {
         "$name-$version.tgz":
-            site    => "http://test-mgmt.build.mozilla.org/dist",
+            # TODO: remove this hardcoding
+            site    => "http://staging-puppet.build.mozilla.org/dist",
             cwd     => "/tmp",
             creates => "/tmp/$name-$version.tgz",
             require => file["/tmp"],
