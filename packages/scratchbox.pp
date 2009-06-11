@@ -7,17 +7,17 @@
 class scratchbox {
     
     exec {
-        "/bin/tar -xzf /N/puppet-files/dist/scratchbox-toolchain-cs2007q3-glibc2.5-arm6-1.0.7-3-i386.tar.gz":
+        "/bin/tar -xzf /N/dist/scratchbox-toolchain-cs2007q3-glibc2.5-arm6-1.0.7-3-i386.tar.gz":
             creates => "/scratchbox/compilers/cs2007q3-glibc2.5-arm6/share/doc/cs2007q3-glibc2.5-arm-arm-none-linux-gnueabi/html/annotate/Prompting.html",
             cwd => "/",
             alias => "unpack-scratchbox-toolchain";
 
-        "/bin/tar -xvf /N/puppet-files/dist/scratchbox-devkit-cputransp-1.0.7-i386.tar.gz":
+        "/bin/tar -xvf /N/dist/scratchbox-devkit-cputransp-1.0.7-i386.tar.gz":
             creates => "/scratchbox/devkits/cputransp/deb_list/qemu",
             cwd => "/",
             alias => "unpack-scratchbox-devkit";
 
-        "/N/puppet-files/dist/maemo-scratchbox-install_4.0.1.sh -s /scratchbox":
+        "/N/dist/maemo-scratchbox-install_4.0.1.sh -s /scratchbox":
             creates => "/scratchbox/run_me_first.sh",
             alias => "install-scratchbox",
             timeout => 1800;

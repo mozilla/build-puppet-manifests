@@ -75,19 +75,19 @@ class centos5 {
     package {
         "ruby-shadow":
             ensure   => installed,
-            source   => "/N/puppet-files/centos5/RPMS/i386/ruby-shadow-1.4.1-6.i386.rpm";
+            source   => "/N/centos5/RPMS/i386/ruby-shadow-1.4.1-6.i386.rpm";
         "yum-utils":
             ensure   => installed,
-            source   => "/N/puppet-files/centos5/RPMS/i386/yum-utils-1.0.4-3.el5.centos.2.noarch.rpm";
+            source   => "/N/centos5/RPMS/i386/yum-utils-1.0.4-3.el5.centos.2.noarch.rpm";
         "libnotify-devel":
             ensure   => installed,
-            source   => "/N/puppet-files/centos5/RPMS/i386/libnotify-devel-0.4.2-6.el5.i386.rpm";
+            source   => "/N/centos5/RPMS/i386/libnotify-devel-0.4.2-6.el5.i386.rpm";
         "wireless-tools-devel":
             ensure   => installed,
-            source   => "/N/puppet-files/centos5/RPMS/i386/wireless-tools-devel-28-2.el5.i386.rpm";
+            source   => "/N/centos5/RPMS/i386/wireless-tools-devel-28-2.el5.i386.rpm";
         "lcov":
             ensure   => installed,
-            source   => "/N/puppet-files/centos5/RPMS/noarch/lcov-1.7-1.noarch.rpm";
+            source   => "/N/centos5/RPMS/noarch/lcov-1.7-1.noarch.rpm";
     }
 
 
@@ -102,7 +102,7 @@ class centos5 {
 #                "VMwareTools":
 #                    ensure   => installed,
 #                    provider => rpm,
-#                    source   => "/N/puppet-files/centos5/custom/dist/VMwareTools-3.0.1-38803.i386.rpm";
+#                    source   => "/N/centos5/custom/dist/VMwareTools-3.0.1-38803.i386.rpm";
 #            }
             file {
                 "/tmp/VMwareTools-3.0.1-38803.i386.rpm":

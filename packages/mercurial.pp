@@ -13,7 +13,7 @@ class mercurial {
             environment => ["PYTHONHOME=/tools/python"],
             path => "/tools/python/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin",
             alias => "install-mercurial";
-        "/bin/tar -xzf /N/puppet-files/mercurial/mercurial-1.1.2.tar.gz":
+        "/bin/tar -xzf /N/mercurial/mercurial-1.1.2.tar.gz":
             creates => "/tools/mercurial-1.1.2/",
             cwd => "/tools",
             alias => "unpack-mercurial",
