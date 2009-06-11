@@ -7,18 +7,14 @@ import "packages/*"
 
 
 ### Site-wide global variables below
-$universalhome = "puppet://test-mgmt.build.mozilla.org/home/"
-$fileroot = "puppet://test-mgmt.build.mozilla.org/"
+$universalhome = "puppet://staging-puppet.build.mozilla.org/home/"
+$fileroot = "puppet://staging-puppet.build.mozilla.org/"
 #########
 
 ### Node definitions
 
-node "test-linslave.build.mozilla.org" {
+node "moz2-linux-slave04.build.mozilla.org" {
     include base, buildslave, cltbld
-}
-
-node "moz2-darwin9-slave08.build.mozilla.org" {
-    include base
 }
 
 node default {
