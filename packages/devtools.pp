@@ -2,9 +2,17 @@
 #  this manifest installs all of the packages in the /tools tree
 #  with the use of a helper function (install_devtools) defined below
 
+# This file is setup to work for both CentOS and Darwin9
+
 class devtools {
 
-    file { "/tools": ensure => directory, mode => 755, owner => root, group => root }
+    file { "/tools": ensure => directory, mode => 755 }
+
+    case $operatingsystem {
+
+    CentOS: {
+    $devtools_home = "/N/centos5/dist"
+    $tar = "/bin/tar"
 
     ### The install_devtools function is found at the bottom    
     install_devtools { gcc:
@@ -51,6 +59,53 @@ class devtools {
         "/tools/jdk1.5.0_10":
             ensure  => "/tools/jdk-1.5.0_10";
     }
+
+    }
+
+    Darwin: {
+        $devtools_home = "/private/nfs/darwin9/devtools"
+        $tar = "/usr/bin/tar"
+
+        install_devtools { 
+            Python:
+                version     => "2.5.2",
+                creates     => "/tools/Python-2.5.2/bin/python",
+                subscribe   => file["/tools/python"];
+            Twisted:
+                version     => "8.0.1",
+                creates     => "/tools/Twisted-8.0.1/twisted",
+                subscribe   => file["/tools/twisted"];
+            mercurial:
+                version     => "0.9.5",
+                creates     => "/tools/mercurial-0.9.5/hg",
+                subscribe   => file["/tools/mercurial"];
+            zopeinterface:
+                version     => "3.4.1",
+                creates     => "/tools/zope.interface-3.4.1/build/lib.macosx-10.3-i386-2.5/zope/interface/interface.py",
+                subscribe   => file["/tools/zope.interface"];
+#            mercurial:
+#                version     => "1.2.1",
+#                creates     => "/tools/dist/mercurial-1.2.1/hg",
+#                cwd         => "/tools/dist";
+#                subscribe   => file["/tools/zope.interface"];
+        }
+
+        file {
+            "/tools/python":
+                ensure  => "/tools/Python-2.5.2";
+            "/tools/twisted":
+                ensure  => "/tools/Twisted-8.0.1";
+            "/tools/mercurial":
+                ensure  => "/tools/mercurial-0.9.5";
+            "/tools/zope.interface":
+                ensure  => "/tools/zope.interface-3.4.1";
+        }
+    }
+
+    default: {
+        $devtools_home = "/tmp"
+    }
+    }
 }
 
 # This is the function that does most of the work.  It takes a file,
@@ -59,23 +114,9 @@ class devtools {
 # which we make to fit and make compatible with a symbolic link above.
 
 define install_devtools($version, $creates) {
-    exec { "/bin/tar xzf /tmp/$name-$version.tgz":
+    exec {"$tar xzf $devtools_home/$name-$version.tgz":
         cwd         => "/tools",
         creates     => $creates,
         alias       => "untar-$name",
-        subscribe   => download_file["$name-$version.tgz"]
     }
-    
-    download_file {
-        "$name-$version.tgz":
-            # TODO: remove this hardcoding
-            site    => "http://staging-puppet.build.mozilla.org/dist",
-            cwd     => "/tmp",
-            creates => "/tmp/$name-$version.tgz",
-            require => file["/tmp"],
-            alias   => "$name",
-            user    => root,
-            before  => Exec["untar-$name"]
-    }
-
 }
