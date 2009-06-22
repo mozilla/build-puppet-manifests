@@ -3,7 +3,6 @@
 
 class debuginfopackages {
     Package{ provider => rpm, ensure => installed }
-    $debuginforoot = "${fileroot}centos5/custom/debuginfo-packages/"
 
     package {
         "atk-debuginfo":

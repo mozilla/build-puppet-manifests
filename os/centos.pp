@@ -4,7 +4,7 @@
 class centos5 {
 
     $os = "centos5"
-    $centos5root = "${fileroot}${os}/"
+    $centos5root = "/N/centos5/${os}/"
 
     Package{ provider => rpm }
     File{ owner => root, group => root, mode => 644 }

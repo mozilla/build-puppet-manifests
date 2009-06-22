@@ -53,20 +53,20 @@ class scratchbox {
             group => root;
 
         "/scratchbox/moz_scratchbox":
-            source => "${fileroot}centos5/scratchbox/moz_scratchbox",
+            source => "/N/centos5/scratchbox/moz_scratchbox",
             mode => 755;
 
         "/scratchbox/etc/resolv.conf":
-            source => "${fileroot}centos5/scratchbox/etc/resolv.conf",
+            source => "/N/centos5/scratchbox/etc/resolv.conf",
             require => Exec["install-scratchbox"];
 
         "/scratchbox/setup.expect":
-            source => "${fileroot}centos5/scratchbox/setup.expect",
+            source => "/N/centos5/scratchbox/setup.expect",
             mode => 755,
             before => Exec["setup-scratchbox"];
 
         "/scratchbox/maemo-sdk.expect":
-            source => "${fileroot}centos5/scratchbox/maemo-sdk.expect",
+            source => "/N/centos5/scratchbox/maemo-sdk.expect",
             mode => 755,
             before => Exec["setup-maemo-sdk"];
 

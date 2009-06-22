@@ -3,11 +3,9 @@
 
 class nagios {
 
-    $nagiosroot = "${fileroot}centos5/custom/dag.wieers.com/"
-
     file {
         "/etc/nagios/nrpe.cfg":
-            source => "${fileroot}centos5/etc/nagios/nrpe.cfg";
+            source => "/N/centos5/etc/nagios/nrpe.cfg";
     }
     exec {
         "nagios-plugins":
