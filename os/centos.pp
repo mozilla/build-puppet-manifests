@@ -140,12 +140,12 @@ class centos5 {
 #    }
 #
     # will need to restart sshd when updated, lest bad things happen
-    exec { "restartsshd":
-        command => "/etc/init.d/sshd restart",
-		logoutput => true,
-		refreshonly => true,
-        subscribe => package["openssh-server"]
-    }
+#    exec { "restartsshd":
+#        command => "/etc/init.d/sshd restart",
+#		logoutput => true,
+#		refreshonly => true,
+#        subscribe => package["openssh-server"]
+#    }
 
 
     #################################################
