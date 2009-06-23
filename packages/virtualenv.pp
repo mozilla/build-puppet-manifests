@@ -8,7 +8,7 @@ class virtualenv {
     
     exec {
         "python setup.py install && rm -rf virtualenv-1.3.3":
-            creates => "/tools/python/lib/python2.5/site-packages/virtualenv",
+            creates => "/tools/python/lib/python2.5/site-packages/virtualenv.py",
             cwd => "/tmp/virtualenv-1.3.3",
             environment => ["PYTHONHOME=/tools/python"],
             path => "/tools/python/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin",
