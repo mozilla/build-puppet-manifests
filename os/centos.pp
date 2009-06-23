@@ -127,16 +127,18 @@ class centos5 {
     #################################################
     # Security updates
     #################################################
-    package { "openssh":
-        ensure => "4.3p2-26.el5_2.1",
-        provider => yum
-    }
-
-    package { "openssh-server":
-        ensure => "4.3p2-26.el5_2.1",
-        provider => yum
-    }
-
+    # This are currently commented out because they don't seem to work properly
+    # with the yum provider.
+#    package { "openssh":
+#        ensure => "4.3p2-26.el5_2.1",
+#        provider => yum
+#    }
+#
+#    package { "openssh-server":
+#        ensure => "4.3p2-26.el5_2.1",
+#        provider => yum
+#    }
+#
     # will need to restart sshd when updated, lest bad things happen
     exec { "restartsshd":
         command => "/etc/init.d/sshd restart",
