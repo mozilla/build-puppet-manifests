@@ -39,7 +39,6 @@ class devtools {
             version     => "1.5.0_10",
             creates     => "/tools/jdk-1.5.0_10/bin/java",
             subscribe   => file["/tools/jdk"],
-            subscribe   => file["/tools/jdk1.5.0_10"];
     }
     
     # Setup our symbolic links
@@ -54,9 +53,6 @@ class devtools {
         "/tools/zope-interface":
             ensure  => "/tools/zope-interface-3.3.0";
         "/tools/jdk":
-            ensure  => "/tools/jdk-1.5.0_10";
-        ## Throwing this in for compatability with the install_devtools convention
-        "/tools/jdk1.5.0_10":
             ensure  => "/tools/jdk-1.5.0_10";
     }
 
