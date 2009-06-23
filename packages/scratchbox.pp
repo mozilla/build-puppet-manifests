@@ -47,7 +47,7 @@ class scratchbox {
 
     file {
         "/scratchbox":
-            ensure => directory,
+            ensure => '/builds/scratchbox',
             mode => 755,
             owner => root,
             group => root;
