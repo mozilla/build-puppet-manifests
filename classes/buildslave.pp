@@ -10,5 +10,4 @@ class buildslave {
     include scratchbox
     include mercurial
     include buildbot
-    include yum-packages
 }
