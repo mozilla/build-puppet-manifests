@@ -12,6 +12,10 @@ node "moz2-linux-slave04.build.mozilla.org" {
     include base, buildslave, cltbld
 }
 
+node "moz2-linux-slave03.build.mozilla.org" {
+    include base, buildslave, cltbld
+}
+
 node default {
     #include base
 }
