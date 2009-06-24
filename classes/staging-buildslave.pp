@@ -9,6 +9,6 @@ class buildslave {
     include nagios
     include scratchbox
     include mercurial
+    include virtualenv
     include buildbot
-    include yum-packages
 }
