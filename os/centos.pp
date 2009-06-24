@@ -56,7 +56,9 @@ class centos5 {
             subscribe => file["/etc/mail/sendmail.cf"];
 
         remount-drives:
-            command => "/bin/mount / -o remount,noatime; /bin/mount /builds -o remount,noatime; /bin/mount -o remount /N",
+            # TODO: make remount with /etc/fstab options work
+            # it sucks to have rw, noatime, etc in here
+            command => "/bin/mount / -o remount,noatime; /bin/mount /builds -o remount,noatime; /bin/mount -o remount,ro /N",
             logoutput => true,
             refreshonly => true,
             subscribe => file["/etc/fstab"];
