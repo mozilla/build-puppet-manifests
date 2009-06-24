@@ -63,11 +63,11 @@ class centos5 {
         "root":
             name   => "/",
             atboot => true,
-            device => "/dev/sda1",
+            device => "LABEL=/",
             ensure => "mounted",
             fstype => "ext3",
             options => "noatime",
-            remount => true;
+            remounts => true;
         "builds":
             name   => "/builds",
             atboot => true,
@@ -75,7 +75,7 @@ class centos5 {
             ensure => "mounted",
             fstype => "ext3",
             options => "noatime",
-            remount => true;
+            remounts => true;
         "puppet-files":
             name   => "/N",
             atboot => true,
@@ -83,7 +83,7 @@ class centos5 {
             ensure => "mounted",
             fstype => "nfs",
             options => "ro",
-            remount => true;
+            remounts => true;
     }
 
 
