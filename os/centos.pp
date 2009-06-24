@@ -56,7 +56,7 @@ class centos5 {
             subscribe => file["/etc/mail/sendmail.cf"];
 
         remount-drives:
-            command => "/bin/mount / -o remount,noatime; /bin/mount /builds -o remount,noatime",
+            command => "/bin/mount / -o remount,noatime; /bin/mount /builds -o remount,noatime; /bin/mount /N -o remount",
             logoutput => true,
             refreshonly => true,
             subscribe => file["/etc/fstab"];
