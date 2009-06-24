@@ -30,9 +30,6 @@ class centos5 {
         "/etc/mail/sendmail.cf":
             source => "${centos5root}etc/mail/sendmail.cf";
 
-        "/etc/fstab":
-            source => "${centos5root}etc/fstab";
-
         "/etc/sysconfig/network-scripts/ifcfg-eth0":
             content => template("/etc/puppet/templates/ifcfg-eth0.erb");
             ### We may want to put a notify here to restart networking.
@@ -55,19 +52,38 @@ class centos5 {
             refreshonly => true,
             subscribe => file["/etc/mail/sendmail.cf"];
 
-        remount-drives:
-            # TODO: make remount with /etc/fstab options work
-            # it sucks to have rw, noatime, etc in here
-            command => "/bin/mount / -o remount,noatime; /bin/mount /builds -o remount,noatime; /bin/mount -o remount,ro /N",
-            logoutput => true,
-            refreshonly => true,
-            subscribe => file["/etc/fstab"];
-
         sysctl-reload:
             command => "/sbin/sysctl -p",
             logoutput => true,
             refreshonly => true,
             subscribe => file["/etc/sysctl.conf"];
+    }
+
+    mount {
+        "root":
+            name   => "/",
+            atboot => true,
+            device => "/dev/sda1",
+            ensure => "mounted",
+            fstype => "ext3",
+            options => "noatime",
+            remount => true;
+        "builds":
+            name   => "/builds",
+            atboot => true,
+            device => "/dev/sdb1",
+            ensure => "mounted",
+            fstype => "ext3",
+            options => "noatime",
+            remount => true;
+        "puppet-files":
+            name   => "/N",
+            atboot => true,
+            device => "10.2.71.136:/export/buildlogs/puppet-files",
+            ensure => "mounted",
+            fstype => "nfs",
+            options => "ro",
+            remount => true;
     }
 
 
