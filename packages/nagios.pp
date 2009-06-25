@@ -7,6 +7,11 @@ class nagios {
         "/etc/nagios/nrpe.cfg":
             source => "/N/centos5/etc/nagios/nrpe.cfg";
     }
+    service {
+        nrpe-reload:
+            subscribe => file["/etc/nagios/nrpe.cfg"],
+            running => true
+    }
     exec {
         "nagios-plugins":
             command => "/bin/rpm --nosignature --nodeps -i /N/centos5/custom/dag.wieers.com/nagios-plugins-1.4.9-1.el5.rf.i386.rpm",
