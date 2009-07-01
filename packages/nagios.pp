@@ -21,6 +21,7 @@ class nagios {
     service { 
         "nrpe":
             enable => 'true',
+            subscribe => file["/etc/nagios/nrpe.cfg"],
             ensure => 'running';
     }
 }
