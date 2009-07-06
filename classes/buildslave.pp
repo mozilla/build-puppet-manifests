@@ -7,7 +7,7 @@ class buildslave {
     include debuginfopackages
     include devtools
     include nagios
-    include scratchbox
+#    include scratchbox
     include mercurial
     include buildbot
 }
