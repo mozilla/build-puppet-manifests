@@ -71,19 +71,19 @@ class devtools {
                 version     => "8.0.1",
                 creates     => "/tools/Twisted-8.0.1/twisted",
                 subscribe   => file["/tools/twisted"];
-            mercurial:
-                version     => "0.9.5",
-                creates     => "/tools/mercurial-0.9.5/hg",
-                subscribe   => file["/tools/mercurial"];
+#            mercurial:
+#                version     => "0.9.5",
+#                creates     => "/tools/mercurial-0.9.5/hg",
+#                subscribe   => file["/tools/mercurial"];
             zopeinterface:
                 version     => "3.4.1",
                 creates     => "/tools/zope.interface-3.4.1/build/lib.macosx-10.3-i386-2.5/zope/interface/interface.py",
                 subscribe   => file["/tools/zope.interface"];
-#            mercurial:
-#                version     => "1.2.1",
-#                creates     => "/tools/dist/mercurial-1.2.1/hg",
+            mercurial:
+                version     => "1.2.1",
+                creates     => "/tools/dist/mercurial-1.2.1/hg",
 #                cwd         => "/tools/dist";
-#                subscribe   => file["/tools/zope.interface"];
+                subscribe   => file["/tools/mercurial"];
         }
 
         file {
@@ -92,7 +92,7 @@ class devtools {
             "/tools/twisted":
                 ensure  => "/tools/Twisted-8.0.1";
             "/tools/mercurial":
-                ensure  => "/tools/mercurial-0.9.5";
+                ensure  => "/tools/dist/mercurial-1.2.1";
             "/tools/zope.interface":
                 ensure  => "/tools/zope.interface-3.4.1";
         }
