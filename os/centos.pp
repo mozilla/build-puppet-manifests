@@ -76,14 +76,6 @@ class centos5 {
             fstype => "ext3",
             options => "noatime",
             remounts => true;
-        "puppet-files":
-            name   => "/N",
-            atboot => true,
-            device => "10.2.71.136:/export/buildlogs/puppet-files",
-            ensure => "mounted",
-            fstype => "nfs",
-            options => "ro",
-            remounts => true;
     }
 
 
