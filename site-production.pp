@@ -97,75 +97,75 @@ node "moz2-linux-slave25.build.mozilla.org" {
 }
 
 node "try-linux-slave01.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave02.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave03.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave04.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave06.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave07.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave08.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave09.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave10.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave11.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave12.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave13.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave14.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave15.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave16.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave17.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave18.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node "try-linux-slave19.mozilla.org" {
-    include base, buildslave, cltbld, build-network
+    include base, buildslave, cltbld, sandbox-network
 }
 
 node default {
