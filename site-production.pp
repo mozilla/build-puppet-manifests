@@ -108,7 +108,7 @@ node "try-linux-slave03.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network
 }
 
-node "try-linux-slave04.mozilla.org" {
+node "sm-try-linux-slave04.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network
 }
 
