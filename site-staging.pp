@@ -20,6 +20,10 @@ node "moz2-linux-slave17.build.mozilla.org" {
     include base, staging-buildslave, cltbld
 }
 
+node "try-linux-slave05.mozilla.org" {
+    include base, staging-buildslave, cltbld
+}
+
 node default {
     #include base
 }
