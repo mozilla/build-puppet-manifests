@@ -8,6 +8,10 @@ import "packages/*"
 
 ### Node definitions
 
+node "linux-ref-platform.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
 node "moz2-linux-slave01.build.mozilla.org" {
     include base, buildslave, cltbld, build-network
 }
