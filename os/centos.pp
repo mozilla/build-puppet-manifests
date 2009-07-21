@@ -100,31 +100,6 @@ class centos5 {
             source   => "/N/centos5/RPMS/noarch/lcov-1.7-1.noarch.rpm";
     }
 
-
-    #################################################
-    # VMWare setup
-    #################################################
-    case $productname {
-        'VMware Virtual Platform': {
-            notice "Detected vmware guest"
-## deploying this package from puppet isn't working quite right
-#            package {
-#                "VMwareTools":
-#                    ensure   => installed,
-#                    provider => rpm,
-#                    source   => "/N/centos5/custom/dist/VMwareTools-3.0.1-38803.i386.rpm";
-#            }
-            file {
-                "/tmp/VMwareTools-3.0.1-38803.i386.rpm":
-                    source => "${centos5root}custom/dist/VMwareTools-3.0.1-38803.i386.rpm"
-            }
-        }
-
-        default: {
-            notice "Did not detect vmware guest"
-        }
-    }
-
     case $operatingsystem {
         'CentOS': {
             notice "CentOS detected"
