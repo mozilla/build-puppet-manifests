@@ -16,10 +16,14 @@ class devtools {
     $tar = "/bin/tar"
 
     ### The install_devtools function is found at the bottom    
-    install_devtools { gcc:
+    install_devtools {
+        gcc:
             version     => "4.1.1",
             creates     => "/tools/gcc-4.1.1/bin/gcc",
             subscribe   => file["/tools/gcc"];
+        gcc433:
+            version     => "4.3.3",
+            creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
         python:
             version     => "2.5.1",
             creates     => "/tools/python-2.5.1/bin/python",
