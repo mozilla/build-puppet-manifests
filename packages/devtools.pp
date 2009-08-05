@@ -23,7 +23,7 @@ class devtools {
             subscribe   => file["/tools/gcc"];
         gcc433:
             version     => "4.3.3",
-            creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
+            creates     => "/tools/gcc-4.3.3/installed/bin/gcc";
         python:
             version     => "2.5.1",
             creates     => "/tools/python-2.5.1/bin/python",
