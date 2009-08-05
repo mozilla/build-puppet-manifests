@@ -11,7 +11,8 @@ class devtools {
     case $operatingsystem {
 
     CentOS: {
-    $devtools_home = "/N/centos5/dist"
+    $centos5root = "/N/centos5"
+    $devtools_home = "${centos5root}/dist"
     $tar = "/bin/tar"
 
     ### The install_devtools function is found at the bottom    
@@ -54,6 +55,10 @@ class devtools {
             ensure  => "/tools/zope-interface-3.3.0";
         "/tools/jdk":
             ensure  => "/tools/jdk-1.5.0_10";
+        "/usr/local/bin/jscoverage":
+            source => "${centos5root}/usr/local/bin/jscoverage";
+        "/usr/local/bin/jscoverage-server":
+            source => "${centos5root}/usr/local/bin/jscoverage-server";
     }
 
     }
