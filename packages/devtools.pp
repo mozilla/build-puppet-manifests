@@ -6,7 +6,7 @@
 
 class devtools {
 
-    file { "/tools": ensure => directory, mode => 755 }
+    file { ["/tools", "/tools/dist"]: ensure => directory, mode => 755 }
 
     case $operatingsystem {
 
@@ -68,29 +68,34 @@ class devtools {
     }
 
     Darwin: {
-        $devtools_home = "/private/nfs/darwin9/devtools"
+        $devtools_home = "/N/darwin9/devtools"
         $tar = "/usr/bin/tar"
 
         install_devtools { 
             Python:
                 version     => "2.5.2",
                 creates     => "/tools/Python-2.5.2/bin/python",
+		require     => file["/etc/fstab"],
                 subscribe   => file["/tools/python"];
             Twisted:
                 version     => "8.0.1",
                 creates     => "/tools/Twisted-8.0.1/twisted",
+		require     => file["/etc/fstab"],
                 subscribe   => file["/tools/twisted"];
 #            mercurial:
 #                version     => "0.9.5",
 #                creates     => "/tools/mercurial-0.9.5/hg",
+#		require     => file["/etc/fstab"],
 #                subscribe   => file["/tools/mercurial"];
-            zopeinterface:
+            zope-interface:
                 version     => "3.4.1",
-                creates     => "/tools/zope.interface-3.4.1/build/lib.macosx-10.3-i386-2.5/zope/interface/interface.py",
-                subscribe   => file["/tools/zope.interface"];
+                creates     => "/tools/zope-interface-3.4.1/lib/python2.5/site-packages/zope/interface/interface.py",
+		require     => file["/etc/fstab"],
+                subscribe   => file["/tools/zope-interface"];
             mercurial:
                 version     => "1.2.1",
-                creates     => "/tools/dist/mercurial-1.2.1/hg",
+                creates     => "/tools/mercurial-1.2.1/hg",
+		require     => file["/etc/fstab"],
 #                cwd         => "/tools/dist";
                 subscribe   => file["/tools/mercurial"];
         }
@@ -102,8 +107,8 @@ class devtools {
                 ensure  => "/tools/Twisted-8.0.1";
             "/tools/mercurial":
                 ensure  => "/tools/dist/mercurial-1.2.1";
-            "/tools/zope.interface":
-                ensure  => "/tools/zope.interface-3.4.1";
+            "/tools/zope-interface":
+                ensure  => "/tools/zope-interface-3.4.1";
         }
     }
 
