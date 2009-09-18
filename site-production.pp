@@ -140,6 +140,26 @@ node "moz2-linux-slave35.build.mozilla.org" {
     include base, buildslave, cltbld, build-network
 }
 
+node "moz2-linux-slave36.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave37.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave38.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave39.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave40.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
 node "try-linux-slave01.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network
 }
