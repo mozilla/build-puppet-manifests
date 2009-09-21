@@ -82,11 +82,6 @@ class devtools {
                 creates     => "/tools/Twisted-8.0.1/twisted",
 		require     => file["/etc/fstab"],
                 subscribe   => file["/tools/twisted"];
-#            mercurial:
-#                version     => "0.9.5",
-#                creates     => "/tools/mercurial-0.9.5/hg",
-#		require     => file["/etc/fstab"],
-#                subscribe   => file["/tools/mercurial"];
             zope-interface:
                 version     => "3.4.1",
                 creates     => "/tools/zope-interface-3.4.1/lib/python2.5/site-packages/zope/interface/interface.py",
@@ -96,7 +91,6 @@ class devtools {
                 version     => "1.2.1",
                 creates     => "/tools/mercurial-1.2.1/hg",
 		require     => file["/etc/fstab"],
-#                cwd         => "/tools/dist";
                 subscribe   => file["/tools/mercurial"];
         }
 

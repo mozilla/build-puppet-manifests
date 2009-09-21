@@ -9,14 +9,12 @@ class osx {
         provider => pkgdmg,
         ensure => installed,
         source => "http://192.168.31.131/darwin9/dist/xcode_3.1.dmg",
-##        source => "/N/darwin9/dist/xcode312_2621_developerdvd.dmg",
 	require => [file["/etc/fstab"], exec["setup-configuration"]];
 
         "chud_4.5.0.dmg":
           provider => pkgdmg,
           ensure => installed,
           source => "http://192.168.31.131/darwin9/dist/chud_4.5.0.dmg",
-##          source => "/N/darwin9/dist/chud_4.5.0.dmg",
           require => [file["/etc/fstab"], exec["setup-configuration"]];
 
         "MacPorts-1.7.1-10.5-Leopard.dmg":
@@ -98,13 +96,10 @@ class osx {
             creates => "/var/puppet/config-$config_version",
             subscribe => file["/var/puppet", "/etc/fstab"];
         check-for-macports:
-#	    command => "/usr/bin/true";
-            command => "/bin/bash -c 'if [ -a /opt/local/bin/port ]; then /usr/bin/touch /var/db/.puppet_pkgdmg_installed_MacPorts-1.6.0-10.5-Leopard.dmg; fi'";
+            command => "/bin/bash -c 'if [ -a /opt/local/bin/port ]; then /usr/bin/touch /var/db/.puppet_pkgdmg_installed_MacPorts-1.7.1-10.5-Leopard.dmg; fi'";
         install-macports-repo:
             creates => "/opt/local/var/macports/sources/rsync.macports.org/release/ports/zope/zope-zsyncer/Portfile",
-#            creates => "/opt/local/var/macports/distfiles/.turd_MacPorts",
-            command => "/usr/bin/tar -xjf /N/darwin9/dist/macports-updates-10.5.tar.bz2 -C /opt/local/var/macports",
-#            command => "/usr/bin/tar -xjf /N/darwin9/dist/macports-10.5.tar.bz2 -C /opt/local/var/macports",
+            command => "/usr/bin/tar -xjf /N/darwin9/dist/macports-updates-10.5.tar.bz2 -C /opt/local/var/macports && /opt/local/bin/port info wget",
 	    timeout => "600",
             require => [file["/etc/fstab", "/opt/local/var"], package["MacPorts-1.7.1-10.5-Leopard.dmg"]];
         macports-sqlite3:
@@ -115,28 +110,28 @@ class osx {
         macports-autoconf213:
             creates => "/opt/local/bin/autoconf213",
 	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"]],
-            command => "/opt/local/bin/port install autoconf213";
+	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-sqlite3"]],
+            command => "/opt/local/bin/port install autoconf213 && /bin/sleep 10";
         macports-cvs:
             creates => "/opt/local/bin/cvs",
 	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"]],
-            command => "/opt/local/bin/port install cvs";
+	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-autoconf213"]],
+            command => "/opt/local/bin/port install cvs && /bin/sleep 10";
         macports-libidl:
             creates => "/opt/local/lib/libIDL-2.a",
-	    timeout => "1000",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"]],
-            command => "/opt/local/bin/port install libidl";
+	    timeout => "600",
+	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-cvs"]],
+            command => "/opt/local/bin/port install libidl && /bin/sleep 10";
         macports-subversion:
             creates => "/opt/local/bin/svn",
-	    timeout => "1000",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"]],
-            command => "/opt/local/bin/port -v install subversion";
+	    timeout => "600",
+	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-libidl"]],
+            command => "/opt/local/bin/port -v install subversion && /bin/sleep 10";
         macports-wget:
             creates => "/opt/local/bin/wget",
-	    timeout => "1000",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"]],
-            command => "/opt/local/bin/port -v install wget";
+	    timeout => "600",
+	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-subversion"]],
+            command => "/opt/local/bin/port -v install wget && /bin/sleep 10";
         restart-ntp:
             subscribe => file["/etc/ntp.conf"],
             refreshonly => true,
@@ -150,7 +145,7 @@ class osx {
             creates => "/usr/local/nagios",
             require => [exec["setup-nagios-user"], file["/etc/fstab"]],
             command => "/usr/bin/tar -vxzf /N/darwin9/dist/nrpe-darwin-i386.tar.gz -C /usr/local",
-            require => file["/etc/fstab"];
+            require => [file["/etc/fstab"], exec["mount-nfs"]];
         enable-nrpe:
             command => "/usr/local/nagios/sbin/enablenrpe",
             subscribe => exec["setup-nrpe"];
