@@ -5,6 +5,7 @@ import "classes/*"
 import "build/*"
 import "packages/*"
 
+$fileroot = "puppet://staging-puppet.build.mozilla.org"
 
 ### Node definitions
 

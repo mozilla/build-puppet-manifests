@@ -9,7 +9,7 @@ class osx {
         provider => pkgdmg,
         ensure => installed,
         source => "http://192.168.31.131/darwin9/dist/xcode_3.1.dmg",
-	require => [file["/etc/fstab"], exec["setup-configuration"]];
+        require => [file["/etc/fstab"], exec["setup-configuration"]];
 
         "chud_4.5.0.dmg":
           provider => pkgdmg,
@@ -32,45 +32,41 @@ class osx {
         # this dir is a prereq for storing our trigger file in the configuration script
         "/var/puppet":
           ensure => directory;
-	"/etc/fstab":
-	  require => file["/etc/auto_master"],
-	  notify => exec["mount-nfs"],
-	  source => "${fileroot}darwin9/etc/fstab";
-	"/N":
-	  ensure => directory;
-	"/etc/auto_master":
-	  require => file["/N"],
-#	  notify => exec["refresh-automount"],
-	  source => "${fileroot}darwin9/etc/auto_master";
+        "/N":
+          ensure => directory;
+        "/etc/auto_master":
+          require => file["/N"],
+#          notify => exec["refresh-automount"],
+          source => "${fileroot}darwin9/etc/auto_master";
         "/etc/postfix/main.cf":
           content => template("/etc/puppet/templates/main.cf.erb");
         "/etc/ntp.conf":
           source => "${fileroot}darwin9/etc/ntp.conf",
           require => file["/etc/fstab"];    
         "/tools/dist/logs":
-	  require => file["/tools/dist"],
+          require => file["/tools/dist"],
           ensure => directory;
-	"/builds":
+        "/builds":
           ensure => directory;
         "/builds/logs":
-	  require => file["/builds"],
+          require => file["/builds"],
           ensure => directory;
         "/opt/local/bin/autoconf-2.13":
           ensure => "/opt/local/bin/autoconf213",
-	  require => file["/opt/local/bin"];
+          require => file["/opt/local/bin"];
         "/Library/LaunchAgents/buildbot.start.slave.plist":
           source => "${fileroot}darwin9/buildbot.start.slave.plist",
           owner => "root",
           group => "wheel",
           require => file["/etc/fstab"];    
-	"/opt":
-	  ensure => directory;
-	"/opt/local":
-	  require => file["/opt"],
-	  ensure => directory;
-	["/opt/local/bin","/opt/local/var","/opt/local/lib"]:
-	  require => file["/opt/local"],
-	  ensure => directory;
+        "/opt":
+          ensure => directory;
+        "/opt/local":
+          require => file["/opt"],
+          ensure => directory;
+        ["/opt/local/bin","/opt/local/var","/opt/local/lib"]:
+          require => file["/opt/local"],
+          ensure => directory;
         "/Users/cltbld":
           ensure => directory,
           owner => "cltbld",
@@ -82,14 +78,14 @@ class osx {
       }
       
     exec { 
-	refresh-automount:
-	    command => "/usr/sbin/automount -vc",
-	    subscribe => file["/etc/auto_master"];
-	mount-nfs:
-	    command => "/sbin/mount /N && /bin/sleep 10",
-	    creates => "/N/darwin9",
-	    subscribe => file["/etc/fstab"],
-	    require => file["/etc/fstab", "/etc/auto_master"];
+        refresh-automount:
+            command => "/usr/sbin/automount -vc",
+            subscribe => file["/etc/auto_master"];
+        mount-nfs:
+            command => "/sbin/mount /N && /bin/sleep 10",
+            creates => "/N/darwin9",
+            subscribe => file["/etc/fstab"],
+            require => file["/etc/fstab", "/etc/auto_master"];
         setup-configuration:
             command => "/N/darwin9/setup-configuration.sh",
             logoutput => true,
@@ -100,37 +96,37 @@ class osx {
         install-macports-repo:
             creates => "/opt/local/var/macports/sources/rsync.macports.org/release/ports/zope/zope-zsyncer/Portfile",
             command => "/usr/bin/tar -xjf /N/darwin9/dist/macports-updates-10.5.tar.bz2 -C /opt/local/var/macports && /opt/local/bin/port info wget",
-	    timeout => "600",
+            timeout => "600",
             require => [file["/etc/fstab", "/opt/local/var"], package["MacPorts-1.7.1-10.5-Leopard.dmg"]];
         macports-sqlite3:
             creates => "/opt/local/bin/sqlite3",
-	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"], file["/opt/local/bin"]],
+            timeout => "600",
+            require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"], file["/opt/local/bin"]],
             command => "/opt/local/bin/port install sqlite3";
         macports-autoconf213:
             creates => "/opt/local/bin/autoconf213",
-	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-sqlite3"]],
+            timeout => "600",
+            require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"], exec["macports-sqlite3"]],
             command => "/opt/local/bin/port install autoconf213 && /bin/sleep 10";
         macports-cvs:
             creates => "/opt/local/bin/cvs",
-	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-autoconf213"]],
+            timeout => "600",
+            require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"], exec["macports-autoconf213"]],
             command => "/opt/local/bin/port install cvs && /bin/sleep 10";
         macports-libidl:
             creates => "/opt/local/lib/libIDL-2.a",
-	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-cvs"]],
+            timeout => "600",
+            require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"], exec["macports-cvs"]],
             command => "/opt/local/bin/port install libidl && /bin/sleep 10";
         macports-subversion:
             creates => "/opt/local/bin/svn",
-	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-libidl"]],
+            timeout => "600",
+            require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"], exec["macports-libidl"]],
             command => "/opt/local/bin/port -v install subversion && /bin/sleep 10";
         macports-wget:
             creates => "/opt/local/bin/wget",
-	    timeout => "600",
-	    require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo", "macports-subversion"]],
+            timeout => "600",
+            require => [package["MacPorts-1.7.1-10.5-Leopard.dmg"], exec["install-macports-repo"], exec["macports-subversion"]],
             command => "/opt/local/bin/port -v install wget && /bin/sleep 10";
         restart-ntp:
             subscribe => file["/etc/ntp.conf"],
