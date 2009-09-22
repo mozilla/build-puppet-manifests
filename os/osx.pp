@@ -37,11 +37,15 @@ class osx {
         "/etc/auto_master":
           require => file["/N"],
 #          notify => exec["refresh-automount"],
+          owner  => "root",
+          group  => "wheel",
           source => "${fileroot}darwin9/etc/auto_master";
         "/etc/postfix/main.cf":
           content => template("/etc/puppet/templates/main.cf.erb");
         "/etc/ntp.conf":
           source => "${fileroot}darwin9/etc/ntp.conf",
+          owner => "root",
+          group => "wheel",
           require => file["/etc/fstab"];    
         "/tools/dist/logs":
           require => file["/tools/dist"],
@@ -74,6 +78,7 @@ class osx {
         "/Users/cltbld/.profile":
           source => "${fileroot}darwin9/.profile",
           owner => "cltbld",
+          group => "staff",
           require => file["/Users/cltbld"];
       }
       
@@ -85,19 +90,19 @@ class osx {
             command => "/sbin/mount /N && /bin/sleep 10",
             creates => "/N/darwin9",
             subscribe => file["/etc/fstab"],
-            require => file["/etc/fstab", "/etc/auto_master"];
+            require => [file["/etc/fstab"], file["/etc/auto_master"]];
         setup-configuration:
             command => "/N/darwin9/setup-configuration.sh",
             logoutput => true,
             creates => "/var/puppet/config-$config_version",
-            subscribe => file["/var/puppet", "/etc/fstab"];
+            subscribe => [file["/var/puppet"], file["/etc/fstab"]];
         check-for-macports:
             command => "/bin/bash -c 'if [ -a /opt/local/bin/port ]; then /usr/bin/touch /var/db/.puppet_pkgdmg_installed_MacPorts-1.7.1-10.5-Leopard.dmg; fi'";
         install-macports-repo:
             creates => "/opt/local/var/macports/sources/rsync.macports.org/release/ports/zope/zope-zsyncer/Portfile",
             command => "/usr/bin/tar -xjf /N/darwin9/dist/macports-updates-10.5.tar.bz2 -C /opt/local/var/macports && /opt/local/bin/port info wget",
             timeout => "600",
-            require => [file["/etc/fstab", "/opt/local/var"], package["MacPorts-1.7.1-10.5-Leopard.dmg"]];
+            require => [file["/etc/fstab"], file["/opt/local/var"], package["MacPorts-1.7.1-10.5-Leopard.dmg"]];
         macports-sqlite3:
             creates => "/opt/local/bin/sqlite3",
             timeout => "600",

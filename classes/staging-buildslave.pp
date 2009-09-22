@@ -16,11 +16,11 @@ class staging-buildslave {
         Darwin: {
             include devtools
             file {
-                "/Users/cltbld/.ssh":
-                    source => "${fileroot}darwin9/.ssh-staging",
-                    owner => "cltbld",
-                    mode => 600,
-                    recurse => true;
+                "/Library/LaunchDaemons/com.reductivelabs.puppet.plist":
+                    source => "${fileroot}darwin9/com.reductivelabs.puppet.plist-staging",
+                    owner => "root",
+                    group => "wheel",
+                    require => file["/etc/fstab"];    
             }
         }
     }

@@ -17,6 +17,8 @@ class puppet-files-sandbox-network {
                 "/etc/fstab":
                     require => file["/etc/auto_master"],
                     notify => exec["mount-nfs"],
+                    owner => "root",
+                    group => "wheel",
                     source => "${fileroot}darwin9/etc/fstab-sandbox";
             }
         }

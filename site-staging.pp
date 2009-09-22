@@ -4,8 +4,9 @@ import "os/*"
 import "classes/*"
 import "build/*"
 import "packages/*"
+import "ssh-keys/*"
 
-$fileroot = "puppet://staging-puppet.build.mozilla.org"
+$fileroot = "puppet://staging-puppet.build.mozilla.org/"
 
 ### Node definitions
 
@@ -26,19 +27,19 @@ node "try-linux-slave05.mozilla.org" {
 }
 
 node "moz2-darwin9-slave03.build.mozilla.org" {
-    include base, staging-buildslave, build-network
+    include base, staging-buildslave, build-network, mac-build-network-staging-keys
 }
 
 node "moz2-darwin9-slave04.build.mozilla.org" {
-    include base, staging-buildslave, build-network
+    include base, staging-buildslave, build-network, mac-build-network-staging-keys
 }
 
 node "moz2-darwin9-slave08.build.mozilla.org" {
-    include base, staging-buildslave, build-network
+    include base, staging-buildslave, build-network, mac-build-network-staging-keys
 }
 
 node "try-mac-slave05.mozilla.org" {
-    include base, staging-buildslave, sandbox-network
+    include base, staging-buildslave, sandbox-network, mac-staging-try-keys
 }
 
 node default {

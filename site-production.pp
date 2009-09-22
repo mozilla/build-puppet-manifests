@@ -4,6 +4,7 @@ import "os/*"
 import "classes/*"
 import "build/*"
 import "packages/*"
+import "ssh-keys/*"
 
 $fileroot = "puppet://production-puppet.build.mozilla.org"
 
