@@ -4,10 +4,24 @@
 ### in the /manifests/packages/ tree
 
 class buildslave {
-    include debuginfopackages
-    include devtools
-    include nagios
-#    include scratchbox
-    include mercurial
-    include buildbot
+    case $operatingsystem {
+        CentOS: {
+            include debuginfopackages
+            include devtools
+            include nagios
+            #include scratchbox
+            include mercurial
+            include buildbot
+        }
+        Darwin: {
+            include devtools
+            file {
+                "/Users/cltbld/.ssh":
+                    source => "${fileroot}darwin9/.ssh",
+                    owner => "cltbld",
+                    mode => 600,
+                    recurse => true;
+            }
+        }
+    }
 }
