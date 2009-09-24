@@ -44,7 +44,7 @@ class devtools {
                 jdk:
                     version     => "1.5.0_10",
                     creates     => "/tools/jdk-1.5.0_10/bin/java",
-                    subscribe   => file["/tools/jdk"],
+                    subscribe   => file["/tools/jdk"];
                 buildbot:
                     version     => "$buildbot_version",
                     creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
