@@ -87,7 +87,8 @@ class devtools {
                     version     => "2.5.2",
                     creates     => "/tools/Python-2.5.2/bin/python",
                     require     => file["/etc/fstab"],
-                    subscribe   => file["/tools/python"];
+                    subscribe   => file["/tools/python"],
+                    force       => true;
                 Twisted:
                     version     => "8.0.1",
                     creates     => "/tools/Twisted-8.0.1/twisted",
@@ -107,7 +108,8 @@ class devtools {
 
             file {
                 "/tools/python":
-                    ensure  => "/tools/Python-2.5.2";
+                    ensure  => "/tools/Python-2.5.2",
+                    force   => true;
                 "/tools/twisted":
                     ensure  => "/tools/Twisted-8.0.1";
                 "/tools/mercurial":
