@@ -6,7 +6,7 @@ import "build/*"
 import "packages/*"
 import "ssh-keys/*"
 
-$fileroot = "puppet://production-puppet.build.mozilla.org"
+$fileroot = "puppet://production-puppet.build.mozilla.org/"
 
 ### Node definitions
 
