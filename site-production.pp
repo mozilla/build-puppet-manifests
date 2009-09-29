@@ -234,6 +234,162 @@ node "try-linux-slave19.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network
 }
 
+node "moz2-darwin9-slave02.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave05.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave06.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave07.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave09.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave10.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave11.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave12.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave13.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave14.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave15.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave16.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave17.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave18.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve11.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve12.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve16.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve17.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve18.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve19.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve22.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "try-mac-slave01.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave02.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave03.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave04.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave06.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave07.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave08.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave09.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave10.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave11.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave12.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave13.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave14.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave15.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave16.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave17.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave18.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
+node "try-mac-slave19.mozilla.org" {
+    include base, buildslave, sandbox-network, mac-try-keys
+}
+
 node default {
     #include base
 }
