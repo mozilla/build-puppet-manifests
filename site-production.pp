@@ -162,6 +162,46 @@ node "moz2-linux-slave40.build.mozilla.org" {
     include base, buildslave, cltbld, build-network
 }
 
+node "moz2-linux-slave41.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave42.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave43.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave44.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave45.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave46.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave47.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave48.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave49.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
+node "moz2-linux-slave50.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network
+}
+
 node "try-linux-slave01.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network
 }
