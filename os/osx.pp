@@ -63,6 +63,11 @@ class osx {
           owner => "root",
           group => "wheel",
           require => file["/etc/fstab"];    
+        "/Library/LaunchDaemons/nrpe.plist":
+          source => "${fileroot}darwin9/nrpe.plist",
+          owner => "root",
+          group => "wheel",
+          require => file["/etc/fstab"];
         "/opt":
           ensure => directory;
         "/opt/local":
