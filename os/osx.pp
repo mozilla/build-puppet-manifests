@@ -64,6 +64,9 @@ class osx {
           group => "wheel",
           require => file["/etc/fstab"];    
         "/Library/LaunchDaemons/nrpe.plist":
+          ensure => absent,
+          force  => true;
+        "/usr/local/nagios/etc/nrpe.plist":
           source => "${fileroot}darwin9/nrpe.plist",
           owner => "root",
           group => "wheel",
