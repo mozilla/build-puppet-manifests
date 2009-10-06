@@ -153,7 +153,8 @@ class osx {
             command => "/usr/bin/tar -vxzf /N/darwin9/dist/nrpe-darwin-i386.tar.gz -C /usr/local",
             require => [file["/etc/fstab"], exec["mount-nfs"]];
         enable-nrpe:
+            creates => "/Library/LaunchDaemons/nrpe.plist",
             command => "/usr/local/nagios/sbin/enablenrpe",
-            subscribe => exec["setup-nrpe"];
+            subscribe => [exec["setup-nrpe"], file["/usr/local/nagios/etc/nrpe.plist"]];
     }
 }
