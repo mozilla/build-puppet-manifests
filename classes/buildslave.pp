@@ -12,6 +12,7 @@ class buildslave {
             #include scratchbox
             include mercurial
             include buildbot
+            include extras
         }
         Darwin: {
             include devtools
