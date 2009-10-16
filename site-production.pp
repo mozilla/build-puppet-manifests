@@ -330,6 +330,41 @@ node "moz2-darwin9-slave18.build.mozilla.org" {
     include base, buildslave, build-network, mac-build-network-keys
 }
 
+node "moz2-darwin9-slave19.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave20.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave21.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave22.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave23.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave24.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave25.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "moz2-darwin9-slave26.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
+node "bm-xserve07.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
 node "bm-xserve11.build.mozilla.org" {
     include base, buildslave, build-network, mac-build-network-keys
 }
@@ -354,6 +389,9 @@ node "bm-xserve19.build.mozilla.org" {
     include base, buildslave, build-network, mac-build-network-keys
 }
 
+node "bm-xserve21.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
 node "bm-xserve22.build.mozilla.org" {
     include base, buildslave, build-network, mac-build-network-keys
 }
