@@ -8,13 +8,13 @@ class osx {
       package { "xcode_3.1.dmg":
         provider => pkgdmg,
         ensure => installed,
-        source => "http://192.168.31.131/darwin9/dist/xcode_3.1.dmg",
+        source => "${fileroot}darwin9/dist/xcode_3.1.dmg",
         require => [file["/etc/fstab"], exec["setup-configuration"]];
 
         "chud_4.5.0.dmg":
           provider => pkgdmg,
           ensure => installed,
-          source => "http://192.168.31.131/darwin9/dist/chud_4.5.0.dmg",
+          source => "${fileroot}darwin9/dist/chud_4.5.0.dmg",
           require => [file["/etc/fstab"], exec["setup-configuration"]];
 
         "MacPorts-1.7.1-10.5-Leopard.dmg":
@@ -25,7 +25,7 @@ class osx {
           # that touches the file if it is already installed, thus preventing
           # this installation from attempting every time
           require => [exec["check-for-macports"], file["/etc/fstab"]],
-          source => "http://192.168.31.131/darwin9/dist/MacPorts-1.7.1-10.5-Leopard.dmg";
+          source => "${fileroot}darwin9/dist/MacPorts-1.7.1-10.5-Leopard.dmg";
       }
 
       file {
