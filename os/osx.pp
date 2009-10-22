@@ -85,7 +85,7 @@ class osx {
           owner => "cltbld",
           group => "staff",
           require => file["/Users/cltbld"];
-        "/usr/local/bin/sleep-and-run-puppet.sh"
+        "/usr/local/bin/sleep-and-run-puppet.sh":
           source => "${fileroot}darwin9/sleep-and-run-puppet.sh",
           owner => "root",
           group => "wheel",
