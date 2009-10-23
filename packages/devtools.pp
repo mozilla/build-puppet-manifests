@@ -5,6 +5,7 @@
 # This file is setup to work for both CentOS and Darwin9
 
 class devtools {
+    $buildbot_version = "5f43578cba2b"
 
     file { ["/tools", "/tools/dist"]: ensure => directory, mode => 755 }
 
@@ -14,7 +15,6 @@ class devtools {
             $centos5root = "/N/centos5"
             $devtools_home = "${centos5root}/dist"
             $tar = "/bin/tar"
-            $buildbot_version = "5f43578cba2b"
 
             ### The install_devtools function is found at the bottom    
             install_devtools {
@@ -103,6 +103,10 @@ class devtools {
                     creates     => "/tools/mercurial-1.2.1/hg",
                     require     => file["/etc/fstab"],
                     subscribe   => file["/tools/mercurial"];
+                buildbot:
+                    version     => "$buildbot_version",
+                    creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
+                    subscribe   => file["/tools/buildbot"];
                 }
 
             file {
@@ -115,6 +119,11 @@ class devtools {
                     ensure  => "/tools/dist/mercurial-1.2.1";
                 "/tools/zope-interface":
                     ensure  => "/tools/zope-interface-3.4.1";
+                "/tools/buildbot":
+                    # needs to be forced because the first time we do this
+                    # Buildbot will be a directory, not a symlink
+                    force   => true,
+                    ensure  => "/tools/buildbot-$buildbot_version";
             }
         }
 
