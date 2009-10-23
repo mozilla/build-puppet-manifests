@@ -6,7 +6,9 @@ import "build/*"
 import "packages/*"
 import "ssh-keys/*"
 
-$fileroot = "puppet://staging-puppet.build.mozilla.org/"
+$puppetServer = "staging-puppet.build.mozilla.org"
+$fileroot = "puppet://${puppetServer}/"
+$httproot = "http://${puppetServer}/"
 
 ### Node definitions
 
