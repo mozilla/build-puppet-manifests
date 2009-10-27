@@ -40,6 +40,10 @@ node "moz2-darwin9-slave08.build.mozilla.org" {
     include base, staging-buildslave, build-network, mac-build-network-staging-keys
 }
 
+node "bm-xserve14.build.mozilla.org" {
+    include base, staging-buildslave, build-network, mac-build-network-staging-keys
+}
+
 node "try-mac-slave05.mozilla.org" {
     include base, staging-buildslave, sandbox-network, mac-staging-try-keys
 }
