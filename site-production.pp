@@ -367,6 +367,11 @@ node "moz2-darwin9-slave26.build.mozilla.org" {
 node "bm-xserve07.build.mozilla.org" {
     include base, buildslave, build-network, mac-build-network-keys
 }
+
+node "bm-xserve09.build.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-keys
+}
+
 node "bm-xserve11.build.mozilla.org" {
     include base, buildslave, build-network, mac-build-network-keys
 }
