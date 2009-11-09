@@ -43,6 +43,11 @@ class centos5 {
         # so we have to do it by hand
         "/etc/group":
             source => "${centos5root}etc/group";
+
+        # buildbot-tac generation
+        "/etc/init.d/buildbot-tac":
+            source => "/N/shared/buildbot-tac",
+            mode => 755;
     }
 
     exec { 

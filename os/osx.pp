@@ -90,6 +90,16 @@ class osx {
           owner => "root",
           group => "wheel",
           mode  => 644;
+        "/usr/local/bin/buildbot-tac":
+          source => "${fileroot}shared/buildbot-tac",
+          owner => "root",
+          group => "wheel",
+          mode  => 755;
+        "/Library/LaunchAgents/buildbot-tac.generator.com.plist":
+          source => "${fileroot}darwin9/buildbot-tac.generator.com.plist",
+          owner => "root",
+          group => "wheel",
+          require => file["/etc/fstab"];
       }
       
     exec { 
@@ -148,6 +158,12 @@ class osx {
             refreshonly => true,
             command => "/bin/launchctl stop org.ntp.ntpd && /bin/launchctl start org.ntp.ntpd",
             require => file["/etc/fstab"];
+        restart-buildbot-tac:
+            subscribe => file["/Library/LaunchAgents/buildbot-tac.generator.com.plist"],
+            refreshonly => true,
+            command => "/bin/launchctl stop buildbot-tac.firstrun.com && /bin/launchctl start buildbot-tac.firstrun.com",
+            require => [file["/usr/local/bin/buildbot-tac"], file["/Library/LaunchAgents/buildbot-tac.generator.com.plist"]],
+            
         setup-nagios-user:
             creates => "/var/db/.puppet_nagios_user_setup",
             command => "/N/darwin9/setup-nagios-user.sh",

@@ -16,6 +16,13 @@ class buildbot {
         'buildbot':
             provider => "redhat",
             ensure => 'running',
+            enable => 'true',
+            requires => service["buildbot-tac"];
+        'buildbot-tac':
+            provider => "redhat",
+            ensure => 'running',
             enable => 'true';
+            require => [file["/etc/init.d/buildbot-tac"], exec["untar-build-tools"]];
+
     }
 }

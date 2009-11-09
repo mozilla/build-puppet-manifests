@@ -6,6 +6,7 @@
 
 class devtools {
     $buildbot_version = "5f43578cba2b"
+    $buildtools_version = "605b16dc7e05"
 
     file { ["/tools", "/tools/dist"]: ensure => directory, mode => 755 }
 
@@ -49,6 +50,10 @@ class devtools {
                     version     => "$buildbot_version",
                     creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
                     subscribe   => file["/tools/buildbot"];
+                build-tools:
+                    version     => "$buildtools_version",
+                    creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
+                    subscribe   => file["/tools/build-tools"];
             }
     
             # Setup our symbolic links
@@ -70,6 +75,8 @@ class devtools {
                     # Buildbot will be a directory, not a symlink
                     force   => true,
                     ensure  => "/tools/buildbot-$buildbot_version";
+                "/tools/build-tools":
+                    ensure => "/tools/build-tools-$buildtools_version";
                 "/usr/local/bin/jscoverage":
                     source => "${centos5root}/usr/local/bin/jscoverage";
                 "/usr/local/bin/jscoverage-server":
@@ -107,6 +114,10 @@ class devtools {
                     version     => "$buildbot_version",
                     creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
                     subscribe   => file["/tools/buildbot"];
+                build-tools:
+                    version     => "$buildtools_version",
+                    creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
+                    subscribe   => file["/tools/build-tools"];
                 }
 
             file {
@@ -124,6 +135,8 @@ class devtools {
                     # Buildbot will be a directory, not a symlink
                     force   => true,
                     ensure  => "/tools/buildbot-$buildbot_version";
+                "/tools/build-tools":
+                    ensure => "/tools/build-tools-$buildtools_version";
             }
         }
 
