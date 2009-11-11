@@ -161,7 +161,7 @@ class osx {
         restart-buildbot-tac:
             subscribe => file["/Library/LaunchAgents/buildbot-tac.generator.com.plist"],
             refreshonly => true,
-            command => "/bin/launchctl stop buildbot-tac.firstrun.com && /bin/launchctl start buildbot-tac.firstrun.com",
+            command => "/bin/launchctl unload -w /Library/LaunchAgents/buildbot-tac.generator.com.plist && /bin/launchctl load -w /Library/LaunchAgents/buildbot-tac.generator.com.plist",
             require => [file["/usr/local/bin/buildbot-tac"], file["/Library/LaunchAgents/buildbot-tac.generator.com.plist"]];
         setup-nagios-user:
             creates => "/var/db/.puppet_nagios_user_setup",
