@@ -276,6 +276,10 @@ node "try-linux-slave19.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network
 }
 
+node "qm-mini-build-ref.mozilla.org" {
+    include base, buildslave, build-network, mac-build-network-staging-keys
+}
+
 node "moz2-darwin9-slave02.build.mozilla.org" {
     include base, buildslave, build-network, mac-build-network-keys
 }
