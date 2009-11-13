@@ -6,7 +6,8 @@
 
 class devtools {
     $buildbot_version = "5f43578cba2b"
-    $buildtools_version = "605b16dc7e05"
+    $buildtools_version = "0b149c0ad18d"
+    $old_buildtools_version = "605b16dc7e05"
 
     file { ["/tools", "/tools/dist"]: ensure => directory, mode => 755 }
 
@@ -55,9 +56,13 @@ class devtools {
                     creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
                     subscribe   => file["/tools/build-tools"];
             }
-    
-            # Setup our symbolic links
+
             file {
+                # Ensure previous version of build-tools is gone
+                "/tools/build-tools-$old_buildtools_version":
+                    ensure => absent,
+                    force => true;
+                # Setup our symbolic links
                 "/tools/gcc":
                     ensure  => "/tools/gcc-4.1.1";
                 "/tools/python":
@@ -121,6 +126,9 @@ class devtools {
                 }
 
             file {
+                "/tools/build-tools-$old_buildtools_version":
+                    ensure => absent,
+                    force => true;
                 "/tools/python":
                     ensure  => "/tools/Python-2.5.2",
                     force   => true;
