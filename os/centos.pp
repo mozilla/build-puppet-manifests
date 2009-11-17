@@ -48,6 +48,9 @@ class centos5 {
         "/etc/init.d/buildbot-tac":
             source => "/N/shared/buildbot-tac",
             mode => 755;
+
+        "/scratchbox/users/cltbld/home/cltbld/.ssh":
+            ensure => "directory";         
     }
 
     exec { 
@@ -81,6 +84,12 @@ class centos5 {
             fstype => "ext3",
             options => "noatime",
             remounts => true;
+        "/scratchbox/users/cltbld/home/cltbld/.ssh":
+            device  => '/home/cltbld/.ssh',
+            fstype  => 'auto',
+            options => 'bind',
+            ensure  => mounted,
+            require => File['/scratchbox/users/cltbld/home/cltbld/.ssh'],
     }
 
 
