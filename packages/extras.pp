@@ -11,5 +11,10 @@ class extras {
             # I had to declare this since we are running the command as "su - cltbld -c" 
             # This was the minimum path that I needed to declare to make it work
             path => "/bin";
+        ### This installs libconic0-dev in scratchbox - bug 529462
+        "su - cltbld -c '/scratchbox/moz_scratchbox -p apt-get --yes --force-yes install libconic0-dev'":
+            creates => "/scratchbox/users/cltbld/targets/CHINOOK-ARMEL-2007/usr/include/conic/conic.h",
+            alias   => "install-libconic0-dev",
+            path    => "/bin";
    }
 }
