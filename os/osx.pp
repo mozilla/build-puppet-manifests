@@ -100,6 +100,23 @@ class osx {
           owner => "root",
           group => "wheel",
           require => file["/etc/fstab"];
+        "/Users/cltbld/bin":
+          owner => "cltbld",
+          group => "staff",
+          mode => 755,
+          ensure => "directory";
+        "/Users/cltbld/bin/chown_root":
+          owner => "root",
+          group => "staff",
+          mode => "4755",
+          require => File['/Users/cltbld/bin'],
+          source => "${fileroot}darwin9/chown_root";
+        "/Users/cltbld/bin/chown_revert":
+          owner => "root",
+          group => "staff",
+          mode => "4755",
+          require => File['/Users/cltbld/bin'],
+          source => "${fileroot}darwin9/chown_revert";
       }
       
     exec { 
