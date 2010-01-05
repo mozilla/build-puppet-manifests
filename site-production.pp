@@ -368,6 +368,42 @@ node "moz2-darwin9-slave26.build.mozilla.org" {
     include base, buildslave, build-network
 }
 
+node "moz2-darwin9-slave29.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave30.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave31.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave32.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave33.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave34.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave35.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave36.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave37.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
 node "bm-xserve07.build.mozilla.org" {
     include base, buildslave, build-network
 }
