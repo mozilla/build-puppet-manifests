@@ -515,6 +515,72 @@ node "try-mac-slave19.mozilla.org" {
     include base, buildslave, sandbox-network
 }
 
+node "qm-ref-leopard.mozilla.org" {
+}
+
+node "talos-r3-leopard-ref.mozilla.org" {
+}
+
+node "talos-r3-leopard001.mozilla.org" {
+}
+
+node "talos-r3-leopard002.mozilla.org" {
+}
+
+node "talos-r3-leopard003.mozilla.org" {
+}
+
+node "talos-r3-leopard004.mozilla.org" {
+}
+
+node "talos-r3-leopard005.mozilla.org" {
+}
+
+node "talos-r3-leopard006.mozilla.org" {
+}
+
+node "talos-r3-leopard007.mozilla.org" {
+}
+
+node "talos-r3-leopard008.mozilla.org" {
+}
+
+node "talos-r3-leopard009.mozilla.org" {
+}
+
+node "talos-r3-leopard010.mozilla.org" {
+}
+
+node "talos-r3-leopard011.mozilla.org" {
+}
+
+node "talos-r3-leopard012.mozilla.org" {
+}
+
+node "talos-r3-leopard013.mozilla.org" {
+}
+
+node "talos-r3-leopard014.mozilla.org" {
+}
+
+node "talos-r3-leopard015.mozilla.org" {
+}
+
+node "talos-r3-leopard016.mozilla.org" {
+}
+
+node "talos-r3-leopard017.mozilla.org" {
+}
+
+node "talos-r3-leopard018.mozilla.org" {
+}
+
+node "talos-r3-leopard019.mozilla.org" {
+}
+
+node "talos-r3-leopard020.mozilla.org" {
+}
+
 node default {
     #include base
 }
