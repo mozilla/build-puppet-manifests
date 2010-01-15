@@ -76,14 +76,6 @@ class centos5 {
             fstype => "ext3",
             options => "noatime",
             remounts => true;
-        "builds":
-            name   => "/builds",
-            atboot => true,
-            device => "/dev/sdb1",
-            ensure => "mounted",
-            fstype => "ext3",
-            options => "noatime",
-            remounts => true;
         "/scratchbox/users/cltbld/home/cltbld/.ssh":
             device  => '/home/cltbld/.ssh',
             fstype  => 'auto',
