@@ -519,70 +519,196 @@ node "try-mac-slave19.mozilla.org" {
     include base, buildslave, sandbox-network
 }
 
+node "talos-r3-fed-ref.build.mozilla.org" {
+}
+
+node "talos-r3-fed-001.build.mozilla.org" {
+}
+
+node "talos-r3-fed-002.build.mozilla.org" {
+}
+
+node "talos-r3-fed-003.build.mozilla.org" {
+}
+
+node "talos-r3-fed-004.build.mozilla.org" {
+}
+
+node "talos-r3-fed-005.build.mozilla.org" {
+}
+
+node "talos-r3-fed-006.build.mozilla.org" {
+}
+
+node "talos-r3-fed-007.build.mozilla.org" {
+}
+
+node "talos-r3-fed-008.build.mozilla.org" {
+}
+
+node "talos-r3-fed-009.build.mozilla.org" {
+}
+
+node "talos-r3-fed-010.build.mozilla.org" {
+}
+
+node "talos-r3-fed-011.build.mozilla.org" {
+}
+
+node "talos-r3-fed-012.build.mozilla.org" {
+}
+
+node "talos-r3-fed-013.build.mozilla.org" {
+}
+
+node "talos-r3-fed-014.build.mozilla.org" {
+}
+
+node "talos-r3-fed-015.build.mozilla.org" {
+}
+
+node "talos-r3-fed-016.build.mozilla.org" {
+}
+
+node "talos-r3-fed-017.build.mozilla.org" {
+}
+
+node "talos-r3-fed-018.build.mozilla.org" {
+}
+
+node "talos-r3-fed-019.build.mozilla.org" {
+}
+
+node "talos-r3-fed-020.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-ref.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-001.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-002.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-003.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-004.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-005.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-006.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-007.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-008.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-009.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-010.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-011.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-012.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-013.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-014.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-015.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-016.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-017.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-018.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-019.build.mozilla.org" {
+}
+
+node "talos-r3-fed64-020.build.mozilla.org" {
+}
+
 node "qm-ref-leopard.mozilla.org" {
 }
 
-node "talos-r3-leopard-ref.mozilla.org" {
+node "talos-r3-leopard-ref.build.mozilla.org" {
 }
 
-node "talos-r3-leopard001.mv.mozilla.com" {
+node "talos-r3-leopard-001.build.mozilla.org" {
 }
 
-node "talos-r3-leopard002.mv.mozilla.com" {
+node "talos-r3-leopard-002.build.mozilla.org" {
 }
 
-node "talos-r3-leopard003.mv.mozilla.com" {
+node "talos-r3-leopard-003.build.mozilla.org" {
 }
 
-node "talos-r3-leopard004.mv.mozilla.com" {
+node "talos-r3-leopard-004.build.mozilla.org" {
 }
 
-node "talos-r3-leopard005.mv.mozilla.com" {
+node "talos-r3-leopard-005.build.mozilla.org" {
 }
 
-node "talos-r3-leopard006.mv.mozilla.com" {
+node "talos-r3-leopard-006.build.mozilla.org" {
 }
 
-node "talos-r3-leopard007.mv.mozilla.com" {
+node "talos-r3-leopard-007.build.mozilla.org" {
 }
 
-node "talos-r3-leopard008.mv.mozilla.com" {
+node "talos-r3-leopard-008.build.mozilla.org" {
 }
 
-node "talos-r3-leopard009.mv.mozilla.com" {
+node "talos-r3-leopard-009.build.mozilla.org" {
 }
 
-node "talos-r3-leopard010.mv.mozilla.com" {
+node "talos-r3-leopard-010.build.mozilla.org" {
 }
 
-node "talos-r3-leopard011.mv.mozilla.com" {
+node "talos-r3-leopard-011.build.mozilla.org" {
 }
 
-node "talos-r3-leopard012.mv.mozilla.com" {
+node "talos-r3-leopard-012.build.mozilla.org" {
 }
 
-node "talos-r3-leopard013.mv.mozilla.com" {
+node "talos-r3-leopard-013.build.mozilla.org" {
 }
 
-node "talos-r3-leopard014.mv.mozilla.com" {
+node "talos-r3-leopard-014.build.mozilla.org" {
 }
 
-node "talos-r3-leopard015.mv.mozilla.com" {
+node "talos-r3-leopard-015.build.mozilla.org" {
 }
 
-node "talos-r3-leopard016.mv.mozilla.com" {
+node "talos-r3-leopard-016.build.mozilla.org" {
 }
 
-node "talos-r3-leopard017.mv.mozilla.com" {
+node "talos-r3-leopard-017.build.mozilla.org" {
 }
 
-node "talos-r3-leopard018.mv.mozilla.com" {
+node "talos-r3-leopard-018.build.mozilla.org" {
 }
 
-node "talos-r3-leopard019.mv.mozilla.com" {
+node "talos-r3-leopard-019.build.mozilla.org" {
 }
 
-node "talos-r3-leopard020.mv.mozilla.com" {
+node "talos-r3-leopard-020.build.mozilla.org" {
 }
 
 node default {
