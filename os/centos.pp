@@ -20,10 +20,6 @@ class centos5 {
             mode => 440,
             source => "${centos5root}etc/sudoers";
 
-        "/boot/grub.conf":
-            mode => 600,
-            source => "${centos5root}boot/grub.conf";
-
         "/etc/sysconfig/vncservers":
             source => "${centos5root}etc/sysconfig/vncservers";
 
@@ -35,8 +31,6 @@ class centos5 {
             ### We may want to put a notify here to restart networking.
             ### would this pull the rug out from under puppet?
 
-        "/etc/sysctl.conf":
-            source => "${centos5root}etc/sysctl.conf";
 
         # this is a hack, puppet's groupadd provider can not
         # add a user (like cltbld) to a group (like sbox)
@@ -52,6 +46,32 @@ class centos5 {
         "/scratchbox/users/cltbld/home/cltbld/.ssh":
             ensure => "directory";         
     }
+
+    #################################################
+    # Arch-specific configuration files
+    #################################################
+
+    case $hardwaremodel {
+	"x86_64": {
+            file {
+                "/boot/grub.conf":
+                    mode => 600,
+                    source => "${centos5root}boot/grub.conf.x86_64";
+                "/etc/sysctl.conf":
+                    source => "${centos5root}etc/sysctl.conf.x86_64";
+            }
+        }
+        default: {
+            file {
+                "/boot/grub.conf":
+                    mode => 600,
+                    source => "${centos5root}boot/grub.conf";
+                "/etc/sysctl.conf":
+                    source => "${centos5root}etc/sysctl.conf";
+            }
+        }
+    }
+
 
     exec { 
         subscribe-sendmail:
@@ -94,25 +114,50 @@ class centos5 {
 
 
     #################################################
-    # Custom Packages
+    # Custom Packages per arch
     #################################################
-    package {
-        "ruby-shadow":
-            ensure   => installed,
-            source   => "/N/centos5/RPMS/i386/ruby-shadow-1.4.1-6.i386.rpm";
-        "yum-utils":
-            ensure   => installed,
-            source   => "/N/centos5/RPMS/i386/yum-utils-1.0.4-3.el5.centos.2.noarch.rpm";
-        "libnotify-devel":
-            ensure   => installed,
-            source   => "/N/centos5/RPMS/i386/libnotify-devel-0.4.2-6.el5.i386.rpm";
-        "wireless-tools-devel":
-            ensure   => installed,
-            source   => "/N/centos5/RPMS/i386/wireless-tools-devel-28-2.el5.i386.rpm";
-        "lcov":
-            ensure   => installed,
-            source   => "/N/centos5/RPMS/noarch/lcov-1.7-1.noarch.rpm";
+
+    case $hardwaremodel {
+        "x86_64": {
+            package {
+	        "ruby-shadow":
+	            ensure   => installed,
+        	    source   => "/N/centos5/RPMS/x86_64/ruby-shadow-1.4.1-7.el5.kb.x86_64.rpm";
+        	"libnotify-devel":
+	            ensure   => installed,
+        	    source   => "/N/centos5/RPMS/x86_64/libnotify-devel-0.4.2-6.el5.x86_64.rpm";
+	        "wireless-tools-devel":
+        	    ensure   => installed,
+	            source   => "/N/centos5/RPMS/x86_64/wireless-tools-devel-28-2.el5.x86_64.rpm";
+            }
+        }
+        default: {
+            package {
+	        "ruby-shadow":
+	            ensure   => installed,
+        	    source   => "/N/centos5/RPMS/i386/ruby-shadow-1.4.1-6.i386.rpm";
+        	"libnotify-devel":
+	            ensure   => installed,
+        	    source   => "/N/centos5/RPMS/i386/libnotify-devel-0.4.2-6.el5.i386.rpm";
+	        "wireless-tools-devel":
+        	    ensure   => installed,
+	            source   => "/N/centos5/RPMS/i386/wireless-tools-devel-28-2.el5.i386.rpm";
+	    }
+	}
     }
+
+    #################################################
+    # Custom Packages - noarch
+    #################################################
+
+    package {
+        "yum-utils":
+       	    ensure   => installed,
+            source   => "/N/centos5/RPMS/i386/yum-utils-1.0.4-3.el5.centos.2.noarch.rpm";
+       	"lcov":
+            ensure   => installed,
+       	    source   => "/N/centos5/RPMS/noarch/lcov-1.7-1.noarch.rpm";
+    }    
 
     case $operatingsystem {
         'CentOS': {

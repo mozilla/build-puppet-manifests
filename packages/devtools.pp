@@ -11,6 +11,17 @@ class devtools {
 
     file { ["/tools", "/tools/dist"]: ensure => directory, mode => 755 }
 
+    case $hardwaremodel {
+        "x86_64": {
+            $gcc_version = "4.2.3"
+            $jdk_version = "1.5.0_15"
+        }
+        default: {
+            $gcc_version = "4.1.1"
+            $jdk_version = "1.5.0_10"
+        }
+    }
+
     case $operatingsystem {
 
         CentOS: {
@@ -18,6 +29,46 @@ class devtools {
             $devtools_home = "${centos5root}/dist"
             $tar = "/bin/tar"
 
+	    case $hardwaremodel {
+	    
+            "x86_64": {
+	        install_x86_64_devtools {
+                gcc:
+                    version     => "4.2.3",
+                    creates     => "/tools/gcc-4.2.3/bin/gcc",
+                    subscribe   => file["/tools/gcc"];
+                python:
+                    version     => "2.5.1",
+                    creates     => "/tools/python-2.5.1/bin/python",
+                    subscribe   => file["/tools/python"];
+                twisted:
+                    version     => "2.4.0",
+                    creates     => "/tools/twisted-2.4.0/bin/twistd",
+                    subscribe   => file["/tools/twisted"];
+                twisted-core:
+                    version     => "2.4.0",
+                    creates     => "/tools/twisted-core-2.4.0/bin/twistd",
+                    subscribe   => file["/tools/twisted-core"];
+                zope-interface:
+                    version     => "3.3.0",
+                    creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
+                    subscribe   => file["/tools/zope-interface"];
+                jdk:
+                    version     => "1.5.0_15",
+                    creates     => "/tools/jdk-1.5.0_15/bin/java",
+                    subscribe   => file["/tools/jdk"];
+#                buildbot:
+#                    version     => "$buildbot_version",
+#                    creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
+#                    subscribe   => file["/tools/buildbot"];
+#                build-tools:
+#                    version     => "$buildtools_version",
+#                    creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
+#                    subscribe   => file["/tools/build-tools"];
+                }
+            }
+
+            default: {
             ### The install_devtools function is found at the bottom    
             install_devtools {
                 gcc:
@@ -56,6 +107,8 @@ class devtools {
                     creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
                     subscribe   => file["/tools/build-tools"];
             }
+            }
+	    }
 
             file {
                 # Ensure previous version of build-tools is gone
@@ -64,7 +117,7 @@ class devtools {
                     force => true;
                 # Setup our symbolic links
                 "/tools/gcc":
-                    ensure  => "/tools/gcc-4.1.1";
+                    ensure  => "/tools/gcc-$gcc_version";
                 "/tools/python":
                     ensure  => "/tools/python-2.5.1";
                 "/tools/twisted":
@@ -74,7 +127,7 @@ class devtools {
                 "/tools/zope-interface":
                     ensure  => "/tools/zope-interface-3.3.0";
                 "/tools/jdk":
-                    ensure  => "/tools/jdk-1.5.0_10";
+                    ensure  => "/tools/jdk-$jdk_version";
                 "/tools/buildbot":
                     # needs to be forced because the first time we do this
                     # Buildbot will be a directory, not a symlink
@@ -161,6 +214,14 @@ class devtools {
 
 define install_devtools($version, $creates) {
     exec {"$tar xzf $devtools_home/$name-$version.tgz":
+        cwd         => "/tools",
+        creates     => $creates,
+        alias       => "untar-$name",
+    }
+}
+
+define install_x86_64_devtools($version, $creates) {
+    exec {"$tar xzf $devtools_home/$name-$version.x86_64.tgz":
         cwd         => "/tools",
         creates     => $creates,
         alias       => "untar-$name",
