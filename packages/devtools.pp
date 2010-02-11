@@ -13,7 +13,7 @@ class devtools {
 
     case $hardwaremodel {
         "x86_64": {
-            $gcc_version = "4.2.3"
+            $gcc_version = "4.3.3"
             $jdk_version = "1.5.0_15"
         }
         default: {
@@ -34,8 +34,8 @@ class devtools {
             "x86_64": {
 	        install_x86_64_devtools {
                 gcc:
-                    version     => "4.2.3",
-                    creates     => "/tools/gcc-4.2.3/bin/gcc",
+                    version     => "4.3.3",
+                    creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
                     subscribe   => file["/tools/gcc"];
                 python:
                     version     => "2.5.1",
@@ -114,6 +114,10 @@ class devtools {
                 # Ensure previous version of build-tools is gone
                 "/tools/build-tools-$old_buildtools_version":
                     ensure => absent,
+                    force => true;
+                "/tools/gcc-4.2.3":
+                    ensure => absent,
+                    backup => false,
                     force => true;
                 # Setup our symbolic links
                 "/tools/gcc":
