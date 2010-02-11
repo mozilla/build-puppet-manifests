@@ -801,66 +801,6 @@ node "talos-r3-fed64-019.build.mozilla.org" {
 node "talos-r3-fed64-020.build.mozilla.org" {
 }
 
-node "talos-r3-fed64-021.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-022.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-023.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-024.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-025.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-026.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-027.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-028.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-029.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-030.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-031.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-032.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-033.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-034.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-035.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-036.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-037.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-038.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-039.build.mozilla.org" {
-}
-
-node "talos-r3-fed64-040.build.mozilla.org" {
-}
-
 node "qm-ref-leopard.mozilla.org" {
 }
 
@@ -985,6 +925,66 @@ node "talos-r3-leopard-039.build.mozilla.org" {
 }
 
 node "talos-r3-leopard-040.build.mozilla.org" {
+}
+
+node "talos-r3-snow-001.build.mozilla.org" {
+}
+
+node "talos-r3-snow-002.build.mozilla.org" {
+}
+
+node "talos-r3-snow-003.build.mozilla.org" {
+}
+
+node "talos-r3-snow-004.build.mozilla.org" {
+}
+
+node "talos-r3-snow-005.build.mozilla.org" {
+}
+
+node "talos-r3-snow-006.build.mozilla.org" {
+}
+
+node "talos-r3-snow-007.build.mozilla.org" {
+}
+
+node "talos-r3-snow-008.build.mozilla.org" {
+}
+
+node "talos-r3-snow-009.build.mozilla.org" {
+}
+
+node "talos-r3-snow-010.build.mozilla.org" {
+}
+
+node "talos-r3-snow-011.build.mozilla.org" {
+}
+
+node "talos-r3-snow-012.build.mozilla.org" {
+}
+
+node "talos-r3-snow-013.build.mozilla.org" {
+}
+
+node "talos-r3-snow-014.build.mozilla.org" {
+}
+
+node "talos-r3-snow-015.build.mozilla.org" {
+}
+
+node "talos-r3-snow-016.build.mozilla.org" {
+}
+
+node "talos-r3-snow-017.build.mozilla.org" {
+}
+
+node "talos-r3-snow-018.build.mozilla.org" {
+}
+
+node "talos-r3-snow-019.build.mozilla.org" {
+}
+
+node "talos-r3-snow-020.build.mozilla.org" {
 }
 
 node default {
