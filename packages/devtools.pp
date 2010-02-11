@@ -13,7 +13,7 @@ class devtools {
 
     case $hardwaremodel {
         "x86_64": {
-            $gcc_version = "4.3.3"
+            $gcc_version = "4.3.3/installed"
             $jdk_version = "1.5.0_15"
         }
         default: {
