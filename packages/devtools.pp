@@ -57,14 +57,14 @@ class devtools {
                     version     => "1.5.0_15",
                     creates     => "/tools/jdk-1.5.0_15/bin/java",
                     subscribe   => file["/tools/jdk"];
-#                buildbot:
-#                    version     => "$buildbot_version",
-#                    creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-#                    subscribe   => file["/tools/buildbot"];
-#                build-tools:
-#                    version     => "$buildtools_version",
-#                    creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-#                    subscribe   => file["/tools/build-tools"];
+                buildbot:
+                    version     => "$buildbot_version",
+                    creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
+                    subscribe   => file["/tools/buildbot"];
+                build-tools:
+                    version     => "$buildtools_version",
+                    creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
+                    subscribe   => file["/tools/build-tools"];
                 }
             }
 

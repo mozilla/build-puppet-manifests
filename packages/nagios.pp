@@ -17,7 +17,7 @@ class nagios {
     }
     exec {
         "nagios-plugins":
-            command => "/bin/rpm --nosignature --nodeps -i /N/centos5/custom/dag.wieers.com/nagios-plugins-1.4.9-1.el5.rf.$hardwaremodel.rpm",
+            command => "/bin/rpm --force --nosignature --nodeps -i /N/centos5/custom/dag.wieers.com/nagios-plugins-1.4.9-1.el5.rf.$hardwaremodel.rpm",
             creates => "/usr/$libdir/nagios/plugins/check_nagios";
         "nagios-nrpe":
             command => "/bin/rpm --nosignature --nodeps -i /N/centos5/custom/dag.wieers.com/nagios-nrpe-2.5.2-1.el5.rf.$hardwaremodel.rpm",
