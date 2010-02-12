@@ -14,6 +14,14 @@ class moz-rpms {
             refreshonly => true,
             user => "cltbld",
             group => "cltbld",
-            subscribe => package["ccache"];
+            subscribe => file["/builds/ccache"],
+            require => package["ccache"];
+    }
+    file {
+        "/builds/ccache":
+            owner => "cltbld",
+            group => "cltbld",
+            ensure => directory,
+            require => mount["/builds"];
     }
 }
