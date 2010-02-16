@@ -208,99 +208,99 @@ node "moz2-linux-slave50.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, vm
 }
 
-node "moz2-linux-ix-slave02.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave02.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave03.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave03.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave04.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave04.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave05.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave05.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave06.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave06.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave07.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave07.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave08.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave08.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave09.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave09.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave10.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave10.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave11.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave11.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave12.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave12.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave13.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave13.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave14.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave14.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave15.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave15.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave16.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave16.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave17.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave17.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave18.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave18.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave19.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave19.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave20.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave20.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave21.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave21.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave22.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave22.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave23.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave23.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave24.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave24.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "moz2-linux-ix-slave25.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave25.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
@@ -678,6 +678,66 @@ node "talos-r3-fed-019.build.mozilla.org" {
 node "talos-r3-fed-020.build.mozilla.org" {
 }
 
+node "talos-r3-fed-021.build.mozilla.org" {
+}
+
+node "talos-r3-fed-022.build.mozilla.org" {
+}
+
+node "talos-r3-fed-023.build.mozilla.org" {
+}
+
+node "talos-r3-fed-024.build.mozilla.org" {
+}
+
+node "talos-r3-fed-025.build.mozilla.org" {
+}
+
+node "talos-r3-fed-026.build.mozilla.org" {
+}
+
+node "talos-r3-fed-027.build.mozilla.org" {
+}
+
+node "talos-r3-fed-028.build.mozilla.org" {
+}
+
+node "talos-r3-fed-029.build.mozilla.org" {
+}
+
+node "talos-r3-fed-030.build.mozilla.org" {
+}
+
+node "talos-r3-fed-031.build.mozilla.org" {
+}
+
+node "talos-r3-fed-032.build.mozilla.org" {
+}
+
+node "talos-r3-fed-033.build.mozilla.org" {
+}
+
+node "talos-r3-fed-034.build.mozilla.org" {
+}
+
+node "talos-r3-fed-035.build.mozilla.org" {
+}
+
+node "talos-r3-fed-036.build.mozilla.org" {
+}
+
+node "talos-r3-fed-037.build.mozilla.org" {
+}
+
+node "talos-r3-fed-038.build.mozilla.org" {
+}
+
+node "talos-r3-fed-039.build.mozilla.org" {
+}
+
+node "talos-r3-fed-040.build.mozilla.org" {
+}
+
 node "talos-r3-fed64-ref.build.mozilla.org" {
 }
 
@@ -805,6 +865,126 @@ node "talos-r3-leopard-019.build.mozilla.org" {
 }
 
 node "talos-r3-leopard-020.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-021.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-022.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-023.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-024.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-025.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-026.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-027.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-028.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-029.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-030.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-031.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-032.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-033.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-034.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-035.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-036.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-037.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-038.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-039.build.mozilla.org" {
+}
+
+node "talos-r3-leopard-040.build.mozilla.org" {
+}
+
+node "talos-r3-snow-001.build.mozilla.org" {
+}
+
+node "talos-r3-snow-002.build.mozilla.org" {
+}
+
+node "talos-r3-snow-003.build.mozilla.org" {
+}
+
+node "talos-r3-snow-004.build.mozilla.org" {
+}
+
+node "talos-r3-snow-005.build.mozilla.org" {
+}
+
+node "talos-r3-snow-006.build.mozilla.org" {
+}
+
+node "talos-r3-snow-007.build.mozilla.org" {
+}
+
+node "talos-r3-snow-008.build.mozilla.org" {
+}
+
+node "talos-r3-snow-009.build.mozilla.org" {
+}
+
+node "talos-r3-snow-010.build.mozilla.org" {
+}
+
+node "talos-r3-snow-011.build.mozilla.org" {
+}
+
+node "talos-r3-snow-012.build.mozilla.org" {
+}
+
+node "talos-r3-snow-013.build.mozilla.org" {
+}
+
+node "talos-r3-snow-014.build.mozilla.org" {
+}
+
+node "talos-r3-snow-015.build.mozilla.org" {
+}
+
+node "talos-r3-snow-016.build.mozilla.org" {
+}
+
+node "talos-r3-snow-017.build.mozilla.org" {
+}
+
+node "talos-r3-snow-018.build.mozilla.org" {
+}
+
+node "talos-r3-snow-019.build.mozilla.org" {
+}
+
+node "talos-r3-snow-020.build.mozilla.org" {
 }
 
 node default {

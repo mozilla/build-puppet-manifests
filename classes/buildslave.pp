@@ -13,6 +13,7 @@ class buildslave {
             include mercurial
             include buildbot
             include extras
+            include moz-rpms
         }
         Darwin: {
             include devtools

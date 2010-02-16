@@ -24,7 +24,7 @@ node "moz2-linux-slave17.build.mozilla.org" {
     include base, staging-buildslave, cltbld, build-network
 }
 
-node "moz2-linux-ix-slave01.build.mozilla.org" {
+node "mv-moz2-linux-ix-slave01.build.mozilla.org" {
     include base, staging-buildslave, cltbld, build-network, ix
 }
 
