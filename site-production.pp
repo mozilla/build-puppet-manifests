@@ -801,9 +801,6 @@ node "talos-r3-fed64-019.build.mozilla.org" {
 node "talos-r3-fed64-020.build.mozilla.org" {
 }
 
-node "qm-ref-leopard.mozilla.org" {
-}
-
 node "talos-r3-leopard-ref.build.mozilla.org" {
 }
 
@@ -925,6 +922,9 @@ node "talos-r3-leopard-039.build.mozilla.org" {
 }
 
 node "talos-r3-leopard-040.build.mozilla.org" {
+}
+
+node "talos-r3-snow-ref.build.mozilla.org" {
 }
 
 node "talos-r3-snow-001.build.mozilla.org" {
