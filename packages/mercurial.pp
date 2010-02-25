@@ -1,8 +1,6 @@
 # mercurial.pp
 # installs mercurial
 
-# tests out as-is on x86_64
-
 ### Download mercurial, unpack the tarball, run python setup.py install,
 ### then cleanup
 

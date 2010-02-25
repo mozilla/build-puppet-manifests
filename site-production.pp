@@ -16,6 +16,10 @@ node "linux-ref-platform.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, vm
 }
 
+node "linux64-ref-platform.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
 node "linux-ix-ref.mv.mozilla.com" {
     include base, buildslave, cltbld, build-network, ix
 }
@@ -205,6 +209,46 @@ node "moz2-linux-slave49.build.mozilla.org" {
 }
 
 node "moz2-linux-slave50.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave01.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave02.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave05.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave06.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave07.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave08.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave09.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave10.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave11.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
+}
+
+node "moz2-linux64-slave12.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, vm
 }
 
