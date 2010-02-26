@@ -20,7 +20,7 @@ node "linux64-ref-platform.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, vm
 }
 
-node "linux-ix-ref.mv.mozilla.com" {
+node "linux-ix-ref.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
