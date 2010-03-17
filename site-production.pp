@@ -556,6 +556,10 @@ node "moz2-darwin9-slave37.build.mozilla.org" {
     include base, buildslave, build-network
 }
 
+node "bm-xserve06.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
 node "bm-xserve07.build.mozilla.org" {
     include base, buildslave, build-network
 }
