@@ -28,7 +28,7 @@ node "mv-moz2-linux-ix-slave01.build.mozilla.org" {
     include base, staging-buildslave, cltbld, build-network, ix
 }
 
-node "try-linux-slave05.mozilla.org" {
+node "moz2-linux-slave51.build.mozilla.org" {
     include base, staging-buildslave, cltbld, sandbox-network
 }
 
@@ -48,7 +48,7 @@ node "bm-xserve14.build.mozilla.org" {
     include base, staging-buildslave, build-network
 }
 
-node "try-mac-slave05.mozilla.org" {
+node "moz2-darwin9-slave68.build.mozilla.org" {
     include base, staging-buildslave, sandbox-network
 }
 
