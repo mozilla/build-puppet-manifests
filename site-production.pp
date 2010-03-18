@@ -556,6 +556,126 @@ node "moz2-darwin9-slave37.build.mozilla.org" {
     include base, buildslave, build-network
 }
 
+node "moz2-darwin9-slave38.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave39.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave40.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave41.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave42.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave43.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave44.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave45.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave46.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave47.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave48.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave49.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave50.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave51.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave52.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave53.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave54.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave55.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave56.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave57.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave58.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave59.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave60.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave61.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave62.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave63.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave64.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave65.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave66.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
+node "moz2-darwin9-slave67.build.mozilla.org" {
+    include base, buildslave, build-network
+}
+
 node "bm-xserve06.build.mozilla.org" {
     include base, buildslave, build-network
 }
