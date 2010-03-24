@@ -13,15 +13,15 @@ $httproot = "http://${puppetServer}/"
 ### Node definitions
 
 node "moz2-linux-slave03.build.mozilla.org" {
-    include base, staging-buildslave, cltbld, build-network
+    include base, staging-buildslave, cltbld, build-network, vm
 }
 
 node "moz2-linux-slave04.build.mozilla.org" {
-    include base, staging-buildslave, cltbld, build-network
+    include base, staging-buildslave, cltbld, build-network, vm
 }
 
 node "moz2-linux-slave17.build.mozilla.org" {
-    include base, staging-buildslave, cltbld, build-network
+    include base, staging-buildslave, cltbld, build-network, vm
 }
 
 node "mv-moz2-linux-ix-slave01.build.mozilla.org" {
@@ -29,7 +29,7 @@ node "mv-moz2-linux-ix-slave01.build.mozilla.org" {
 }
 
 node "moz2-linux-slave51.build.mozilla.org" {
-    include base, staging-buildslave, cltbld, sandbox-network
+    include base, staging-buildslave, cltbld, sandbox-network, vm
 }
 
 node "moz2-darwin9-slave03.build.mozilla.org" {
