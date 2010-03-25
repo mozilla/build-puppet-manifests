@@ -29,86 +29,86 @@ class devtools {
             $devtools_home = "${centos5root}/dist"
             $tar = "/bin/tar"
 
-	    case $hardwaremodel {
-	    
-            "x86_64": {
-	        install_x86_64_devtools {
-                gcc:
-                    version     => "4.3.3",
-                    creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
-                    subscribe   => file["/tools/gcc"];
-                python:
-                    version     => "2.5.1",
-                    creates     => "/tools/python-2.5.1/bin/python",
-                    subscribe   => file["/tools/python"];
-                twisted:
-                    version     => "2.4.0",
-                    creates     => "/tools/twisted-2.4.0/bin/twistd",
-                    subscribe   => file["/tools/twisted"];
-                twisted-core:
-                    version     => "2.4.0",
-                    creates     => "/tools/twisted-core-2.4.0/bin/twistd",
-                    subscribe   => file["/tools/twisted-core"];
-                zope-interface:
-                    version     => "3.3.0",
-                    creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
-                    subscribe   => file["/tools/zope-interface"];
-                jdk:
-                    version     => "1.5.0_15",
-                    creates     => "/tools/jdk-1.5.0_15/bin/java",
-                    subscribe   => file["/tools/jdk"];
-                buildbot:
-                    version     => "$buildbot_version",
-                    creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                    subscribe   => file["/tools/buildbot"];
-                build-tools:
-                    version     => "$buildtools_version",
-                    creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                    subscribe   => file["/tools/build-tools"];
+            case $hardwaremodel {
+        
+                "x86_64": {
+                    install_x86_64_devtools {
+                        gcc:
+                            version     => "4.3.3",
+                            creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
+                            subscribe   => file["/tools/gcc"];
+                        python:
+                            version     => "2.5.1",
+                            creates     => "/tools/python-2.5.1/bin/python",
+                            subscribe   => file["/tools/python"];
+                        twisted:
+                            version     => "2.4.0",
+                            creates     => "/tools/twisted-2.4.0/bin/twistd",
+                            subscribe   => file["/tools/twisted"];
+                        twisted-core:
+                            version     => "2.4.0",
+                            creates     => "/tools/twisted-core-2.4.0/bin/twistd",
+                            subscribe   => file["/tools/twisted-core"];
+                        zope-interface:
+                            version     => "3.3.0",
+                            creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
+                            subscribe   => file["/tools/zope-interface"];
+                        jdk:
+                            version     => "1.5.0_15",
+                            creates     => "/tools/jdk-1.5.0_15/bin/java",
+                            subscribe   => file["/tools/jdk"];
+                        buildbot:
+                            version     => "$buildbot_version",
+                            creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
+                            subscribe   => file["/tools/buildbot"];
+                        build-tools:
+                            version     => "$buildtools_version",
+                            creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
+                            subscribe   => file["/tools/build-tools"];
+                    }
+                }
+
+                default: {
+                ### The install_devtools function is found at the bottom    
+                    install_devtools {
+                        gcc:
+                            version     => "4.1.1",
+                            creates     => "/tools/gcc-4.1.1/bin/gcc",
+                            subscribe   => file["/tools/gcc"];
+                        gcc433:
+                            version     => "4.3.3",
+                            creates     => "/tools/gcc-4.3.3/installed/bin/gcc";
+                        python:
+                            version     => "2.5.1",
+                            creates     => "/tools/python-2.5.1/bin/python",
+                            subscribe   => file["/tools/python"];
+                        twisted:
+                            version     => "2.4.0",
+                            creates     => "/tools/twisted-2.4.0/bin/twistd",
+                            subscribe   => file["/tools/twisted"];
+                        twisted-core:
+                            version     => "2.4.0",
+                            creates     => "/tools/twisted-core-2.4.0/bin/twistd",
+                            subscribe   => file["/tools/twisted-core"];
+                        zope-interface:
+                            version     => "3.3.0",
+                            creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
+                            subscribe   => file["/tools/zope-interface"];
+                        jdk:
+                            version     => "1.5.0_10",
+                            creates     => "/tools/jdk-1.5.0_10/bin/java",
+                            subscribe   => file["/tools/jdk"];
+                        buildbot:
+                            version     => "$buildbot_version",
+                            creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
+                            subscribe   => file["/tools/buildbot"];
+                        build-tools:
+                            version     => "$buildtools_version",
+                            creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
+                            subscribe   => file["/tools/build-tools"];
+                    }
                 }
             }
-
-            default: {
-            ### The install_devtools function is found at the bottom    
-            install_devtools {
-                gcc:
-                    version     => "4.1.1",
-                    creates     => "/tools/gcc-4.1.1/bin/gcc",
-                    subscribe   => file["/tools/gcc"];
-                gcc433:
-                    version     => "4.3.3",
-                    creates     => "/tools/gcc-4.3.3/installed/bin/gcc";
-                python:
-                    version     => "2.5.1",
-                    creates     => "/tools/python-2.5.1/bin/python",
-                    subscribe   => file["/tools/python"];
-                twisted:
-                    version     => "2.4.0",
-                    creates     => "/tools/twisted-2.4.0/bin/twistd",
-                    subscribe   => file["/tools/twisted"];
-                twisted-core:
-                    version     => "2.4.0",
-                    creates     => "/tools/twisted-core-2.4.0/bin/twistd",
-                    subscribe   => file["/tools/twisted-core"];
-                zope-interface:
-                    version     => "3.3.0",
-                    creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
-                    subscribe   => file["/tools/zope-interface"];
-                jdk:
-                    version     => "1.5.0_10",
-                    creates     => "/tools/jdk-1.5.0_10/bin/java",
-                    subscribe   => file["/tools/jdk"];
-                buildbot:
-                    version     => "$buildbot_version",
-                    creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                    subscribe   => file["/tools/buildbot"];
-                build-tools:
-                    version     => "$buildtools_version",
-                    creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                    subscribe   => file["/tools/build-tools"];
-            }
-            }
-	    }
 
             file {
                 # Ensure previous version of build-tools is gone
@@ -149,30 +149,70 @@ class devtools {
         }
 
         Darwin: {
-            $devtools_home = "/N/darwin9/devtools"
             $tar = "/usr/bin/tar"
-
-            install_devtools { 
-                Python:
-                    version     => "2.5.2",
-                    creates     => "/tools/Python-2.5.2/bin/python",
-                    require     => file["/etc/fstab"],
-                    subscribe   => file["/tools/python"];
+            case $operatingsystemrelease {
+                # 10.5 build machines only.
+                "9.2.0": {
+                    $devtools_home = "/N/darwin9/devtools"
+                    install_devtools { 
+                        Python:
+                            version     => "2.5.2",
+                            creates     => "/tools/Python-2.5.2/bin/python",
+                            require     => file["/etc/fstab"],
+                            subscribe   => file["/tools/python"];
+                        zope-interface:
+                            version     => "3.4.1",
+                            creates     => "/tools/zope-interface-3.4.1/lib/python2.5/site-packages/zope/interface/interface.py",
+                            require     => file["/etc/fstab"],
+                            subscribe   => file["/tools/zope-interface"];
+                        mercurial:
+                            version     => "1.2.1",
+                            creates     => "/tools/mercurial-1.2.1/hg",
+                            require     => file["/etc/fstab"],
+                            subscribe   => file["/tools/mercurial"];
+                    }
+                    file {
+                        "/tools/python":
+                            ensure  => "/tools/Python-2.5.2",
+                            force   => true;
+                        "/tools/zope-interface":
+                            ensure  => "/tools/zope-interface-3.4.1";
+                        "/tools/mercurial":
+                            ensure  => "/tools/dist/mercurial-1.2.1";
+                    }
+                }
+                # 10.6 build machines only
+                "10.2.0": {
+                    $devtools_home = "/N/darwin10/devtools"
+                    install_devtools { 
+                        python:
+                            version     => "2.6.4",
+                            creates     => "/tools/python-2.6.4/bin/python",
+                            require     => file["/etc/fstab"],
+                            subscribe   => file["/tools/python"];
+                        zope-interface:
+                            version     => "3.5.3",
+                            creates     => "/tools/zope-interface-3.5.3/lib/python2.6/site-packages/zope/interface/interface.py",
+                            require     => file["/etc/fstab"],
+                            subscribe   => file["/tools/zope-interface"];
+                    }
+                    file {
+                        "/tools/python":
+                            ensure  => "/tools/python-2.6.4",
+                            force   => true;
+                        "/tools/zope-interface":
+                            ensure  => "/tools/zope-interface-3.5.3";
+                    }
+                }
+            }
+            # All Mac build machines
+            # devtools_home is defined above, so each platform gets a tarball specific to it
+            install_devtools {
                 Twisted:
                     version     => "8.0.1",
-                    creates     => "/tools/Twisted-8.0.1/twisted",
+                    creates     => "/tools/Twisted-8.0.1/lib",
                     require     => file["/etc/fstab"],
                     subscribe   => file["/tools/twisted"];
-                zope-interface:
-                    version     => "3.4.1",
-                    creates     => "/tools/zope-interface-3.4.1/lib/python2.5/site-packages/zope/interface/interface.py",
-                    require     => file["/etc/fstab"],
-                    subscribe   => file["/tools/zope-interface"];
-                mercurial:
-                    version     => "1.2.1",
-                    creates     => "/tools/mercurial-1.2.1/hg",
-                    require     => file["/etc/fstab"],
-                    subscribe   => file["/tools/mercurial"];
                 buildbot:
                     version     => "$buildbot_version",
                     creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
@@ -181,21 +221,14 @@ class devtools {
                     version     => "$buildtools_version",
                     creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
                     subscribe   => file["/tools/build-tools"];
-                }
-
+            }
+        
             file {
                 "/tools/build-tools-$old_buildtools_version":
                     ensure => absent,
                     force => true;
-                "/tools/python":
-                    ensure  => "/tools/Python-2.5.2",
-                    force   => true;
                 "/tools/twisted":
                     ensure  => "/tools/Twisted-8.0.1";
-                "/tools/mercurial":
-                    ensure  => "/tools/dist/mercurial-1.2.1";
-                "/tools/zope-interface":
-                    ensure  => "/tools/zope-interface-3.4.1";
                 "/tools/buildbot":
                     # needs to be forced because the first time we do this
                     # Buildbot will be a directory, not a symlink

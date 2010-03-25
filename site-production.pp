@@ -791,6 +791,10 @@ node "try-mac-slave19.mozilla.org" {
     include base, buildslave, sandbox-network
 }
 
+node "moz2-darwin10-ref.build.mozilla.org" {
+    include base, buildslaves, build-network
+}
+
 node "talos-r3-fed-ref.build.mozilla.org" {
 }
 
