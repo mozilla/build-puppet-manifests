@@ -5,7 +5,9 @@
 # This file is setup to work for both CentOS and Darwin9
 
 class devtools {
-    $buildbot_version = "5f43578cba2b"
+    $buildbot_version = "1a62c6abfe0d"
+    $old_buildbot_version = "5f43578cba2b"
+
     $buildtools_version = "0b149c0ad18d"
     $old_buildtools_version = "605b16dc7e05"
 
@@ -113,6 +115,10 @@ class devtools {
             file {
                 # Ensure previous version of build-tools is gone
                 "/tools/build-tools-$old_buildtools_version":
+                    ensure => absent,
+                    force => true;
+                # Ensure previous version of buildbot is gone
+                "/tools/buildbot-$old_buildbot_version":
                     ensure => absent,
                     force => true;
                 "/tools/gcc-4.2.3":
@@ -225,6 +231,9 @@ class devtools {
         
             file {
                 "/tools/build-tools-$old_buildtools_version":
+                    ensure => absent,
+                    force => true;
+                "/tools/buildbot-$old_buildbot_version":
                     ensure => absent,
                     force => true;
                 "/tools/twisted":
