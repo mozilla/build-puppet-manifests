@@ -792,7 +792,7 @@ node "try-mac-slave19.mozilla.org" {
 }
 
 node "moz2-darwin10-ref.build.mozilla.org" {
-    include base, buildslaves, build-network
+    include base, buildslave, build-network
 }
 
 node "talos-r3-fed-ref.build.mozilla.org" {
