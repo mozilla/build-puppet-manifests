@@ -46,6 +46,11 @@ class osx {
                     owner => "cltbld",
                     group => "staff",
                     require => file["/Users/cltbld"];
+                "/Library/LaunchAgents/buildbot.start.slave.plist":
+                    source => "${fileroot}darwin9/buildbot.start.slave.plist",
+                    owner => "root",
+                    group => "wheel",
+                    require => file["/etc/fstab"];    
             }
             exec {
                 setup-configuration:
@@ -104,6 +109,11 @@ class osx {
                     owner => "cltbld",
                     group => "staff",
                     require => file["/Users/cltbld"];
+                "/Library/LaunchAgents/buildbot.start.slave.plist":
+                    source => "${fileroot}darwin10/buildbot.start.slave.plist",
+                    owner => "root",
+                    group => "wheel",
+                    require => file["/etc/fstab"];    
             }
         }
     }
@@ -128,11 +138,6 @@ class osx {
         "/opt/local/bin/autoconf-2.13":
             ensure => "/opt/local/bin/autoconf213",
             require => file["/opt/local/bin"];
-        "/Library/LaunchAgents/buildbot.start.slave.plist":
-            source => "${fileroot}darwin-shared/buildbot.start.slave.plist",
-            owner => "root",
-            group => "wheel",
-            require => file["/etc/fstab"];    
         "/usr/local/nagios/etc/nrpe.plist":
             source => "${fileroot}darwin-shared/nrpe.plist",
             owner => "root",
