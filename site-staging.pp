@@ -44,6 +44,22 @@ node "moz2-darwin9-slave08.build.mozilla.org" {
     include base, staging-buildslave, build-network
 }
 
+node "moz2-darwin10-slave01.build.mozilla.org" {
+    include base, staging-buildslave, build-network
+}
+
+node "moz2-darwin10-slave02.build.mozilla.org" {
+    include base, staging-buildslave, build-network
+}
+
+node "moz2-darwin10-slave03.build.mozilla.org" {
+    include base, staging-buildslave, build-network
+}
+
+node "moz2-darwin10-slave04.build.mozilla.org" {
+    include base, staging-buildslave, build-network
+}
+
 node "bm-xserve14.build.mozilla.org" {
     include base, staging-buildslave, build-network
 }
