@@ -42,6 +42,10 @@ class centos5 {
         "/etc/init.d/buildbot-tac":
             source => "/N/shared/buildbot-tac",
             mode => 755;
+
+        "/etc/init.d/puppet":
+            source => "${fileroot}centos5/etc/init.d/puppet",
+            mode => 755;
     }
 
     #################################################

@@ -5,19 +5,18 @@ class buildbot {
 
     file {
         "/etc/default/buildbot":
-            source => "/N/centos5/etc/default/buildbot",
-            before => service["buildbot"];
+            source => "/N/centos5/etc/default/buildbot";
         "/etc/init.d/buildbot":
             source => "/N/centos5/etc/init.d/buildbot",
             mode => 755,
-            before => service["buildbot"];
+            notify => Exec["reset-buildbot-service"];
+    }
+    exec {
+        reset-buildbot-service:
+            command => "/sbin/chkconfig --del buildbot && /sbin/chkconfig --add buildbot",
+            refreshonly => true;
     }
     service {
-        'buildbot':
-            provider => "redhat",
-            ensure => 'running',
-            enable => 'true',
-            require => service["buildbot-tac"];
         'buildbot-tac':
             provider => "redhat",
             ensure => 'running',

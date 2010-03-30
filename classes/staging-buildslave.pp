@@ -14,6 +14,13 @@ class staging-buildslave {
             include buildbot
             include extras
             include moz-rpms
+
+            file {
+                "/etc/sysconfig/puppet":
+                    source => "${fileroot}centos5/etc/sysconfig/puppet-staging",
+                    owner => "root",
+                    group => "root";
+            }
         }
         Darwin: {
             include devtools
