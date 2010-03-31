@@ -1166,189 +1166,251 @@ node "talos-r3-fed64-020.build.mozilla.org" {
 }
 
 node "talos-r3-leopard-ref.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-001.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-002.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-003.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-004.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-005.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-006.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-007.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-008.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-009.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-010.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-011.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-012.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-013.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-014.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-015.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-016.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-017.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-018.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-019.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-020.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-021.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-022.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-023.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-024.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-025.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-026.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-027.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-028.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-029.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-030.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-031.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-032.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-033.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-034.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-035.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-036.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-037.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-038.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-039.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-040.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-ref.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-001.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-002.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-003.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-004.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-005.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-006.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-007.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-008.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-009.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-010.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-011.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-012.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-013.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-014.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-015.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-016.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-017.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-018.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-019.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-snow-020.build.mozilla.org" {
+    include talosslave
 }
 
 node default {
