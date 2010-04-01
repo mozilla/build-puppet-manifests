@@ -9,10 +9,9 @@ class staging-buildslave {
             include debuginfopackages
             include devtools
             include nagios
-            #include scratchbox
+            include scratchbox
             include mercurial
             include buildbot
-            include extras
             include moz-rpms
 
             file {
