@@ -352,10 +352,6 @@ node "mv-moz2-linux-ix-slave24.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "mv-moz2-linux-ix-slave25.build.mozilla.org" {
-    include base, buildslave, cltbld, build-network, ix
-}
-
 node "try-linux-slave01.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network, vm
 }
