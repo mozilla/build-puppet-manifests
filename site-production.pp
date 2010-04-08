@@ -976,189 +976,251 @@ node "moz2-darwin10-slave50.build.mozilla.org" {
 }
 
 node "talos-r3-fed-ref.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-001.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-002.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-003.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-004.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-005.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-006.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-007.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-008.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-009.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-010.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-011.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-012.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-013.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-014.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-015.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-016.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-017.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-018.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-019.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-020.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-021.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-022.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-023.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-024.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-025.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-026.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-027.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-028.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-029.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-030.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-031.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-032.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-033.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-034.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-035.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-036.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-037.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-038.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-039.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed-040.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-ref.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-001.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-002.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-003.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-004.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-005.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-006.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-007.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-008.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-009.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-010.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-011.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-012.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-013.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-014.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-015.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-016.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-017.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-018.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-019.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-fed64-020.build.mozilla.org" {
+    include talosslave
 }
 
 node "talos-r3-leopard-ref.build.mozilla.org" {
