@@ -10,14 +10,20 @@ class scratchbox {
         }
         default: {
             $sb_version="2010-03-30-1129"
+            $sb_prefix="/builds/scratchbox"
+            $sb_hg_version="1.5.1"
             exec {
                 install-scratchbox:
                     command => "/N/centos5/scratchbox/deploy-sb.sh $sb_version",
                     creates => "/builds/scratchbox/deployed-$sb_version",
                     timeout => 10800,
                     cwd => "/N/centos5/scratchbox/";
+                install-sb-mercurial:
+                    command => "/bin/tar zxf /N/centos5/scratchbox/mercurial-${sb_hg_version}.linux-arm.tar.gz",
+                    creates => "${sb_prefix}/users/cltbld/targets/FREMANTLE_ARMEL/usr/local/bin/hg",
+                    cwd => "${sb_prefix}/users/cltbld/targets/FREMANTLE_ARMEL/";
             }
-        
+                    
             file {
                 "/scratchbox":
                     ensure => '/builds/scratchbox',
