@@ -43,6 +43,9 @@ class devtools {
                             version     => "2.5.1",
                             creates     => "/tools/python-2.5.1/bin/python",
                             subscribe   => file["/tools/python"];
+                        python26:
+                            version     => "2.6.5",
+                            creates     => "/tools/python-2.6.5/bin/python";
                         twisted:
                             version     => "2.4.0",
                             creates     => "/tools/twisted-2.4.0/bin/twistd",
@@ -84,6 +87,9 @@ class devtools {
                             version     => "2.5.1",
                             creates     => "/tools/python-2.5.1/bin/python",
                             subscribe   => file["/tools/python"];
+                        python26:
+                            version     => "2.6.5",
+                            creates     => "/tools/python-2.6.5/bin/python";
                         twisted:
                             version     => "2.4.0",
                             creates     => "/tools/twisted-2.4.0/bin/twistd",
