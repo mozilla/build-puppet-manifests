@@ -143,6 +143,13 @@ class osx {
             owner => "root",
             group => "wheel",
             require => file["/etc/fstab"];
+        "/usr/local/nagios/etc/nrpe.cfg":
+            source => "${fileroot}darwin-shared/nrpe.cfg",
+            owner => "root",
+            group => "wheel",
+            require => file["/usr/local/nagios/etc/nrpe.plist"];
+        "/usr/local/nagios-i386":
+            ensure => "nagios";
         "/opt":
             ensure => directory;
         "/opt/local":
