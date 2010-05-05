@@ -100,6 +100,10 @@ class devtools {
                             version     => "1.5.0_10",
                             creates     => "/tools/jdk-1.5.0_10/bin/java",
                             subscribe   => file["/tools/jdk"];
+                        jdk6:
+                            version     => "1.6.0_17",
+                            creates     => "/tools/jdk-1.6.0_17/bin/java",
+                            subscribe   => file["/tools/jdk6"];
                         buildbot:
                             version     => "$buildbot_version",
                             creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
@@ -108,6 +112,22 @@ class devtools {
                             version     => "$buildtools_version",
                             creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
                             subscribe   => file["/tools/build-tools"];
+                        android-sdk:
+                            version     => "r7",
+                            creates     => "/tools/android-sdk-r7/tools/android",
+                            subscribe   => file["/tools/android-sdk"];
+                        android-ndk:
+                            version     => "r3",
+                            creates     => "/tools/android-ndk-r3/build/tools/make-release.sh",
+                            subscribe   => file["/tools/android-ndk"];
+                    }
+                    file {
+                        "/tools/jdk6":
+                            ensure => "/tools/jdk-1.6.0_17";
+                        "/tools/android-sdk":
+                            ensure => "/tools/android-sdk-r7";
+                        "/tools/android-ndk":
+                            ensure => "/tools/android-ndk-r3";
                     }
                 }
             }
