@@ -1471,6 +1471,126 @@ node "talos-r3-snow-020.build.mozilla.org" {
     include talosslave
 }
 
+node "talos-r3-snow-021.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-022.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-023.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-024.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-025.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-026.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-027.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-028.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-029.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-030.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-031.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-032.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-033.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-034.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-035.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-036.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-037.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-038.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-039.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-040.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-041.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-042.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-043.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-044.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-045.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-046.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-047.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-048.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-049.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-snow-050.build.mozilla.org" {
+    include talosslave
+}
+
 node default {
     #include base
 }
