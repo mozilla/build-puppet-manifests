@@ -1387,6 +1387,46 @@ node "talos-r3-leopard-040.build.mozilla.org" {
     include talosslave
 }
 
+node "talos-r3-leopard-041.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-042.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-043.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-044.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-045.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-046.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-047.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-048.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-049.build.mozilla.org" {
+    include talosslave
+}
+
+node "talos-r3-leopard-050.build.mozilla.org" {
+    include talosslave
+}
+
 node "talos-r3-snow-ref.build.mozilla.org" {
     include talosslave
 }
