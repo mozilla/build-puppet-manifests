@@ -348,8 +348,8 @@ node "mv-moz2-linux-ix-slave24.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, ix
 }
 
-node "try-linux-slave01.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave01.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
 node "try-linux-slave02.mozilla.org" {
@@ -364,8 +364,8 @@ node "sm-try-linux-slave04.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network, vm
 }
 
-node "try-linux-slave06.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave06.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
 node "try-linux-slave07.mozilla.org" {
@@ -373,15 +373,15 @@ node "try-linux-slave07.mozilla.org" {
 }
 
 node "try-linux-slave08.build.mozilla.org" {
-    include base, buildslave, cltbld, vm
+    include base, buildslave, cltbld, build-network, vm
 }
 
 node "try-linux-slave09.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network, vm
 }
 
-node "try-linux-slave10.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave10.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
 node "try-linux-slave11.mozilla.org" {
@@ -392,20 +392,20 @@ node "try-linux-slave12.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network, vm
 }
 
-node "try-linux-slave13.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave13.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
-node "try-linux-slave14.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave14.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
-node "try-linux-slave15.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave15.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
-node "try-linux-slave16.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave16.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
 node "try-linux-slave17.mozilla.org" {
@@ -416,8 +416,8 @@ node "try-linux-slave18.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network, vm
 }
 
-node "try-linux-slave19.mozilla.org" {
-    include base, buildslave, cltbld, sandbox-network, vm
+node "try-linux-slave19.build.mozilla.org" {
+    include base, buildslave, cltbld, build-network, vm
 }
 
 node "try-linux64-slave01.mozilla.org" {
@@ -731,8 +731,8 @@ node "bm-xserve22.build.mozilla.org" {
     include base, buildslave, build-network
 }
 
-node "try-mac-slave01.mozilla.org" {
-    include base, buildslave, sandbox-network
+node "try-mac-slave01.build.mozilla.org" {
+    include base, buildslave, build-network
 }
 
 node "try-mac-slave02.mozilla.org" {
@@ -755,20 +755,20 @@ node "try-mac-slave07.mozilla.org" {
     include base, buildslave, sandbox-network
 }
 
-node "try-mac-slave08.mozilla.org" {
-    include base, buildslave, sandbox-network
+node "try-mac-slave08.build.mozilla.org" {
+    include base, buildslave, build-network
 }
 
-node "try-mac-slave09.mozilla.org" {
-    include base, buildslave, sandbox-network
+node "try-mac-slave09.build.mozilla.org" {
+    include base, buildslave, build-network
 }
 
 node "try-mac-slave10.mozilla.org" {
     include base, buildslave, sandbox-network
 }
 
-node "try-mac-slave11.mozilla.org" {
-    include base, buildslave, sandbox-network
+node "try-mac-slave11.build.mozilla.org" {
+    include base, buildslave, build-network
 }
 
 node "try-mac-slave12.mozilla.org" {
@@ -776,7 +776,7 @@ node "try-mac-slave12.mozilla.org" {
 }
 
 node "try-mac-slave13.build.mozilla.org" {
-    include base, buildslave
+    include base, buildslave, build-network
 }
 
 node "try-mac-slave14.mozilla.org" {
@@ -787,8 +787,8 @@ node "try-mac-slave15.mozilla.org" {
     include base, buildslave, sandbox-network
 }
 
-node "try-mac-slave16.mozilla.org" {
-    include base, buildslave, sandbox-network
+node "try-mac-slave16.build.mozilla.org" {
+    include base, buildslave, build-network
 }
 
 node "try-mac-slave17.mozilla.org" {
