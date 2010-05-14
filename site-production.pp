@@ -236,10 +236,6 @@ node "moz2-linux64-slave06.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, vm
 }
 
-node "moz2-linux64-slave07.build.mozilla.org" {
-    include base, buildslave, cltbld, build-network, vm
-}
-
 node "moz2-linux64-slave08.build.mozilla.org" {
     include base, buildslave, cltbld, build-network, vm
 }
