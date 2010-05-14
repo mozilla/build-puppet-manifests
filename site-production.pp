@@ -420,6 +420,26 @@ node "try-linux-slave19.mozilla.org" {
     include base, buildslave, cltbld, sandbox-network, vm
 }
 
+node "try-linux64-slave01.mozilla.org" {
+    include base, buildslave, cltbld, sandbox-network, vm
+}
+
+node "try-linux64-slave02.mozilla.org" {
+    include base, buildslave, cltbld, sandbox-network, vm
+}
+
+node "try-linux64-slave03.mozilla.org" {
+    include base, buildslave, cltbld, sandbox-network, vm
+}
+
+node "try-linux64-slave04.mozilla.org" {
+    include base, buildslave, cltbld, sandbox-network, vm
+}
+
+node "try-linux64-slave05.mozilla.org" {
+    include base, buildslave, cltbld, sandbox-network, vm
+}
+
 node "bm-mini-build-ref.build.mozilla.org" {
     include base, buildslave, build-network
 }
