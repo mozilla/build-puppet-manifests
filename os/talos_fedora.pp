@@ -13,4 +13,10 @@ class talos_fedora {
             source => "${httproot}/talos/linux/RPMS/${hardwaremodel}/gtk2-2.18.9-3.fc12.${hardwaremodel}.rpm",
             ensure => latest;
     }
+
+    
+    file {
+        "/home/cltbld/.fonts.conf":
+            source => "${fileroot}talos/linux/fonts.conf";
+    }
 }
