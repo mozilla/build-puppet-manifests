@@ -14,12 +14,12 @@ class scratchbox {
             $sb_hg_version="1.5.1"
             exec {
                 install-scratchbox:
-                    command => "/N/centos5/scratchbox/deploy-sb.sh $sb_version",
+                    command => "$devtools_home/deploy-sb.sh $sb_version",
                     creates => "/builds/scratchbox/deployed-$sb_version",
                     timeout => 10800,
-                    cwd => "/N/centos5/scratchbox/";
+                    cwd => "$devtools_home";
                 install-sb-mercurial:
-                    command => "/bin/tar zxf /N/centos5/scratchbox/mercurial-${sb_hg_version}.linux-arm.tar.gz",
+                    command => "/bin/tar zxf $devtools_home/mercurial-${sb_hg_version}.linux-arm.tar.gz",
                     creates => "${sb_prefix}/users/cltbld/targets/FREMANTLE_ARMEL/usr/local/bin/hg",
                     cwd => "${sb_prefix}/users/cltbld/targets/FREMANTLE_ARMEL/";
             }
@@ -32,12 +32,12 @@ class scratchbox {
                     group => root;
         
                 "/builds/scratchbox/moz_scratchbox":
-                    source => "/N/centos5/scratchbox/moz_scratchbox",
+                    source => "${platform_fileroot}/builds/scratchbox/moz_scratchbox",
                     mode => 755,
                     require => Exec['install-scratchbox'];
         
                 "/builds/scratchbox/etc/resolv.conf":
-                    source => "/N/centos5/scratchbox/etc/resolv.conf",
+                    source => "${platform_fileroot}/builds/scratchbox/etc/resolv.conf",
                     require => Exec["install-scratchbox"];
         
                 ### Some /etc/resolv.conf links

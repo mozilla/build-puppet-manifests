@@ -15,11 +15,11 @@ class puppet-files-build-network {
         Darwin: {
             file {
                 "/etc/fstab":
-                    require => file["/etc/auto_master"],
-                    notify => exec["mount-nfs"],
+                    require => File["/etc/auto_master"],
+                    notify => Exec["mount-nfs"],
                     owner => "root",
                     group => "wheel",
-                    source => "${fileroot}darwin9/etc/fstab";
+                    source => "${local_fileroot}/etc/fstab";
             }
         }
     }

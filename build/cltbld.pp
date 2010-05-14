@@ -34,10 +34,10 @@ class cltbld {
     #################################################
     file { 
             "/home/cltbld/.bash_profile":
-                source => "/N/centos5/home/cltbld/.bash_profile";
+                source => "${platform_fileroot}/home/cltbld/.bash_profile";
 
             "/home/cltbld/crontab":
-                source => "/N/centos5/home/cltbld/crontab";
+                source => "${platform_fileroot}/home/cltbld/crontab";
 
             "/home/cltbld/.vnc":
                 mode => 775,
@@ -45,11 +45,11 @@ class cltbld {
 
             "/home/cltbld/.vnc/passwd":
                 mode => 600,
-                source => "/N/centos5/home/cltbld/.vnc/passwd";
+                source => "${platform_fileroot}/home/cltbld/.vnc/passwd";
 
             "/home/cltbld/.vnc/xstartup":
                 mode => 700,
-                source => "/N/centos5/home/cltbld/.vnc/xstartup";
+                source => "${platform_fileroot}/home/cltbld/.vnc/xstartup";
         }
 
         exec { "/usr/bin/crontab -u cltbld /home/cltbld/crontab":

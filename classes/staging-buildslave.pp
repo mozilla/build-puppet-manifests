@@ -16,7 +16,7 @@ class staging-buildslave {
 
             file {
                 "/etc/sysconfig/puppet":
-                    source => "${fileroot}centos5/etc/sysconfig/puppet-staging",
+                    source => "${local_fileroot}/etc/sysconfig/puppet",
                     owner => "root",
                     group => "root";
             }
@@ -25,10 +25,9 @@ class staging-buildslave {
             include devtools
             file {
                 "/Library/LaunchDaemons/com.reductivelabs.puppet.plist":
-                    source => "${fileroot}darwin9/com.reductivelabs.puppet.plist-staging",
+                    source => "${local_fileroot}/Library/LaunchDaemons/com.reductivelabs.puppet.plist",
                     owner => "root",
-                    group => "wheel",
-                    require => file["/etc/fstab"];    
+                    group => "wheel";
             }
         }
     }

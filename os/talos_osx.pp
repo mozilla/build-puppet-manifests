@@ -15,17 +15,16 @@ class talos_osx {
         }
     }
 
-    exec {
-        "mercurial":
-            command   => "/usr/bin/tar -xzf /N/talos/mac/${platform}/mercurial-${mercurialVersion}.tar.gz",
-            cwd       => $pythonpath,
-            creates   => "${pythonpath}/mercurial";
+    install_package {
+        "mercurial-${mercurialVersion}.dmg":
+            creates => "/Library/Python/2.5/site-packages/mercurial/verify.py",
+            alias   => "mercurial";
     }
 
     file {
         "/usr/local/bin/hg":
             mode   => 755,
-            source => "/N/talos/mac/hg";
+            source => "${platform_fileroot}/usr/local/bin/hg";
     }
 
     # get .bash_profile in place for Snow Leopard
@@ -41,8 +40,12 @@ class talos_osx {
                    alias  => "create_bin_directory",
                    before => File["create_python_symlink"];
                "/Users/cltbld/.bash_profile":
-                   source => "/N/talos/mac/${platform}/.bash_profile",
+                   source => "${platform_fileroot}/Users/cltbld/.bash_profile",
                    alias  => "get_profile";
+                "/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb":
+                    source => "${platform_fileroot}/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb",
+                    owner => "root",
+                    group => "admin";
            }
        }
     }

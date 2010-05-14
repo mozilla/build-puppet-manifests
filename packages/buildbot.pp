@@ -5,9 +5,9 @@ class buildbot {
 
     file {
         "/etc/default/buildbot":
-            source => "/N/centos5/etc/default/buildbot";
+            source => "${platform_fileroot}/etc/default/buildbot";
         "/etc/init.d/buildbot":
-            source => "/N/centos5/etc/init.d/buildbot",
+            source => "${platform_fileroot}/etc/init.d/buildbot",
             mode => 755,
             notify => Exec["reset-buildbot-service"];
     }
@@ -21,7 +21,7 @@ class buildbot {
             provider => "redhat",
             ensure => 'running',
             enable => 'true',
-            require => [file["/etc/init.d/buildbot-tac"], exec["untar-build-tools"]];
+            require => [File["/etc/init.d/buildbot-tac"], Exec["untar-build-tools"]];
 
     }
 }
