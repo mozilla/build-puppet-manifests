@@ -237,7 +237,7 @@ class devtools {
                     creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
                     subscribe   => File["/tools/twisted"];
                 "buildbot-${buildbot_version}.dmg":
-                    creates     => "/tools/buildbot-${buildbot_version}/lib/python2.5/site-packages/buildbot/util.py",
+                    creates     => "/tools/buildbot-${buildbot_version}/lib",
                     subscribe   => File["/tools/buildbot"];
                 "build-tools-${buildtools_version}.dmg":
                     creates     => "/tools/build-tools-${buildtools_version}/stage/post_upload.py",

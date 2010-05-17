@@ -14,12 +14,12 @@ class osx {
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/xcode_3.1.dmg",
-                    require => Exec["setup-configuration"];
+                    require => [Exec["setup-configuration"], File["pkgdmg.rb"]];
                 "chud_4.5.0.dmg":
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/chud_4.5.0.dmg",
-                    require => Exec["setup-configuration"];
+                    require => [Exec["setup-configuration"], File["pkgdmg.rb"]];
                 "MacPorts-1.7.1-10.5-Leopard.dmg":
                     provider => pkgdmg,
                     ensure => installed,
@@ -27,13 +27,13 @@ class osx {
                     # telling pkgdmg that it was installed. So, we call a helper script
                     # that touches the file if it is already installed, thus preventing
                     # this installation from attempting every time
-                    require => Exec["check-for-macports"],
-                    source => "${platform/httproot}/DMGs/MacPorts-1.7.1-10.5-Leopard.dmg";
+                    require => [Exec["check-for-macports"], File["pkgdmg.rb"]],
+                    source => "${platform_httproot}/DMGs/MacPorts-1.7.1-10.5-Leopard.dmg";
+            }
+            install_package {
                 "macports-updates-10.5.dmg":
-                    provider => pkgdmg,
                     alias => "macports-updates",
-                    require => Package['MacPorts-1.7.1-10.5-Leopard.dmg'],
-                    source => "${platform/httproot}/DMGs/macports-updates-10.5.dmg";
+                    creates => "/opt/local/var/macports/sources/rsync.macports.org/release/ports/zope/zope-zsyncer/Portfile"
             }
             file {
                 "/etc/postfix/main.cf":
@@ -116,7 +116,8 @@ class osx {
                 "/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb":
                     source => "${platform_fileroot}/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb",
                     owner => "root",
-                    group => "admin";
+                    group => "admin",
+                    alias => "pkgdmg.rb";
             }
         }
     }
@@ -202,6 +203,7 @@ class osx {
         "/usr/local/bin/check-for-package.sh":
             owner => "root",
             group => "staff",
+            mode  => 755,
             source => "${platform_fileroot}/usr/local/bin/check-for-package.sh";
     }
 

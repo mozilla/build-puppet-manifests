@@ -45,7 +45,8 @@ class talos_osx {
                 "/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb":
                     source => "${platform_fileroot}/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb",
                     owner => "root",
-                    group => "admin";
+                    group => "admin",
+                    alias => "pkgdmg.rb";
            }
        }
     }

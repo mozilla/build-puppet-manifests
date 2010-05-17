@@ -15,7 +15,7 @@ define install_package($creates) {
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/${name}",
-                    require => Exec["check-for-${name}"];
+                    require => [Exec["check-for-${name}"], File["pkgdmg.rb"]];
             }
         }
     }
