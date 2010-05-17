@@ -38,7 +38,6 @@ node "test" inherits "slave" {
     $local_httproot = "${platform_httproot}/local"
     $local_fileroot = "${platform_fileroot}/local"
     $slavetype = "test"
-    include staging-talosslave
 }
 
 node "fedora" inherits "test" {
