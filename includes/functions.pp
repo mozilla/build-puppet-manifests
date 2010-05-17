@@ -10,12 +10,25 @@ define install_package($creates) {
                     creates => "/var/db/.puppet_pkgdmg_installed_${name}",
                     require => File["/usr/local/bin/check-for-package.sh"];
             }
-            package {
-                "${name}":
-                    provider => pkgdmg,
-                    ensure => installed,
-                    source => "${platform_httproot}/DMGs/${name}",
-                    require => [Exec["check-for-${name}"], File["pkgdmg.rb"]];
+            case $operatingsystemrelease {
+                "9.*": {
+                    package {
+                        "${name}":
+                            provider => pkgdmg,
+                            ensure => installed,
+                            source => "${platform_httproot}/DMGs/${name}",
+                            require => Exec["check-for-${name}"];
+                    }
+                }
+                "10.*": {
+                    package {
+                        "${name}":
+                            provider => pkgdmg,
+                            ensure => installed,
+                            source => "${platform_httproot}/DMGs/${name}",
+                            require => [Exec["check-for-${name}"], File["pkgdmg.rb"]];
+                    }
+                }
             }
         }
     }

@@ -25,6 +25,11 @@ class talos_osx {
         "/usr/local/bin/hg":
             mode   => 755,
             source => "${platform_fileroot}/usr/local/bin/hg";
+        "/usr/local/bin/check-for-package.sh":
+            owner => "root",
+            group => "staff",
+            mode  => 755,
+            source => "${platform_fileroot}/usr/local/bin/check-for-package.sh";
     }
 
     # get .bash_profile in place for Snow Leopard
