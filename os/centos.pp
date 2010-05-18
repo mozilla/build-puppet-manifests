@@ -45,6 +45,37 @@ class centos5 {
     }
 
     #################################################
+    # Manage cltbld user files
+    #################################################
+
+    case $hardwaremodel {
+        "x86_64": {
+        }
+        default: {
+            file {
+                "/home/cltbld/.android":
+                    mode   => 775,
+                    owner  => cltbld,
+                    group  => cltbld,
+                    ensure => directory;
+
+                "/home/cltbld/.android/android.keystore":
+                    require => File["/home/cltbld/.android"],
+                    source  => "${local_fileroot}/home/cltbld/.android/android.keystore",
+                    mode    => 600,
+                    owner   => cltbld,
+                    group   => cltbld;
+
+                "/home/cltbld/.mozpass.cfg":
+                    source => "${local_fileroot}/home/cltbld/.mozpass.cfg",
+                    mode   => 600,
+                    owner  => cltbld,
+                    group  => cltbld;
+            }
+        }
+    }
+
+    #################################################
     # Arch-specific configuration files
     #################################################
 
