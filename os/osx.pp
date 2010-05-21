@@ -14,12 +14,12 @@ class osx {
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/xcode_3.1.dmg",
-                    require => [Exec["setup-configuration"], File["pkgdmg.rb"]];
+                    require => Exec["setup-configuration"];
                 "chud_4.5.0.dmg":
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/chud_4.5.0.dmg",
-                    require => [Exec["setup-configuration"], File["pkgdmg.rb"]];
+                    require => Exec["setup-configuration"];
                 "MacPorts-1.7.1-10.5-Leopard.dmg":
                     provider => pkgdmg,
                     ensure => installed,
@@ -27,7 +27,7 @@ class osx {
                     # telling pkgdmg that it was installed. So, we call a helper script
                     # that touches the file if it is already installed, thus preventing
                     # this installation from attempting every time
-                    require => [Exec["check-for-macports"], File["pkgdmg.rb"]],
+                    require => Exec["check-for-macports"],
                     source => "${platform_httproot}/DMGs/MacPorts-1.7.1-10.5-Leopard.dmg";
             }
             install_package {
