@@ -68,32 +68,32 @@ class osx {
                 macports-sqlite3:
                     creates => "/opt/local/bin/sqlite3",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Package["macports-updates-10.5.dmg"], File["/opt/local/bin"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], File["/opt/local/bin"]],
                     command => "/opt/local/bin/port install sqlite3";
                 macports-autoconf213:
                     creates => "/opt/local/bin/autoconf213",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Package["macports-updates-10.5.dmg"], Exec["macports-sqlite3"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-sqlite3"]],
                     command => "/opt/local/bin/port install autoconf213 && /bin/sleep 10";
                 macports-cvs:
                     creates => "/opt/local/bin/cvs",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Package["macports-updates-10.5.dmg"], Exec["macports-autoconf213"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-autoconf213"]],
                     command => "/opt/local/bin/port install cvs && /bin/sleep 10";
                 macports-libidl:
                     creates => "/opt/local/lib/libIDL-2.a",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Package["macports-updates-10.5.dmg"], Exec["macports-cvs"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-cvs"]],
                     command => "/opt/local/bin/port install libidl && /bin/sleep 10";
                 macports-subversion:
                     creates => "/opt/local/bin/svn",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Package["macports-updates-10.5.dmg"], Exec["macports-libidl"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-libidl"]],
                     command => "/opt/local/bin/port -v install subversion && /bin/sleep 10";
                 macports-wget:
                     creates => "/opt/local/bin/wget",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Package["macports-updates-10.5.dmg"], Exec["macports-subversion"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-subversion"]],
                     command => "/opt/local/bin/port -v install wget && /bin/sleep 10";
                 restart-ntp:
                     subscribe => File["/etc/ntp.conf"],
@@ -149,7 +149,7 @@ class osx {
             source => "${platform_fileroot}/usr/local/nagios/etc/nrpe.cfg",
             owner => "root",
             group => "wheel",
-            require => [File["/usr/local/nagios/etc/nrpe.plist"], Package["nrpe-i386.dmg"]];
+            require => [File["/usr/local/nagios/etc/nrpe.plist"], Install_package["nrpe-i386.dmg"]];
         "/usr/local/nagios-i386":
             ensure => "nagios";
         "/opt":
@@ -224,11 +224,11 @@ class osx {
             creates => "/var/db/.puppet_nagios_user_setup",
             command => "/usr/local/bin/setup-nagios-user.sh",
             require => File["/etc/fstab"],
-            subscribe => Package["nrpe-i386.dmg"];
+            subscribe => Install_package["nrpe-i386.dmg"];
         enable-nrpe:
             creates => "/Library/LaunchDaemons/nrpe.plist",
             command => "/usr/local/nagios/sbin/enablenrpe",
-            subscribe => [Package["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
+            subscribe => [Install_package["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
     }
     install_package {
         "nrpe-i386.dmg":
