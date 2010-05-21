@@ -360,36 +360,36 @@ node "try-linux-slave03.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-sandbox-network, vm
 }
 
-node "sm-try-linux-slave04.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux-slave04.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
 node "try-linux-slave06.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux-slave07.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux-slave07.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
 node "try-linux-slave08.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux-slave09.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux-slave09.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
 node "try-linux-slave10.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux-slave11.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux-slave11.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux-slave12.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux-slave12.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
 node "try-linux-slave13.build.mozilla.org" inherits "centos5-i686-build" {
@@ -408,12 +408,12 @@ node "try-linux-slave16.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux-slave17.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux-slave17.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux-slave18.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux-slave18.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
 node "try-linux-slave19.build.mozilla.org" inherits "centos5-i686-build" {
@@ -735,24 +735,24 @@ node "try-mac-slave01.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave02.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave02.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave03.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave03.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave04.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave04.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave06.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave06.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave07.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave07.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
 node "try-mac-slave08.build.mozilla.org" inherits "darwin9-i386-build" {
@@ -763,44 +763,44 @@ node "try-mac-slave09.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave10.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave10.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
 node "try-mac-slave11.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave12.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave12.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
 node "try-mac-slave13.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave14.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave14.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave15.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave15.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
 node "try-mac-slave16.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave17.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave17.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave18.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave18.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
-node "try-mac-slave19.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-sandbox-network
+node "try-mac-slave19.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
 }
 
 node "moz2-darwin10-ref.build.mozilla.org" inherits "darwin10-i386-build" {
