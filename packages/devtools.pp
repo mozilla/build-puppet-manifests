@@ -5,8 +5,8 @@
 # This file is setup to work for both CentOS and Darwin9
 
 class devtools {
-    $buildbot_version = "0.8.0pre"
-    $old_buildbot_version = "1a62c6abfe0d"
+    $buildbot_version = "0.8.0"
+    $old_buildbot_version = "0.8.0pre"
 
     $buildtools_version = "0b149c0ad18d"
     $old_buildtools_version = "605b16dc7e05"
