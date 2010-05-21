@@ -26,11 +26,11 @@ node "moz2-linux-slave17.build.mozilla.org" inherits "centos5-i686-build" {
 }
 
 node "moz2-linux64-slave07.build.mozilla.org" inherits "centos5-x86_64-build" {
-    include base, staging-buildslave, cltbld, build-network, vm
+    include staging-buildslave, puppet-files-build-network, vm
 }
 
 node "mv-moz2-linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
-    include base, staging-buildslave, cltbld, build-network, ix
+    include staging-buildslave, puppet-files-build-network, ix
 }
 
 node "moz2-linux-slave51.build.mozilla.org" inherits "centos5-i686-build" {
