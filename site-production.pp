@@ -708,6 +708,10 @@ node "bm-xserve12.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
+node "bm-xserve15.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
 node "bm-xserve16.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
