@@ -11,7 +11,7 @@ define install_package($creates) {
                     require => File["/usr/local/bin/check-for-package.sh"];
             }
             case $operatingsystemrelease {
-                "9.*": {
+                "9.2.0", "9.8.0": {
                     package {
                         "${name}":
                             provider => pkgdmg,
@@ -20,7 +20,7 @@ define install_package($creates) {
                             require => Exec["check-for-${name}"];
                     }
                 }
-                "10.*": {
+                "10.2.0": {
                     package {
                         "${name}":
                             provider => pkgdmg,
