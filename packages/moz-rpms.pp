@@ -6,11 +6,19 @@ class moz-rpms {
 
     case $hardwaremodel {
         "x86_64": {
+            package {
+                "yasm":
+                    source => "${platform_httproot}/RPMs/yasm-1.0.1-1.x86_64.rpm";
+            }
         }
         default: {
             package {
                 "ccache":
                     source => "${platform_httproot}/RPMs/ccache-2.4-99.11.i386.rpm";
+            }
+            package {
+                "yasm":
+                    source => "${platform_httproot}/RPMs/yasm-1.0.1-1.i386.rpm";
             }
             exec {
                 "/usr/bin/ccache -M 2G":
