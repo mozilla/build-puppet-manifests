@@ -8,6 +8,7 @@ class osx {
             # which is executed for 10.5 mac build machines. Anytime this file
             # is modified the version in it, and here, must be bumped.
             $config_version = "0.3"
+            $platform_uuid = inline_template("<%= macaddress.gsub(/:/, '') %>")
 
             package {
                 "xcode_3.1.dmg":
@@ -102,6 +103,8 @@ class osx {
             }
         }
         "10.2.0": {
+            $platform_uuid = inline_template("<%= sp_platform_uuid.split(/-/)[4] %>")
+
             file {
                 "/Users/cltbld/.profile":
                     source => "${platform_fileroot}/Users/cltbld/.profile",
@@ -204,6 +207,27 @@ class osx {
             group => "staff",
             mode  => 755,
             source => "${platform_fileroot}/usr/local/bin/check-for-package.sh";
+    }
+
+    # This section contains items that need tweaking post-refimage install
+    file {
+        "/Users/cltbld/Library/Preferences/ByHost/com.apple.screensaver.${platform_uuid}.plist":
+            owner => "cltbld",
+            group => "staff",
+            source => "${platform_fileroot}/Users/cltbld/Library/Preferences/ByHost/com.apple.screensaver.PLATFORM_UUID.plist";
+        "/Users/cltbld/Library/Preferences/ByHost/com.apple.windowserver.${platform_uuid}.plist":
+            owner => "cltbld",
+            group => "staff",
+            source => "${platform_fileroot}/Users/cltbld/Library/Preferences/ByHost/com.apple.windowserver.PLATFORM_UUID.plist";
+        "/Users/cltbld/Library/Preferences/com.apple.desktop.plist":
+            owner => "cltbld",
+            group => "staff",
+            source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.desktop.plist";
+        "/Library/Preferences/com.apple.VNCSettings.txt":
+            owner => "root",
+            group => "admin",
+            mode => 600,
+            source => "${platform_fileroot}/Library/Preferences/com.apple.VNCSettings.txt";
     }
 
     exec { 
