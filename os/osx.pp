@@ -103,7 +103,7 @@ class osx {
             }
         }
         "10.2.0": {
-            $platform_uuid = inline_template("<%= sp_platform_uuid.split(/-/)[4] %>")
+            $platform_uuid = inline_template("<%= sp_platform_uuid.downcase().split(/-/)[4] %>")
 
             file {
                 "/Users/cltbld/.profile":
