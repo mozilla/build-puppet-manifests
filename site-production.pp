@@ -420,24 +420,24 @@ node "try-linux-slave19.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux64-slave01.mozilla.org" inherits "centos5-x86_64-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux64-slave01.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux64-slave02.mozilla.org" inherits "centos5-x86_64-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux64-slave02.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux64-slave03.mozilla.org" inherits "centos5-x86_64-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux64-slave03.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux64-slave04.mozilla.org" inherits "centos5-x86_64-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux64-slave04.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
-node "try-linux64-slave05.mozilla.org" inherits "centos5-x86_64-build" {
-    include buildslave, puppet-files-sandbox-network, vm
+node "try-linux64-slave05.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
 }
 
 node "bm-mini-build-ref.build.mozilla.org" {
