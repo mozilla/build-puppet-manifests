@@ -807,6 +807,50 @@ node "try-mac-slave19.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
+node "try-mac64-slave01.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave01.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave02.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave03.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave04.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave05.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave06.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave07.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave08.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave09.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
+node "try-mac64-slave10.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave, puppet-files-build-network
+}
+
 node "moz2-darwin10-ref.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave, puppet-files-build-network
 }
