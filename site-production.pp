@@ -420,6 +420,22 @@ node "try-linux-slave19.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
+node "try-linux-slave20.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux-slave21.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux-slave22.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux-slave23.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
 node "try-linux64-slave01.build.mozilla.org" inherits "centos5-x86_64-build" {
     include buildslave, puppet-files-build-network, vm
 }
