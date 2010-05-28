@@ -1059,14 +1059,6 @@ node "talos-r3-fed-ref.build.mozilla.org" inherits "fedora12-i686-test" {
     include talosslave
 }
 
-node "talos-r3-fed-001.build.mozilla.org" inherits "fedora12-i686-test" {
-    include talosslave
-}
-
-node "talos-r3-fed-002.build.mozilla.org" inherits "fedora12-i686-test" {
-    include talosslave
-}
-
 node "talos-r3-fed-003.build.mozilla.org" inherits "fedora12-i686-test" {
     include talosslave
 }
@@ -1260,14 +1252,6 @@ node "talos-r3-fed-050.build.mozilla.org" inherits "fedora12-i686-test" {
 }
 
 node "talos-r3-fed64-ref.build.mozilla.org" inherits "fedora12-x86_64-test" {
-    include talosslave
-}
-
-node "talos-r3-fed64-001.build.mozilla.org" inherits "fedora12-x86_64-test" {
-    include talosslave
-}
-
-node "talos-r3-fed64-002.build.mozilla.org" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 

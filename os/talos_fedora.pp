@@ -12,11 +12,20 @@ class talos_fedora {
         "gtk2":
             source => "${platform_httproot}/RPMs/gtk2-2.18.9-3.fc12.${hardwaremodel}.rpm",
             ensure => latest;
+        "buildbot":
+            source => "${platform_httproot}/RPMs/buildbot-0.8.0-0moz1.${hardwaremodel}.rpm",
+            ensure => latest;
     }
 
     
     file {
         "/home/cltbld/.fonts.conf":
             source => "${platform_fileroot}/etc/fonts.conf";
+        "/home/cltbld/.bash_profile":
+            owner => cltbld,
+            group => cltbld,
+            source => "${platform_fileroot}/home/cltbld/.bash_profile";
+        "/home/cltbld/bin/buildbot":
+            ensure => absent;
     }
 }

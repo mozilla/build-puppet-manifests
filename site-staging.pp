@@ -73,6 +73,22 @@ node "moz2-darwin9-slave68.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave, puppet-files-build-network
 }
 
+node "talos-r3-fed-001.build.mozilla.org" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-002.build.mozilla.org" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-001.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-002.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
 node default {
     #include base
 }
