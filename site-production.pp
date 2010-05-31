@@ -823,10 +823,6 @@ node "try-mac-slave19.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave, puppet-files-build-network
 }
 
-node "try-mac64-slave01.build.mozilla.org" inherits "darwin9-i386-build" {
-    include buildslave, puppet-files-build-network
-}
-
 node "try-mac64-slave01.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave, puppet-files-build-network
 }
