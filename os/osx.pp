@@ -256,6 +256,8 @@ class osx {
     }
     install_package {
         "nrpe-i386.dmg":
-            creates => "/usr/local/nagios-i386/sbin/nrpe",
+            creates => "/usr/local/nagios-i386/sbin/nrpe";
+        "yasm-1.0.1.dmg":
+            creates => "/usr/local/bin/yasm";
     }
 }
