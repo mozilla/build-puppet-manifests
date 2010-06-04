@@ -36,101 +36,137 @@ class devtools {
             case $hardwaremodel {
         
                 "x86_64": {
-                    install_x86_64_devtools {
-                        gcc:
-                            version     => "4.3.3",
-                            creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
-                            subscribe   => File["/tools/gcc"];
-                        python:
-                            version     => "2.5.1",
-                            creates     => "/tools/python-2.5.1/bin/python",
-                            subscribe   => File["/tools/python"];
-                        python26:
-                            version     => "2.6.5",
-                            creates     => "/tools/python-2.6.5/bin/python";
-                        twisted:
-                            version     => "2.4.0",
-                            creates     => "/tools/twisted-2.4.0/bin/twistd",
-                            subscribe   => File["/tools/twisted"];
-                        twisted-core:
-                            version     => "2.4.0",
-                            creates     => "/tools/twisted-core-2.4.0/bin/twistd",
-                            subscribe   => File["/tools/twisted-core"];
-                        zope-interface:
-                            version     => "3.3.0",
-                            creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
-                            subscribe   => File["/tools/zope-interface"];
-                        jdk:
-                            version     => "1.5.0_15",
-                            creates     => "/tools/jdk-1.5.0_15/bin/java",
-                            subscribe   => File["/tools/jdk"];
-                        buildbot:
-                            version     => "$buildbot_version",
+                    install_rpm {
+                        "buildbot-${buildbot_version}-0moz2":
                             creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                            subscribe   => File["/tools/buildbot"];
-                        build-tools:
-                            version     => "$buildtools_version",
+                            pkgname     => "buildbot",
+                            subscribe   => File["/tools/buildbot"],
+                            require     => [Install_rpm["python26-2.6.5-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["twisted-2.4.0-0moz1"]];
+                        "gcc433-4.3.3-0moz1":
+                            creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
+                            pkgname     => "gcc433";
+                        "python25-2.5.1-0moz1":
+                            creates     => "/tools/python-2.5.1/bin/python",
+                            pkgname     => "python25",
+                            subscribe   => File["/tools/python"];
+                        "python26-2.6.5-0moz1":
+                            creates     => "/tools/python-2.6.5/bin/python",
+                            pkgname     => "python26";
+                        "twisted-2.4.0-0moz1":
+                            creates     => "/tools/twisted-2.4.0/bin/twistd",
+                            pkgname     => "twisted",
+                            subscribe   => File["/tools/twisted"],
+                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
+                        "twisted-core-2.4.0-0moz1":
+                            creates     => "/tools/twisted-core-2.4.0/bin/twistd",
+                            pkgname     => "twisted-core",
+                            subscribe   => File["/tools/twisted-core"],
+                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
+                        "zope.interface-3.3.0-0moz1":
+                            creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
+                            pkgname     => "zope.interface",
+                            subscribe   => File["/tools/zope-interface"],
+                            require     => Install_rpm["python25-2.5.1-0moz1"];
+                        "jdk1.5-1.5.0_15-0moz1":
+                            creates     => "/tools/jdk-1.5.0_15/bin/java",
+                            pkgname     => "jdk1.5",
+                            subscribe   => File["/tools/jdk"];
+                        "build-tools-${buildtools_version}-0moz1":
                             creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                            subscribe   => File["/tools/build-tools"];
+                            pkgname     => "build-tools",
+                            subscribe   => File["/tools/build-tools"],
+                            before      => Service["buildbot-tac"];
+                        "mercurial-1.1.2-0moz1":
+                            creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/mercurial/version.py",
+                            pkgname     => "mercurial",
+                            require     => Install_rpm["python25-2.5.1-0moz1"];
+                        "mercurial-py26-1.5.1-0moz1":
+                            creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
+                            pkgname     => "mercurial-py26",
+                            require     => Install_rpm["python26-2.6.5-0moz1"];
+                        "virtualenv-1.4.8-0moz1":
+                            creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/virtualenv_support/site.py",
+                            pkgname     => "virtualenv",
+                            require     => Install_rpm["python26-2.6.5-0moz1"];
                     }
                 }
 
                 default: {
-                ### The install_devtools function is found at the bottom    
+                    # TODO: MOVE THESE
                     install_devtools {
-                        gcc:
-                            version     => "4.1.1",
-                            creates     => "/tools/gcc-4.1.1/bin/gcc",
-                            subscribe   => File["/tools/gcc"];
-                        gcc433:
-                            version     => "4.3.3",
-                            creates     => "/tools/gcc-4.3.3/installed/bin/gcc";
                         gcc450:
                             version     => "4.5.0",
                             creates     => "/tools/gcc-4.5.0/bin/gcc";
-                        python:
-                            version     => "2.5.1",
-                            creates     => "/tools/python-2.5.1/bin/python",
-                            subscribe   => File["/tools/python"];
-                        python26:
-                            version     => "2.6.5",
-                            creates     => "/tools/python-2.6.5/bin/python";
-                        twisted:
-                            version     => "2.4.0",
-                            creates     => "/tools/twisted-2.4.0/bin/twistd",
-                            subscribe   => File["/tools/twisted"];
-                        twisted-core:
-                            version     => "2.4.0",
-                            creates     => "/tools/twisted-core-2.4.0/bin/twistd",
-                            subscribe   => File["/tools/twisted-core"];
-                        zope-interface:
-                            version     => "3.3.0",
-                            creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
-                            subscribe   => File["/tools/zope-interface"];
-                        jdk:
-                            version     => "1.5.0_10",
-                            creates     => "/tools/jdk-1.5.0_10/bin/java",
-                            subscribe   => File["/tools/jdk"];
-                        jdk6:
-                            version     => "1.6.0_17",
-                            creates     => "/tools/jdk-1.6.0_17/bin/java",
-                            subscribe   => File["/tools/jdk6"];
-                        buildbot:
-                            version     => "$buildbot_version",
+                    }
+
+                    install_rpm {
+                        "buildbot-${buildbot_version}-0moz2":
                             creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                            subscribe   => File["/tools/buildbot"];
-                        build-tools:
-                            version     => "$buildtools_version",
+                            pkgname     => "buildbot",
+                            subscribe   => File["/tools/buildbot"],
+                            require     => [Install_rpm["python26-2.6.5-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["twisted-2.4.0-0moz1"]];
+                        "gcc411-4.1.1-0moz1":
+                            creates     => "/tools/gcc-4.1.1/bin/gcc",
+                            pkgname     => "gcc411",
+                            subscribe   => File["/tools/gcc"];
+                        "gcc433-4.3.3-0moz1":
+                            creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
+                            pkgname     => "gcc433";
+                        "python25-2.5.1-0moz1":
+                            creates     => "/tools/python-2.5.1/bin/python",
+                            pkgname     => "python25",
+                            subscribe   => File["/tools/python"];
+                        "python26-2.6.5-0moz1":
+                            creates     => "/tools/python-2.6.5/bin/python",
+                            pkgname     => "python26";
+                        "twisted-2.4.0-0moz1":
+                            creates     => "/tools/twisted-2.4.0/bin/twistd",
+                            pkgname     => "twisted",
+                            subscribe   => File["/tools/twisted"],
+                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
+                        "twisted-core-2.4.0-0moz1":
+                            creates     => "/tools/twisted-core-2.4.0/bin/twistd",
+                            pkgname     => "twisted-core",
+                            subscribe   => File["/tools/twisted-core"],
+                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
+                        "zope.interface-3.3.0-0moz1":
+                            creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
+                            pkgname     => "zope.interface",
+                            subscribe   => File["/tools/zope-interface"],
+                            require     => Install_rpm["python25-2.5.1-0moz1"];
+                        "jdk1.5-1.5.0_10-0moz1":
+                            creates     => "/tools/jdk-1.5.0_10/bin/java",
+                            pkgname     => "jdk1.5",
+                            subscribe   => File["/tools/jdk"];
+                        "jdk1.6-1.6.0_17-0moz1":
+                            creates     => "/tools/jdk-1.6.0_17/bin/java",
+                            pkgname     => "jdk1.6",
+                            subscribe   => File["/tools/jdk6"];
+                        "build-tools-${buildtools_version}-0moz1":
                             creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                            subscribe   => File["/tools/build-tools"];
-                        android-sdk:
-                            version     => "r7",
+                            pkgname     => "build-tools",
+                            subscribe   => File["/tools/build-tools"],
+                            before      => Service["buildbot-tac"];
+                        "android-sdk-r7-0moz1":
                             creates     => "/tools/android-sdk-r7/tools/android",
+                            pkgname     => "android-sdk",
                             subscribe   => File["/tools/android-sdk"];
-                        android-ndk:
-                            version     => "r3",
+                        "android-ndk-r3-0moz1":
                             creates     => "/tools/android-ndk-r3/build/tools/make-release.sh",
+                            pkgname     => "android-ndk",
                             subscribe   => File["/tools/android-ndk"];
+                        "mercurial-1.1.2-0moz1":
+                            creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/mercurial/version.py",
+                            pkgname     => "mercurial",
+                            require     => Install_rpm["python25-2.5.1-0moz1"];
+                        "mercurial-py26-1.5.1-0moz1":
+                            creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
+                            pkgname     => "mercurial-py26",
+                            require     => Install_rpm["python26-2.6.5-0moz1"];
+                        "virtualenv-1.4.8-0moz1":
+                            creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/virtualenv_support/site.py",
+                            pkgname     => "virtualenv",
+                            require     => Install_rpm["python26-2.6.5-0moz1"];
                     }
                     file {
                         "/tools/jdk6":
@@ -151,6 +187,7 @@ class devtools {
                 # Ensure previous version of buildbot is gone
                 "/tools/buildbot-$old_buildbot_version":
                     ensure => absent,
+                    backup => false,
                     force => true;
                 "/tools/gcc-4.2.3":
                     ensure => absent,
@@ -178,9 +215,9 @@ class devtools {
                 "/tools/build-tools":
                     ensure => "/tools/build-tools-$buildtools_version";
                 "/usr/local/bin/jscoverage":
-                    source => "${centos5root}/usr/local/bin/jscoverage";
+                    source => "${platform_fileroot}/usr/local/bin/jscoverage";
                 "/usr/local/bin/jscoverage-server":
-                    source => "${centos5root}/usr/local/bin/jscoverage-server";
+                    source => "${platform_fileroot}/usr/local/bin/jscoverage-server";
             }
 
         }
@@ -190,7 +227,7 @@ class devtools {
             case $operatingsystemrelease {
                 # 10.5 build machines only.
                 "9.2.0": {
-                    install_package { 
+                    install_dmg { 
                         "Python-2.5.2.dmg":
                             creates     => "/tools/Python-2.5.2/share",
                             subscribe   => File["/tools/python"];
@@ -213,7 +250,7 @@ class devtools {
                 }
                 # 10.6 build machines only
                 "10.2.0": {
-                    install_package { 
+                    install_dmg { 
                         "python-2.6.4.dmg":
                             creates     => "/tools/python-2.6.4/bin/smtpd.py",
                             subscribe   => File["/tools/python"];
@@ -232,7 +269,7 @@ class devtools {
             }
             # All Mac build machines
             # devtools_home is defined above, so each platform gets a tarball specific to it
-            install_package {
+            install_dmg {
                 "Twisted-8.0.1.dmg":
                     creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
                     subscribe   => File["/tools/twisted"];
@@ -266,14 +303,6 @@ class devtools {
 
 define install_devtools($version, $creates) {
     exec {"$tar xzf $devtools_home/$name-$version.tgz":
-        cwd         => "/tools",
-        creates     => $creates,
-        alias       => "untar-$name",
-    }
-}
-
-define install_x86_64_devtools($version, $creates) {
-    exec {"$tar xzf $devtools_home/$name-$version.x86_64.tgz":
         cwd         => "/tools",
         creates     => $creates,
         alias       => "untar-$name",

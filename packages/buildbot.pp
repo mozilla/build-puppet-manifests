@@ -21,7 +21,6 @@ class buildbot {
             provider => "redhat",
             ensure => 'running',
             enable => 'true',
-            require => [File["/etc/init.d/buildbot-tac"], Exec["untar-build-tools"]];
-
+            require => File["/etc/init.d/buildbot-tac"];
     }
 }

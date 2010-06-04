@@ -31,7 +31,7 @@ class osx {
                     require => Exec["check-for-macports"],
                     source => "${platform_httproot}/DMGs/MacPorts-1.7.1-10.5-Leopard.dmg";
             }
-            install_package {
+            install_dmg {
                 "macports-updates-10.5.dmg":
                     creates => "/opt/local/var/macports/sources/rsync.macports.org/release/ports/zope/zope-zsyncer/Portfile"
             }
@@ -69,32 +69,32 @@ class osx {
                 macports-sqlite3:
                     creates => "/opt/local/bin/sqlite3",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], File["/opt/local/bin"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_dmg["macports-updates-10.5.dmg"], File["/opt/local/bin"]],
                     command => "/opt/local/bin/port install sqlite3";
                 macports-autoconf213:
                     creates => "/opt/local/bin/autoconf213",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-sqlite3"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_dmg["macports-updates-10.5.dmg"], Exec["macports-sqlite3"]],
                     command => "/opt/local/bin/port install autoconf213 && /bin/sleep 10";
                 macports-cvs:
                     creates => "/opt/local/bin/cvs",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-autoconf213"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_dmg["macports-updates-10.5.dmg"], Exec["macports-autoconf213"]],
                     command => "/opt/local/bin/port install cvs && /bin/sleep 10";
                 macports-libidl:
                     creates => "/opt/local/lib/libIDL-2.a",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-cvs"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_dmg["macports-updates-10.5.dmg"], Exec["macports-cvs"]],
                     command => "/opt/local/bin/port install libidl && /bin/sleep 10";
                 macports-subversion:
                     creates => "/opt/local/bin/svn",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-libidl"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_dmg["macports-updates-10.5.dmg"], Exec["macports-libidl"]],
                     command => "/opt/local/bin/port -v install subversion && /bin/sleep 10";
                 macports-wget:
                     creates => "/opt/local/bin/wget",
                     timeout => "600",
-                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_package["macports-updates-10.5.dmg"], Exec["macports-subversion"]],
+                    require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_dmg["macports-updates-10.5.dmg"], Exec["macports-subversion"]],
                     command => "/opt/local/bin/port -v install wget && /bin/sleep 10";
                 restart-ntp:
                     subscribe => File["/etc/ntp.conf"],
@@ -126,16 +126,12 @@ class osx {
 
     # This section contains things shared by the 10.5.2 and 10.6 build ref images
     file {
+        # Used to have an NFS mount here, not needed anymore.
+        "/etc/fstab":
+            ensure => absent;
         # this dir is a prereq for storing our trigger file in the configuration script
         "/var/puppet":
             ensure => directory;
-        "/N":
-            ensure => directory;
-        "/etc/auto_master":
-            require => File["/N"],
-            owner  => "root",
-            group  => "wheel",
-            source => "${platform_fileroot}/etc/auto_master";
         "/builds":
             ensure => directory;
         "/builds/logs":
@@ -152,7 +148,7 @@ class osx {
             source => "${platform_fileroot}/usr/local/nagios/etc/nrpe.cfg",
             owner => "root",
             group => "wheel",
-            require => [File["/usr/local/nagios/etc/nrpe.plist"], Install_package["nrpe-i386.dmg"]];
+            require => [File["/usr/local/nagios/etc/nrpe.plist"], Install_dmg["nrpe-i386.dmg"]];
         "/usr/local/nagios-i386":
             ensure => "nagios";
         "/opt":
@@ -231,14 +227,6 @@ class osx {
     }
 
     exec { 
-        refresh-automount:
-            command => "/usr/sbin/automount -vc",
-            subscribe => File["/etc/auto_master"];
-        mount-nfs:
-            command => "/sbin/mount /N && /bin/sleep 10",
-            creates => "/N/darwin-shared",
-            subscribe => File["/etc/fstab"],
-            require => [File["/etc/fstab"], File["/etc/auto_master"]];
         restart-buildbot-tac:
             subscribe => File["/Library/LaunchAgents/buildbot-tac.generator.com.plist"],
             refreshonly => true,
@@ -248,13 +236,13 @@ class osx {
             creates => "/var/db/.puppet_nagios_user_setup",
             command => "/usr/local/bin/setup-nagios-user.sh",
             require => File["/etc/fstab"],
-            subscribe => Install_package["nrpe-i386.dmg"];
+            subscribe => Install_dmg["nrpe-i386.dmg"];
         enable-nrpe:
             creates => "/Library/LaunchDaemons/nrpe.plist",
             command => "/usr/local/nagios/sbin/enablenrpe",
-            subscribe => [Install_package["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
+            subscribe => [Install_dmg["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
     }
-    install_package {
+    install_dmg {
         "nrpe-i386.dmg":
             creates => "/usr/local/nagios-i386/sbin/nrpe";
         "yasm-1.0.1.dmg":

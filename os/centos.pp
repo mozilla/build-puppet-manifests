@@ -42,6 +42,14 @@ class centos5 {
         "/etc/init.d/puppet":
             source => "${platform_fileroot}/etc/init.d/puppet",
             mode => 755;
+
+        "/usr/local/bin/check-for-rpm.sh":
+            source => "${platform_fileroot}/usr/local/bin/check-for-rpm.sh",
+            mode => 755;
+
+        "/tmp":
+            ensure => directory,
+            mode => 1777;
     }
 
     #################################################

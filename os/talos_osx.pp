@@ -6,11 +6,9 @@ class talos_osx {
     ## Initialize the parameters for each platform
     case $operatingsystemrelease {
         "9.8.0": {
-            $platform = "darwin9"
             $mercurialVersion = "1.2.1"
         }
         "10.2.0": {
-            $platform = "darwin10"
             $mercurialVersion = "1.3.1"
         }
     }

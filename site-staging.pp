@@ -38,39 +38,39 @@ node "moz2-linux-slave51.build.mozilla.org" inherits "centos5-i686-build" {
 }
 
 node "moz2-darwin9-slave03.build.mozilla.org" inherits "darwin9-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "moz2-darwin9-slave04.build.mozilla.org" inherits "darwin9-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "moz2-darwin9-slave08.build.mozilla.org" inherits "darwin9-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "moz2-darwin10-slave01.build.mozilla.org" inherits "darwin10-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "moz2-darwin10-slave02.build.mozilla.org" inherits "darwin10-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "moz2-darwin10-slave03.build.mozilla.org" inherits "darwin10-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "moz2-darwin10-slave04.build.mozilla.org" inherits "darwin10-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "bm-xserve14.build.mozilla.org" inherits "darwin9-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "moz2-darwin9-slave68.build.mozilla.org" inherits "darwin9-i386-build" {
-    include staging-buildslave, puppet-files-build-network
+    include staging-buildslave
 }
 
 node "talos-r3-fed-001.build.mozilla.org" inherits "fedora12-i686-test" {

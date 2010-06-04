@@ -139,12 +139,5 @@ class debuginfopackages {
 	    }
         }
     }
-
-    file {
-        "/tmp":
-            owner => root,
-            group => root,
-            ensure => directory
-    }
 }
 
