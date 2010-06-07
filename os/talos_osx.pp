@@ -13,7 +13,7 @@ class talos_osx {
         }
     }
 
-    install_package {
+    install_dmg {
         "mercurial-${mercurialVersion}.dmg":
             creates => "/Library/Python/2.5/site-packages/mercurial/verify.py",
             alias   => "mercurial";
