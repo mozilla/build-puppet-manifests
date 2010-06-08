@@ -45,6 +45,9 @@ class devtools {
                         "gcc433-4.3.3-0moz1":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
                             pkgname     => "gcc433";
+                        "gcc45-4.5.0-0moz1":
+                            creates     => "/tools/gcc-4.5/bin/gcc",
+                            pkgname     => "gcc45";
                         "python25-2.5.1-0moz1":
                             creates     => "/tools/python-2.5.1/bin/python",
                             pkgname     => "python25",
@@ -92,12 +95,6 @@ class devtools {
                 }
 
                 default: {
-                    # TODO: MOVE THESE
-                    install_devtools {
-                        gcc450:
-                            version     => "4.5.0",
-                            creates     => "/tools/gcc-4.5.0/bin/gcc";
-                    }
 
                     install_rpm {
                         "buildbot-${buildbot_version}-0moz2":
@@ -112,6 +109,9 @@ class devtools {
                         "gcc433-4.3.3-0moz1":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
                             pkgname     => "gcc433";
+                        "gcc45-4.5.0-0moz1":
+                            creates     => "/tools/gcc-4.5/bin/gcc",
+                            pkgname     => "gcc45";
                         "python25-2.5.1-0moz1":
                             creates     => "/tools/python-2.5.1/bin/python",
                             pkgname     => "python25",
@@ -190,6 +190,10 @@ class devtools {
                     backup => false,
                     force => true;
                 "/tools/gcc-4.2.3":
+                    ensure => absent,
+                    backup => false,
+                    force => true;
+                "/tools/gcc-4.5.0":
                     ensure => absent,
                     backup => false,
                     force => true;
