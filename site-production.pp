@@ -1939,6 +1939,26 @@ node "talos-r3-snow-050.build.mozilla.org" inherits "darwin10-i386-test" {
     include talosslave
 }
 
+node "byob-repack01.build.mozilla.org" inherits "byob-repack" {
+    include byob-repackslave
+}
+
+node "byob-repack02.build.mozilla.org" inherits "byob-repack" {
+    include byob-repackslave
+}
+
+node "byob-repack03.build.mozilla.org" inherits "byob-repack" {
+    include byob-repackslave
+}
+
+node "byob-repack04.build.mozilla.org" inherits "byob-repack" {
+    include byob-repackslave
+}
+
+node "byob-repack05.build.mozilla.org" inherits "byob-repack" {
+    include byob-repackslave
+}
+
 node default {
     #include base
 }

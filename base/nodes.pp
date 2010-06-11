@@ -31,6 +31,9 @@ node "darwin9-i386-build" inherits "darwin-build" {
 node "darwin10-i386-build" inherits "darwin-build" {
 }
 
+node "byob-repack" inherits "darwin10-i386-build" {
+}
+
 node "test" inherits "slave" {
     $platform_httproot = "http://${puppetServer}/${level}/${os}-${hardwaremodel}/test"
     $platform_fileroot = "puppet://${puppetServer}/${level}/${os}-${hardwaremodel}/test"
