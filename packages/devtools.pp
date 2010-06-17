@@ -147,12 +147,12 @@ class devtools {
                             pkgname     => "build-tools",
                             subscribe   => File["/tools/build-tools"],
                             before      => Service["buildbot-tac"];
-                        "android-sdk-r7-0moz1":
-                            creates     => "/tools/android-sdk-r7/tools/android",
+                        "android-sdk-r8-0moz1":
+                            creates     => "/tools/android-sdk-r8/tools/android",
                             pkgname     => "android-sdk",
                             subscribe   => File["/tools/android-sdk"];
-                        "android-ndk-r3-0moz1":
-                            creates     => "/tools/android-ndk-r3/build/tools/make-release.sh",
+                        "android-ndk-r4c-0moz1":
+                            creates     => "/tools/android-ndk-r4c/build/tools/make-release.sh",
                             pkgname     => "android-ndk",
                             subscribe   => File["/tools/android-ndk"];
                         "mercurial-1.1.2-0moz1":
@@ -172,9 +172,9 @@ class devtools {
                         "/tools/jdk6":
                             ensure => "/tools/jdk-1.6.0_17";
                         "/tools/android-sdk":
-                            ensure => "/tools/android-sdk-r7";
+                            ensure => "/tools/android-sdk-r8";
                         "/tools/android-ndk":
-                            ensure => "/tools/android-ndk-r3";
+                            ensure => "/tools/android-ndk-r4c";
                     }
                 }
             }
