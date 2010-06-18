@@ -1,4 +1,4 @@
-define install_rpm($creates, $pkgname) {
+define install_rpm($creates, $version) {
     # This check will mark a package as installed if the file or directory it
     # creates already exists. It is intended to only be run for packages that
     # are not installed yet (eg, isn't run for packages getting an updated
@@ -7,15 +7,15 @@ define install_rpm($creates, $pkgname) {
     # have any version installed.
     exec {
         "check-for-${name}":
-            command => "/usr/local/bin/check-for-rpm.sh ${platform_httproot}/RPMs/${name}.${hardwaremodel}.rpm ${creates}",
-            onlyif => "/bin/bash -c '! /bin/rpm -ql ${pkgname}'",
+            command => "/usr/local/bin/check-for-rpm.sh ${platform_httproot}/RPMs/${name}-${version}.${hardwaremodel}.rpm ${creates}",
+            onlyif => "/bin/bash -c '! /bin/rpm -ql ${name}'",
             require => File["/usr/local/bin/check-for-rpm.sh"]
     }
     package {
-        "${pkgname}":
+        "${name}":
             provider => "rpm",
-            ensure => latest,
-            source => "${platform_httproot}/RPMs/${name}.${hardwaremodel}.rpm",
+            ensure => "${version}",
+            source => "${platform_httproot}/RPMs/${name}-${version}.${hardwaremodel}.rpm",
             require => Exec["check-for-${name}"]
     }
 }

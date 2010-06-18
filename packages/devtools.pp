@@ -37,136 +37,136 @@ class devtools {
         
                 "x86_64": {
                     install_rpm {
-                        "buildbot-${buildbot_version}-0moz2":
+                        "buildbot":
                             creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                            pkgname     => "buildbot",
+                            version     => "${buildbot_version}-0moz2",
                             subscribe   => File["/tools/buildbot"],
-                            require     => [Install_rpm["python26-2.6.5-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["twisted-2.4.0-0moz1"]];
-                        "gcc433-4.3.3-0moz1":
+                            require     => [Install_rpm["python26"], Install_rpm["zope.interface"], Install_rpm["twisted-core"], Install_rpm["twisted"]];
+                        "gcc433":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
-                            pkgname     => "gcc433";
-                        "gcc45-4.5.0-0moz1":
+                            version     => "4.3.3-0moz1";
+                        "gcc45":
                             creates     => "/tools/gcc-4.5/bin/gcc",
-                            pkgname     => "gcc45";
-                        "python25-2.5.1-0moz1":
+                            version     => "4.5.0-0moz1";
+                        "python25":
                             creates     => "/tools/python-2.5.1/bin/python",
-                            pkgname     => "python25",
+                            version     => "2.5.1-0moz1",
                             subscribe   => File["/tools/python"];
-                        "python26-2.6.5-0moz1":
+                        "python26":
                             creates     => "/tools/python-2.6.5/bin/python",
-                            pkgname     => "python26";
-                        "twisted-2.4.0-0moz1":
+                            version     => "2.6.5-0moz1";
+                        "twisted":
                             creates     => "/tools/twisted-2.4.0/bin/twistd",
-                            pkgname     => "twisted",
+                            version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted"],
-                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
-                        "twisted-core-2.4.0-0moz1":
+                            require     => [Install_rpm["python25"], Install_rpm["twisted-core"], Install_rpm["zope.interface"]];
+                        "twisted-core":
                             creates     => "/tools/twisted-core-2.4.0/bin/twistd",
-                            pkgname     => "twisted-core",
+                            version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted-core"],
-                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
-                        "zope.interface-3.3.0-0moz1":
+                            require     => [Install_rpm["python25"], Install_rpm["zope.interface"]];
+                        "zope.interface":
                             creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
-                            pkgname     => "zope.interface",
+                            version     => "3.3.0-0moz1",
                             subscribe   => File["/tools/zope-interface"],
-                            require     => Install_rpm["python25-2.5.1-0moz1"];
-                        "jdk1.5-1.5.0_15-0moz1":
+                            require     => Install_rpm["python25"];
+                        "jdk1.5":
                             creates     => "/tools/jdk-1.5.0_15/bin/java",
-                            pkgname     => "jdk1.5",
+                            version     => "1.5.0_15-0moz1",
                             subscribe   => File["/tools/jdk"];
-                        "build-tools-${buildtools_version}-0moz1":
+                        "build-tools":
                             creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                            pkgname     => "build-tools",
+                            version     => "${buildtools_version}-0moz1",
                             subscribe   => File["/tools/build-tools"],
                             before      => Service["buildbot-tac"];
-                        "mercurial-1.1.2-0moz1":
+                        "mercurial":
                             creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/mercurial/version.py",
-                            pkgname     => "mercurial",
-                            require     => Install_rpm["python25-2.5.1-0moz1"];
-                        "mercurial-py26-1.5.1-0moz1":
+                            version     => "1.1.2-0moz1",
+                            require     => Install_rpm["python25"];
+                        "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
-                            pkgname     => "mercurial-py26",
-                            require     => Install_rpm["python26-2.6.5-0moz1"];
-                        "virtualenv-1.4.8-0moz1":
+                            version     => "1.5.1-0moz1",
+                            require     => Install_rpm["python26"];
+                        "virtualenv":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/virtualenv_support/site.py",
-                            pkgname     => "virtualenv",
-                            require     => Install_rpm["python26-2.6.5-0moz1"];
+                            version     => "1.4.8-0moz1",
+                            require     => Install_rpm["python26"];
                     }
                 }
 
                 default: {
 
                     install_rpm {
-                        "buildbot-${buildbot_version}-0moz2":
+                        "buildbot":
                             creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                            pkgname     => "buildbot",
+                            version     => "${buildbot_version}-0moz2",
                             subscribe   => File["/tools/buildbot"],
-                            require     => [Install_rpm["python26-2.6.5-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["twisted-2.4.0-0moz1"]];
-                        "gcc411-4.1.1-0moz1":
+                            require     => [Install_rpm["python26"], Install_rpm["zope.interface"], Install_rpm["twisted-core"], Install_rpm["twisted"]];
+                        "gcc411":
                             creates     => "/tools/gcc-4.1.1/bin/gcc",
-                            pkgname     => "gcc411",
+                            version     => "4.1.1-0moz1",
                             subscribe   => File["/tools/gcc"];
-                        "gcc433-4.3.3-0moz1":
+                        "gcc433":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
-                            pkgname     => "gcc433";
-                        "gcc45-4.5.0-0moz1":
+                            version     => "4.3.3-0moz1";
+                        "gcc45":
                             creates     => "/tools/gcc-4.5/bin/gcc",
-                            pkgname     => "gcc45";
-                        "python25-2.5.1-0moz1":
+                            version     => "4.5.0-0moz1";
+                        "python25":
                             creates     => "/tools/python-2.5.1/bin/python",
-                            pkgname     => "python25",
+                            version     => "2.5.1-0moz1",
                             subscribe   => File["/tools/python"];
-                        "python26-2.6.5-0moz1":
+                        "python26":
                             creates     => "/tools/python-2.6.5/bin/python",
-                            pkgname     => "python26";
-                        "twisted-2.4.0-0moz1":
+                            version     => "2.6.5-0moz1";
+                        "twisted":
                             creates     => "/tools/twisted-2.4.0/bin/twistd",
-                            pkgname     => "twisted",
+                            version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted"],
-                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["twisted-core-2.4.0-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
-                        "twisted-core-2.4.0-0moz1":
+                            require     => [Install_rpm["python25"], Install_rpm["twisted-core"], Install_rpm["zope.interface"]];
+                        "twisted-core":
                             creates     => "/tools/twisted-core-2.4.0/bin/twistd",
-                            pkgname     => "twisted-core",
+                            version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted-core"],
-                            require     => [Install_rpm["python25-2.5.1-0moz1"], Install_rpm["zope.interface-3.3.0-0moz1"]];
-                        "zope.interface-3.3.0-0moz1":
+                            require     => [Install_rpm["python25"], Install_rpm["zope.interface"]];
+                        "zope.interface":
                             creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
-                            pkgname     => "zope.interface",
+                            version     => "3.3.0-0moz1",
                             subscribe   => File["/tools/zope-interface"],
-                            require     => Install_rpm["python25-2.5.1-0moz1"];
-                        "jdk1.5-1.5.0_10-0moz1":
+                            require     => Install_rpm["python25"];
+                        "jdk1.5":
                             creates     => "/tools/jdk-1.5.0_10/bin/java",
-                            pkgname     => "jdk1.5",
+                            version     => "1.5.0_10-0moz1",
                             subscribe   => File["/tools/jdk"];
-                        "jdk1.6-1.6.0_17-0moz1":
+                        "jdk1.6":
                             creates     => "/tools/jdk-1.6.0_17/bin/java",
-                            pkgname     => "jdk1.6",
+                            version     => "1.6.0_17-0moz1",
                             subscribe   => File["/tools/jdk6"];
-                        "build-tools-${buildtools_version}-0moz1":
+                        "build-tools":
                             creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                            pkgname     => "build-tools",
+                            version     => "${buildtools_version}-0moz1",
                             subscribe   => File["/tools/build-tools"],
                             before      => Service["buildbot-tac"];
-                        "android-sdk-r7-0moz1":
+                        "android-sdk":
                             creates     => "/tools/android-sdk-r7/tools/android",
-                            pkgname     => "android-sdk",
+                            version     => "r7-0moz1",
                             subscribe   => File["/tools/android-sdk"];
-                        "android-ndk-r3-0moz1":
+                        "android-ndk":
                             creates     => "/tools/android-ndk-r3/build/tools/make-release.sh",
-                            pkgname     => "android-ndk",
+                            version     => "r3-0moz1",
                             subscribe   => File["/tools/android-ndk"];
-                        "mercurial-1.1.2-0moz1":
+                        "mercurial":
                             creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/mercurial/version.py",
-                            pkgname     => "mercurial",
-                            require     => Install_rpm["python25-2.5.1-0moz1"];
-                        "mercurial-py26-1.5.1-0moz1":
+                            version     => "1.1.2-0moz1",
+                            require     => Install_rpm["python25"];
+                        "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
-                            pkgname     => "mercurial-py26",
-                            require     => Install_rpm["python26-2.6.5-0moz1"];
-                        "virtualenv-1.4.8-0moz1":
+                            version     => "1.5.1-0moz1",
+                            require     => Install_rpm["python26"];
+                        "virtualenv":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/virtualenv_support/site.py",
-                            pkgname     => "virtualenv",
-                            require     => Install_rpm["python26-2.6.5-0moz1"];
+                            version     => "1.4.8-0moz1",
+                            require     => Install_rpm["python26"];
                     }
                     file {
                         "/tools/jdk6":

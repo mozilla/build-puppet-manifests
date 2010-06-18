@@ -23,14 +23,14 @@ class scratchbox {
                     onlyif  => "/bin/rpm -ql scratchbox && [[ ! -e ${sb_prefix}/deployed-${sb_datestamp} ]]";
             }
             install_rpm {
-                "scratchbox-${sb_version}":
+                "scratchbox":
                     creates => "/builds/scratchbox/deployed-${sb_datestamp}",
-                    pkgname => "scratchbox",
+                    version => "${sb_version}",
                     require => Exec["check-scratchbox-install"];
-                "scratchbox-mercurial-${sb_hg_version}":
+                "scratchbox-mercurial":
                     creates => "${sb_prefix}/users/cltbld/targets/FREMANTLE_ARMEL/usr/local/bin/hg",
-                    pkgname => "scratchbox-mercurial",
-                    require => Install_rpm["scratchbox-${sb_version}"];
+                    version => "${sb_hg_version}",
+                    require => Install_rpm["scratchbox"];
             }
 
             file {
@@ -43,19 +43,19 @@ class scratchbox {
                 "/builds/scratchbox/moz_scratchbox":
                     source => "${platform_fileroot}/builds/scratchbox/moz_scratchbox",
                     mode => 755,
-                    require => Install_rpm["scratchbox-${sb_version}"];
+                    require => Install_rpm["scratchbox"];
         
                 "/builds/scratchbox/etc/resolv.conf":
                     source => "${platform_fileroot}/builds/scratchbox/etc/resolv.conf",
-                    require => Install_rpm["scratchbox-${sb_version}"];
+                    require => Install_rpm["scratchbox"];
         
                 ### Some /etc/resolv.conf links
                 "/builds/scratchbox/users/cltbld/targets/FREMANTLE_ARMEL/etc/resolv.conf":
                     ensure  => "/etc/resolv.conf",
-                    require => Install_rpm["scratchbox-${sb_version}"];
+                    require => Install_rpm["scratchbox"];
                 "/builds/scratchbox/users/cltbld/targets/CHINOOK-ARMEL-2007/etc/resolv.conf":
                     ensure  => "/etc/resolv.conf",
-                    require => Install_rpm["scratchbox-${sb_version}"];
+                    require => Install_rpm["scratchbox"];
             }
         
             mount {
@@ -64,7 +64,7 @@ class scratchbox {
                     fstype => "auto",
                     options => "bind",
                     ensure => "mounted",
-                    require => Install_rpm["scratchbox-${sb_version}"];
+                    require => Install_rpm["scratchbox"];
             }
         }
     }
