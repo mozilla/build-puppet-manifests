@@ -149,7 +149,7 @@ class devtools {
                             before      => Service["buildbot-tac"];
                         "android-sdk":
                             creates     => "/tools/android-sdk-r8/tools/android",
-                            version     => "r8-0moz2",
+                            version     => "r8-0moz3",
                             subscribe   => File["/tools/android-sdk"];
                         "android-ndk":
                             creates     => "/tools/android-ndk-r4c/build/tools/make-release.sh",
