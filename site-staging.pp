@@ -89,6 +89,22 @@ node "talos-r3-fed64-002.build.mozilla.org" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 
+node "talos-r3-leopard-001.build.mozilla.org" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-002.build.mozilla.org" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-001.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-002.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
 node default {
     #include base
 }
