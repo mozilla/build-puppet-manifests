@@ -464,6 +464,26 @@ node "try-linux64-slave05.build.mozilla.org" inherits "centos5-x86_64-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
+node "try-linux64-slave06.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux64-slave07.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux64-slave08.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux64-slave09.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux64-slave10.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
 node "bm-mini-build-ref.build.mozilla.org" {
     include buildslave
 }
