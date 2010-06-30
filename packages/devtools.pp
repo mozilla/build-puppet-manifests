@@ -153,7 +153,7 @@ class devtools {
                             subscribe   => File["/tools/android-sdk"];
                         "android-ndk":
                             creates     => "/tools/android-ndk-r4c/build/tools/make-release.sh",
-                            version     => "r4c-0moz1",
+                            version     => "r4c-0moz2",
                             subscribe   => File["/tools/android-ndk"];
                         "mercurial":
                             creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/mercurial/version.py",
