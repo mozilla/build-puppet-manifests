@@ -1,6 +1,5 @@
 #devtools.pp
 #  this manifest installs all of the packages in the /tools tree
-#  with the use of a helper function (install_devtools) defined below
 
 # This file is setup to work for both CentOS and Darwin9
 
@@ -31,7 +30,6 @@ class devtools {
     case $operatingsystem {
 
         CentOS: {
-            $tar = "/bin/tar"
 
             case $hardwaremodel {
         
@@ -227,7 +225,6 @@ class devtools {
         }
 
         Darwin: {
-            $tar = "/usr/bin/tar"
             case $operatingsystemrelease {
                 # 10.5 build machines only.
                 "9.2.0": {
@@ -297,18 +294,5 @@ class devtools {
                     ensure => "/tools/build-tools-$buildtools_version";
             }
         }
-    }
-}
-
-# This is the function that does most of the work.  It takes a file,
-# name-1.2.3.tgz and unpacks it to /tools/name-1.2.3
-# this fits the convention of all /tools packages with the exception of jdk,
-# which we make to fit and make compatible with a symbolic link above.
-
-define install_devtools($version, $creates) {
-    exec {"$tar xzf $devtools_home/$name-$version.tgz":
-        cwd         => "/tools",
-        creates     => $creates,
-        alias       => "untar-$name",
     }
 }
