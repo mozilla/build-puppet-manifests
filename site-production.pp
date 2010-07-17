@@ -1355,6 +1355,18 @@ node "talos-r3-fed-050.build.mozilla.org" inherits "fedora12-i686-test" {
     include talosslave
 }
 
+node "talos-r3-fed-051.build.mozilla.org" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-052.build.mozilla.org" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-053.build.mozilla.org" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
 node "talos-r3-fed64-ref.build.mozilla.org" inherits "fedora12-x86_64-test" {
     include talosslave
 }
@@ -1548,6 +1560,26 @@ node "talos-r3-fed64-049.build.mozilla.org" inherits "fedora12-x86_64-test" {
 }
 
 node "talos-r3-fed64-050.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-051.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-052.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-053.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-054.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-055.build.mozilla.org" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 
@@ -1747,6 +1779,18 @@ node "talos-r3-leopard-050.build.mozilla.org" inherits "darwin9-i386-test" {
     include talosslave
 }
 
+node "talos-r3-leopard-051.build.mozilla.org" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-052.build.mozilla.org" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-053.build.mozilla.org" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
 node "talos-r3-snow-ref.build.mozilla.org" inherits "darwin10-i386-test" {
     include talosslave
 }
@@ -1940,6 +1984,26 @@ node "talos-r3-snow-049.build.mozilla.org" inherits "darwin10-i386-test" {
 }
 
 node "talos-r3-snow-050.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-051.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-052.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-053.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-054.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-055.build.mozilla.org" inherits "darwin10-i386-test" {
     include talosslave
 }
 
