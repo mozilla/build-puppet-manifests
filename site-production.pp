@@ -488,6 +488,10 @@ node "bm-mini-build-ref.build.mozilla.org" {
     include buildslave
 }
 
+node "moz2-darwin9-slave01.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave
+}
+
 node "moz2-darwin9-slave02.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
