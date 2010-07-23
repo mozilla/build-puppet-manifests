@@ -55,4 +55,24 @@ class cltbld {
         exec { "/usr/bin/crontab -u cltbld /home/cltbld/crontab":
                 subscribe => File["/home/cltbld/crontab"];
         }
+
+    case $operatingsystem {
+        "CentOS": {
+            case $hardwaremodel {
+                "i686": {
+                    file {
+                        "/home/cltbld/.ssh":
+                            mode => 755,
+                            ensure => directory;
+                        "/home/cltbld/.ssh/config":
+                            mode => 600,
+                            source => "${local_fileroot}/home/cltbld/.ssh/config";
+                        "/home/cltbld/.ssh/known_hosts":
+                            mode => 644,
+                            source => "${local_fileroot}/home/cltbld/.ssh/known_hosts";
+                    }
+                }
+            }
+        }
+    }
 }
