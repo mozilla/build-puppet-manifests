@@ -1191,46 +1191,6 @@ node "moz2-darwin10-slave29.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave30.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave31.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave32.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave33.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave34.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave35.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave36.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave37.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave38.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave39.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
 node "moz2-darwin10-slave40.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
