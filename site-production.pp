@@ -444,6 +444,26 @@ node "try-linux-slave25.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
+node "try-linux-slave26.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux-slave27.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux-slave28.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux-slave29.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
+node "try-linux-slave30.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, vm
+}
+
 node "try-linux64-slave01.build.mozilla.org" inherits "centos5-x86_64-build" {
     include buildslave, puppet-files-build-network, vm
 }
