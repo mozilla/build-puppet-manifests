@@ -219,6 +219,10 @@ class osx {
             owner => "cltbld",
             group => "staff",
             source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.desktop.plist";
+        "/Users/cltbld/Library/Preferences/com.apple.DownloadAssessment.plist":
+            owner => "cltbld",
+            group => "staff",
+            source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.DownloadAssessment.plist";
         "/Library/Preferences/com.apple.VNCSettings.txt":
             owner => "root",
             group => "admin",

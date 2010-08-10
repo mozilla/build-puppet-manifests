@@ -37,6 +37,10 @@ class talos_osx {
             group => "wheel",
             mode => 644,
             source => "${platform_fileroot}/Library/LaunchAgents/buildbot.start.talos.slave.plist";
+        "/Users/cltbld/Library/Preferences/com.apple.DownloadAssessment.plist":
+            owner => "cltbld",
+            group => "staff",
+            source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.DownloadAssessment.plist";
     }
 
     # get .bash_profile in place for Snow Leopard
