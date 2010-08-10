@@ -25,6 +25,8 @@ class talos_osx {
 
     file {
         "/usr/local/bin/hg":
+            owner => "root",
+            group => "staff",
             mode   => 755,
             source => "${platform_fileroot}/usr/local/bin/hg";
         "/usr/local/bin/check-for-package.sh":
@@ -37,6 +39,11 @@ class talos_osx {
             group => "wheel",
             mode => 644,
             source => "${platform_fileroot}/Library/LaunchAgents/buildbot.start.talos.slave.plist";
+        "/usr/local/bin/run-puppet.sh":
+            owner => "root",
+            group => "wheel",
+            mode  => 755,
+            source => "${platform_fileroot}/usr/local/bin/run-puppet.sh";
         "/Users/cltbld/Library/Preferences/com.apple.DownloadAssessment.plist":
             owner => "cltbld",
             group => "staff",
@@ -50,14 +57,19 @@ class talos_osx {
            file {
                "/Users/cltbld/bin/python":
                    ensure => "/usr/bin/python2.5",
+                   owner  => "root",
+                   group  => "staff",
                    alias  => "create_python_symlink";
                "/Users/cltbld/bin":
                    ensure => "directory",
+                   owner  => "cltbld",
+                   group  => "staff",
                    alias  => "create_bin_directory",
                    before => File["create_python_symlink"];
                "/Users/cltbld/.bash_profile":
                    source => "${platform_fileroot}/Users/cltbld/.bash_profile",
-                   alias  => "get_profile";
+                   owner  => "root",
+                   group  => "wheel";
                 "/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb":
                     source => "${platform_fileroot}/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb",
                     owner => "root",

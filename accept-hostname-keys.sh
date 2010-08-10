@@ -2,11 +2,11 @@
 
 filename=$1
 
-hostnames=$(grep node ${filename} | grep -v default | sed -e 's/" inherits.*//' | sed -e 's/node "//')
-accepted_keys=$(puppetca --list --all | grep '+' | awk '{print $2}')
+valid_hostnames=$(grep node ${filename} | grep -v default | sed -e 's/" inherits.*//' | sed -e 's/node "//')
+unaccepted_hosts=$(puppetca --list)
 
-for host in ${hostnames}; do
-    if ! `echo ${accepted_keys} | grep -q "${host}"`; then
+for host in ${unaccepted_hosts}; do
+    if `echo ${valid_hostnames} | grep -q "${host}"`; then
         puppetca --sign $host
     fi
 done

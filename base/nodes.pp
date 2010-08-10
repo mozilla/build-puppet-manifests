@@ -1,18 +1,18 @@
 node "slave" {
+    $configExt = ""
 }
 
 node "build" inherits "slave" {
-    $platform_httproot = "http://${puppetServer}/${level}/${os}-${hardwaremodel}/build"
-    $platform_fileroot = "puppet://${puppetServer}/${level}/${os}-${hardwaremodel}/build"
-    # Used for files that differ between locations. Eg, puppet configurations.
-    $local_httproot = "${platform_httproot}/local"
-    $local_fileroot = "${platform_fileroot}/local"
-    include base
+    $slaveType = "build"
+    include location
+    $platform_httproot = $location::platform_httproot
+    $platform_fileroot = $location::platform_fileroot
+    $local_httproot = $location::local_httproot
+    $local_fileroot = $location::local_fileroot
+    include base, puppet-config
 }
 
 node "centos" inherits "build" {
-    # devtools_home will disappear after this platform is moved off of /N
-    $devtools_home = "/N/${level}/${os}-${hardwaremodel}/build/dist"
     include cltbld
 }
 
@@ -35,12 +35,13 @@ node "byob-repack" inherits "darwin10-i386-build" {
 }
 
 node "test" inherits "slave" {
-    $platform_httproot = "http://${puppetServer}/${level}/${os}-${hardwaremodel}/test"
-    $platform_fileroot = "puppet://${puppetServer}/${level}/${os}-${hardwaremodel}/test"
-    # Used for files that differ between locations. Eg, puppet configurations.
-    $local_httproot = "${platform_httproot}/local"
-    $local_fileroot = "${platform_fileroot}/local"
-    $slavetype = "test"
+    $slaveType = "test"
+    include location
+    $platform_httproot = $location::platform_httproot
+    $platform_fileroot = $location::platform_fileroot
+    $local_httproot = $location::local_httproot
+    $local_fileroot = $location::local_fileroot
+    include puppet-config
 }
 
 node "fedora" inherits "test" {
@@ -59,4 +60,43 @@ node "darwin9-i386-test" inherits "darwin-test" {
 }
 
 node "darwin10-i386-test" inherits "darwin-test" {
+}
+
+# These nodes are only used for non-MPT based slaves. When they first come up
+# they will connect to the MPT puppet server. These classes will make sure
+# they get redirected to their correct server.
+node "mv-node" {
+    $configExt = ".mv"
+}
+
+node "mv-build-node" inherits "mv-node" {
+    $slaveType = "build"
+    include location
+    $local_fileroot = $location::local_fileroot
+    include puppet-config
+}
+
+node "mv-test-node" inherits "mv-node" {
+    $slaveType = "test"
+    include location
+    $local_fileroot = $location::local_fileroot
+    include puppet-config
+}
+
+node "staging-node" {
+    $configExt = ".staging"
+}
+
+node "staging-build-node" inherits "staging-node" {
+    $slaveType = "build"
+    include location
+    $local_fileroot = $location::local_fileroot
+    include puppet-config
+}
+
+node "staging-test-node" inherits "staging-node" {
+    $slaveType = "test"
+    include location
+    $local_fileroot = $location::local_fileroot
+    include puppet-config
 }

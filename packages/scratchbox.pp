@@ -37,16 +37,20 @@ class scratchbox {
                 "/scratchbox":
                     ensure => "/builds/scratchbox",
                     mode => 755,
-                    owner => root,
-                    group => root;
+                    owner => "root",
+                    group => "root";
         
                 "/builds/scratchbox/moz_scratchbox":
                     source => "${platform_fileroot}/builds/scratchbox/moz_scratchbox",
+                    owner => "root",
+                    group => "root",
                     mode => 755,
                     require => Install_rpm["scratchbox"];
         
                 "/builds/scratchbox/etc/resolv.conf":
                     source => "${platform_fileroot}/builds/scratchbox/etc/resolv.conf",
+                    owner => "root",
+                    group => "root",
                     require => Install_rpm["scratchbox"];
         
                 ### Some /etc/resolv.conf links

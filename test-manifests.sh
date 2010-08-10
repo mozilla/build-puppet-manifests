@@ -7,7 +7,7 @@ if ! which ${PUPPET} &>/dev/null; then
     exit 1
 fi
 
-for site in `ls site-*.pp`; do
+for site in `ls *.pp`; do
     echo -n "Testing $site..."
     if `${PUPPET} --confdir=. --vardir=. --parseonly --loadclasses $site`; then
         echo "OK"

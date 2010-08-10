@@ -20,6 +20,8 @@ class talos_fedora {
     
     file {
         "/home/cltbld/.fonts.conf":
+            owner => cltbld,
+            group => cltbld,
             source => "${platform_fileroot}/etc/fonts.conf";
         "/home/cltbld/.bash_profile":
             owner => cltbld,
@@ -27,6 +29,10 @@ class talos_fedora {
             source => "${platform_fileroot}/home/cltbld/.bash_profile";
         "/home/cltbld/bin/buildbot":
             ensure => absent;
+        "/home/cltbld/run-puppet-and-buildbot.sh":
+            owner => cltbld,
+            group => cltbld,
+            source => "${platform_fileroot}/home/cltbld/run-puppet-and-buildbot.sh";
     }
 
     # On Talos machines, puppet is only run at boot.  Network Manager is

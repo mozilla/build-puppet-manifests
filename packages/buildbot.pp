@@ -5,9 +5,13 @@ class buildbot {
 
     file {
         "/etc/default/buildbot":
-            source => "${platform_fileroot}/etc/default/buildbot";
+            source => "${platform_fileroot}/etc/default/buildbot",
+            owner  => "root",
+            group  => "root";
         "/etc/init.d/buildbot":
             source => "${platform_fileroot}/etc/init.d/buildbot",
+            owner  => "root",
+            group  => "root",
             mode => 755,
             notify => Exec["reset-buildbot-service"];
     }

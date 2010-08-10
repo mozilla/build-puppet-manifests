@@ -217,9 +217,13 @@ class devtools {
                 "/tools/build-tools":
                     ensure => "/tools/build-tools-$buildtools_version";
                 "/usr/local/bin/jscoverage":
-                    source => "${platform_fileroot}/usr/local/bin/jscoverage";
+                    source => "${platform_fileroot}/usr/local/bin/jscoverage",
+                    owner  => "root",
+                    group  => "root";
                 "/usr/local/bin/jscoverage-server":
-                    source => "${platform_fileroot}/usr/local/bin/jscoverage-server";
+                    source => "${platform_fileroot}/usr/local/bin/jscoverage-server",
+                    owner  => "root",
+                    group  => "root";
             }
 
         }

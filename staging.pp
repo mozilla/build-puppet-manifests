@@ -1,8 +1,5 @@
-# This should change to mpt-staging at some point
-$location = "staging"
 $level = "staging"
-
-$puppetServer = "${location}-puppet.build.mozilla.org"
+$puppetServer = "${level}-puppet.build.mozilla.org"
 
 import "base/*"
 import "includes/*"
@@ -37,6 +34,10 @@ node "moz2-linux-slave51.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, puppet-files-build-network, vm
 }
 
+node "bm-xserve14.build.mozilla.org" inherits "darwin9-i386-build" {
+    include staging-buildslave
+}
+
 node "moz2-darwin9-slave03.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
@@ -62,10 +63,6 @@ node "moz2-darwin10-slave03.build.mozilla.org" inherits "darwin10-i386-build" {
 }
 
 node "moz2-darwin10-slave04.build.mozilla.org" inherits "darwin10-i386-build" {
-    include staging-buildslave
-}
-
-node "bm-xserve14.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
 

@@ -21,6 +21,8 @@ class repackaging-tools {
                     }
                     file {
                         "/usr/local/bin/7z":
+                            owner   => "root",
+                            group   => "wheel",
                             ensure  => "/usr/local/bin/7za";
                     }
                 }
@@ -32,6 +34,8 @@ class repackaging-tools {
                     }
                     file {
                         "/usr/local/bin/7z":
+                            owner   => "root",
+                            group   => "wheel",
                             ensure  => "/usr/local/bin/7za";
                     }
                 }

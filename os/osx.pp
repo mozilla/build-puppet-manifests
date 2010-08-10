@@ -37,13 +37,17 @@ class osx {
             }
             file {
                 "/etc/postfix/main.cf":
-                    content => template("/etc/puppet/templates/main.cf.erb");
+                    content => template("/etc/puppet/templates/main.cf.erb"),
+                    owner => "root",
+                    group => "wheel";
                 "/etc/ntp.conf":
                     source => "${platform_fileroot}/etc/ntp.conf",
                     owner => "root",
                     group => "wheel";
                 "/tools/dist/logs":
                     require => File["/tools/dist"],
+                    owner => "cltbld",
+                    group => "admin",
                     ensure => directory;
                 "/Users/cltbld/.profile":
                     source => "${platform_fileroot}/Users/cltbld/.profile",
@@ -131,11 +135,17 @@ class osx {
             ensure => absent;
         # this dir is a prereq for storing our trigger file in the configuration script
         "/var/puppet":
-            ensure => directory;
+            ensure => directory,
+            owner => "root",
+            group => "wheel";
         "/builds":
-            ensure => directory;
+            ensure => directory,
+            owner => "root",
+            group => "wheel";
         "/builds/logs":
             require => File["/builds"],
+            owner => "root",
+            group => "admin",
             ensure => directory;
         "/opt/local/bin/autoconf-2.13":
             ensure => "/opt/local/bin/autoconf213",
@@ -150,14 +160,22 @@ class osx {
             group => "wheel",
             require => [File["/usr/local/nagios/etc/nrpe.plist"], Install_dmg["nrpe-i386.dmg"]];
         "/usr/local/nagios-i386":
-            ensure => "nagios";
+            ensure => "nagios",
+            owner => "root",
+            group => "wheel";
         "/opt":
-            ensure => directory;
+            ensure => directory,
+            owner => "root",
+            group => "admin";
         "/opt/local":
             require => File["/opt"],
+            owner => "root",
+            group => "admin",
             ensure => directory;
         ["/opt/local/bin","/opt/local/var","/opt/local/lib"]:
             require => File["/opt/local"],
+            owner => "root",
+            group => "admin",
             ensure => directory;
         "/Users/cltbld":
             ensure => directory,

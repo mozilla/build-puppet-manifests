@@ -13,7 +13,9 @@ class nagios {
 
     file {
         "/etc/nagios/nrpe.cfg":
-            source => "${platform_fileroot}/etc/nagios/nrpe.cfg";
+            source => "${platform_fileroot}/etc/nagios/nrpe.cfg",
+            owner  => "root",
+            group  => "root";
     }
     exec {
         "nagios-plugins":
