@@ -1,7 +1,7 @@
 $location = "mpt"
 $level = "production"
 
-$puppetServer = "${location}-${level}-puppet.build.mozilla.org"
+$puppetServer = "${level}-puppet.build.mozilla.org"
 
 import "base/*"
 import "includes/*"
