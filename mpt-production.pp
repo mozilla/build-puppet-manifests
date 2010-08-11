@@ -1121,9 +1121,6 @@ node "mv-moz2-linux-ix-slave22.build.mozilla.org" inherits "mv-build-node" {
 node "mv-moz2-linux-ix-slave23.build.mozilla.org" inherits "mv-build-node" {
 }
 
-node "mv-moz2-linux-ix-slave24.build.mozilla.org" inherits "mv-build-node" {
-}
-
 node "moz2-darwin9-slave29.build.mozilla.org" inherits "mv-build-node" {
 }
 

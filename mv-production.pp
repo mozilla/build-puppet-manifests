@@ -104,10 +104,6 @@ node "mv-moz2-linux-ix-slave23.build.mozilla.org" inherits "centos5-i686-build" 
     include buildslave, puppet-files-build-network, ix
 }
 
-node "mv-moz2-linux-ix-slave24.build.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-build-network, ix
-}
-
 node "moz2-darwin9-slave29.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
