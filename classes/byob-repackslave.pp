@@ -8,12 +8,6 @@ class byob-repackslave {
         Darwin: {
             include devtools
             include repackaging-tools
-            file {
-                "/Library/LaunchDaemons/com.reductivelabs.puppet.plist":
-                    source => "${local_fileroot}/Library/LaunchDaemons/com.reductivelabs.puppet.plist",
-                    owner => "root",
-                    group => "wheel";
-            }
         }
     }
 }
