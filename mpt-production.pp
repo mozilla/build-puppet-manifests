@@ -1367,6 +1367,9 @@ node "talos-r3-fed-051.build.mozilla.org" inherits "mv-test-node" {
 node "talos-r3-fed-052.build.mozilla.org" inherits "mv-test-node" {
 }
 
+node "talos-r3-fed-053.build.mozilla.org" inherits "mv-test-node" {
+}
+
 node "talos-r3-fed64-ref.build.mozilla.org" inherits "mv-test-node" {
 }
 
