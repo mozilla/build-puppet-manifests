@@ -656,14 +656,6 @@ node "talos-r3-leopard-ref.build.mozilla.org" inherits "darwin9-i386-test" {
     include talosslave
 }
 
-node "talos-r3-leopard-001.build.mozilla.org" inherits "darwin9-i386-test" {
-    include talosslave
-}
-
-node "talos-r3-leopard-002.build.mozilla.org" inherits "darwin9-i386-test" {
-    include talosslave
-}
-
 node "talos-r3-leopard-003.build.mozilla.org" inherits "darwin9-i386-test" {
     include talosslave
 }
@@ -869,14 +861,6 @@ node "talos-r3-leopard-053.build.mozilla.org" inherits "darwin9-i386-test" {
 }
 
 node "talos-r3-snow-ref.build.mozilla.org" inherits "darwin10-i386-test" {
-    include talosslave
-}
-
-node "talos-r3-snow-001.build.mozilla.org" inherits "darwin10-i386-test" {
-    include talosslave
-}
-
-node "talos-r3-snow-002.build.mozilla.org" inherits "darwin10-i386-test" {
     include talosslave
 }
 
