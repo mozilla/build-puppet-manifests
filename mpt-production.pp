@@ -1178,6 +1178,9 @@ node "try-mac-slave28.build.mozilla.org" inherits "mv-build-node" {
 node "try-mac-slave29.build.mozilla.org" inherits "mv-build-node" {
 }
 
+node "moz2-darwin10-ref.build.mozilla.org" inherits "mv-build-node" {
+}
+
 node "moz2-darwin10-slave40.build.mozilla.org" inherits "mv-build-node" {
 }
 
