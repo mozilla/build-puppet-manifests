@@ -68,6 +68,10 @@ class devtools {
                             version     => "3.3.0-0moz1",
                             subscribe   => File["/tools/zope-interface"],
                             require     => Install_rpm["python25"];
+                        "simplejson-py25":
+                            creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/simplejson/__init__.py",
+                            version     => "2.1.1-0moz1",
+                            require     => Install_rpm["python25"];
                         "jdk1.5":
                             creates     => "/tools/jdk-1.5.0_15/bin/java",
                             version     => "1.5.0_15-0moz1",
@@ -131,6 +135,10 @@ class devtools {
                             creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
                             version     => "3.3.0-0moz1",
                             subscribe   => File["/tools/zope-interface"],
+                            require     => Install_rpm["python25"];
+                        "simplejson-py25":
+                            creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/simplejson/__init__.py",
+                            version     => "2.1.1-0moz1",
                             require     => Install_rpm["python25"];
                         "jdk1.5":
                             creates     => "/tools/jdk-1.5.0_10/bin/java",
@@ -242,6 +250,8 @@ class devtools {
                         "mercurial-1.2.1.dmg":
                             creates     => "/tools/mercurial-1.2.1/tests/tinyproxy.py",
                             subscribe   => File["/tools/mercurial"];
+                        "simplejson-2.1.1-py25.dmg":
+                            creates     => "/tools/python/lib/python2.5/site-packages/simplejson/__init__.py";
                     }
                     file {
                         "/tools/python":
