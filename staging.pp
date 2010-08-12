@@ -10,6 +10,14 @@ import "packages/*"
 
 ### Node definitions
 
+node "ix-vm-test01.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, ix
+}
+
+node "ix-vm-test02.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, ix
+}
+
 node "moz2-linux-slave03.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, puppet-files-build-network, vm
 }
