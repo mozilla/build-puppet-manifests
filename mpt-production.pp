@@ -408,7 +408,7 @@ node "try-linux64-slave10.build.mozilla.org" inherits "centos5-x86_64-build" {
     include buildslave, puppet-files-build-network, vm
 }
 
-node "bm-mini-build-ref.build.mozilla.org" {
+node "bm-mini-build-ref.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
 
