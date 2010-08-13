@@ -1898,9 +1898,6 @@ node "moz2-linux-slave51.build.mozilla.org" inherits "staging-build-node" {
 node "moz2-darwin9-slave03.build.mozilla.org" inherits "staging-build-node" {
 }
 
-node "moz2-darwin9-slave04.build.mozilla.org" inherits "staging-build-node" {
-}
-
 node "moz2-darwin9-slave08.build.mozilla.org" inherits "staging-build-node" {
 }
 

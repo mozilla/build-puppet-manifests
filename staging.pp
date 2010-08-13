@@ -50,10 +50,6 @@ node "moz2-darwin9-slave03.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
 
-node "moz2-darwin9-slave04.build.mozilla.org" inherits "darwin9-i386-build" {
-    include staging-buildslave
-}
-
 node "moz2-darwin9-slave08.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
