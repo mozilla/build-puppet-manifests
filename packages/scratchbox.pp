@@ -1,8 +1,5 @@
 # scratchbox.pp
 # installs the scratchbox files
-# In this manifest we make use of some .expect scripts to automate
-# the steps necessary. Sometimes these need to be done as the cltbld
-# user so we do that by calling the .expect via su
 
 class scratchbox {
     case $hardwaremodel {
@@ -12,7 +9,7 @@ class scratchbox {
             $sb_prefix="/builds/scratchbox"
             $sb_version="20100330-0moz1"
             $sb_datestamp="2010-03-30-1129"
-            $sb_hg_version="1.5.1-0moz1"
+            $sb_host_usr_ver="1-0moz1"
             # Our Scratchbox RPM uses %post to unpack its tarball. If that fails
             # there's no way to mark the package as uninstalled or otherwise
             # cleanup. This exec works around that by checking if its *really*
@@ -22,15 +19,21 @@ class scratchbox {
                     command => "/bin/rpm -e scratchbox",
                     onlyif  => "/bin/rpm -ql scratchbox && [[ ! -e ${sb_prefix}/deployed-${sb_datestamp} ]]";
             }
+            package {
+                "scratchbox-mercurial":
+                    provider => "rpm",
+                    ensure   => "absent";
+            }
             install_rpm {
                 "scratchbox":
                     creates => "/builds/scratchbox/deployed-${sb_datestamp}",
                     version => "${sb_version}",
                     require => Exec["check-scratchbox-install"];
-                "scratchbox-mercurial":
-                    creates => "${sb_prefix}/users/cltbld/targets/FREMANTLE_ARMEL/usr/local/bin/hg",
-                    version => "${sb_hg_version}",
-                    require => Install_rpm["scratchbox"];
+                "scratchbox-host-usr":
+                    creates => "${sb_prefix}/users/cltbld/host_usr/bin/hg",
+                    version => "${sb_host_usr_ver}",
+                    require => [Package["scratchbox-mercurial"], 
+                                Install_rpm["scratchbox"]];
             }
 
             file {
@@ -45,6 +48,13 @@ class scratchbox {
                     owner => "root",
                     group => "root",
                     mode => 755,
+                    require => Install_rpm["scratchbox"];
+        
+                "/builds/scratchbox/users/cltbld/home/cltbld/.bashrc":
+                    source => "${platform_fileroot}/builds/scratchbox/users/cltbld/home/cltbld/.bashrc",
+                    mode => 755,
+                    owner => cltbld,
+                    group => cltbld,
                     require => Install_rpm["scratchbox"];
         
                 "/builds/scratchbox/etc/resolv.conf":
