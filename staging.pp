@@ -38,6 +38,14 @@ node "mv-moz2-linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" 
     include staging-buildslave, puppet-files-build-network, ix
 }
 
+node "linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, ix
+}
+
+node "linux-ix-slave02.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, ix
+}
+
 node "moz2-linux-slave51.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, puppet-files-build-network, vm
 }

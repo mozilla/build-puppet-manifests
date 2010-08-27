@@ -1121,6 +1121,45 @@ node "mv-moz2-linux-ix-slave22.build.mozilla.org" inherits "mv-build-node" {
 node "mv-moz2-linux-ix-slave23.build.mozilla.org" inherits "mv-build-node" {
 }
 
+node "linux-ix-slave03.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave04.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave05.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave06.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave07.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave08.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave09.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave10.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave11.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave12.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave13.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave14.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave15.build.mozilla.org" inherits "mv-build-node" {
+}
+
 node "moz2-darwin9-slave29.build.mozilla.org" inherits "mv-build-node" {
 }
 
@@ -1890,6 +1929,12 @@ node "moz2-linux64-slave07.build.mozilla.org" inherits "staging-build-node" {
 }
 
 node "mv-moz2-linux-ix-slave01.build.mozilla.org" inherits "staging-build-node" {
+}
+
+node "linux-ix-slave01.build.mozilla.org" inherits "staging-build-node" {
+}
+
+node "linux-ix-slave02.build.mozilla.org" inherits "staging-build-node" {
 }
 
 node "moz2-linux-slave51.build.mozilla.org" inherits "staging-build-node" {
