@@ -136,10 +136,6 @@ node "linux-ix-slave10.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, ix
 }
 
-node "linux-ix-slave10.build.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-build-network, ix
-}
-
 node "linux-ix-slave11.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, ix
 }
