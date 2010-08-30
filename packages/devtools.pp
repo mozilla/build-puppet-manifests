@@ -7,8 +7,8 @@ class devtools {
     $buildbot_version = "0.8.0"
     $old_buildbot_version = "0.8.0pre"
 
-    $buildtools_version = "0b149c0ad18d"
-    $old_buildtools_version = "605b16dc7e05"
+    $buildtools_version = "ac05929dc0b1"
+    $old_buildtools_version = "0b149c0ad18d"
 
     file {
         ["/tools", "/tools/dist"]:
