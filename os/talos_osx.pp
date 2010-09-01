@@ -48,6 +48,10 @@ class talos_osx {
             owner => "cltbld",
             group => "staff",
             source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.DownloadAssessment.plist";
+        "/Users/cltbld/Library/Preferences/com.apple.LaunchServices.plist":
+            owner => "cltbld",
+            group => "staff",
+            source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.LaunchServices.plist";
         # Manage screen resolution
         "/Library/LaunchAgents/cscreen.resize.plist":
             owner => "root",
