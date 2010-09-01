@@ -48,6 +48,24 @@ class talos_osx {
             owner => "cltbld",
             group => "staff",
             source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.DownloadAssessment.plist";
+        # Manage screen resolution
+        "/Library/LaunchAgents/cscreen.resize.plist":
+            owner => "root",
+            group => "wheel",
+            mode => 644,
+            require => File["/Users/cltbld/cscreen"],
+            source => "${platform_fileroot}/Library/LaunchAgents/cscreen.resize.plist";
+        "/Users/cltbld/cscreen":
+            owner => "cltbld",
+            group => "staff",
+            mode => 755,
+            source => "${platform_fileroot}/Users/cltbld/cscreen";
+        # Manage Dock position and others
+        "/Users/cltbld/Library/Preferences/com.apple.dock.plist":
+            owner => "cltbld",
+            group => "staff",
+            mode => 644,
+            source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.dock.plist";
     }
 
     # get .bash_profile in place for Snow Leopard
