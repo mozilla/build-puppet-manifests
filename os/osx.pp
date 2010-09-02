@@ -221,6 +221,21 @@ class osx {
             group => "staff",
             mode  => 755,
             source => "${platform_fileroot}/usr/local/bin/check-for-package.sh";
+        "${home}/cltbld/.ssh":
+            owner => "cltbld",
+            group => "staff",
+            mode => 700,
+            ensure => directory;
+        "${home}/cltbld/.ssh/config":
+            owner => "cltbld",
+            group => "staff",
+            mode => 600,
+            source => "${local_fileroot}${home}/cltbld/.ssh/config";
+        "${home}/cltbld/.ssh/known_hosts":
+            owner => "cltbld",
+            group => "staff",
+            mode => 644,
+            source => "${local_fileroot}${home}/cltbld/.ssh/known_hosts";
     }
 
     # This section contains items that need tweaking post-refimage install
