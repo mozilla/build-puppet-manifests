@@ -286,7 +286,11 @@ class osx {
     install_dmg {
         "nrpe-i386.dmg":
             creates => "/usr/local/nagios-i386/sbin/nrpe";
-        "yasm-1.0.1.dmg":
-            creates => "/usr/local/bin/yasm";
+    }
+    package {
+        "yasm-1.1.0.dmg":
+            provider => pkgdmg,
+            ensure => installed,
+            source => "${platform_httproot}/DMGs/yasm-1.1.0.dmg";
     }
 }
