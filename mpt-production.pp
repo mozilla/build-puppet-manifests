@@ -648,7 +648,15 @@ node "bm-xserve07.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
 
+node "bm-xserve08.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave
+}
+
 node "bm-xserve09.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave
+}
+
+node "bm-xserve10.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
 
@@ -677,6 +685,10 @@ node "bm-xserve18.build.mozilla.org" inherits "darwin9-i386-build" {
 }
 
 node "bm-xserve19.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave
+}
+
+node "bm-xserve20.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
 
