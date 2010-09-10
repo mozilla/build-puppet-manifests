@@ -1172,6 +1172,12 @@ node "linux-ix-slave14.build.mozilla.org" inherits "mv-build-node" {
 node "linux-ix-slave15.build.mozilla.org" inherits "mv-build-node" {
 }
 
+node "linux-ix-slave16.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "linux-ix-slave17.build.mozilla.org" inherits "mv-build-node" {
+}
+
 node "moz2-darwin9-slave29.build.mozilla.org" inherits "mv-build-node" {
 }
 

@@ -156,6 +156,14 @@ node "linux-ix-slave15.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, puppet-files-build-network, ix
 }
 
+node "linux-ix-slave16.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, ix
+}
+
+node "linux-ix-slave17.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, puppet-files-build-network, ix
+}
+
 node "moz2-darwin9-slave29.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
