@@ -68,6 +68,12 @@ class cltbld {
                 owner => "cltbld",
                 group => "cltbld",
                 source => "${local_fileroot}${home}/cltbld/.ssh/known_hosts";
+
+            "${home}/cltbld/.ssh/authorized_keys":
+                owner => "cltbld",
+                group => "cltbld",
+                mode => 644,
+                source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
     }
 
     exec { "/usr/bin/crontab -u cltbld /home/cltbld/crontab":

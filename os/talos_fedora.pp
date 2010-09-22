@@ -33,6 +33,16 @@ class talos_fedora {
             owner => cltbld,
             group => cltbld,
             source => "${platform_fileroot}/home/cltbld/run-puppet-and-buildbot.sh";
+        "${home}/cltbld/.ssh":
+            mode => 700,
+            owner => "cltbld",
+            group => "cltbld",
+            ensure => directory;
+        "${home}/cltbld/.ssh/authorized_keys":
+            owner => "cltbld",
+            group => "cltbld",
+            mode => 644,
+            source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
     }
 
     # On Talos machines, puppet is only run at boot.  Network Manager is

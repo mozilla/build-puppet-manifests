@@ -70,6 +70,16 @@ class talos_osx {
             group => "staff",
             mode => 644,
             source => "${platform_fileroot}/Users/cltbld/Library/Preferences/com.apple.dock.plist";
+        "${home}/cltbld/.ssh":
+            owner => "cltbld",
+            group => "staff",
+            mode => 700,
+            ensure => directory;
+        "${home}/cltbld/.ssh/authorized_keys":
+            owner => "cltbld",
+            group => "staff",
+            mode => 644,
+            source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
     }
 
     # get .bash_profile in place for Snow Leopard

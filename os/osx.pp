@@ -236,6 +236,11 @@ class osx {
             group => "staff",
             mode => 644,
             source => "${local_fileroot}${home}/cltbld/.ssh/known_hosts";
+        "${home}/cltbld/.ssh/authorized_keys":
+            owner => "cltbld",
+            group => "staff",
+            mode => 644,
+            source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
     }
 
     # This section contains items that need tweaking post-refimage install
