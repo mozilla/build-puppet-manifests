@@ -83,6 +83,24 @@ node "mv-test-node" inherits "mv-node" {
     include puppet-config
 }
 
+node "scl-node" {
+    $configExt = ".scl"
+}
+
+node "scl-build-node" inherits "scl-node" {
+    $slaveType = "build"
+    include location
+    $local_fileroot = $location::local_fileroot
+    include puppet-config
+}
+
+node "scl-test-node" inherits "scl-node" {
+    $slaveType = "test"
+    include location
+    $local_fileroot = $location::local_fileroot
+    include puppet-config
+}
+
 node "staging-node" {
     $configExt = ".staging"
 }
