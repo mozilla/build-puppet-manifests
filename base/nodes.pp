@@ -157,6 +157,10 @@ node "master" {
             require => Package["munin-node"],
             owner  => "root",
             group  => "root";
+        "/etc/ntp.conf":
+            source => "${platform_fileroot}/etc/ntp.conf",
+            owner  => "root",
+            group  => "root";
     }
     exec {
         "buildbot-tools":
@@ -176,6 +180,9 @@ node "master" {
             require => Package["munin-node"],
             enable => 'true',
             subscribe => File["/etc/munin/munin-node.conf"],
+            ensure => 'running';
+        "ntpd":
+            enable => 'true',
             ensure => 'running';
     }
 }
