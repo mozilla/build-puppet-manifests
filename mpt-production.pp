@@ -1178,6 +1178,81 @@ node "linux-ix-slave16.build.mozilla.org" inherits "scl-build-node" {
 node "linux-ix-slave17.build.mozilla.org" inherits "scl-build-node" {
 }
 
+node "linux-ix-slave18.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave19.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave20.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave21.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave22.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave23.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave24.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave25.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave26.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave27.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave28.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave29.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave30.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave31.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave32.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave33.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave34.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave35.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave36.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave37.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave38.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave39.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave40.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave41.build.mozilla.org" inherits "scl-build-node" {
+}
+
+node "linux-ix-slave42.build.mozilla.org" inherits "scl-build-node" {
+}
+
 node "moz2-darwin9-slave29.build.mozilla.org" inherits "scl-build-node" {
 }
 
