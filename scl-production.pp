@@ -1171,23 +1171,65 @@ node default {
 node "buildbot-master1.build.scl1.mozilla.com" inherits "centos5-i686-master" {
 
     setup_master {
-	"build_master3":
-	    master_dir => "build_master3",
-	    master_cfg => "builder_master.cfg",
-	    config_link => "staging_config.py",
-	    master_pretty_name => "Build Master 03",
-	    master_url => "http://buildbot-master1.build.scl1.mozilla.com:8010",
-	    config_dir => "mozilla",
-	    require => File["/etc/default/buildbot.d"],
-	    masterconfig_link => "production_builder_master_bm01_localconfig.py";
-	"tests_master3":
-	    master_dir => "tests_master3",
-	    master_cfg => "tests_master.cfg",
-	    config_link => "staging_config.py",
-	    master_pretty_name => "Tests Master 03",
-	    master_url => "http://buildbot-master1.build.scl1.mozilla.com:8011",
-	    config_dir => "mozilla-tests",
-	    require => File["/etc/default/buildbot.d"],
-	    masterconfig_link => "production_tests_master_bm01_localconfig.py";
+        "build_master3":
+            master_dir => "build_master3",
+            master_cfg => "builder_master.cfg",
+            config_link => "production_config.py",
+            master_pretty_name => "Build Master 03",
+            master_url => "http://buildbot-master1.build.scl1.mozilla.com:8010",
+            config_dir => "mozilla",
+            require => File["/etc/default/buildbot.d"],
+            masterconfig_link => "production_builder_master_bm01_localconfig.py";
+        "tests_master3":
+            master_dir => "tests_master3",
+            master_cfg => "tests_master.cfg",
+            config_link => "production_config.py",
+            master_pretty_name => "Tests Master 03",
+            master_url => "http://buildbot-master1.build.scl1.mozilla.com:8011",
+            config_dir => "mozilla-tests",
+            require => File["/etc/default/buildbot.d"],
+            masterconfig_link => "production_tests_master_bm01_1_localconfig.py";
+        "tests_master4":
+            master_dir => "tests_master4",
+            master_cfg => "tests_master.cfg",
+            config_link => "production_config.py",
+            master_pretty_name => "Tests Master 04",
+            master_url => "http://buildbot-master1.build.scl1.mozilla.com:8012",
+            config_dir => "mozilla-tests",
+            require => File["/etc/default/buildbot.d"],
+            masterconfig_link => "production_tests_master_bm01_2_localconfig.py";
+    }
+}
+
+node "buildbot-master2.build.scl1.mozilla.com" inherits "centos5-i686-master" {
+
+    setup_master {
+        "build_master4":
+            master_dir => "build_master4",
+            master_cfg => "builder_master.cfg",
+            config_link => "production_config.py",
+            master_pretty_name => "Build Master 04",
+            master_url => "http://buildbot-master2.build.scl1.mozilla.com:8010",
+            config_dir => "mozilla",
+            require => File["/etc/default/buildbot.d"],
+            masterconfig_link => "production_builder_master_bm02_localconfig.py";
+        "tests_master5":
+            master_dir => "tests_master5",
+            master_cfg => "tests_master.cfg",
+            config_link => "production_config.py",
+            master_pretty_name => "Tests Master 05",
+            master_url => "http://buildbot-master2.build.scl1.mozilla.com:8011",
+            config_dir => "mozilla-tests",
+            require => File["/etc/default/buildbot.d"],
+            masterconfig_link => "production_tests_master_bm02_1_localconfig.py";
+        "tests_master6":
+            master_dir => "tests_master6",
+            master_cfg => "tests_master.cfg",
+            config_link => "production_config.py",
+            master_pretty_name => "Tests Master 06",
+            master_url => "http://buildbot-master2.build.scl1.mozilla.com:8012",
+            config_dir => "mozilla-tests",
+            require => File["/etc/default/buildbot.d"],
+            masterconfig_link => "production_tests_master_bm02_2_localconfig.py";
     }
 }

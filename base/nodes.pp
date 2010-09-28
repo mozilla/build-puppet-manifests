@@ -132,21 +132,21 @@ node "master" {
             owner => "root",
             group => "root",
             mode => 600;
-	"/builds/buildbot":
-	    ensure => directory,
-	    owner => "cltbld",
-	    group => "cltbld",
-	    mode => 755;
-	"/etc/init.d/buildbot":
-	    source => "${platform_fileroot}/etc/init.d/buildbot",
-	    owner => "root",
-	    group => "root",
-	    mode => 755;
-	"/etc/default/buildbot.d":
-	    ensure => directory,
-	    owner => "root",
-	    group => "root",
-	    mode => 755;
+        "/builds/buildbot":
+            ensure => directory,
+            owner => "cltbld",
+            group => "cltbld",
+            mode => 755;
+        "/etc/init.d/buildbot":
+            source => "${platform_fileroot}/etc/init.d/buildbot",
+            owner => "root",
+            group => "root",
+            mode => 755;
+        "/etc/default/buildbot.d":
+            ensure => directory,
+            owner => "root",
+            group => "root",
+            mode => 755;
         "/etc/nagios/nrpe.cfg":
             source => "${platform_fileroot}/etc/nagios/nrpe.cfg",
             require => Package["nagios-nrpe"],
@@ -189,33 +189,34 @@ node "master" {
 
 node "centos5-i686-master" inherits "master" {
     package {
-	"mysql":
-	    source => "${platform_httproot}/RPMs/mysql-5.0.77-4.el5_5.3.i386.rpm",
-	    provider => rpm,
-	    ensure => installed;
-	"perl-DBI":
-	    source => "${platform_httproot}/RPMs/perl-DBI-1.52-2.el5.i386.rpm",
-	    provider => rpm,
-	    ensure => installed;
-	"mysql-devel":
-	    source => "${platform_httproot}/RPMs/mysql-devel-5.0.77-4.el5_5.3.i386.rpm",
-	    provider => rpm,
-	    require => [Package["mysql"], Package["perl-DBI"]],
-	    ensure => installed;
+        "mysql":
+            source => "${platform_httproot}/RPMs/mysql-5.0.77-4.el5_5.3.i386.rpm",
+            provider => rpm,
+            ensure => installed,
+            require => Package['perl-DBI'];
+        "perl-DBI":
+            source => "${platform_httproot}/RPMs/perl-DBI-1.52-2.el5.i386.rpm",
+            provider => rpm,
+            ensure => installed;
+        "mysql-devel":
+            source => "${platform_httproot}/RPMs/mysql-devel-5.0.77-4.el5_5.3.i386.rpm",
+            provider => rpm,
+            require => [Package["mysql"], Package["perl-DBI"]],
+            ensure => installed;
         "nagios-nrpe":
-             provider => rpm,
-             ensure => installed,
-	           source => "${platform_httproot}/RPMs/nagios-nrpe-2.5.2-1.el5.rf.i686.rpm";
+            provider => rpm,
+            ensure => installed,
+            source => "${platform_httproot}/RPMs/nagios-nrpe-2.5.2-1.el5.rf.i686.rpm";
         "nagios-plugins":
              provider => rpm,
              ensure => installed,
              require => Package["nagios-nrpe"],
-	           source => "${platform_httproot}/RPMs/nagios-plugins-1.4.9-1.el5.rf.i686.rpm";
+               source => "${platform_httproot}/RPMs/nagios-plugins-1.4.9-1.el5.rf.i686.rpm";
         "nagios-plugins-nrpe":
              provider => rpm,
              ensure => installed,
              require => Package["nagios-nrpe"],
-	           source => "${platform_httproot}/RPMs/nagios-plugins-nrpe-2.5.2-1.el5.rf.i686.rpm";
+               source => "${platform_httproot}/RPMs/nagios-plugins-nrpe-2.5.2-1.el5.rf.i686.rpm";
         "perl-HTML-Tagset":
              provider => rpm,
              ensure => installed,
@@ -239,7 +240,8 @@ node "centos5-i686-master" inherits "master" {
         "perl-Digest-HMAC":
              provider => rpm,
              ensure => installed,
-             source => "${platform_httproot}/RPMs/perl-Digest-HMAC-1.01-15.noarch.rpm";
+             source => "${platform_httproot}/RPMs/perl-Digest-HMAC-1.01-15.noarch.rpm",
+             require => Package['perl-Digest-SHA1'];
         "perl-Crypt-DES":
              provider => rpm,
              ensure => installed,
@@ -247,7 +249,8 @@ node "centos5-i686-master" inherits "master" {
         "perl-Net-Server":
              provider => rpm,
              ensure => installed,
-             source => "${platform_httproot}/RPMs/perl-Net-Server-0.96-2.el5.noarch.rpm";
+             source => "${platform_httproot}/RPMs/perl-Net-Server-0.96-2.el5.noarch.rpm",
+             require => Package['perl-IO-Multiplex'];
         "perl-libwww-perl":
              provider => rpm,
              ensure => installed,
@@ -275,6 +278,6 @@ node "centos5-i686-master" inherits "master" {
                          Package["sysstat"], Package["perl-Crypt-DES"],
                          Package["perl-Net-Server"], Package["perl-libwww-perl"],
                          Package["perl-DBI"], Package["perl-Net-SNMP"]],
-             source => "${platform_httproot}/RPMs/munin-node-1.4.5-4.el5.noarch.rpm";
+            source => "${platform_httproot}/RPMs/munin-node-1.4.5-4.el5.noarch.rpm";
     }
 }
