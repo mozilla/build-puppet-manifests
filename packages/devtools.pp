@@ -30,6 +30,12 @@ class devtools {
     case $operatingsystem {
 
         CentOS: {
+            package {
+                "mercurial":
+                    source => "${platform_httproot}/RPMs/mercurial-1.6.3-0moz1.${hardwaremodel}.rpm",
+                    ensure => latest,
+                    provider => rpm;
+            }
 
             case $hardwaremodel {
         
@@ -81,10 +87,6 @@ class devtools {
                             version     => "${buildtools_version}-0moz1",
                             subscribe   => File["/tools/build-tools"],
                             before      => Service["buildbot-tac"];
-                        "mercurial":
-                            creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/mercurial/version.py",
-                            version     => "1.1.2-0moz1",
-                            require     => Install_rpm["python25"];
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
@@ -161,10 +163,6 @@ class devtools {
                             creates     => "/tools/android-ndk-r4c/build/tools/make-release.sh",
                             version     => "r4c-0moz3",
                             subscribe   => File["/tools/android-ndk"];
-                        "mercurial":
-                            creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/mercurial/version.py",
-                            version     => "1.1.2-0moz1",
-                            require     => Install_rpm["python25"];
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
