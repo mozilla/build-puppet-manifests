@@ -58,10 +58,6 @@ class centos5 {
 
     case $hardwaremodel {
         "x86_64": {
-            file {
-                "/home/cltbld/.hgrc":
-                    ensure => absent;
-            }
         }
         default: {
             file {
@@ -83,9 +79,6 @@ class centos5 {
                     mode   => 600,
                     owner  => cltbld,
                     group  => cltbld;
-
-                "/home/cltbld/.hgrc":
-                    ensure => absent;
             }
         }
     }

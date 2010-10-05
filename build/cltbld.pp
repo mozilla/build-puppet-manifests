@@ -74,6 +74,12 @@ class cltbld {
                 group => "cltbld",
                 mode => 644,
                 source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
+
+            "${home}/cltbld/.hgrc":
+                owner => "cltbld",
+                group => "cltbld",
+                mode => 644,
+                source => "${platform_fileroot}${home}/cltbld/.hgrc";
     }
 
     exec { "/usr/bin/crontab -u cltbld /home/cltbld/crontab":
