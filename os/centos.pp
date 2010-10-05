@@ -83,6 +83,9 @@ class centos5 {
                     mode   => 600,
                     owner  => cltbld,
                     group  => cltbld;
+
+                "/home/cltbld/.hgrc":
+                    ensure => absent;
             }
         }
     }
