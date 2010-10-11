@@ -100,6 +100,15 @@ node "scl-test-node" inherits "scl-node" {
     $local_fileroot = $location::local_fileroot
     include puppet-config
 }
+node "stage-and-aus2-server" {
+    $slaveType = "stage"
+    include location
+    $platform_httproot = $location::platform_httproot
+    $platform_fileroot = $location::platform_fileroot
+    $local_httproot = $location::local_httproot
+    $local_fileroot = $location::local_fileroot
+    include stageusergroups, stage-rpms, stagelayout, stageaus2
+}
 
 node "staging-node" {
     $configExt = ".staging"
