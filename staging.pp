@@ -11,43 +11,43 @@ import "packages/*"
 ### Node definitions
 
 node "ix-vm-test01.build.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-build-network, ix
+    include buildslave, ix
 }
 
 node "ix-vm-test02.build.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, puppet-files-build-network, ix
+    include buildslave, ix
 }
 
 node "moz2-linux-slave03.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, puppet-files-build-network, vm
+    include staging-buildslave, vm
 }
 
 node "moz2-linux-slave04.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, puppet-files-build-network, vm
+    include staging-buildslave, vm
 }
 
 node "moz2-linux-slave17.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, puppet-files-build-network, vm
+    include staging-buildslave, vm
 }
 
 node "moz2-linux64-slave07.build.mozilla.org" inherits "centos5-x86_64-build" {
-    include staging-buildslave, puppet-files-build-network, vm
+    include staging-buildslave, vm
 }
 
 node "mv-moz2-linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, puppet-files-build-network, ix
+    include staging-buildslave, ix
 }
 
 node "linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, puppet-files-build-network, ix
+    include staging-buildslave, ix
 }
 
 node "linux-ix-slave02.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, puppet-files-build-network, ix
+    include staging-buildslave, ix
 }
 
 node "moz2-linux-slave51.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, puppet-files-build-network, vm
+    include staging-buildslave, vm
 }
 
 node "bm-xserve14.build.mozilla.org" inherits "darwin9-i386-build" {

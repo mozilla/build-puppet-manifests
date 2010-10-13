@@ -24,6 +24,9 @@ class talos_osx {
     }
 
     file {
+        # Used to have an NFS mount here, not needed anymore.
+        "/etc/fstab":
+            ensure => absent;
         "/usr/local/bin/hg":
             owner => "root",
             group => "staff",

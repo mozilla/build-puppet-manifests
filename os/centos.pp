@@ -118,6 +118,9 @@ class centos5 {
             fstype => "ext3",
             options => "noatime",
             remounts => true;
+        "puppet-files":
+            name   => "/N",
+            ensure => absent;
     }
 
     case $hardwaremodel {
