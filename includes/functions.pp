@@ -55,7 +55,7 @@ define setup_master($master_dir, $master_cfg, $config_link, $masterconfig_link, 
     $full_master_dir = "/builds/buildbot/$master_dir"
     exec {
         "buildbotcustom-$master_dir":
-            command => "/tools/python/bin/hg clone -r buildbot-0.8.0 http://hg.mozilla.org/build/buildbotcustom",
+            command => "/tools/python/bin/hg clone -r default http://hg.mozilla.org/build/buildbotcustom",
             onlyif => "/usr/bin/test ! -d $full_master_dir/buildbotcustom",
             user => "cltbld",
             group => "cltbld",
