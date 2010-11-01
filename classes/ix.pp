@@ -9,4 +9,10 @@ class ix {
             options => "noatime",
             remounts => true;
     }
+    file {
+        "/dev/ptmx":
+            mode => 666,
+            owner => "root",
+            group => "tty";
+    }
 }
