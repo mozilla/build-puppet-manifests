@@ -104,6 +104,66 @@ node "mv-moz2-linux-ix-slave23.build.mozilla.org" inherits "centos5-i686-build" 
     include buildslave, ix
 }
 
+node "linux-ix-slave03.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave04.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave05.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave06.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave07.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave08.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave09.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave10.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave11.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave12.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave13.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave14.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave15.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave16.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave17.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
 node "moz2-darwin9-slave29.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
