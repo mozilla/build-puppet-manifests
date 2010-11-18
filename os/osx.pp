@@ -130,6 +130,11 @@ class osx {
 
     # This section contains things shared by the 10.5.2 and 10.6 build ref images
     file {
+        "/builds/hg-shared":
+            ensure => directory,
+            mode    => 755,
+            owner   => cltbld,
+            group   => admin;
         # Used to have an NFS mount here, not needed anymore.
         "/etc/fstab":
             ensure => absent;

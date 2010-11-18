@@ -50,6 +50,13 @@ class centos5 {
         "/tmp":
             ensure => directory,
             mode => 1777;
+
+        "/builds/hg-shared":
+            ensure => directory,
+            mode    => 755,
+            owner   => cltbld,
+            group   => cltbld;
+
     }
 
     #################################################
