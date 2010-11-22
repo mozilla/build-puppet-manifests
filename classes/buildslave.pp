@@ -17,6 +17,7 @@ class buildslave {
         Darwin: {
             include devtools
             include repackaging-tools
+            include cacert
         }
     }
 }

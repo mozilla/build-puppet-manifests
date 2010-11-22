@@ -16,6 +16,7 @@ class staging-buildslave {
         Darwin: {
             include devtools
             include repackaging-tools
+            include cacert
         }
     }
 }
