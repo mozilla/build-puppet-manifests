@@ -17,11 +17,12 @@ class moz-rpms {
             source => "${platform_httproot}/RPMs/yasm-1.1.0-1.$rpm_arch.rpm",
             ensure => latest;
         "ccache":
-            source => "${platform_httproot}/RPMs/ccache-2.4-99.11.$rpm_arch.rpm";
+            source => "${platform_httproot}/RPMs/ccache-3.0.1-99.11.$rpm_arch.rpm",
+            ensure => latest;
     }
     exec {
         "/usr/bin/ccache -M 2G":
-            environment => ["CCACHE_DIR=/builds/ccache"],
+            environment => ["CCACHE_DIR=/builds/ccache", "CCACHE_COMPRESS=1"],
             refreshonly => true,
             user => "cltbld",
             group => "cltbld",
