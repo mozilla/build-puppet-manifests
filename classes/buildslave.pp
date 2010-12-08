@@ -10,6 +10,7 @@ class buildslave {
             include devtools
             include nagios
             include scratchbox
+            include buildbot
             include moz-rpms
 
         }
