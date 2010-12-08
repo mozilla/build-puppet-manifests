@@ -1,5 +1,4 @@
 # centos.pp
-# 6/2/09 - consolidated a lot of the duplication and refactored a bit - cshields
 
 class centos5 {
     Package{ provider => rpm }
@@ -33,11 +32,6 @@ class centos5 {
         # so we have to do it by hand
         "/etc/group":
             source => "${platform_fileroot}/etc/group";
-
-        # buildbot-tac generation
-        "/etc/init.d/buildbot-tac":
-            source => "${platform_fileroot}/etc/init.d/buildbot-tac",
-            mode => 755;
 
         "/etc/init.d/puppet":
             source => "${platform_fileroot}/etc/init.d/puppet",
@@ -308,4 +302,6 @@ class centos5 {
             enable => 'false',
             ensure => 'stopped'
         }
+
+   include buildslave-startup
 }
