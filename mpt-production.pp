@@ -1995,19 +1995,19 @@ node "talos-r3-snow-054.build.mozilla.org" inherits "scl-test-node" {
 node "talos-r3-snow-055.build.mozilla.org" inherits "scl-test-node" {
 }
 
-node "byob-repack01.build.mozilla.org" inherits "scl-build-node" {
+node "byob-repack01.build.mozilla.org" inherits "mv-build-node" {
 }
 
-node "byob-repack02.build.mozilla.org" inherits "scl-build-node" {
+node "byob-repack02.build.mozilla.org" inherits "mv-build-node" {
 }
 
-node "byob-repack03.build.mozilla.org" inherits "scl-build-node" {
+node "byob-repack03.build.mozilla.org" inherits "mv-build-node" {
 }
 
-node "byob-repack04.build.mozilla.org" inherits "scl-build-node" {
+node "byob-repack04.build.mozilla.org" inherits "mv-build-node" {
 }
 
-node "byob-repack05.build.mozilla.org" inherits "scl-build-node" {
+node "byob-repack05.build.mozilla.org" inherits "mv-build-node" {
 }
 
 node "moz2-linux-slave03.build.mozilla.org" inherits "staging-build-node" {
