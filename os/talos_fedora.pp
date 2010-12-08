@@ -54,4 +54,11 @@ class talos_fedora {
     }
 
     include buildslave-startup
+
+    # this really applies to all fedora hosts, but since those are all talos, too,
+    # it's here for the moment.
+    service { 'avahi-daemon':
+        enable => 'false',
+        ensure => 'stopped'
+    }
 }
