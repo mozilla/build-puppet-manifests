@@ -85,8 +85,7 @@ class devtools {
                         "build-tools":
                             creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
                             version     => "${buildtools_version}-0moz1",
-                            subscribe   => File["/tools/build-tools"],
-                            before      => Service["buildbot-tac"];
+                            subscribe   => File["/tools/build-tools"];
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
@@ -153,8 +152,7 @@ class devtools {
                         "build-tools":
                             creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
                             version     => "${buildtools_version}-0moz1",
-                            subscribe   => File["/tools/build-tools"],
-                            before      => Service["buildbot-tac"];
+                            subscribe   => File["/tools/build-tools"];
                         "android-sdk":
                             creates     => "/tools/android-sdk-r8/tools/android",
                             version     => "r8-0moz3",

@@ -29,10 +29,6 @@ class talos_fedora {
             source => "${platform_fileroot}/home/cltbld/.bash_profile";
         "/home/cltbld/bin/buildbot":
             ensure => absent;
-        "/home/cltbld/run-puppet-and-buildbot.sh":
-            owner => cltbld,
-            group => cltbld,
-            source => "${platform_fileroot}/home/cltbld/run-puppet-and-buildbot.sh";
         "${home}/cltbld/.ssh":
             mode => 700,
             owner => "cltbld",
@@ -56,6 +52,8 @@ class talos_fedora {
         enable => false,
         ensure => running;
     }
+
+    include buildslave-startup
 
     # this really applies to all fedora hosts, but since those are all talos, too,
     # it's here for the moment.
