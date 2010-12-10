@@ -83,7 +83,8 @@ class debuginfopackages {
 	        "expat-debuginfo":
 	            source => "${platform_httproot}/RPMs/expat-debuginfo-1.95.8-8.2.1.i386.rpm";
 	        "fontconfig-debuginfo":
-	            source => "${platform_httproot}/RPMs/fontconfig-debuginfo-2.4.1-6.el5.i386.rpm";
+                ensure => latest,
+	            source => "${platform_httproot}/RPMs/fontconfig-debuginfo-2.4.2-2.i686.rpm";
 	        "freetype-debuginfo":
 	            source => "${platform_httproot}/RPMs/freetype-debuginfo-2.2.1-16.el5.i386.rpm";
 	        "gcc-debuginfo":
