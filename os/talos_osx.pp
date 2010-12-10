@@ -113,4 +113,35 @@ class talos_osx {
            }
        }
     }
+
+    # disable bluetooth
+    case $operatingsystemrelease {
+        "9.2.0": {
+            # disable the Bluetooth mouse-finding dialog
+            file {
+                "/Library/Preferences/com.apple.Bluetooth.plist":
+                    owner => "root",
+                    group => "admin",
+                    mode => 600,
+                    source => "${platform_fileroot}/Library/Preferences/com.apple.Bluetooth.plist";
+            }
+
+            # and disable the service, too
+            service {
+                "com.apple.BluedServer":
+                    ensure => "stopped",
+                    enable => false;
+            }
+        }
+
+        "10.2.0": {
+            # the service has a different name in darwin10; the dialog does not appear, though,
+            # and the plist is different from 9.2.0, so no need for it here
+            service {
+                "com.apple.blued":
+                    ensure => "stopped",
+                    enable => false;
+            }
+        }
+    }
 }
