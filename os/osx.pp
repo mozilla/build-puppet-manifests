@@ -53,10 +53,6 @@ class osx {
                     source => "${platform_fileroot}/Users/cltbld/.profile",
                     owner => "cltbld",
                     group => "staff";
-                "/Library/LaunchAgents/buildbot.start.slave.plist":
-                    source => "${platform_fileroot}/Library/LaunchAgents/buildbot.start.slave.plist",
-                    owner => "root",
-                    group => "wheel";
                 "/usr/local/bin/setup-configuration.sh":
                     source => "${platform_fileroot}/usr/local/bin/setup-configuration.sh",
                     owner => "root",
@@ -115,10 +111,6 @@ class osx {
                     owner => "cltbld",
                     group => "staff",
                     require => File["/Users/cltbld"];
-                "/Library/LaunchAgents/buildbot.start.slave.plist":
-                    source => "${platform_fileroot}/Library/LaunchAgents/buildbot.start.slave.plist",
-                    owner => "root",
-                    group => "wheel";
                 "/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb":
                     source => "${platform_fileroot}/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb",
                     owner => "root",
@@ -191,15 +183,6 @@ class osx {
             owner => "root",
             group => "wheel",
             mode  => 644;
-        "/usr/local/bin/buildbot-tac":
-            source => "${platform_fileroot}/usr/local/bin/buildbot-tac",
-            owner => "root",
-            group => "wheel",
-            mode  => 755;
-        "/Library/LaunchAgents/buildbot-tac.generator.com.plist":
-            source => "${platform_fileroot}/Library/LaunchAgents/buildbot-tac.generator.com.plist",
-            owner => "root",
-            group => "wheel";
         "/Users/cltbld/bin":
             owner => "cltbld",
             group => "staff",
@@ -278,11 +261,6 @@ class osx {
     }
 
     exec { 
-        restart-buildbot-tac:
-            subscribe => File["/Library/LaunchAgents/buildbot-tac.generator.com.plist"],
-            refreshonly => true,
-            command => "/bin/launchctl unload -w /Library/LaunchAgents/buildbot-tac.generator.com.plist && /bin/launchctl load -w /Library/LaunchAgents/buildbot-tac.generator.com.plist",
-            require => [File["/usr/local/bin/buildbot-tac"], File["/Library/LaunchAgents/buildbot-tac.generator.com.plist"]];
         setup-nagios-user:
             creates => "/var/db/.puppet_nagios_user_setup",
             command => "/usr/local/bin/setup-nagios-user.sh",
@@ -334,4 +312,6 @@ class osx {
             }
         }
     }
+
+    include buildslave::startup
 }

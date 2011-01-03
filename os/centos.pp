@@ -314,5 +314,5 @@ class centos5 {
             ensure => 'stopped'
         }
 
-   include buildslave-startup
+   include buildslave::startup
 }

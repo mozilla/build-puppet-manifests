@@ -10,6 +10,9 @@ import "classes/*"
 import "build/*"
 import "packages/*"
 
+# module imports
+import "buildslave"
+
 ### Node definitions
 
 node "linux-ix-slave03.build.mozilla.org" inherits "centos5-i686-build" {

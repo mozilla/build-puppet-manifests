@@ -1,7 +1,6 @@
 #devtools.pp
-#  this manifest installs all of the packages in the /tools tree
-
-# This file is setup to work for both CentOS and Darwin9
+#  this manifest installs all of the packages in the /tools tree,
+#  but only for build systems, not test.
 
 class devtools {
     $buildbot_version = "0.8.0"

@@ -11,6 +11,9 @@ import "build/*"
 import "packages/*"
 import "stage/*"
 
+# module imports
+import "buildslave"
+
 ### Node definitions
 
 node "linux-ref-platform.build.mozilla.org" inherits "centos5-i686-build" {

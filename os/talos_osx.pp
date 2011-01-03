@@ -37,11 +37,6 @@ class talos_osx {
             group => "staff",
             mode  => 755,
             source => "${platform_fileroot}/usr/local/bin/check-for-package.sh";
-        "/Library/LaunchAgents/buildbot.start.talos.slave.plist":
-            owner => "root",
-            group => "wheel",
-            mode => 644,
-            source => "${platform_fileroot}/Library/LaunchAgents/buildbot.start.talos.slave.plist";
         "/usr/local/bin/run-puppet.sh":
             owner => "root",
             group => "wheel",
@@ -144,4 +139,6 @@ class talos_osx {
             }
         }
     }
+
+    include buildslave::startup
 }
