@@ -39,6 +39,10 @@ class talos_fedora {
             group => "cltbld",
             mode => 644,
             source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
+
+        "/etc/sudoers":
+            mode => 440,
+            source => "${platform_fileroot}/etc/sudoers";
     }
 
     # On Talos machines, puppet is only run at boot.  Network Manager is
