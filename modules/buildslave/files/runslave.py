@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
     if not options.basedir:
         if slave_matches('slave'):
-            if slave_matches('linux', 'darwin'):
+            if slave_matches('linux', 'darwin', 'mac'):
                 options.basedir = '/builds/slave'
             elif slave_matches('win', 'w32'):
                 options.basedir = r'e:\builds\moz2_slave'
