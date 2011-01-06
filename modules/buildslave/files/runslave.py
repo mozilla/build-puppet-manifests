@@ -115,7 +115,7 @@ if __name__ == '__main__':
         return False
 
     if not options.basedir:
-        if slave_matches('slave'):
+        if slave_matches('slave', 'xserve'):
             if slave_matches('linux', 'darwin', 'mac', 'xserve'):
                 options.basedir = '/builds/slave'
             elif slave_matches('win', 'w32'):
