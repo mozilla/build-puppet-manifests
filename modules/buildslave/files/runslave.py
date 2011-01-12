@@ -57,7 +57,9 @@ class BuildbotTac:
 
     def run(self):
         assert self.exists()
-        sys.exit(subprocess.call([self.options.buildslave_cmd, 'start', self.options.basedir]))
+        sys.exit(subprocess.call(
+            [self.options.twistd_cmd, '--no_save', '--python', self.filename],
+            cwd=options.basedir))
 
 default_allocator_url = "http://cruncher.build.mozilla.org/~dustin/allocator/tac/SLAVE"
 if __name__ == '__main__':
@@ -66,7 +68,7 @@ if __name__ == '__main__':
 
     parser = OptionParser(usage=textwrap.dedent("""\
         usage:
-            %%prog [--verbose] [--allocator-url URL] [--buildslave-cmd CMD]
+            %%prog [--verbose] [--allocator-url URL] [--twistd-cmd CMD]
                         [--basedir BASEDIR] [--slavename SLAVE]
                         [--no-start]
 
@@ -91,11 +93,11 @@ if __name__ == '__main__':
         (as a safety check that it's valid).
 
         Once the .tac file is set up, this invokes 'CMD start BASEDIR'.  CMD is
-        from --buildslave-cmd, and is calculated based on the slave name if not
-        specified.  The buildslave is not started if --no-start is provided.
+        from --twistd-cmd, and is calculated based on the slave name if not
+        specified.  The twistd is not started if --no-start is provided.
     """ % dict(default_allocator_url=default_allocator_url)))
     parser.add_option("-a", "--allocator-url", action="store", dest="allocator_url")
-    parser.add_option("-c", "--buildslave-cmd", action="store", dest="buildslave_cmd")
+    parser.add_option("-c", "--twistd-cmd", action="store", dest="twistd_cmd")
     parser.add_option("-d", "--basedir", action="store", dest="basedir")
     parser.add_option("-n", "--slavename", action="store", dest="slavename")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
@@ -141,9 +143,9 @@ if __name__ == '__main__':
             print "waiting until '%s' goes away" % do_not_start
         time.sleep(10)
 
-    if not options.buildslave_cmd:
+    if not options.twistd_cmd:
         # let's just put it here *everywhere*, eh?
-        options.buildslave_cmd = '/tools/buildbot/bin/buildbot'
+        options.twistd_cmd = '/tools/buildbot/bin/twistd'
 
     # set up the .tac file
     tac = BuildbotTac(options)
