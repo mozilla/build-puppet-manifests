@@ -78,6 +78,13 @@ class talos_osx {
             group => "staff",
             mode => 644,
             source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
+
+        # this directory is referenced by the apache configs, and must exist
+        "${home}/cltbld/talos-slave/talos-data":
+            ensure => directory,
+            owner => "cltbld",
+            group => "staff",
+            mode => 775;
     }
 
     # get .bash_profile in place for Snow Leopard

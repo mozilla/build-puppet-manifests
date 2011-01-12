@@ -43,6 +43,13 @@ class talos_fedora {
         "/etc/sudoers":
             mode => 440,
             source => "${platform_fileroot}/etc/sudoers";
+
+        # this directory is referenced by the apache configs, and must exist
+        "${home}/cltbld/talos-slave/talos-data":
+            ensure => directory,
+            owner => "cltbld",
+            group => "cltbld",
+            mode => 775;
     }
 
     # On Talos machines, puppet is only run at boot.  Network Manager is
