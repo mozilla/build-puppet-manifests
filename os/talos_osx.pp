@@ -148,4 +148,5 @@ class talos_osx {
     }
 
     include buildslave::startup
+    include buildslave::cleanup
 }

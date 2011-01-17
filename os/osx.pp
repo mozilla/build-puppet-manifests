@@ -314,4 +314,5 @@ class osx {
     }
 
     include buildslave::startup
+    include buildslave::cleanup
 }
