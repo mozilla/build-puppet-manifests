@@ -1,9 +1,9 @@
 class buildslave::cleanup {
  
-    tidy { "/tmp/":
-        age => "1d",
-        recurse => true
-    }
+    #tidy { "/tmp/":
+    #    age => "1d",
+    #    recurse => true
+    #}
 
     case $operatingsystem {
         CentOS,Fedora: {
