@@ -131,5 +131,8 @@ class stagelayout {
             ensure => "/home/ffxbld/checkouts/tools/stage/post_upload.py",
             require => Exec["tools"],
             force => true;
+        "/usr/local/bin/clamdscan":
+            contents => "#!/bin/bash\nexit 0",
+            mode => 755;
     }
 }
