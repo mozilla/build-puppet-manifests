@@ -132,7 +132,7 @@ class stagelayout {
             require => Exec["tools"],
             force => true;
         "/usr/local/bin/clamdscan":
-            contents => "#!/bin/bash\nexit 0",
+            content => "#!/bin/bash\nexit 0",
             mode => 755;
     }
 }
