@@ -9,7 +9,7 @@
 sleep 60
 
 tmp=`mktemp`
-/usr/sbin/puppetd --onetime --no-daemonize --server $1 --logdest console --logdest syslog --color false --report &> $tmp
+/usr/sbin/puppetd --onetime --no-daemonize --server $1 --logdest console --logdest syslog --color false &> $tmp
 RETVAL=$?
 if grep -q "^err:" $tmp
 then
@@ -18,7 +18,7 @@ fi
 while [[ $RETVAL != 0 ]]
 do
     sleep 60
-    /usr/sbin/puppetd --onetime --no-daemonize --server $1 --logdest console --logdest syslog --color false --report &> $tmp
+    /usr/sbin/puppetd --onetime --no-daemonize --server $1 --logdest console --logdest syslog --color false &> $tmp
     RETVAL=$?
     if grep -q "^err:" $tmp
     then
