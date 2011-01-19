@@ -1,7 +1,0 @@
-MAILTO=release@mozilla.com
-
-@hourly	cltbld	(source /home/cltbld/.bash_profile && <%= full_master_dir%>/bin/python tools/buildfarm/maintenance/watch_twistd_log.py -t .<%= master_dir%>-last-time.txt -n <%= master_dir%> -f cltbld@`hostname --fqdn` -e release@mozilla.com <%= full_master_dir%>/master)
-
-@hourly cltbld	(source /home/cltbld/.bash_profile && hg -R tools pull -u && nice -n 19 <%= full_master_dir%>/bin/python tools/buildfarm/maintenance/master_cleanup.py -t4 <%= full_master_dir%>/master ) >> cleanup.log 2>&1
-
-*/10 * * * *	cltbld lockfile -60 -r 3 $HOME/lockfile.bbdb 2>/dev/null && (source /home/cltbld/.bash_profile && cd <%= full_master_dir%>/master; time nice <%= full_master_dir%>/bin/python <%= full_master_dir%>/buildbotcustom/bin/update_from_files.py -c /home/cltbld/.<%= master_dir%>_update_from_files.conf . ; rm -f $HOME/lockfile.bbdb ) >> update.log 2>&1
