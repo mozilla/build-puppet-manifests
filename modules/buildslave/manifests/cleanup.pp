@@ -1,8 +1,9 @@
 class buildslave::cleanup {
  
-    exec { "rm -rf /tmp/*":
-        path => "/usr/bin:/usr/sbin:/bin"
-    }
+    #tidy { "/tmp/":
+    #    age => "1d",
+    #    recurse => true
+    #}
 
     case $operatingsystem {
         CentOS,Fedora: {
