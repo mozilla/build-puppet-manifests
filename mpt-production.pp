@@ -704,6 +704,14 @@ node "bm-xserve22.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
 
+node "bm-xserve23.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave
+}
+
+node "bm-xserve24.build.mozilla.org" inherits "darwin9-i386-build" {
+    include buildslave
+}
+
 node "try-mac-slave01.build.mozilla.org" inherits "darwin9-i386-build" {
     include buildslave
 }
