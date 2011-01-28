@@ -20,6 +20,19 @@ class moz-rpms {
             source => "${platform_httproot}/RPMs/ccache-3.0.1-99.11.$rpm_arch.rpm",
             ensure => latest;
     }
+    install_rpm {
+        "valgrind":
+            version => "3.6.0-1",
+            creates => "/usr/bin/valgrind",
+            # Required because some machines have valgrind-3.2.1 installed
+            # twice somehow!  This can go away the next time we do a valgrind
+            # upgrade
+            require => Exec["check-valgrind-rpms"];
+        "valgrind-devel":
+            version => "3.6.0-1",
+            creates => "/usr/include/valgrind/valgrind.h",
+            require => Install_rpm["valgrind"];
+    }
     exec {
         "/usr/bin/ccache -M 2G":
             environment => ["CCACHE_DIR=/builds/ccache", "CCACHE_COMPRESS=1"],
@@ -28,6 +41,9 @@ class moz-rpms {
             group => "cltbld",
             subscribe => File["/builds/ccache"],
             require => Package["ccache"];
+        check-valgrind-rpms:
+            command => "/bin/rpm -e --allmatches valgrind",
+            onlyif => "/bin/rpm -qv valgrind | /bin/grep -q 3.2.1";
     }
     file {
         "/builds/ccache":
