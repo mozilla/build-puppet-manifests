@@ -39,7 +39,7 @@ define install_dmg($creates) {
                     require => Exec["check-for-${name}"];
             }
         }
-        "10.2.0": {
+        "10.2.0", "10.6.0": {
             package {
                 "${name}":
                     provider => pkgdmg,

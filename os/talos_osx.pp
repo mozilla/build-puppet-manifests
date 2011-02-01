@@ -9,7 +9,7 @@ class talos_osx {
             $mercurialVersion = "1.2.1"
             $buildbotversion = "0.8.0"
         }
-        "10.2.0": {
+        "10.2.0", "10.6.0": {
             $mercurialVersion = "1.3.1"
             $buildbotversion = "0.8.0"
         }
@@ -90,7 +90,7 @@ class talos_osx {
     # get .bash_profile in place for Snow Leopard
     case $operatingsystemrelease {
        # Snow Leopard
-       "10.2.0": {
+       "10.2.0", "10.6.0": {
            file {
                "/Users/cltbld/bin/python":
                    ensure => "/usr/bin/python2.5",
@@ -136,7 +136,7 @@ class talos_osx {
             }
         }
 
-        "10.2.0": {
+        "10.2.0", "10.6.0": {
             # the service has a different name in darwin10; the dialog does not appear, though,
             # and the plist is different from 9.2.0, so no need for it here
             service {
