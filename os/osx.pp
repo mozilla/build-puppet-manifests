@@ -229,6 +229,11 @@ class osx {
             group => "staff",
             mode => 644,
             source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
+        "${home}/cltbld/.hgrc":
+            owner => "cltbld",
+            group => "staff",
+            mode => 644,
+            source => "${platform_fileroot}/Users/cltbld/.hgrc";
     }
 
     # This section contains items that need tweaking post-refimage install
