@@ -55,7 +55,8 @@ class centos5 {
             mode => 1777;
 
         "/var/tmp":
-            ensure => "/builds/tmp";
+            ensure => "/builds/tmp",
+            force => true;
 
         "/builds/hg-shared":
             ensure => directory,
