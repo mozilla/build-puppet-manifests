@@ -45,6 +45,18 @@ class centos5 {
             ensure => directory,
             mode => 1777;
 
+        # The "rpm" tool uses /var/tmp as a location to download remote RPMs to
+        # Because we couldn't find a way to change this through config files,
+        # environments variables, or otherwise; and because we download
+        # very large RPMs sometimes, we need this directory on a partition
+        # with a good amount of free space, hence using /builds/tmp.
+        "/builds/tmp":
+            ensure => directory,
+            mode => 1777;
+
+        "/var/tmp":
+            ensure => "/builds/tmp";
+
         "/builds/hg-shared":
             ensure => directory,
             mode    => 755,

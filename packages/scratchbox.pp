@@ -16,7 +16,7 @@ class scratchbox {
             # installed, and removing it completely if it isn't.
             exec {
                 check-scratchbox-install:
-                    command => "/bin/rpm -e scratchbox",
+                    command => "/bin/rpm -e scratchbox scratchbox-host-usr",
                     onlyif  => "/bin/rpm -ql scratchbox && [[ ! -e ${sb_prefix}/deployed-${sb_datestamp} ]]";
             }
             package {
