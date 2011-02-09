@@ -7,8 +7,6 @@
 # - It lives in the 'buildslave' puppet module
 
 import sys
-import time
-import re
 import os
 import traceback
 import subprocess
@@ -81,9 +79,6 @@ if __name__ == '__main__':
         The basedir, if not specified, is calculated from the slave name; see the
         code for details.
 
-        So long as a file named DO_NOT_START exists in the basedir, the script will
-        block and not start the slave.
-
         The allocator URL defaults to
           %(default_allocator_url)s
         The URL will have the string 'SLAVE' replaced with the unqualified
@@ -135,13 +130,6 @@ if __name__ == '__main__':
 
     if not os.path.exists(options.basedir):
         parser.error("basedir '%s' does not exist" % options.basedir)
-
-    # check for DO_NOT_START
-    do_not_start = os.path.join(options.basedir, "DO_NOT_START")
-    while os.path.exists(do_not_start):
-        if options.verbose:
-            print "waiting until '%s' goes away" % do_not_start
-        time.sleep(10)
 
     if not options.twistd_cmd:
         # let's just put it here *everywhere*, eh?
