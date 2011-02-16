@@ -242,9 +242,6 @@ class devtools {
                         "zope-interface-3.4.1.dmg":
                             creates     => "/tools/zope-interface-3.4.1/lib/python2.5/site-packages/zope/interface/verify.py",
                             subscribe   => File["/tools/zope-interface"];
-                        "mercurial-1.2.1.dmg":
-                            creates     => "/tools/mercurial-1.2.1/tests/tinyproxy.py",
-                            subscribe   => File["/tools/mercurial"];
                         "simplejson-2.1.1-py25.dmg":
                             creates     => "/tools/python/lib/python2.5/site-packages/simplejson/__init__.py";
                     }
@@ -254,8 +251,8 @@ class devtools {
                             force   => true;
                         "/tools/zope-interface":
                             ensure  => "/tools/zope-interface-3.4.1";
-                        "/tools/mercurial":
-                            ensure  => "/tools/dist/mercurial-1.2.1";
+                        "/tools/python/bin/hg":
+                            ensure => absent;
                     }
                 }
                 # 10.6 build machines only
@@ -279,6 +276,12 @@ class devtools {
             }
             # All Mac build machines
             # devtools_home is defined above, so each platform gets a tarball specific to it
+            exec {
+                # Remove macports hg if it's installed
+                remove-macport-hg:
+                    command => "/opt/local/bin/port uninstall mercurial",
+                    onlyif => "/bin/test -f /opt/local/bin/hg";
+            }
             install_dmg {
                 "Twisted-8.0.1.dmg":
                     creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
@@ -289,6 +292,9 @@ class devtools {
                 "build-tools-${buildtools_version}.dmg":
                     creates     => "/tools/build-tools-${buildtools_version}/stage/post_upload.py",
                     subscribe   => File["/tools/build-tools"];
+                "mercurial-1.7.5.dmg":
+                    creates => "/tools/mercurial-1.7.5/bin/hg",
+                    require => Exec["remove-macport-hg"];
             }
         
             file {
@@ -301,6 +307,12 @@ class devtools {
                     ensure  => "/tools/buildbot-$buildbot_version";
                 "/tools/build-tools":
                     ensure => "/tools/build-tools-$buildtools_version";
+                "/tools/mercurial":
+                    require => Install_dmg["mercurial-1.7.5.dmg"],
+                    ensure  => "/tools/mercurial-1.7.5";
+                "/usr/local/bin/hg":
+                    ensure => "/tools/mercurial/bin/hg",
+                    require => File["/tools/mercurial"];
             }
         }
     }
