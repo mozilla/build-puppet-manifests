@@ -13,6 +13,7 @@ import "stage/*"
 
 # module imports
 import "buildslave"
+import "gui"
 
 ### Node definitions
 

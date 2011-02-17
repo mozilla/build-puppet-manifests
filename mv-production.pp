@@ -12,6 +12,7 @@ import "packages/*"
 
 # module imports
 import "buildslave"
+import "gui"
 
 ### Node definitions
 
