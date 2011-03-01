@@ -17,6 +17,16 @@ class talos_fedora {
             ensure => latest;
     }
 
+    # fed64 talos boxes were built without python-devel installed, so install it now
+    case $hardwaremodel {
+        "x86_64": {
+            package {
+                "python-devel":
+                    source => "${platform_httproot}/RPMs/python-devel-2.6.2-2.fc12.${hardwaremodel}.rpm",
+                    ensure => latest;
+            }
+        }
+    }
     
     file {
         "/home/cltbld/.fonts.conf":
