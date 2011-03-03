@@ -42,14 +42,6 @@ node "mv-moz2-linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" 
     include staging-buildslave, ix
 }
 
-node "linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, ix
-}
-
-node "linux-ix-slave02.build.mozilla.org" inherits "centos5-i686-build" {
-    include staging-buildslave, ix
-}
-
 node "linux-ix-slave03.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, ix
 }

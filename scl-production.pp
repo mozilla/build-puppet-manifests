@@ -20,6 +20,14 @@ node "linux64-ix-ref.build.mozilla.org" inherits "centos5-x86_64-build" {
     include buildslave, ix
 }
 
+node "linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
+node "linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, ix
+}
+
 node "linux-ix-slave03.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, ix
 }
