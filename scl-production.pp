@@ -24,7 +24,7 @@ node "linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, ix
 }
 
-node "linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
+node "linux-ix-slave02.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, ix
 }
 
