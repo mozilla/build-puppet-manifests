@@ -3,9 +3,6 @@
 #  but only for build systems, not test.
 
 class devtools {
-    $buildbot_version = "0.8.0"
-    $old_buildbot_version = "0.8.0pre"
-
     $buildtools_version = "ac05929dc0b1"
     $old_buildtools_version = "0b149c0ad18d"
 
@@ -40,11 +37,6 @@ class devtools {
         
                 "x86_64": {
                     install_rpm {
-                        "buildbot":
-                            creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                            version     => "${buildbot_version}-0moz2",
-                            subscribe   => File["/tools/buildbot"],
-                            require     => [Install_rpm["python26"], Install_rpm["zope.interface"], Install_rpm["twisted-core"], Install_rpm["twisted"]];
                         "gcc433":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
                             version     => "4.3.3-0moz1";
@@ -99,11 +91,6 @@ class devtools {
                 default: {
 
                     install_rpm {
-                        "buildbot":
-                            creates     => "/tools/buildbot-$buildbot_version/bin/buildbot",
-                            version     => "${buildbot_version}-0moz2",
-                            subscribe   => File["/tools/buildbot"],
-                            require     => [Install_rpm["python26"], Install_rpm["zope.interface"], Install_rpm["twisted-core"], Install_rpm["twisted"]];
                         "gcc411":
                             creates     => "/tools/gcc-4.1.1/bin/gcc",
                             version     => "4.1.1-0moz1",
@@ -185,11 +172,6 @@ class devtools {
                 "/tools/build-tools-$old_buildtools_version":
                     ensure => absent,
                     force => true;
-                # Ensure previous version of buildbot is gone
-                "/tools/buildbot-$old_buildbot_version":
-                    ensure => absent,
-                    backup => false,
-                    force => true;
                 "/tools/gcc-4.2.3":
                     ensure => absent,
                     backup => false,
@@ -212,11 +194,6 @@ class devtools {
                     ensure  => "/tools/zope-interface-3.3.0";
                 "/tools/jdk":
                     ensure  => "/tools/jdk-$jdk_version";
-                "/tools/buildbot":
-                    # needs to be forced because the first time we do this
-                    # Buildbot will be a directory, not a symlink
-                    force   => true,
-                    ensure  => "/tools/buildbot-$buildbot_version";
                 "/tools/build-tools":
                     ensure => "/tools/build-tools-$buildtools_version";
                 "/usr/local/bin/jscoverage":
@@ -286,9 +263,6 @@ class devtools {
                 "Twisted-8.0.1.dmg":
                     creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
                     subscribe   => File["/tools/twisted"];
-                "buildbot-${buildbot_version}.dmg":
-                    creates     => "/tools/buildbot-${buildbot_version}/lib",
-                    subscribe   => File["/tools/buildbot"];
                 "build-tools-${buildtools_version}.dmg":
                     creates     => "/tools/build-tools-${buildtools_version}/stage/post_upload.py",
                     subscribe   => File["/tools/build-tools"];
@@ -300,11 +274,6 @@ class devtools {
             file {
                 "/tools/twisted":
                     ensure  => "/tools/Twisted-8.0.1";
-                "/tools/buildbot":
-                    # needs to be forced because the first time we do this
-                    # Buildbot will be a directory, not a symlink
-                    force   => true,
-                    ensure  => "/tools/buildbot-$buildbot_version";
                 "/tools/build-tools":
                     ensure => "/tools/build-tools-$buildtools_version";
                 "/tools/mercurial":

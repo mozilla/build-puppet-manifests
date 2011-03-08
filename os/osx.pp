@@ -318,6 +318,7 @@ class osx {
         }
     }
 
+    include buildslave::install
     include buildslave::startup
     include buildslave::cleanup
 }

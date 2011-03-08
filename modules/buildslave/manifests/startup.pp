@@ -1,3 +1,14 @@
+# Ensure that a buildslave starts up on this machine
+#
+# USAGE:
+#
+#  include buildslave::startup
+#
+# This class takes care of installing runslave.py and any other prerequisites,
+# and hooking into the startup process as appropriate to the system.  The
+# interface between this class and the puppet startup is somewhat ill-defined,
+# and should be cleaned up.
+
 class buildslave::startup {
     # currently, CentOS means build, so buildbot's started as root, while
     # Fedora means test, so buildbot's started via console.  This may get

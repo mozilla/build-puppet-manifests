@@ -12,9 +12,6 @@ class talos_fedora {
         "gtk2":
             source => "${platform_httproot}/RPMs/gtk2-2.18.9-3.fc12.${hardwaremodel}.rpm",
             ensure => latest;
-        "buildbot":
-            source => "${platform_httproot}/RPMs/buildbot-0.8.0-0moz1.${hardwaremodel}.rpm",
-            ensure => latest;
     }
 
     # fed64 talos boxes were built without python-devel installed, so install it now
@@ -37,8 +34,6 @@ class talos_fedora {
             owner => cltbld,
             group => cltbld,
             source => "${platform_fileroot}/home/cltbld/.bash_profile";
-        "/home/cltbld/bin/buildbot":
-            ensure => absent;
         "${home}/cltbld/.ssh":
             mode => 700,
             owner => "cltbld",
@@ -81,6 +76,7 @@ class talos_fedora {
         ensure => 'stopped'
     }
 
+    include buildslave::install
     include buildslave::startup
     include buildslave::cleanup
     include gui::resolution

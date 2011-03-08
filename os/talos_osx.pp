@@ -1,17 +1,13 @@
 # talos_osx.pp
 
 class talos_osx {
-    $pythonpath = "/Library/Python/2.5/site-packages"
-
     ## Initialize the parameters for each platform
     case $operatingsystemrelease {
         "9.8.0": {
             $mercurialVersion = "1.2.1"
-            $buildbotversion = "0.8.0"
         }
         "10.2.0", "10.6.0": {
             $mercurialVersion = "1.3.1"
-            $buildbotversion = "0.8.0"
         }
     }
 
@@ -19,8 +15,6 @@ class talos_osx {
         "mercurial-${mercurialVersion}.dmg":
             creates => "/Library/Python/2.5/site-packages/mercurial/verify.py",
             alias   => "mercurial";
-        "buildbot-${buildbotversion}.dmg":
-            creates => "/tools/buildbot-0.8.0/bin/buildbot";
     }
 
     file {
@@ -147,6 +141,7 @@ class talos_osx {
         }
     }
 
+    include buildslave::install
     include buildslave::startup
     include buildslave::cleanup
 }

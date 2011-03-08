@@ -1,3 +1,9 @@
+# Clean up various messes typically found on a buildslave.
+#
+# USAGE:
+#
+#  include buildslave::cleanup
+
 class buildslave::cleanup {
  
     exec { "find /tmp/* -mmin +15 -print | xargs -n1 rm -rf":
