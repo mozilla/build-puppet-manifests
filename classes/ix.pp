@@ -5,7 +5,7 @@ class ix {
                 "builds":
                     name   => "/builds",
                     atboot => true,
-                    device => "/dev/mapper/vg_linux64-lv_builds",
+                    device => "/dev/sda6",
                     ensure => "mounted",
                     fstype => "ext3",
                     options => "noatime",
