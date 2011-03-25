@@ -28,6 +28,17 @@ class network::iface_config {
             }
         }
 
+        CentOS: {
+
+            # CentOS systems aren't quite so energetic about their network configuration,
+            # so all we have to do is set the eth0 configuration script.
+
+            file {
+                "/etc/sysconfig/network-scripts/ifcfg-eth0":
+                    source => "puppet:///network/centos-ifcfg-eth0";
+            }
+        }
+
         # other operating systems seem to work OK based on the refimage; add
         # more here when that proves untrue
 

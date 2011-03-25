@@ -21,12 +21,6 @@ class centos5 {
         "/etc/mail/sendmail.cf":
             source => "${platform_fileroot}/etc/mail/sendmail.cf";
 
-        "/etc/sysconfig/network-scripts/ifcfg-eth0":
-            content => template("/etc/puppet/templates/ifcfg-eth0.erb");
-            ### We may want to put a notify here to restart networking.
-            ### would this pull the rug out from under puppet?
-
-
         # this is a hack, puppet's groupadd provider can not
         # add a user (like cltbld) to a group (like sbox)
         # so we have to do it by hand
@@ -327,7 +321,8 @@ class centos5 {
             ensure => 'stopped'
         }
 
-   include buildslave::install
-   include buildslave::startup
-   include buildslave::cleanup
+    include buildslave::install
+    include buildslave::startup
+    include buildslave::cleanup
+    include network
 }
