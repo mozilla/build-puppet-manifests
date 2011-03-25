@@ -248,10 +248,6 @@ node "moz2-darwin10-slave61.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave61.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
 node "talos-r3-fed-ref.build.mozilla.org" inherits "fedora12-i686-test" {
     include talosslave
 }
