@@ -1096,14 +1096,6 @@ node "moz2-darwin10-slave52.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave53.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave54.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
 node "linux-ix-ref.build.mozilla.org" inherits "mv-build-node" {
 }
 
