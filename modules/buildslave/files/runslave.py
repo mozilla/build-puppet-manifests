@@ -162,7 +162,7 @@ class BuildbotTac:
             [self.options.twistd_cmd, '--no_save', '--python', self.get_filename()],
             cwd=self.get_basedir()))
 
-default_allocator_url = "http://cruncher.build.mozilla.org/~dustin/allocator/tac/SLAVE"
+default_allocator_url = "http://slavealloc.build.mozilla.org/gettac/SLAVE"
 if __name__ == '__main__':
     from optparse import OptionParser
     import socket
