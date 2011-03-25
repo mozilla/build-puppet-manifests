@@ -78,24 +78,24 @@ define python::virtualenv($python, $ensure="present", $packages) {
     $pip_req = Python::Package_dir_file["pip-0.8.2.tar.gz"]
     $virtualenv_py_req = Python::Package_dir_file["virtualenv.py"]
 
-    $virtualenv_reqs = [
-        $virtualenv_dir_req,
-        $pip_req,
-        $virtualenv_py_req,
-    ]
-
+    # Set up the prerequisites for building a virtualenv, which differ
+    # slightly per platform
     case $operatingsystem {
         Fedora: {
-            case $hardwareversion {
-                "x86_64": {
-                    $virtualenv_reqs = [
-                        Package['python-devel'],
-                        $virtualenv_dir_req,
-                        $pip_req,
-                        $virtualenv_py_req,
-                    ]
-                }
-            }
+            $virtualenv_reqs = [
+                Package['python-devel'],
+                $virtualenv_dir_req,
+                $pip_req,
+                $virtualenv_py_req,
+            ]
+        }
+
+        default: {
+            $virtualenv_reqs = [
+                $virtualenv_dir_req,
+                $pip_req,
+                $virtualenv_py_req,
+            ]
         }
     }
 
