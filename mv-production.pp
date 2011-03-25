@@ -244,7 +244,7 @@ node "moz2-darwin10-slave60.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave60.build.mozilla.org" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave61.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
