@@ -961,6 +961,33 @@ node "try-mac64-slave26.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
+node "try-mac64-slave27.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave29.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave30.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave31.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave32.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave33.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave34.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave35.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "try-mac64-slave36.build.mozilla.org" inherits "mv-build-node" {
+}
+
 node "moz2-darwin10-slave05.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
@@ -1066,14 +1093,6 @@ node "moz2-darwin10-slave51.build.mozilla.org" inherits "darwin10-i386-build" {
 }
 
 node "moz2-darwin10-slave52.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave53.build.mozilla.org" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave54.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
@@ -1257,63 +1276,6 @@ node "linux-ix-slave41.build.mozilla.org" inherits "scl-build-node" {
 node "linux-ix-slave42.build.mozilla.org" inherits "scl-build-node" {
 }
 
-node "moz2-darwin9-slave29.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave30.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave31.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave32.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave33.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave34.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave35.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave36.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "moz2-darwin9-slave37.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave20.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave21.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave22.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave23.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave24.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave25.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave26.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave27.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave28.build.mozilla.org" inherits "scl-build-node" {
-}
-
-node "try-mac-slave29.build.mozilla.org" inherits "scl-build-node" {
-}
-
 node "moz2-darwin10-ref.build.mozilla.org" inherits "scl-build-node" {
 }
 
@@ -1348,6 +1310,33 @@ node "moz2-darwin10-slave49.build.mozilla.org" inherits "mv-build-node" {
 }
 
 node "moz2-darwin10-slave50.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave53.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave54.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave55.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave56.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave57.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave58.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave59.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave60.build.mozilla.org" inherits "mv-build-node" {
+}
+
+node "moz2-darwin10-slave61.build.mozilla.org" inherits "mv-build-node" {
 }
 
 node "talos-r3-fed-ref.build.mozilla.org" inherits "scl-test-node" {

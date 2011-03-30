@@ -1,0 +1,8 @@
+DEVICE=eth0
+BOOTPROTO=dhcp
+DHCPCLASS=
+ONBOOT=yes
+NAME="Puppet-configured eth0"
+
+# Never give up, never surrender!
+PERSISTENT_DHCLIENT=yes

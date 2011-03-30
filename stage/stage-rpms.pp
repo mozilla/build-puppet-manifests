@@ -9,6 +9,8 @@ class stage-rpms {
         "mercurial":
             source => "${platform_httproot}/RPMs/mercurial-py26-1.5.1-0moz1.i686.rpm",
             require     => Package["python25"];
+        "p7zip":
+            source => "${platform_httproot}/RPMs/p7zip-9.13-1.el5.rf.i386.rpm";
     }
     file {
         "/tools":

@@ -131,8 +131,12 @@ class stagelayout {
             ensure => "/home/ffxbld/checkouts/tools/stage/post_upload.py",
             require => Exec["tools"],
             force => true;
+        "/usr/local/bin/extract_and_run_command.py":
+            ensure => "/home/ffxbld/checkouts/tools/stage/extract_and_run_command.py",
+            require => Exec["tools"],
+            force => true;
         "/usr/local/bin/clamdscan":
-            content => "#!/bin/bash\nexit 0",
+            content => "#!/bin/bash\necho $@",
             mode => 755;
     }
 }

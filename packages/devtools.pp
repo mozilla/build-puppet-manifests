@@ -42,7 +42,7 @@ class devtools {
                             version     => "4.3.3-0moz1";
                         "gcc45":
                             creates     => "/tools/gcc-4.5/bin/gcc",
-                            version     => "4.5.1-0moz2";
+                            version     => "4.5.2-0moz1";
                         "python25":
                             creates     => "/tools/python-2.5.1/bin/python",
                             version     => "2.5.1-0moz1",
@@ -100,7 +100,7 @@ class devtools {
                             version     => "4.3.3-0moz1";
                         "gcc45":
                             creates     => "/tools/gcc-4.5/bin/gcc",
-                            version     => "4.5.1-0moz2";
+                            version     => "4.5.2-0moz1";
                         "python25":
                             creates     => "/tools/python-2.5.1/bin/python",
                             version     => "2.5.1-0moz1",
@@ -173,10 +173,6 @@ class devtools {
                     ensure => absent,
                     force => true;
                 "/tools/gcc-4.2.3":
-                    ensure => absent,
-                    backup => false,
-                    force => true;
-                "/tools/gcc-4.5.0":
                     ensure => absent,
                     backup => false,
                     force => true;
