@@ -47,40 +47,27 @@
 #  - add a new case below setting any relevant variables for the install.
 
 class buildslave::install::settings {
-    $production_version = "0.8.0"
+    $production_version = "0.8.4-pre-moz1"
 }
 
 # this class simply invokes the resource type with the production version
 class buildslave::install {
     include buildslave::install::settings
 
-    # temporarily distinguish staging from production
-    case $level {
-        production: {
-            buildslave::install::version {
-                "$buildslave::install::settings::production_version":
-                    active => true;
-            }
-        }
+    buildslave::install::version {
+        # remove old versions
+        "0.8.0.old":
+            ensure => absent;
 
-        staging: {
-            buildslave::install::version {
-                # remove old versions
-                "0.8.0.old":
-                    ensure => absent;
+        "0.8.0pre":
+            ensure => absent;
 
-                "0.8.0pre":
-                    ensure => absent;
+        # inactive previous version
+        "0.8.0":
+            active => false;
 
-                # inactive previous version
-                "$buildslave::install::settings::production_version":
-                    active => false;
-
-                # active current version
-                "0.8.4-pre-moz1":
-                    active => true;
-            }
-        }
+        "$buildslave::install::settings::production_version":
+            active => true;
     }
 }
 
