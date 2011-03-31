@@ -87,7 +87,14 @@ class buildslave::startup {
             case $slaveType {
                 "test": {
                     $buildslave_path = "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"
-                    $buildslave_pythonpath = "/Library/Python/2.5/site-packages"
+                    case $operatingsystemrelease {
+                        "9.8.0":  {
+                            $buildslave_pythonpath = "NONE"
+                        }
+                        default: {
+                            $buildslave_pythonpath = "/Library/Python/2.5/site-packages"
+                        }
+                    }
                 }
                 "build": {
                     $buildslave_path = "/tools/buildbot/bin:/tools/python/bin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"
