@@ -2,7 +2,7 @@
 
 class cltbld {
 
-    File{ mode => 644, owner => cltbld, group => cltbld }
+    File{ mode => 644, owner => cltbld, group => cltbld, backup => false }
 
     #################################################
     # Manage the cltbld user:group

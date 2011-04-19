@@ -2,7 +2,7 @@
 
 class centos5 {
     Package{ provider => rpm }
-    File{ owner => root, group => root, mode => 644 }
+    File{ owner => root, group => root, mode => 644, backup => false }
 
     #################################################
     # Custom configuration files
