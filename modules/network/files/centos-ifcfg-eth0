@@ -1,3 +1,6 @@
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
+
 DEVICE=eth0
 BOOTPROTO=dhcp
 DHCPCLASS=
@@ -6,3 +9,6 @@ NAME="Puppet-configured eth0"
 
 # Never give up, never surrender!
 PERSISTENT_DHCLIENT=yes
+
+# Ignore the NTP servers DHCP give us. Bug 646563
+PEERNTP=no
