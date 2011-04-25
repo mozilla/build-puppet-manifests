@@ -34,7 +34,7 @@ class stagelayout {
             owner => "cltbld",
             group => "firefox",
             mode => 775;
-        "/home/ftp/pub/firefox/tryserver-builds":
+        "/home/ftp/pub/firefox/try-builds":
             ensure => directory,
             owner => "trybld",
             group => "firefox",
