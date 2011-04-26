@@ -139,13 +139,18 @@ class BuildbotTac:
                 print >>sys.stderr, "WARNING: downloaded page did not contain validity-check string"
                 return False
 
-            # tuck it away in buildbot.tac
+            # tuck it away in buildbot.tac, safely
             filename = self.get_filename()
             if self.options.verbose:
                 print "writing", filename
             tmpfile = '%s.tmp' % filename
             f = open(tmpfile, "w")
             f.write(page)
+            f.close()
+            # windows can't do a rename over an existing file atomically
+            if sys.platform == 'win32':
+                if os.path.exists(filename):
+                    os.unlink(filename)
             os.rename(tmpfile, filename)
             return True
         except:
@@ -159,8 +164,26 @@ class BuildbotTac:
         if not os.path.exists(self.get_filename()):
             raise NoBuildbotTacError("no buildbot.tac found; cannot start")
         sys.exit(subprocess.call(
-            [self.options.twistd_cmd, '--no_save', '--python', self.get_filename()],
+            self.options.twistd_cmd + 
+                    ['--no_save', '--python', self.get_filename()],
             cwd=self.get_basedir()))
+
+def guess_twistd_cmd():
+    if sys.platform == 'win32':
+        for path in [
+                r'C:\mozilla-build\python25',
+                r'D:\mozilla-build\python25',
+            ]:
+            python_exe = os.path.join(path, 'python.exe')
+            if os.path.exists(python_exe):
+                return [
+                    python_exe,
+                    os.path.join(path, r'scripts\twistd.py')
+                ]
+            raise RuntimeError("Can't find twistd.bat")
+    else:
+        # All POSIX slaves are consistent about the location.  Woo!
+        return [ '/tools/buildbot/bin/twistd' ]
 
 default_allocator_url = "http://slavealloc.build.mozilla.org/gettac/SLAVE"
 if __name__ == '__main__':
@@ -191,9 +214,11 @@ if __name__ == '__main__':
           AUTOMATICALLY GENERATED - DO NOT MODIFY
         (as a safety check that it's valid).
 
-        Once the .tac file is set up, this invokes 'CMD start BASEDIR'.  CMD is
-        from --twistd-cmd, and is calculated based on the slave name if not
-        specified.  The twistd is not started if --no-start is provided.
+        Once the .tac file is set up, this invokes the twisted given in
+        --twistd-cmd; this is calculated based on the slave name if not
+        specified.  The twistd daemon is not started if --no-start is
+        provided.
+
     """ % dict(default_allocator_url=default_allocator_url)))
     parser.add_option("-a", "--allocator-url", action="store", dest="allocator_url")
     parser.add_option("-c", "--twistd-cmd", action="store", dest="twistd_cmd")
@@ -209,9 +234,11 @@ if __name__ == '__main__':
     if not options.slavename:
         options.slavename = socket.gethostname().split('.')[0]
 
-    if not options.twistd_cmd:
-        # let's just put it here *everywhere*, eh?
-        options.twistd_cmd = '/tools/buildbot/bin/twistd'
+    # convert twistd_cmd into an args tuple
+    if options.twistd_cmd:
+        options.twistd_cmd = [ options.twistd_cmd ]
+    else:
+        options.twistd_cmd = guess_twistd_cmd()
 
     # set up the .tac file
     try:
