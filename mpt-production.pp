@@ -257,6 +257,14 @@ node "moz2-linux64-slave12.build.mozilla.org" inherits "centos5-x86_64-build" {
     include buildslave, vm
 }
 
+node "linux-hgwriter-slave01.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, vm
+}
+
+node "linux-hgwriter-slave02.build.mozilla.org" inherits "centos5-i686-build" {
+    include buildslave, vm
+}
+
 node "try-linux-slave01.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, vm
 }
