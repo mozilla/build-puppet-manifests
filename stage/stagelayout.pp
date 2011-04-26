@@ -29,6 +29,7 @@ class stagelayout {
             mode => 775;
         ["/builds/data/ftp/pub/firefox",
         "/builds/data/ftp/pub/firefox/nightly",
+        "/builds/data/ftp/pub/firefox/releases",
         "/builds/data/ftp/pub/firefox/tinderbox-builds"]:
             ensure => directory,
             owner => "cltbld",
