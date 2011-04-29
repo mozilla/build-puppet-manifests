@@ -1,0 +1,142 @@
+#!/bin/bash
+# puppet        Init script for running the puppet client daemon
+#
+# Author:       Duane Griffin <d.griffin@psenterprise.com>
+#               David Lutterkort <dlutter@redhat.com>
+#
+# chkconfig: - 98 02
+#
+# description: Enables periodic system configuration checks through puppet.
+# processname: puppet
+# config: /etc/sysconfig/puppet
+
+PATH=/usr/bin:/sbin:/bin:/usr/sbin
+export PATH
+
+[ -f /etc/sysconfig/puppet ] && . /etc/sysconfig/puppet
+lockfile=${LOCKFILE-/var/lock/subsys/puppet}
+pidfile=${PIDFILE-/var/run/puppet/puppetd.pid}
+puppetd=${PUPPETD-/usr/sbin/puppetd}
+RETVAL=0
+sleep_time=${SLEEP_INTERVAL:-60}
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+PUPPET_OPTS=""
+[ -n "${PUPPET_SERVER}" ] && PUPPET_OPTS="--server=${PUPPET_SERVER}"
+[ -n "$PUPPET_LOG" ] && PUPPET_OPTS="${PUPPET_OPTS} --logdest=${PUPPET_LOG}"
+[ -n "$PUPPET_PORT" ] && PUPPET_OPTS="${PUPPET_OPTS} --port=${PUPPET_PORT}"
+
+# Figure out if the system just booted. Let's assume
+# boot doesn't take longer than 5 minutes
+## Not used for now
+##[ -n "$INIT_VERSION" ] && PUPPET_OPTS="${PUPPET_OPTS} --fullrun"
+
+start() {
+	echo -n $"Starting puppet: "
+    # stderr redirection fixes a problem where grep would get a
+    # broken pipe. not sure why the redirect fixes it.
+	tmp=`mktemp`
+	$puppetd ${PUPPET_OPTS} ${PUPPET_EXTRA_OPTS} &> $tmp
+	RETVAL=$?
+	if grep -q "^err:" $tmp
+	then
+		RETVAL=1
+	fi
+
+    count=1
+	while [[ $RETVAL != 0 ]]
+	do
+        count=$((count+1))
+        if [ $count -gt 10 ]; then
+            echo "maybe a reboot will help.."
+            echo "(not enabled yet .. keep sleeping)" #/sbin/reboot
+        fi
+
+        /sbin/ifconfig # for debugging purposes
+
+		echo -n "puppetd returned non-zero, sleeping for $sleep_time..."
+		sleep $sleep_time
+		echo "trying again"
+		$puppetd ${PUPPET_OPTS} ${PUPPET_EXTRA_OPTS} &> $tmp
+		RETVAL=$?
+		if grep -q "^err:" $tmp
+		then
+			RETVAL=1
+		fi
+	done
+	echo
+	rm $tmp
+        [ $RETVAL = 0 ] && touch ${lockfile}
+        return $RETVAL
+}
+
+stop() {
+	echo -n $"Stopping puppet: "
+        killproc $puppetd
+	RETVAL=$?
+	echo
+	[ $RETVAL = 0 ] && rm -f ${lockfile} ${pidfile}
+}
+
+reload() {
+	echo -n $"Restarting puppet: "
+        killproc $puppetd -HUP
+	RETVAL=$?
+	echo
+	return $RETVAL
+}
+
+restart() {
+    stop
+    start
+}
+
+rh_status() {
+    status | grep -q -- '-p' 2>/dev/null && statusopts="-p $pidfile"
+    status $statusopts $puppetd
+}
+
+rh_status_q() {
+        rh_status >/dev/null 2>&1
+}
+
+genconfig() {
+  echo -n $"Generate configuration puppet: "
+  $puppetd ${PUPPET_OPTS} ${PUPPET_EXTRA_OPTS} --genconfig
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop) 
+	stop
+	;;
+  restart)
+	restart
+	;;
+  reload|force-reload)
+        reload
+	;;
+  condrestart|try-restart)
+	rh_status_q || exit 0
+	restart
+	;;
+  status)
+        rh_status
+	;;
+  once)
+        shift
+        $puppetd -o ${PUPPET_OPTS} ${PUPPET_EXTRA_OPTS} $@
+        ;;
+  genconfig)
+	genconfig
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|status|restart|reload|force-reload|condrestart|once|genconfig}"
+	exit 1
+esac
+
+exit $RETVAL
