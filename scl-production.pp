@@ -9,6 +9,7 @@ import "os/*"
 import "classes/*"
 import "build/*"
 import "packages/*"
+import "stage/*"
 
 # module imports
 import "buildslave"
