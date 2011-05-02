@@ -164,9 +164,24 @@ class BuildbotTac:
             # oh noes!  No worries, we'll just use the existing .tac file
             return False
 
+    def delete_pidfile(self):
+        # based on bug 648665, it looks like it's a better idea to kill the pidfile
+        # every time, since our method of restarting slaves tends to leave stale pidfiles
+        # around from a previous boot, and thus occasionally fails to start up due to pid
+        # collisions
+        basedir = self.get_basedir()
+        pidfile = os.path.join(basedir, "twistd.pid")
+        if os.path.exists(pidfile):
+            print >>sys.stderr, "removing old pidfile without checking for a running process"
+            try:
+                os.unlink(pidfile)
+            except:
+                print >>sys.stderr, "..removal failed"
+
     def run(self):
         if not os.path.exists(self.get_filename()):
             raise NoBuildbotTacError("no buildbot.tac found; cannot start")
+        self.delete_pidfile()
         sys.exit(subprocess.call(
             self.options.twistd_cmd + 
                     ['--no_save', '--python', self.get_filename()],
