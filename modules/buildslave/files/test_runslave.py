@@ -1,4 +1,6 @@
+import base64
 import os
+import socket
 import runslave
 import unittest
 import textwrap
@@ -227,3 +229,98 @@ class BuildbotTac(unittest.TestCase):
         self.assertTrue(bt.download())
         self.assertTrue(os.path.exists(os.path.join(self.basedir, 'buildbot.tac')))
 
+class NSCANotifier(unittest.TestCase):
+
+    fromserver_b64 = """
+        unvxWHaOSEOA67AxsyjFCCOJ5i2d8pz5uHVA7A2ilccehh+UFWfXlVOIxwawjQ/UFvYBs+mdr
+        aET7o4gkCTnrqoHQsBvGlbDoh7KU6vZJ8HQKHW5xiJb2RDq+aAO4U+56ZJ5WKzQHE/u5qKZwM
+        pbkPPQSrnzpZMDj42knW7zVlhNubCx
+    """
+    fromserver = base64.b64decode(fromserver_b64)
+
+    iv_b64 = """
+        unvxWHaOSEOA67AxsyjFCCOJ5i2d8pz5uHVA7A2ilccehh+UFWfXlVOIxwawjQ/UFvYBs+mdr
+        aET7o4gkCTnrqoHQsBvGlbDoh7KU6vZJ8HQKHW5xiJb2RDq+aAO4U+56ZJ5WKzQHE/u5qKZwM
+        pbkPPQSrnzpZMDj42knW7zVlg=
+    """
+    iv = base64.b64decode(iv_b64)
+
+    def setUp(self):
+        class Options(object): pass
+        self.options = Options()
+        self.notifier = runslave.NSCANotifier(self.options)
+        self.forward_dns = {}
+        self.reverse_dns = {}
+
+        self.old_socket_gethostbyname = socket.gethostbyname
+        def gethostbyname(name):
+            if name in self.forward_dns:
+                return self.forward_dns[name]
+            raise socket.error("fwd fail")
+        socket.gethostbyname = gethostbyname
+
+        self.old_socket_gethostbyaddr = socket.gethostbyaddr
+        def gethostbyaddr(addr):
+            if addr in self.reverse_dns:
+                return (self.reverse_dns[addr], 'stuff', 'stuff')
+            raise socket.error("reverse fail")
+        socket.gethostbyaddr = gethostbyaddr
+
+    def test_nagios_name_bmo(self):
+        self.forward_dns['linux-slave10.build.mozilla.org'] = '1.2.3.4'
+        self.reverse_dns['1.2.3.4'] = 'linux-slave10.build.mozilla.org'
+        self.assertEqual(self.notifier.nagios_name('linux-slave10'),
+                         'linux-slave10.build')
+
+    def test_nagios_name_dcname(self):
+        self.forward_dns['linux-slave10.build.mozilla.org'] = '1.2.3.4'
+        self.reverse_dns['1.2.3.4'] = 'linux-slave10.build.scl1.mozilla.com'
+        self.assertEqual(self.notifier.nagios_name('linux-slave10'),
+                         'linux-slave10.build.scl1')
+
+    def test_nagios_name_fwd_fail(self):
+        self.reverse_dns['1.2.3.4'] = 'linux-slave10.build.scl1.mozilla.com'
+        self.assertEqual(self.notifier.nagios_name('linux-slave10'),
+                         'linux-slave10')
+
+    def test_nagios_name_rev_fail(self):
+        self.forward_dns['linux-slave10.build.mozilla.org'] = '1.2.3.4'
+        self.assertEqual(self.notifier.nagios_name('linux-slave10'),
+                         'linux-slave10')
+
+    def test_decode_from_server(self):
+        iv, timestamp = self.notifier.decode_from_server(self.fromserver)
+        iv = [ ord(b) for b in iv ]
+        exp = [ ord(b) for b in self.iv ]
+
+        self.assertEqual((iv, timestamp), (exp, 0x4db9b0b1))
+
+    def test_encode_to_server(self):
+        iv = base64.b64decode("""
+        7ensPMny90d3fCFfruLNODYz6lm855IZDAku6g4Id/zyZDi7VjADzawkLVoH+pM+LX6X6
+        WUqA3EzMVxCOtQ+LDh26I6n61xUEImvGINCV7HB75smGZ+YTdD1jwrJzjcBRSCQ7AzsQB
+        127zX6Moyr83tHGpXms+O3qHPCckH6c4Y=""")
+        timestamp = 1304029911
+
+        exp_pkt = base64.b64decode("""
+        7ersPBp/aAE6xcuIruKhUVhGknTVn79qYGhYjz84WZ6HDVTfVjADzawkLVoH+pM+LX6X6
+        WUqA3EzMVxCOtQ+LDh26I6n61xUEImvGINCNcSog/9Eduu1PqSU/X7JzjcBRSCQ7AzsQB
+        127zX6Moyr83tHGpXms+O3qHPCckH6c4bt6ew8yfL3R3d8IV+u4s04NjPqWbznkhkMCS7
+        qDgh3/PJkOLtWMAPNrCQtWgf6kz4tfpfpZSoDcTMxXEI61D4sOHbojqfrXFQQia8Yg0I/
+        1K2D9AcZn5hN0PWPCsnONwFFIJDsDOxAHXbvNfoyjKvze0caleaz47eoc8JyQfpzhu3p7
+        DzJ8vdHd3whX67izTg2M+pZvOeSGQwJLuoOCHf88mQ4u1YwA82sJC1aB/qTPi1+l+llKg
+        NxMzFcQjrUPiw4duiOp+tcVBCJrxiDQlexwe+bJhmfmE3Q9Y8Kyc43AUUgkOwM7EAddu8
+        1+jKMq/N7RxqV5rPjt6hzwnJB+nOG7ensPMny90d3fCFfruLNODYz6lm855IZDAku6g4I
+        d/zyZDi7VjADzawkLVoH+pM+LX6X6WUqA3EzMVxCOtQ+LDh26I6n61xUEImvGINCV7HB7
+        5smGZ+YTdD1jwrJzjcBRSCQ7AzsQB127zX6Moyr83tHGpXms+O3qHPCckH6c4bt6ew8yf
+        L3R3d8IV+u4s04NjPqWbznkhkMCS7qDgh3/PJkOLtWMAPNrCQtWgf6kz4tfpfpZSoDcTM
+        xXEI61D4sOHbojqfrXFQQia8Yg0JXscHvmyYZn5hN0PWPCsnONwFFIJDsDOxAHXbvNfoy
+        jKvze0caleaz47eoc8JyQfpzhu3p7DzJ8vdHd3whX67izTg2M+pZvOeSGQwJLuoOCHf88
+        mQ4u1YwA82sJC1aB/qTPi1+l+llKgNxMzFcQjrUPiw4duiOp+tcVBCJrxiDQlex
+        """)
+
+        pkt = self.notifier.encode_to_server(iv, timestamp, 0,
+                'linux-ix-slave10.build', 'buildbot-start', 'hello!')
+        self.assertEqual(
+                [ ord(b) for b in exp_pkt ],
+                [ ord(b) for b in pkt ])

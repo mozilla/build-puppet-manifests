@@ -9,6 +9,10 @@
 import sys
 import os
 import re
+import itertools
+import binascii
+import socket
+import struct
 import traceback
 import subprocess
 import textwrap
@@ -168,6 +172,113 @@ class BuildbotTac:
                     ['--no_save', '--python', self.get_filename()],
             cwd=self.get_basedir()))
 
+class NSCANotifier(object):
+    """
+    Class to send notifications to a Nagios server via NSCA.  This *only*
+    supports XOR encryption.  This is fairly specific to the releng enviroment.
+    """
+
+    monitoring_host = 'bm-admin01.mozilla.org'
+    monitoring_port = 5667
+    svc_description = 'buildbot-start'
+    status = 0
+    output = 'hello!'
+
+    class TimeoutError(Exception): pass
+
+    proto_version = 3
+    fromserver_fmt = "!128sL"
+    fromserver_fmt_size = struct.calcsize(fromserver_fmt)
+    toserver_fmt = "!HxxlLH64s128s514s"
+    toserver_fmt_size = struct.calcsize(toserver_fmt)
+
+    def __init__(self, options):
+        self.options = options
+
+    def nagios_name(self, bare_hostname, verbose=False):
+        """
+        Calculate the "nagios name" based on the bare hostname.  This is
+        done by finding the fully qualified hostname from reverse DNS, and then
+        removing .mozilla, .int, .com, and .org.
+        """
+        try:
+            ip = socket.gethostbyname(bare_hostname + '.build.mozilla.org')
+            hostname = socket.gethostbyaddr(ip)[0]
+        except socket.error:
+            if verbose:
+                print "could not calculate nagios hostname: %r" % (sys.exc_info()[1],)
+            return bare_hostname
+
+        hostname = hostname.replace('.int', '')
+        hostname = hostname.replace('.com', '')
+        hostname = hostname.replace('.org', '')
+        hostname = hostname.replace('.mozilla', '')
+        if verbose:
+            print "calculated nagios hostname '%s'" % hostname
+        return hostname
+
+    def decode_from_server(self, bytes):
+        iv, timestamp = struct.unpack(self.fromserver_fmt, bytes)
+        return iv, timestamp
+
+    def encode_to_server(self, iv, timestamp, return_code, host_name,
+                         svc_description, plugin_output):
+        # note that this will pad the strings with 0's instead of random digits.  Oh well.
+        toserver = [
+                self.proto_version,
+                0, # crc32_value
+                timestamp,
+                return_code,
+                host_name,
+                svc_description,
+                plugin_output,
+        ]
+
+        # calculate crc32 and insert into the list
+        crc32 = binascii.crc32(struct.pack(self.toserver_fmt, *toserver))
+        toserver[1] = crc32
+
+        # convert to bytes
+        toserver_pkt = struct.pack(self.toserver_fmt, *toserver)
+
+        # and XOR with the IV
+        toserver_pkt = ''.join([chr(p^i)
+                        for p,i in itertools.izip(
+                                itertools.imap(ord, toserver_pkt),
+                                itertools.imap(ord, itertools.cycle(iv)))])
+
+        return toserver_pkt
+
+    def do_send_notice(self):
+        host_name = self.nagios_name(options.slavename, verbose=options.verbose)
+
+        sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sk.connect((self.monitoring_host, self.monitoring_port))
+
+        # read packet
+        buf = ''
+        while len(buf) < self.fromserver_fmt_size:
+            data = sk.recv(self.fromserver_fmt_size - len(buf))
+            if not data:
+                break
+            buf += data
+
+        # make up reply
+        iv, timestamp = self.decode_from_server(buf)
+        toserver_pkt = self.encode_to_server(iv, timestamp, 0, host_name,
+                self.svc_description, 'runslave.py executed')
+
+        # and send it
+        sk.send(toserver_pkt)
+
+    def try_send_notice(self):
+        try:
+            self.do_send_notice()
+        except:
+            print >>sys.stderr, "Error sending notice to nagios (ignored)"
+            if self.options.verbose:
+                traceback.print_exc()
+
 def guess_twistd_cmd():
     if sys.platform == 'win32':
         for path in [
@@ -188,7 +299,6 @@ def guess_twistd_cmd():
 default_allocator_url = "http://slavealloc.build.mozilla.org/gettac/SLAVE"
 if __name__ == '__main__':
     from optparse import OptionParser
-    import socket
 
     parser = OptionParser(usage=textwrap.dedent("""\
         usage:
@@ -248,6 +358,8 @@ if __name__ == '__main__':
             print >>sys.stderr, "WARNING: falling back to existing buildbot.tac"
 
         if not options.no_start:
+            notif = NSCANotifier(options)
+            notif.try_send_notice()
             tac.run()
     except RunslaveError, error:
         print >>sys.stderr, "FATAL: %s" % str(error)
