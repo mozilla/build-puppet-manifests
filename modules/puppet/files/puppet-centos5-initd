@@ -50,8 +50,12 @@ start() {
 	do
         count=$((count+1))
         if [ $count -gt 10 ]; then
+            # If DHCP fails to get a (correct) IP address for this system, then
+            # we will sit in this loop until help arrives, which can be a long
+            # time.  In theory, DHCP should block until it gets an address, but
+            # this is not the case - see bug 636390.
             echo "maybe a reboot will help.."
-            echo "(not enabled yet .. keep sleeping)" #/sbin/reboot
+            /sbin/reboot
         fi
 
         /sbin/ifconfig # for debugging purposes
