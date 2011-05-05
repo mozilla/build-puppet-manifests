@@ -193,11 +193,18 @@ class NSCANotifier(object):
     supports XOR encryption.  This is fairly specific to the releng enviroment.
     """
 
-    monitoring_host = 'bm-admin01.mozilla.org'
     monitoring_port = 5667
     svc_description = 'buildbot-start'
     status = 0
     output = 'hello!'
+
+    # map by datacenter (from DNS); default is None
+    monitoring_hosts = {
+        'scl1': 'admin1.infra.scl1.mozilla.com',
+        'sjc1': 'bm-admin01.mozilla.org',
+        'mtv1': 'bm-admin01.mozilla.org',
+        None: 'bm-admin01.mozilla.org',
+    }
 
     class TimeoutError(Exception): pass
 
@@ -231,6 +238,21 @@ class NSCANotifier(object):
         if verbose:
             print "calculated nagios hostname '%s'" % hostname
         return hostname
+
+    def monitoring_host_from_nagios_name(self, nagios_name, verbose=False):
+        dc = None
+        if '.' in nagios_name:
+            dc = nagios_name.split('.')[-1]
+            # might leave 'build'; this will be caught below
+
+        if dc not in self.monitoring_hosts:
+            dc = None
+
+        monitoring_host = self.monitoring_hosts[dc]
+        if verbose:
+            print "reporting to NSCA daemon on '%s'" % monitoring_host
+
+        return monitoring_host
 
     def decode_from_server(self, bytes):
         iv, timestamp = struct.unpack(self.fromserver_fmt, bytes)
@@ -266,9 +288,11 @@ class NSCANotifier(object):
 
     def do_send_notice(self):
         host_name = self.nagios_name(options.slavename, verbose=options.verbose)
+        monitoring_host = self.monitoring_host_from_nagios_name(host_name,
+                                            verbose=options.verbose)
 
         sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sk.connect((self.monitoring_host, self.monitoring_port))
+        sk.connect((monitoring_host, self.monitoring_port))
 
         # read packet
         buf = ''

@@ -231,6 +231,8 @@ class BuildbotTac(unittest.TestCase):
 
 class NSCANotifier(unittest.TestCase):
 
+    maxDiff = 1000
+
     fromserver_b64 = """
         unvxWHaOSEOA67AxsyjFCCOJ5i2d8pz5uHVA7A2ilccehh+UFWfXlVOIxwawjQ/UFvYBs+mdr
         aET7o4gkCTnrqoHQsBvGlbDoh7KU6vZJ8HQKHW5xiJb2RDq+aAO4U+56ZJ5WKzQHE/u5qKZwM
@@ -287,6 +289,21 @@ class NSCANotifier(unittest.TestCase):
         self.forward_dns['linux-slave10.build.mozilla.org'] = '1.2.3.4'
         self.assertEqual(self.notifier.nagios_name('linux-slave10'),
                          'linux-slave10')
+
+    def test_monitoring_host_from_nagios_name(self):
+        tests = [
+            ('slave01.build.mtv1', 'bm-admin01.mozilla.org'),
+            ('slave01.build.sjc1', 'bm-admin01.mozilla.org'),
+            ('slave01.build.scl1', 'admin1.infra.scl1.mozilla.com'),
+            ('slave01.build', 'bm-admin01.mozilla.org'), # default
+            ('slave01.build.tbd1', 'bm-admin01.mozilla.org'), # default
+            ('slave01.mozilla.org', 'bm-admin01.mozilla.org'), # default
+            ('slave01.build.mozilla.org', 'bm-admin01.mozilla.org'), # default
+        ]
+        inputs = [ e[0] for e in tests ]
+        expected = [ e[1] for e in tests ]
+        outputs = [ self.notifier.monitoring_host_from_nagios_name(i) for i in inputs ]
+        self.assertEqual(zip(inputs, expected), zip(inputs, outputs))
 
     def test_decode_from_server(self):
         iv, timestamp = self.notifier.decode_from_server(self.fromserver)
