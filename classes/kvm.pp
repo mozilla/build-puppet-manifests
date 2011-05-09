@@ -1,6 +1,6 @@
 class kvm {
     file {
-        "builds":
+        "/builds":
             ensure => directory;
     }
 }
