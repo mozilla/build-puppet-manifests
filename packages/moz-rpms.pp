@@ -49,7 +49,9 @@ class moz-rpms {
         "/builds/ccache":
             owner => "cltbld",
             group => "cltbld",
-            ensure => directory,
-            require => Mount["/builds"];
+            ensure => directory;
+            # this requires Mount["/builds"] on some machines, and File["/builds"] on
+            # others, so for now just hope it's there
+            # require => Mount["/builds"];
     }
 }

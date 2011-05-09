@@ -1205,11 +1205,11 @@ node "talos-r3-snow-055.build.mozilla.org" inherits "darwin10-i386-test" {
 }
 
 node "linux-hgwriter-slave03.build.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, vm
+    include buildslave, kvm
 }
 
 node "linux-hgwriter-slave04.build.mozilla.org" inherits "centos5-i686-build" {
-    include buildslave, vm
+    include buildslave, kvm
 }
 
 node "byob-repack01.build.mozilla.org" inherits "byob-repack" {
