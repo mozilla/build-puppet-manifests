@@ -1101,6 +1101,10 @@ node "try-mac64-slave27.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
+node "try-mac64-slave28.build.mozilla.org" inherits "darwin10-i386-build" {
+    include buildslave
+}
+
 node "try-mac64-slave29.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
