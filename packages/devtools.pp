@@ -238,6 +238,12 @@ class devtools {
                             creates     => "/tools/zope-interface-3.5.3/lib/python2.6/site-packages/zope/interface/verify.py",
                             subscribe   => File["/tools/zope-interface"];
                     }
+                    package {
+                        "clang-2.9.dmg":
+                            provider    => pkgdmg,
+                            ensure      => installed,
+                            source      => "${platform_httproot}/DMGs/clang-2.9.dmg";
+                    }
                     file {
                         "/tools/python":
                             ensure  => "/tools/python-2.6.4",
