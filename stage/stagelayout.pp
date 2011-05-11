@@ -80,7 +80,8 @@ class stagelayout {
             ensure => "/builds/data/ftp",
             force => true;
         ["/var/www/", "/var/www/html", "/var/www/html/pub",
-        "/var/www/html/pub/mozilla.org", "/mnt/netapp"]:
+        "/var/www/html/pub/mozilla.org", "/mnt/netapp",
+        "/builds/data/ftp/pub/mozilla.org"]:
             ensure => directory,
             owner => "root",
             group => "root",
@@ -98,6 +99,15 @@ class stagelayout {
             force => true;
         "/var/www/html/pub/mozilla.org/mozilla":
             ensure => "/home/ftp/pub/mozilla",
+            force => true;
+        "/builds/data/ftp/pub/mozilla.org/firefox":
+            ensure => "../firefox",
+            force => true;
+        "/builds/data/ftp/pub/mozilla.org/mobile":
+            ensure => "../mobile",
+            force => true;
+        "/builds/data/ftp/pub/mozilla.org/xulrunner":
+            ensure => "../xulrunner",
             force => true;
         "/var/www/html/pub/mozilla.org/xulrunner":
             ensure => "/home/ftp/pub/xulrunner",
