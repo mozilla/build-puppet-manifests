@@ -2,6 +2,6 @@
 ####  DO NOT EDIT MANUALLY
 
 [DEFAULT]
-database = mysql://<%=scope.lookupvar('secrets::buildbot_schedulerdb_user')%>:<%=scope.lookupvar('secrets::buildbot_schedulerdb_password')%>@<%=scope.lookupvar('secrets::buildbot_schedulerdb_host')%>/<%=scope.lookupvar('secrets::buildbot_schedulerdb_database')%>
+database = mysql://<%=scope.lookupvar('secrets::buildbot_statusdb_user')%>:<%=scope.lookupvar('secrets::buildbot_statusdb_password')%>@<%=scope.lookupvar('secrets::buildbot_statusdb_host')%>/<%=scope.lookupvar('secrets::buildbot_statusdb_database')%>
 master = http://<%=fqdn%>:<%=http_port%>
 name = <%=master_name%>
