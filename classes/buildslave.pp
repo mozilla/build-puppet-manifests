@@ -6,17 +6,17 @@
 class buildslave {
     case $operatingsystem {
         CentOS: {
-            include debuginfopackages
-            include devtools
-            include nagios
-            include scratchbox
-            include moz-rpms
+            include packages::debuginfopackages
+            include packages::devtools
+            include packages::nagios
+            include packages::scratchbox
+            include packages::moz-rpms
 
         }
         Darwin: {
-            include devtools
-            include repackaging-tools
-            include cacert
+            include packages::devtools
+            include packages::repackaging-tools
+            include packages::cacert
         }
     }
 }

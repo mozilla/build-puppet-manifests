@@ -2,7 +2,7 @@
 #  this manifest installs all of the packages in the /tools tree,
 #  but only for build systems, not test.
 
-class devtools {
+class packages::devtools {
     $buildtools_version = "ac05929dc0b1"
     $old_buildtools_version = "0b149c0ad18d"
 
@@ -36,7 +36,7 @@ class devtools {
             case $hardwaremodel {
         
                 "x86_64": {
-                    install_rpm {
+                    packages::install_rpm {
                         "gcc433":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
                             version     => "4.3.3-0moz1";
@@ -54,21 +54,21 @@ class devtools {
                             creates     => "/tools/twisted-2.4.0/bin/twistd",
                             version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted"],
-                            require     => [Install_rpm["python25"], Install_rpm["twisted-core"], Install_rpm["zope.interface"]];
+                            require     => [Packages::Install_rpm["python25"], Packages::Install_rpm["twisted-core"], Packages::Install_rpm["zope.interface"]];
                         "twisted-core":
                             creates     => "/tools/twisted-core-2.4.0/bin/twistd",
                             version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted-core"],
-                            require     => [Install_rpm["python25"], Install_rpm["zope.interface"]];
+                            require     => [Packages::Install_rpm["python25"], Packages::Install_rpm["zope.interface"]];
                         "zope.interface":
                             creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
                             version     => "3.3.0-0moz1",
                             subscribe   => File["/tools/zope-interface"],
-                            require     => Install_rpm["python25"];
+                            require     => Packages::Install_rpm["python25"];
                         "simplejson-py25":
                             creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/simplejson/__init__.py",
                             version     => "2.1.1-0moz1",
-                            require     => Install_rpm["python25"];
+                            require     => Packages::Install_rpm["python25"];
                         "jdk1.5":
                             creates     => "/tools/jdk-1.5.0_15/bin/java",
                             version     => "1.5.0_15-0moz1",
@@ -80,17 +80,17 @@ class devtools {
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
-                            require     => Install_rpm["python26"];
+                            require     => Packages::Install_rpm["python26"];
                         "virtualenv":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/virtualenv_support/site.py",
                             version     => "1.4.8-0moz1",
-                            require     => Install_rpm["python26"];
+                            require     => Packages::Install_rpm["python26"];
                     }
                 }
 
                 default: {
 
-                    install_rpm {
+                    packages::install_rpm {
                         "gcc411":
                             creates     => "/tools/gcc-4.1.1/bin/gcc",
                             version     => "4.1.1-0moz1",
@@ -112,21 +112,21 @@ class devtools {
                             creates     => "/tools/twisted-2.4.0/bin/twistd",
                             version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted"],
-                            require     => [Install_rpm["python25"], Install_rpm["twisted-core"], Install_rpm["zope.interface"]];
+                            require     => [Packages::Install_rpm["python25"], Packages::Install_rpm["twisted-core"], Packages::Install_rpm["zope.interface"]];
                         "twisted-core":
                             creates     => "/tools/twisted-core-2.4.0/bin/twistd",
                             version     => "2.4.0-0moz1",
                             subscribe   => File["/tools/twisted-core"],
-                            require     => [Install_rpm["python25"], Install_rpm["zope.interface"]];
+                            require     => [Packages::Install_rpm["python25"], Packages::Install_rpm["zope.interface"]];
                         "zope.interface":
                             creates     => "/tools/zope-interface/lib/python2.5/site-packages/zope/interface/interface.py",
                             version     => "3.3.0-0moz1",
                             subscribe   => File["/tools/zope-interface"],
-                            require     => Install_rpm["python25"];
+                            require     => Packages::Install_rpm["python25"];
                         "simplejson-py25":
                             creates     => "/tools/python-2.5.1/lib/python2.5/site-packages/simplejson/__init__.py",
                             version     => "2.1.1-0moz1",
-                            require     => Install_rpm["python25"];
+                            require     => Packages::Install_rpm["python25"];
                         "jdk1.5":
                             creates     => "/tools/jdk-1.5.0_10/bin/java",
                             version     => "1.5.0_10-0moz1",
@@ -150,11 +150,11 @@ class devtools {
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
-                            require     => Install_rpm["python26"];
+                            require     => Packages::Install_rpm["python26"];
                         "virtualenv":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/virtualenv_support/site.py",
                             version     => "1.4.8-0moz1",
-                            require     => Install_rpm["python26"];
+                            require     => Packages::Install_rpm["python26"];
                     }
                     file {
                         "/tools/jdk6":

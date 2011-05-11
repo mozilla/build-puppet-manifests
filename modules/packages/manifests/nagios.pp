@@ -4,7 +4,7 @@
 # This manifest works with i386 AND x86_64 provided that the nagios rpm files are all
 # the same version!
 
-class nagios {
+class packages::nagios {
 
     case $hardwaremodel {
         "x86_64": { $libdir = "lib64" }

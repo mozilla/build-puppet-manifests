@@ -9,11 +9,18 @@ node "build" inherits "slave" {
     $platform_fileroot = $location::platform_fileroot
     $local_httproot = $location::local_httproot
     $local_fileroot = $location::local_fileroot
-    include base, puppet-config
+    include base, packages::puppet-config
 }
 
 node "centos" inherits "build" {
     include cltbld
+    # This is required by the packages::install_rpm define
+    # It would be nice to include packages from define itself, but this
+    # sometimes leads to dependency cycles, which as near as I (catlee) can
+    # tell, are caused by http://projects.puppetlabs.com/issues/2423.
+    # This is supposedly fixed in puppet 0.25, so worth revisiting this once we
+    # upgrade
+    include packages
 }
 
 node "centos5-i686-build" inherits "centos" {
@@ -41,7 +48,7 @@ node "test" inherits "slave" {
     $platform_fileroot = $location::platform_fileroot
     $local_httproot = $location::local_httproot
     $local_fileroot = $location::local_fileroot
-    include puppet-config
+    include packages::puppet-config
 }
 
 node "fedora" inherits "test" {
@@ -73,14 +80,14 @@ node "mv-build-node" inherits "mv-node" {
     $slaveType = "build"
     include location
     $local_fileroot = $location::local_fileroot
-    include puppet-config
+    include packages::puppet-config
 }
 
 node "mv-test-node" inherits "mv-node" {
     $slaveType = "test"
     include location
     $local_fileroot = $location::local_fileroot
-    include puppet-config
+    include packages::puppet-config
 }
 
 node "scl-node" {
@@ -91,14 +98,14 @@ node "scl-build-node" inherits "scl-node" {
     $slaveType = "build"
     include location
     $local_fileroot = $location::local_fileroot
-    include puppet-config
+    include packages::puppet-config
 }
 
 node "scl-test-node" inherits "scl-node" {
     $slaveType = "test"
     include location
     $local_fileroot = $location::local_fileroot
-    include puppet-config
+    include packages::puppet-config
 }
 node "stage-and-aus2-server" {
     $slaveType = "stage"
@@ -118,13 +125,13 @@ node "staging-build-node" inherits "staging-node" {
     $slaveType = "build"
     include location
     $local_fileroot = $location::local_fileroot
-    include puppet-config
+    include packages::puppet-config
 }
 
 node "staging-test-node" inherits "staging-node" {
     $slaveType = "test"
     include location
     $local_fileroot = $location::local_fileroot
-    include puppet-config
+    include packages::puppet-config
 }
 

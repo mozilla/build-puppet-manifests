@@ -3,7 +3,7 @@
 
 # Our repackaging is currently done on Darwin machines (Darwin9 or Darwin10)
 
-class repackaging-tools {
+class packages::repackaging-tools {
     file {
         "/usr/local/bin":
             ensure => directory,

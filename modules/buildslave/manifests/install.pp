@@ -198,34 +198,34 @@ class buildslave::install::old {
         CentOS: {
             case $hardwaremodel {
                 "x86_64": {
-                    install_rpm {
+                    packages::install_rpm {
                         "buildbot":
                             creates     => "/tools/buildbot-0.8.0/bin/buildbot",
                             version     => "0.8.0-0moz2",
                             subscribe   => File["/tools/buildbot"],
                             # these are defined in devtools.pp
                             require     => [
-                                Install_rpm["python26"],
-                                Install_rpm["zope.interface"],
-                                Install_rpm["twisted-core"],
-                                Install_rpm["twisted"],
+                                Packages::Install_rpm["python26"],
+                                Packages::Install_rpm["zope.interface"],
+                                Packages::Install_rpm["twisted-core"],
+                                Packages::Install_rpm["twisted"],
                             ];
                     }
                 }
 
                 default: {
 
-                    install_rpm {
+                    packages::install_rpm {
                         "buildbot":
                             creates     => "/tools/buildbot-0.8.0/bin/buildbot",
                             version     => "0.8.0-0moz2",
                             subscribe   => File["/tools/buildbot"],
                             # these are defined in devtools.pp
                             require     => [
-                                Install_rpm["python26"],
-                                Install_rpm["zope.interface"],
-                                Install_rpm["twisted-core"],
-                                Install_rpm["twisted"],
+                                Packages::Install_rpm["python26"],
+                                Packages::Install_rpm["zope.interface"],
+                                Packages::Install_rpm["twisted-core"],
+                                Packages::Install_rpm["twisted"],
                             ];
                     }
                 }

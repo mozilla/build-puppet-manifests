@@ -1,7 +1,7 @@
 # debuginfo.pp
 # debuginfo rpm packages
 
-class debuginfopackages {
+class packages::debuginfopackages {
     Package{ provider => rpm, ensure => installed }
 
     case $hardwaremodel {

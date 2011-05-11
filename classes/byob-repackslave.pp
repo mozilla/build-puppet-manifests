@@ -6,8 +6,8 @@
 class byob-repackslave {
     case $operatingsystem {
         Darwin: {
-            include devtools
-            include repackaging-tools
+            include packages::devtools
+            include packages::repackaging-tools
         }
     }
 }

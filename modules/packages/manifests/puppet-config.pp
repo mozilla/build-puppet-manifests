@@ -1,4 +1,4 @@
-class puppet-config {
+class packages::puppet-config {
     exec {
         restart:
             command => "/sbin/reboot",

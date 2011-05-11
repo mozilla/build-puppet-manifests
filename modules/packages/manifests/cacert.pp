@@ -3,7 +3,7 @@
 
 # This is for Darwin machines only
 
-class cacert {
+class packages::cacert {
     case $operatingsystem {
         Darwin: {
             file {

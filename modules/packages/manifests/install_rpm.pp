@@ -1,9 +1,8 @@
 define packages::install_rpm($creates, $version) {
-    file {  
-        "/usr/local/bin/check-for-rpm.sh":
-            source => "puppet:///modules/packages/check-for-rpm.sh",
-            mode => 755;
-    }
+    # We'd really like to do this here, but can't. This needs to be included at
+    # the node level for now. See the comments in base/nodes.pp.
+    # include packages
+
     # This check will mark a package as installed if the file or directory it
     # creates already exists. It is intended to only be run for packages that
     # are not installed yet (eg, isn't run for packages getting an updated
