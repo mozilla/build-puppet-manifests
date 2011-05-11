@@ -13,17 +13,19 @@ $httproot = "http://${puppetServer}/${level}"
 # puppet overwrites
 File { backup => false }
 
-node "buildbot-master04.build.scl1.mozilla.com" {
-    $num_masters = 3
+node "master" {
+    # This is required by the packages::install_rpm define
+    # It would be nice to include packages from define itself, but this
+    # sometimes leads to dependency cycles, which as near as I (catlee) can
+    # tell, are caused by http://projects.puppetlabs.com/issues/2423.
+    # This is supposedly fixed in puppet 0.25, so worth revisiting this once we
+    # upgrade
+    include packages
+}
+
+node "buildbot-master04.build.scl1.mozilla.com" inherits "master" {
+    $num_masters = 1
     buildmaster::buildbot_master {
-        "bm04-build1":
-            http_port => 8001,
-            master_type => "build",
-            basedir => "build1";
-        "bm04-try1":
-            http_port => 8101,
-            master_type => "try",
-            basedir => "try1";
         "bm04-tests1":
             http_port => 8201,
             master_type => "tests",
@@ -31,17 +33,9 @@ node "buildbot-master04.build.scl1.mozilla.com" {
     }
 }
 
-node "buildbot-master06.build.scl1.mozilla.com" {
-    $num_masters = 3
+node "buildbot-master06.build.scl1.mozilla.com" inherits "master" {
+    $num_masters = 1
     buildmaster::buildbot_master {
-        "bm06-build1":
-            http_port => 8001,
-            master_type => "build",
-            basedir => "build1";
-        "bm06-try1":
-            http_port => 8101,
-            master_type => "try",
-            basedir => "try1";
         "bm06-tests1":
             http_port => 8201,
             master_type => "tests",
