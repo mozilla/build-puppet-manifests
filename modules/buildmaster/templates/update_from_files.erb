@@ -1,0 +1,7 @@
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
+
+[DEFAULT]
+database = mysql://<%=scope.lookupvar('secrets::buildbot_schedulerdb_user')%>:<%=scope.lookupvar('secrets::buildbot_schedulerdb_password')%>@<%=scope.lookupvar('secrets::buildbot_schedulerdb_host')%>/<%=scope.lookupvar('secrets::buildbot_schedulerdb_database')%>
+master = http://<%=fqdn%>:<%=http_port%>
+name = <%=master_name%>

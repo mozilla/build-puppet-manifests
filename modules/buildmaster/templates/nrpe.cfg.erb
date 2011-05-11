@@ -1,0 +1,32 @@
+#############################################################################
+# Stock Mozilla Build/Release nrpe.cfg - Linux
+# Written by: Ben Hearsum
+# 
+# NOTES:
+# This file generally lives as /etc/nagios/nrpe.cfg
+# It depends on the following packages (CentOS/RHEL names used):
+#  * nagios-nrpe
+#  * nagios-plugins
+#  * nagios-plugins-nrpe
+#############################################################################
+
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
+
+pid_file=/var/run/nrpe.pid
+server_port=5666
+nrpe_user=nagios
+nrpe_group=nagios
+allowed_hosts=10.2.71.20,10.12.75.9,127.0.0.1
+dont_blame_nrpe=1
+debug=0
+command_timeout=60
+command[check_load]=/usr/<%=libdir%>/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
+command[check_swap]=/usr/<%=libdir%>/nagios/plugins/check_swap -w $ARG1$ -c $ARG2$
+command[check_users]=/usr/<%=libdir%>/nagios/plugins/check_users -w $ARG1$ -c $ARG2$
+command[check_disk]=/usr/<%=libdir%>/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
+command[check_procs]=/usr/<%=libdir%>/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
+command[check_buildbot]=/usr/<%=libdir%>/nagios/plugins/check_procs -c <%= num_masters %>:<%= num_masters %> -C buildbot
+command[check_file_age]=/usr/<%=libdir%>/nagios/plugins/check_file_age -w $ARG1$ -c $ARG2$ -f $ARG3$
+command[check_mysql]=/usr/<%=libdir%>/nagios/plugins/check_mysql -H <%= scope.lookupvar('secrets::buildbot_schedulerdb_host') %>
+command[check_ntp_time]=/usr/<%=libdir%>/nagios/plugins/check_ntp_time -H $ARG1$ -w $ARG2$ -c $ARG3$
