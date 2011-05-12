@@ -217,6 +217,29 @@ class NSCANotifier(object):
     def __init__(self, options):
         self.options = options
 
+    # You'll be shocked to learn that the DNS resolver on Windows is broken -
+    # it returns the system's own notion of its hostname, rather than
+    # performing a DNS query, if the IP matches a configured interface.
+    # Luckily, nslookup queries the DNS server directly, so on windows we
+    # substitute win_resolve for gethostbyaddr.  See bug #656450 for details.
+    name_re = re.compile(r"^Name: *(.*)$")
+    def win_resolve(self, ip):
+        args = [ 'nslookup', ip ]
+        try:
+            p = subprocess.Popen(args,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE)
+            out = p.communicate()[0]
+        except:
+            return None
+
+        # for a reverse lookup, the first "Name:" line contains
+        # our target.
+        for line in out.split('\r\n'):
+            mo = self.name_re.match(line)
+            if mo:
+                return mo.group(1).strip()
+
     def nagios_name(self, bare_hostname, verbose=False):
         """
         Calculate the "nagios name" based on the bare hostname.  This is
@@ -230,6 +253,12 @@ class NSCANotifier(object):
             if verbose:
                 print "could not calculate nagios hostname: %r" % (sys.exc_info()[1],)
             return bare_hostname
+
+        # on win32, gethostbyaddr doesn't work for our own IP, so re-resolve that
+        if sys.platform == "win32":
+            nslookup_hostname = self.win_resolve(ip)
+            if nslookup_hostname:
+                hostname = nslookup_hostname
 
         hostname = hostname.replace('.int', '')
         hostname = hostname.replace('.com', '')
