@@ -30,6 +30,10 @@ node "moz2-linux-slave04.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, vm
 }
 
+node "moz2-linux-slave10.build.mozilla.org" inherits "centos5-i686-build" {
+    include staging-buildslave, vm
+}
+
 node "moz2-linux-slave17.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, vm
 }
@@ -37,6 +41,11 @@ node "moz2-linux-slave17.build.mozilla.org" inherits "centos5-i686-build" {
 node "moz2-linux64-slave07.build.mozilla.org" inherits "centos5-x86_64-build" {
     include staging-buildslave, vm
 }
+
+node "moz2-linux64-slave10.build.mozilla.org" inherits "centos5-x86_64-build" {
+    include staging-buildslave, vm
+}
+
 
 node "mv-moz2-linux-ix-slave01.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, ix
@@ -70,6 +79,10 @@ node "moz2-darwin9-slave08.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
 
+node "moz2-darwin9-slave10.build.mozilla.org" inherits "darwin9-i386-build" {
+    include staging-buildslave
+}
+
 node "moz2-darwin10-slave01.build.mozilla.org" inherits "darwin10-i386-build" {
     include staging-buildslave
 }
@@ -86,6 +99,10 @@ node "moz2-darwin10-slave04.build.mozilla.org" inherits "darwin10-i386-build" {
     include staging-buildslave
 }
 
+node "moz2-darwin10-slave10.build.mozilla.org" inherits "darwin10-i386-build" {
+    include staging-buildslave
+}
+
 node "moz2-darwin9-slave68.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
@@ -98,11 +115,19 @@ node "talos-r3-fed-002.build.mozilla.org" inherits "fedora12-i686-test" {
     include talosslave
 }
 
+node "talos-r3-fed-010.build.mozilla.org" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
 node "talos-r3-fed64-001.build.mozilla.org" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 
 node "talos-r3-fed64-002.build.mozilla.org" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-010.build.mozilla.org" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 
@@ -114,11 +139,19 @@ node "talos-r3-leopard-002.build.mozilla.org" inherits "darwin9-i386-test" {
     include talosslave
 }
 
+node "talos-r3-leopard-010.build.mozilla.org" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
 node "talos-r3-snow-001.build.mozilla.org" inherits "darwin10-i386-test" {
     include talosslave
 }
 
 node "talos-r3-snow-002.build.mozilla.org" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-010.build.mozilla.org" inherits "darwin10-i386-test" {
     include talosslave
 }
 
