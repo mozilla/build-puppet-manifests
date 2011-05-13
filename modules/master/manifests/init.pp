@@ -7,6 +7,7 @@ class master {
     include network
     include ntp
     include prefs
+    include ganglia::client
     packages::hg {
         "latest":
     }

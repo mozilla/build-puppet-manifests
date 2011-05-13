@@ -13,7 +13,7 @@ $httproot = "http://${puppetServer}/${level}"
 # puppet overwrites
 File { backup => false }
 
-node "master" {
+node "masternode" {
     # This is required by the packages::install_rpm define
     # It would be nice to include packages from define itself, but this
     # sometimes leads to dependency cycles, which as near as I (catlee) can
@@ -23,7 +23,7 @@ node "master" {
     include packages
 }
 
-node "buildbot-master04.build.scl1.mozilla.com" inherits "master" {
+node "buildbot-master04.build.scl1.mozilla.com" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm04-tests1":
@@ -33,7 +33,7 @@ node "buildbot-master04.build.scl1.mozilla.com" inherits "master" {
     }
 }
 
-node "buildbot-master06.build.scl1.mozilla.com" inherits "master" {
+node "buildbot-master06.build.scl1.mozilla.com" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm06-tests1":
@@ -41,4 +41,11 @@ node "buildbot-master06.build.scl1.mozilla.com" inherits "master" {
             master_type => "tests",
             basedir => "tests1";
     }
+}
+
+node "dev-master01.build.scl1.mozilla.com" inherits "masternode" {
+    $num_masters = 0
+    # This is a development machine
+    # Install all the prereqs of buildbot, but don't actually instantiate any masters
+    include buildmaster
 }
