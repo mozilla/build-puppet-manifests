@@ -34,13 +34,11 @@ class packages::moz-rpms {
             require => Packages::Install_rpm["valgrind"];
     }
     exec {
-        "/usr/bin/ccache -M 2G":
+        "/usr/bin/ccache -M 5G":
             environment => ["CCACHE_DIR=/builds/ccache", "CCACHE_COMPRESS=1"],
-            refreshonly => true,
             user => "cltbld",
             group => "cltbld",
-            subscribe => File["/builds/ccache"],
-            require => Package["ccache"];
+            require => [Package["ccache"], File["/builds/ccache"]];
         check-valgrind-rpms:
             command => "/bin/rpm -e --allmatches valgrind",
             onlyif => "/bin/rpm -qv valgrind | /bin/grep -q 3.2.1";
