@@ -89,6 +89,7 @@ define buildmaster::buildbot_master($basedir, $master_type, $http_port) {
                 "PYTHON=/usr/bin/python2.6",
                 "PIP_DOWNLOAD_CACHE=$master_basedir/pip_cache",
                 "PIP_FLAGS=--no-deps --no-index --find-links=$python_package_dir",
+                "MASTERS_JSON=http://hg.mozilla.org/build/tools/raw-file/default/buildfarm/maintenance/production-masters.json",
             ],
             cwd => "$master_basedir/buildbot-configs";
 

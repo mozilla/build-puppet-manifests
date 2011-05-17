@@ -43,6 +43,46 @@ node "buildbot-master06.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
+node "buildbot-master11.build.scl1.mozilla.com" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm11-tests1":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1";
+    }
+}
+
+node "buildbot-master12.build.scl1.mozilla.com" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm12-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master13.build.scl1.mozilla.com" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm13-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master14.build.scl1.mozilla.com" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm14-try1":
+            http_port => 8101,
+            master_type => "try",
+            basedir => "try1";
+    }
+}
+
 node "dev-master01.build.scl1.mozilla.com" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
