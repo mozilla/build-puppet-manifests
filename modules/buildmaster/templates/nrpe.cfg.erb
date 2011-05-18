@@ -28,5 +28,5 @@ command[check_disk]=/usr/<%=libdir%>/nagios/plugins/check_disk -w $ARG1$ -c $ARG
 command[check_procs]=/usr/<%=libdir%>/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
 command[check_buildbot]=/usr/<%=libdir%>/nagios/plugins/check_procs -c <%= num_masters %>:<%= num_masters %> -C buildbot
 command[check_file_age]=/usr/<%=libdir%>/nagios/plugins/check_file_age -w $ARG1$ -c $ARG2$ -f $ARG3$
-command[check_mysql]=/usr/<%=libdir%>/nagios/plugins/check_mysql -H <%= scope.lookupvar('secrets::buildbot_schedulerdb_host') %>
+command[check_mysql]=/usr/<%=libdir%>/nagios/plugins/check_mysql -H <%= scope.lookupvar('secrets::buildbot_schedulerdb_host') %> -u <%= scope.lookupvar('secrets::buildbot_schedulerdb_user') %> -p <%= scope.lookupvar('secrets::buildbot_schedulerdb_password') %>
 command[check_ntp_time]=/usr/<%=libdir%>/nagios/plugins/check_ntp_time -H $ARG1$ -w $ARG2$ -c $ARG3$
