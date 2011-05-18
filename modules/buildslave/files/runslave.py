@@ -359,7 +359,7 @@ def guess_twistd_cmd():
                     python_exe,
                     os.path.join(path, r'scripts\twistd.py')
                 ]
-            raise RuntimeError("Can't find twistd.bat")
+        raise RuntimeError("Can't find twistd.bat")
     else:
         # All POSIX slaves are consistent about the location.  Woo!
         return [ '/tools/buildbot/bin/twistd' ]
