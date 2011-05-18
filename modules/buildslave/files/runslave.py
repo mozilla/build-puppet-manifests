@@ -184,7 +184,10 @@ class BuildbotTac:
         self.delete_pidfile()
         sys.exit(subprocess.call(
             self.options.twistd_cmd + 
-                    ['--no_save', '--python', self.get_filename()],
+                    [ '--no_save',
+                      '--logfile', os.path.join(self.get_basedir(), 'twistd.log'),
+                      '--python', self.get_filename(),
+                    ],
             cwd=self.get_basedir()))
 
 class NSCANotifier(object):
