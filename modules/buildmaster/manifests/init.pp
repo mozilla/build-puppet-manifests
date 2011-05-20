@@ -24,13 +24,13 @@ class buildmaster {
     }
     package {
         "python26":
-            ensure => "2.6.5-6.el5";
+            ensure => latest;
         "python26-virtualenv":
-            ensure => "1.5.1-3.el5";
+            ensure => latest;
         "mysql-devel":
-            ensure => "5.0.77-4.el5_5.5";
+            ensure => latest;
         "git":
-            ensure => "1.7.4.1-1.el5";
+            ensure => latest;
     }
     service {
         "buildbot":

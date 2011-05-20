@@ -22,9 +22,11 @@ class ganglia::client {
     include packages::mozilla-repo
     package {
         ganglia-gmond:
+            require => Class["packages::mozilla-repo"],
             ensure => "3.1.7-3";
 
         ganglia-gmond-modules-python:
+            require => Class["packages::mozilla-repo"],
             ensure => "3.1.7-3";
     }
 
