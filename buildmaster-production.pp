@@ -43,6 +43,43 @@ node "buildbot-master06.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
+node "buildbot-master07.build.sjc1.mozilla.com" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm07-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master08.build.sjc1.mozilla.com" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm08-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master09.build.sjc1.mozilla.com" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm09-try1":
+            http_port => 8101,
+            master_type => "try",
+            basedir => "try1";
+    }
+}
+
+node "buildbot-master10.build.sjc1.mozilla.com" inherits "masternode" {
+    $num_masters = 2
+    # The build and test schedulers run on here, but they aren't managed by puppet
+    # so install all the prereqs of buildbot, but don't actually instantiate any masters
+    include buildmaster
+}
+
 node "buildbot-master11.build.scl1.mozilla.com" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
