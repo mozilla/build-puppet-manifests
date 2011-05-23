@@ -22,27 +22,27 @@ node "ix-vm-test02.build.mozilla.org" inherits "centos5-i686-build" {
     include buildslave, ix
 }
 
-node "moz2-linux-slave03.build.mozilla.org" inherits "centos5-i686-build" {
+node "moz2-linux-slave03.build.sjc1.mozilla.com" inherits "centos5-i686-build" {
     include staging-buildslave, vm
 }
 
-node "moz2-linux-slave04.build.mozilla.org" inherits "centos5-i686-build" {
+node "moz2-linux-slave04.build.sjc1.mozilla.com" inherits "centos5-i686-build" {
     include staging-buildslave, vm
 }
 
-node "moz2-linux-slave10.build.mozilla.org" inherits "centos5-i686-build" {
+node "moz2-linux-slave10.build.sjc1.mozilla.com" inherits "centos5-i686-build" {
     include staging-buildslave, vm
 }
 
-node "moz2-linux-slave17.build.mozilla.org" inherits "centos5-i686-build" {
+node "moz2-linux-slave17.build.sjc1.mozilla.com" inherits "centos5-i686-build" {
     include staging-buildslave, vm
 }
 
-node "moz2-linux64-slave07.build.mozilla.org" inherits "centos5-x86_64-build" {
+node "moz2-linux64-slave07.build.sjc1.mozilla.com" inherits "centos5-x86_64-build" {
     include staging-buildslave, vm
 }
 
-node "moz2-linux64-slave10.build.mozilla.org" inherits "centos5-x86_64-build" {
+node "moz2-linux64-slave10.build.sjc1.mozilla.com" inherits "centos5-x86_64-build" {
     include staging-buildslave, vm
 }
 
@@ -63,12 +63,8 @@ node "linux-ix-slave05.build.mozilla.org" inherits "centos5-i686-build" {
     include staging-buildslave, ix
 }
 
-node "moz2-linux-slave51.build.mozilla.org" inherits "centos5-i686-build" {
+node "moz2-linux-slave51.build.sjc1.mozilla.com" inherits "centos5-i686-build" {
     include staging-buildslave, vm
-}
-
-node "bm-xserve14.build.mozilla.org" inherits "darwin9-i386-build" {
-    include staging-buildslave
 }
 
 node "moz2-darwin9-slave03.build.mozilla.org" inherits "darwin9-i386-build" {
