@@ -79,23 +79,23 @@ node "moz2-darwin9-slave10.build.mozilla.org" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
 
-node "moz2-darwin10-slave01.build.mozilla.org" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave01.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
     include staging-buildslave
 }
 
-node "moz2-darwin10-slave02.build.mozilla.org" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave02.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
     include staging-buildslave
 }
 
-node "moz2-darwin10-slave03.build.mozilla.org" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave03.build.sjc1.mozilla.com" inherits "darwin10-i386-build" {
     include staging-buildslave
 }
 
-node "moz2-darwin10-slave04.build.mozilla.org" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave04.build.sjc1.mozilla.com" inherits "darwin10-i386-build" {
     include staging-buildslave
 }
 
-node "moz2-darwin10-slave10.build.mozilla.org" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave10.build.sjc1.mozilla.com" inherits "darwin10-i386-build" {
     include staging-buildslave
 }
 
