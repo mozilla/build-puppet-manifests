@@ -2,4 +2,5 @@
 # correctly.
 class network {
     include network::iface_config
+    include network::hosts
 }
