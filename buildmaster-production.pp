@@ -20,6 +20,7 @@ node "masternode" {
     # tell, are caused by http://projects.puppetlabs.com/issues/2423.
     # This is supposedly fixed in puppet 0.25, so worth revisiting this once we
     # upgrade
+    $slaveType = "master"
     include packages
 }
 
@@ -31,6 +32,7 @@ node "buildbot-master04.build.scl1.mozilla.com" inherits "masternode" {
             master_type => "tests",
             basedir => "tests1";
     }
+    include nagios
 }
 
 node "buildbot-master06.build.scl1.mozilla.com" inherits "masternode" {
@@ -41,6 +43,7 @@ node "buildbot-master06.build.scl1.mozilla.com" inherits "masternode" {
             master_type => "tests",
             basedir => "tests1";
     }
+    include nagios
 }
 
 node "buildbot-master07.build.sjc1.mozilla.com" inherits "masternode" {
@@ -125,4 +128,5 @@ node "dev-master01.build.scl1.mozilla.com" inherits "masternode" {
     # This is a development machine
     # Install all the prereqs of buildbot, but don't actually instantiate any masters
     include buildmaster
+    include nagios
 }

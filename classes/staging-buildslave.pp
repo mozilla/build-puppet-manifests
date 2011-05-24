@@ -4,11 +4,11 @@
 ### in the /manifests/packages/ tree
 
 class staging-buildslave {
+    include nagios
     case $operatingsystem {
         CentOS: {
             include packages::debuginfopackages
             include packages::devtools
-            include packages::nagios
             include packages::scratchbox
             include packages::moz-rpms
         }

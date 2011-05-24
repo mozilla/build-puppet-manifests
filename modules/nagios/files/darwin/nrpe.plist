@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Disabled</key>
+	<false/>
+	<key>GroupName</key>
+	<string>nagios</string>
+	<key>Label</key>
+	<string>org.nagios.nrpe</string>
+	<key>OnDemand</key>
+	<true/>
+	<key>inetdCompatibility</key>
+	<dict>
+		<key>Wait</key>
+		<false/>
+	</dict>
+	<key>Program</key>
+	<string>/usr/local/nagios/sbin/nrpe</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/nagios/sbin/nrpe</string>
+		<string>-c</string>
+		<string>/usr/local/nagios/etc/nrpe.cfg</string>
+		<string>-i</string>
+	</array>
+	<key>RunAtLoad</key>
+	<false/>
+        <key>Sockets</key>
+        <dict>
+                <key>Listeners</key>
+                <dict>
+                        <key>SockServiceName</key>
+                        <string>5666</string>
+                </dict>
+        </dict>
+	<key>UserName</key>
+	<string>nagios</string>
+</dict>
+</plist>

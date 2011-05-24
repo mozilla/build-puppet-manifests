@@ -147,19 +147,6 @@ class osx {
         "/opt/local/bin/autoconf-2.13":
             ensure => "/opt/local/bin/autoconf213",
             require => File["/opt/local/bin"];
-        "/usr/local/nagios/etc/nrpe.plist":
-            source => "${platform_fileroot}/usr/local/nagios/etc/nrpe.plist",
-            owner => "root",
-            group => "wheel";
-        "/usr/local/nagios/etc/nrpe.cfg":
-            source => "${platform_fileroot}/usr/local/nagios/etc/nrpe.cfg",
-            owner => "root",
-            group => "wheel",
-            require => [File["/usr/local/nagios/etc/nrpe.plist"], Install_dmg["nrpe-i386.dmg"]];
-        "/usr/local/nagios-i386":
-            ensure => "nagios",
-            owner => "root",
-            group => "wheel";
         "/opt":
             ensure => directory,
             owner => "root",
@@ -200,10 +187,6 @@ class osx {
             mode => "4755",
             require => File['/Users/cltbld/bin'],
             source => "${platform_fileroot}/Users/cltbld/bin/chown_revert";
-        "/usr/local/bin/setup-nagios-user.sh":
-            owner => "root",
-            group => "staff",
-            source => "${platform_fileroot}/usr/local/bin/setup-nagios-user.sh";
         "/usr/local/bin/check-for-package.sh":
             owner => "root",
             group => "staff",
@@ -265,21 +248,6 @@ class osx {
             source => "${platform_fileroot}/Library/Preferences/com.apple.VNCSettings.txt";
     }
 
-    exec { 
-        setup-nagios-user:
-            creates => "/var/db/.puppet_nagios_user_setup",
-            command => "/usr/local/bin/setup-nagios-user.sh",
-            require => File["/etc/fstab"],
-            subscribe => Install_dmg["nrpe-i386.dmg"];
-        enable-nrpe:
-            creates => "/Library/LaunchDaemons/nrpe.plist",
-            command => "/usr/local/nagios/sbin/enablenrpe",
-            subscribe => [Install_dmg["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
-    }
-    install_dmg {
-        "nrpe-i386.dmg":
-            creates => "/usr/local/nagios-i386/sbin/nrpe";
-    }
     package {
         "yasm-1.1.0.dmg":
             provider => pkgdmg,

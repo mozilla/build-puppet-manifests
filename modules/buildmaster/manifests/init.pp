@@ -5,8 +5,6 @@
 # buildmaster::buildbot_master
 #
 # buildmaster requires that $num_masters be set on the node prior to including this class
-# $num_masters should be a count of how many master instances are on the
-# machine, and it used to set up nagios checks appropriately
 #
 # TODO: move $libdir stuff into template?
 # TODO: you still have to set up ssh keys!
@@ -19,9 +17,6 @@ class buildmaster {
     $master_user_uid = 500
     $master_group_gid = 500
     $master_basedir = "/builds/buildbot"
-    if $num_masters == '' {
-        fail("you must set num_masters")
-    }
     package {
         "python26":
             ensure => latest;
@@ -36,14 +31,6 @@ class buildmaster {
         "buildbot":
             require => File["/etc/init.d/buildbot"],
             enable => true;
-        "nrpe":
-            require => [
-                Package["nagios-plugins-all"],
-                Package["nrpe"]
-            ],
-            subscribe => File["/etc/nagios/nrpe.cfg"],
-            enable => true,
-            ensure => running;
     }
     user {
         $master_user:
@@ -64,11 +51,6 @@ class buildmaster {
             name => $master_group,
             gid => $master_group_gid;
     }
-    # nrpe.cfg needs to point to an architecture appropriate lib directory
-    case $architecture {
-        "x86_64": { $libdir = "lib64" }
-        default:  { $libdir = "lib" }
-    }
     file {
         "/builds":
             ensure => directory,
@@ -86,10 +68,6 @@ class buildmaster {
         "/etc/init.d/buildbot":
             source => "puppet:///modules/buildmaster/buildbot.initd",
             mode => 755,
-            owner => "root",
-            group => "root";
-        "/etc/nagios/nrpe.cfg":
-            content => template("buildmaster/nrpe.cfg.erb"),
             owner => "root",
             group => "root";
         "/root/.my.cnf":

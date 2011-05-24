@@ -1,0 +1,44 @@
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
+
+# These options are common to all of our supported platforms:
+#  - CentOS 32-bit Build Machines & Masters
+#  - CentOS 64-bit Build Machines & Masters
+#  - OS X 10.5 Build Machines
+#  - OS X 10.6 Build Machines
+pid_file=/var/run/nrpe.pid
+server_port=5666
+nrpe_user=nagios
+nrpe_group=nagios
+allowed_hosts=10.2.71.20,10.12.75.9,127.0.0.1
+dont_blame_nrpe=1
+command_timeout=60
+command[check_load]=<%=plugins_dir%>/check_load -w $ARG1$ -c $ARG2$
+command[check_users]=<%=plugins_dir%>/check_users -w $ARG1$ -c $ARG2$
+command[check_disk]=<%=plugins_dir%>/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
+command[check_procs]=<%=plugins_dir%>/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
+command[check_file_age]=<%=plugins_dir%>/check_file_age -w $ARG1$ -c $ARG2$ -f $ARG3$
+
+
+<% if operatingsystem == "CentOS" %>
+# CentOS only (build machines and masters):
+debug=0
+<% if slaveType == "build" %>
+# CentOS build machines only
+command[check_buildbot]=<%=plugins_dir%>/check_procs -w 1:1 -C twistd --argument-array=buildbot.tac
+<% end %>
+<% if slaveType == "master" %>
+# Masters only
+command[check_swap]=<%=plugins_dir%>/check_swap -w $ARG1$ -c $ARG2$
+command[check_buildbot]=<%=plugins_dir%>/check_procs -c <%= num_masters %>:<%= num_masters %> -C buildbot
+command[check_mysql]=/usr/<%=libdir%>/nagios/plugins/check_mysql -H <%= scope.lookupvar('secrets::buildbot_schedulerdb_host') %> -u <%= scope.lookupvar('secrets::buildbot_schedulerdb_user') %> -p <%= scope.lookupvar('secrets::buildbot_schedulerdb_password') %>
+command[check_ntp_time]=<%=plugins_dir%>/check_ntp_time -H $ARG1$ -w $ARG2$ -c $ARG3$
+command[check_http_redirect]=<%=plugins_dir%>/check_http_redirect -U $ARG1$ -I $ARG2$
+<% end %>
+<% end %>
+
+<% if operatingsystem == "Darwin" %>
+# Mac only:
+debug=1
+command[check_buildbot]=<%=plugins_dir%>/check_procs -w 1:1 -C python --argument-array=buildbot.tac
+<% end %>
