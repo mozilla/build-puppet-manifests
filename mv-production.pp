@@ -168,47 +168,47 @@ node "moz2-darwin10-ref.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave40.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave40.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave41.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave41.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave42.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave42.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave43.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave43.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave44.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave44.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave45.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave45.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave46.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave46.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave47.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave47.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave48.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave48.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave49.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave49.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin10-slave50.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
+node "moz2-darwin10-slave50.build.mozilla.org" inherits "darwin10-i386-build" {
     include buildslave
 }
 
@@ -225,26 +225,6 @@ node "moz2-darwin10-slave55.build.mtv1.mozilla.com" inherits "darwin10-i386-buil
 }
 
 node "moz2-darwin10-slave56.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave57.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave58.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave59.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave60.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin10-slave61.build.mtv1.mozilla.com" inherits "darwin10-i386-build" {
     include buildslave
 }
 
