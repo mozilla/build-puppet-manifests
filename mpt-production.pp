@@ -717,147 +717,147 @@ node "bm-xserve24.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave01.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave01.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave02.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave02.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave03.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave03.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave04.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave04.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave06.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave06.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave07.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave07.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave08.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave08.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave09.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave09.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave10.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave10.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave11.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave11.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave12.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave12.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave13.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave13.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave14.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave14.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave15.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave15.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave16.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave16.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave17.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave17.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave18.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave18.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave19.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave19.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave30.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave30.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave31.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave31.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave32.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave32.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave33.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave33.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave34.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave34.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave35.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave35.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave36.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave36.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave37.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave37.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave38.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave38.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave39.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave39.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave40.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave40.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave41.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave41.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave42.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave42.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave43.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave43.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave44.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave44.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave45.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave45.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave46.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave46.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "try-mac-slave47.build.mozilla.org" inherits "darwin9-i386-build" {
+node "try-mac-slave47.build.sjc1.mozilla.com" inherits "darwin9-i386-build" {
     include buildslave
 }
 
