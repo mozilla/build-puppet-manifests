@@ -1,5 +1,6 @@
 # nagios class
 class nagios::service {
+    include secrets
     case $slaveType {
         master: {
             if $num_masters == '' {
