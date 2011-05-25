@@ -321,5 +321,6 @@ class centos5 {
     include buildslave::startup
     include buildslave::cleanup
     include network
+    include boot
     include buildslave::purgebuilds
 }

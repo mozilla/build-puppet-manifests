@@ -5,6 +5,7 @@ class master {
     $platform_httproot = "${httproot}/${lsbdistid}-${lsbdistrelease}-${hardwaremodel}/${slaveType}"
     include nagios
     include network
+    include boot
     include ntp
     include prefs
     include ganglia::client

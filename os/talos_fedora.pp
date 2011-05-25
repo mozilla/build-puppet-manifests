@@ -77,4 +77,5 @@ class talos_fedora {
     include buildslave::cleanup
     include gui::resolution
     include network
+    include boot
 }
