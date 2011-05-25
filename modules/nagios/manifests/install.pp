@@ -61,7 +61,7 @@ class nagios::install {
     case $slaveType {
         master: {
             nagios::install::plugin {
-                "check_http_redirect": ;
+                "check_http_redirect_ip": ;
                 "check_ganglia": ;
             }
         }

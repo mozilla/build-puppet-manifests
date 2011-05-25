@@ -3,6 +3,7 @@
 # (e.g. buildbot masters, puppet masters)
 class master {
     $platform_httproot = "${httproot}/${lsbdistid}-${lsbdistrelease}-${hardwaremodel}/${slaveType}"
+    include nagios
     include network
     include ntp
     include prefs
