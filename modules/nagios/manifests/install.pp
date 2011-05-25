@@ -1,3 +1,24 @@
+# install a nagios plugin in the appropriate libdir, from this module's files
+# directory
+#
+# title: name of the plugin to install
+
+define nagios::install::plugin() {
+    $plugin_name = $title
+
+    $libdir = $hardwaremodel ? {
+        i686   => "lib",
+        x86_64 => "lib64"
+    }
+
+    file {
+        "/usr/$libdir/nagios/plugins/$plugin_name":
+            source => "puppet:///nagios/$plugin_name",
+            mode   => 755,
+            owner  => root,
+            group  => root;
+    }
+}
 
 class nagios::install {
     case $operatingsystem {
@@ -35,18 +56,13 @@ class nagios::install {
             }
         }
     }
+
+    # install plugins
     case $slaveType {
         master: {
-            $libdir = $hardwaremodel ? {
-                i686   => "lib",
-                x86_64 => "lib64"
-            }
-            file {
-                "/usr/$libdir/nagios/plugins/check_http_redirect":
-                    source => "puppet:///nagios/check_http_redirect",
-                    mode   => 755,
-                    owner  => root,
-                    group  => root;
+            nagios::install::plugin {
+                "check_http_redirect": ;
+                "check_ganglia": ;
             }
         }
     }
