@@ -247,7 +247,12 @@ class osx {
             mode => 600,
             source => "${platform_fileroot}/Library/Preferences/com.apple.VNCSettings.txt";
     }
-
+    exec {
+        disable-indexing:
+            command => "/usr/bin/mdutil -a -i off";
+        remove-index:
+            command => "/usr/bin/mdutil -a -E";
+    } 
     package {
         "yasm-1.1.0.dmg":
             provider => pkgdmg,

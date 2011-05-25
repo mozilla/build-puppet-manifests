@@ -81,6 +81,13 @@ class talos_osx {
             mode => 775;
     }
 
+    exec {
+        disable-indexing:
+            command => "/usr/bin/mdutil -a -i off";
+        remove-index:
+            command => "/usr/bin/mdutil -a -E";
+    }
+
     # get .bash_profile in place for Snow Leopard
     case $operatingsystemrelease {
        # Snow Leopard
