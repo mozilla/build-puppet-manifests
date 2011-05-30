@@ -26,6 +26,8 @@ class buildmaster {
             ensure => latest;
         "git":
             ensure => latest;
+        "gcc":
+            ensure => latest;
     }
     service {
         "buildbot":
