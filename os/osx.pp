@@ -40,10 +40,6 @@ class osx {
                     content => template("/etc/puppet/templates/main.cf.erb"),
                     owner => "root",
                     group => "wheel";
-                "/etc/ntp.conf":
-                    source => "${platform_fileroot}/etc/ntp.conf",
-                    owner => "root",
-                    group => "wheel";
                 "/tools/dist/logs":
                     require => File["/tools/dist"],
                     owner => "cltbld",
@@ -96,10 +92,6 @@ class osx {
                     timeout => "600",
                     require => [Package["MacPorts-1.7.1-10.5-Leopard.dmg"], Install_dmg["macports-updates-10.5.dmg"], Exec["macports-subversion"]],
                     command => "/opt/local/bin/port -v install wget && /bin/sleep 10";
-                restart-ntp:
-                    subscribe => File["/etc/ntp.conf"],
-                    refreshonly => true,
-                    command => "/bin/launchctl stop org.ntp.ntpd && /bin/launchctl start org.ntp.ntpd";
             }
         }
         "10.2.0": {

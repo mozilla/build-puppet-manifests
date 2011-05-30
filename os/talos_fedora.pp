@@ -53,18 +53,6 @@ class talos_fedora {
             mode => 775;
     }
 
-    # On Talos machines, puppet is only run at boot.  Network Manager is
-    # handling the network connections, so we don't have any network until
-    # cltbld is fully logged in, at which point puppet is run.  By setting
-    # ensure => running we make sure that ntpdate is run here.  The service
-    # doesn't actually need to be enabled because there's no network connection
-    # at the point in the boot sequence when the ntpdate service would actually
-    # get run.
-    service { 'ntpdate':
-        enable => false,
-        ensure => running;
-    }
-
     # this really applies to all fedora hosts, but since those are all talos, too,
     # it's here for the moment.
     service { 'avahi-daemon':

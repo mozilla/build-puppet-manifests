@@ -9,7 +9,7 @@ node "build" inherits "slave" {
     $platform_fileroot = $location::platform_fileroot
     $local_httproot = $location::local_httproot
     $local_fileroot = $location::local_fileroot
-    include base, packages::puppet-config
+    include base, packages::puppet-config, ntp
 }
 
 node "centos" inherits "build" {
@@ -48,7 +48,7 @@ node "test" inherits "slave" {
     $platform_fileroot = $location::platform_fileroot
     $local_httproot = $location::local_httproot
     $local_fileroot = $location::local_fileroot
-    include packages::puppet-config
+    include packages::puppet-config, ntp
 }
 
 node "fedora" inherits "test" {

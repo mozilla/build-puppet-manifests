@@ -1,0 +1,23 @@
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
+
+# All:
+server ntp.build.mozilla.org
+# Linuxes only:
+<% if operatingsystem == "CentOS" or operatingsystem == "Fedora" %>
+<% if operatingsystem == "CentOS" %>
+<% if slaveType == "build" %>
+fudge 127.127.1.0 stratum 10
+<% end %>
+<% end %>
+<% if operatingsystem == "Fedora" %>
+includefile /etc/ntp/crypto/pw
+<% end %>
+restrict default kod nomodify notrap nopeer noquery
+restrict -6 default kod nomodify notrap nopeer noquery
+restrict 127.0.0.1 
+restrict 10.0.0.0 mask 255.0.0.0
+restrict -6 ::1
+driftfile /var/lib/ntp/drift
+keys /etc/ntp/keys
+<% end %>
