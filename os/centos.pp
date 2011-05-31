@@ -70,7 +70,7 @@ class centos5 {
                 # because they would break builds, and it was easier to move
                 # them to this directory and have Puppet clean them up than to
                 # wait for deletes to finish over ssh sessions.
-                "/builds/slaves/DELETETHIS":
+                "/builds/slave/DELETETHIS":
                     ensure => absent;
 
                 "/home/cltbld/.android":
