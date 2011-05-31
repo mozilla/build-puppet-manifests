@@ -71,7 +71,8 @@ class centos5 {
                 # them to this directory and have Puppet clean them up than to
                 # wait for deletes to finish over ssh sessions.
                 "/builds/slave/DELETETHIS":
-                    ensure => absent;
+                    ensure => absent,
+                    force => true;
 
                 "/home/cltbld/.android":
                     mode   => 775,
