@@ -319,9 +319,9 @@ class NSCANotifier(object):
         return toserver_pkt
 
     def do_send_notice(self):
-        host_name = self.nagios_name(options.slavename, verbose=options.verbose)
+        host_name = self.nagios_name(self.options.slavename, verbose=self.options.verbose)
         monitoring_host = self.monitoring_host_from_nagios_name(host_name,
-                                            verbose=options.verbose)
+                                            verbose=self.options.verbose)
 
         sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sk.connect((monitoring_host, self.monitoring_port))
@@ -368,7 +368,7 @@ def guess_twistd_cmd():
         return [ '/tools/buildbot/bin/twistd' ]
 
 default_allocator_url = "http://slavealloc.build.mozilla.org/gettac/SLAVE"
-if __name__ == '__main__':
+def main():
     from optparse import OptionParser
 
     parser = OptionParser(usage=textwrap.dedent("""\
@@ -434,3 +434,6 @@ if __name__ == '__main__':
             tac.run()
     except RunslaveError, error:
         print >>sys.stderr, "FATAL: %s" % str(error)
+
+if __name__ == '__main__':
+    main()
