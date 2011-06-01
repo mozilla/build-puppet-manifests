@@ -1171,6 +1171,3 @@ node "byob-repack05" inherits "byob-repack" {
     include byob-repackslave
 }
 
-node default {
-    #include base
-}

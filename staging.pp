@@ -151,7 +151,3 @@ node "talos-r3-snow-010" inherits "darwin10-i386-test" {
     include talosslave
 }
 
-node default {
-    #include base
-}
-
