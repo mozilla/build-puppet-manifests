@@ -1100,7 +1100,3 @@ node "byob-repack05.build.mozilla.org" inherits "byob-repack" {
     include byob-repackslave
 }
 
-node default {
-    #include base
-}
-

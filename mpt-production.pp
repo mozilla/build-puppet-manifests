@@ -2044,7 +2044,3 @@ node "talos-r3-fed64-002.build.mozilla.org" inherits "staging-test-node" {
 node "preproduction-stage.build.mozilla.org" inherits "stage-and-aus2-server" {
 }
 
-node default {
-    #include base
-}
-
