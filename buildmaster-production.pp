@@ -24,7 +24,7 @@ node "masternode" {
     include packages
 }
 
-node "buildbot-master04.build.scl1.mozilla.com" inherits "masternode" {
+node "buildbot-master04" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm04-tests1":
@@ -34,7 +34,7 @@ node "buildbot-master04.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master06.build.scl1.mozilla.com" inherits "masternode" {
+node "buildbot-master06" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm06-tests1":
@@ -44,7 +44,7 @@ node "buildbot-master06.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master07.build.sjc1.mozilla.com" inherits "masternode" {
+node "buildbot-master07" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm07-build1":
@@ -54,7 +54,7 @@ node "buildbot-master07.build.sjc1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master08.build.sjc1.mozilla.com" inherits "masternode" {
+node "buildbot-master08" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm08-build1":
@@ -64,7 +64,7 @@ node "buildbot-master08.build.sjc1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master09.build.sjc1.mozilla.com" inherits "masternode" {
+node "buildbot-master09" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm09-try1":
@@ -74,14 +74,14 @@ node "buildbot-master09.build.sjc1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master10.build.sjc1.mozilla.com" inherits "masternode" {
+node "buildbot-master10" inherits "masternode" {
     $num_masters = 2
     # The build and test schedulers run on here, but they aren't managed by puppet
     # so install all the prereqs of buildbot, but don't actually instantiate any masters
     include buildmaster
 }
 
-node "buildbot-master11.build.scl1.mozilla.com" inherits "masternode" {
+node "buildbot-master11" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm11-tests1":
@@ -91,7 +91,7 @@ node "buildbot-master11.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master12.build.scl1.mozilla.com" inherits "masternode" {
+node "buildbot-master12" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm12-build1":
@@ -101,7 +101,7 @@ node "buildbot-master12.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master13.build.scl1.mozilla.com" inherits "masternode" {
+node "buildbot-master13" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm13-build1":
@@ -111,7 +111,7 @@ node "buildbot-master13.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "buildbot-master14.build.scl1.mozilla.com" inherits "masternode" {
+node "buildbot-master14" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm14-try1":
@@ -121,7 +121,7 @@ node "buildbot-master14.build.scl1.mozilla.com" inherits "masternode" {
     }
 }
 
-node "dev-master01.build.scl1.mozilla.com" inherits "masternode" {
+node "dev-master01" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
     # Install all the prereqs of buildbot, but don't actually instantiate any masters
