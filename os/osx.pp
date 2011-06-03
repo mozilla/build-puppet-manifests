@@ -287,4 +287,5 @@ class osx {
     include buildslave::startup
     include buildslave::cleanup
     include buildslave::purgebuilds
+    include boot
 }

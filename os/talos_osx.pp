@@ -151,4 +151,5 @@ class talos_osx {
     include buildslave::install
     include buildslave::startup
     include buildslave::cleanup
+    include boot
 }
