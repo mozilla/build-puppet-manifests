@@ -515,6 +515,46 @@ node "talos-r3-fed-053" inherits "fedora12-i686-test" {
     include talosslave
 }
 
+node "talos-r3-fed-054" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-055" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-056" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-057" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-058" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-059" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-060" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-061" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-062" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-063" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
 node "talos-r3-fed64-ref" inherits "fedora12-x86_64-test" {
     include talosslave
 }
@@ -727,6 +767,22 @@ node "talos-r3-fed64-055" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 
+node "talos-r3-fed64-056" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-057" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-058" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
+node "talos-r3-fed64-059" inherits "fedora12-x86_64-test" {
+    include talosslave
+}
+
 node "talos-r3-leopard-ref" inherits "darwin9-i386-test" {
     include talosslave
 }
@@ -928,6 +984,30 @@ node "talos-r3-leopard-052" inherits "darwin9-i386-test" {
 }
 
 node "talos-r3-leopard-053" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-054" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-055" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-056" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-057" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-058" inherits "darwin9-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-leopard-059" inherits "darwin9-i386-test" {
     include talosslave
 }
 
@@ -1140,6 +1220,22 @@ node "talos-r3-snow-054" inherits "darwin10-i386-test" {
 }
 
 node "talos-r3-snow-055" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-056" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-057" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-058" inherits "darwin10-i386-test" {
+    include talosslave
+}
+
+node "talos-r3-snow-059" inherits "darwin10-i386-test" {
     include talosslave
 }
 
