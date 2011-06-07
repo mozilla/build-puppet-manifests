@@ -138,6 +138,12 @@ node "linux64-ix-slave38" inherits "centos5-x86_64-build" {
 node "linux64-ix-slave39" inherits "centos5-x86_64-build" {
     include buildslave, ix
 }
+node "linux64-ix-slave40" inherits "centos5-x86_64-build" {
+    include buildslave, ix
+}
+node "linux64-ix-slave41" inherits "centos5-x86_64-build" {
+    include buildslave, ix
+}
 
 node "linux-ix-slave01" inherits "centos5-i686-build" {
     include buildslave, ix
