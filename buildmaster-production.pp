@@ -121,6 +121,26 @@ node "buildbot-master14" inherits "masternode" {
     }
 }
 
+node "buildbot-master15" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm15-tests1-windows":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-windows";
+    }
+}
+
+node "buildbot-master16" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm16-tests1-windows":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-windows";
+    }
+}
+
 node "dev-master01" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
