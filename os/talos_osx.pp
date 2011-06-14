@@ -119,7 +119,7 @@ class talos_osx {
 
     # disable bluetooth
     case $operatingsystemrelease {
-        "9.2.0", "9.8.0": {
+        "9.2.0": {
             # disable the Bluetooth mouse-finding dialog
             file {
                 "/Library/Preferences/com.apple.Bluetooth.plist":
