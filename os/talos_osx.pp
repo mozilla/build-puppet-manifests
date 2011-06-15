@@ -119,33 +119,24 @@ class talos_osx {
 
     # disable bluetooth
     case $operatingsystemrelease {
-        "9.2.0": {
-            # disable the Bluetooth mouse-finding dialog
+        "9.8.0": {
             file {
                 "/Library/Preferences/com.apple.Bluetooth.plist":
                     owner => "root",
                     group => "admin",
-                    mode => 600,
+                    mode => 644,
                     source => "${platform_fileroot}/Library/Preferences/com.apple.Bluetooth.plist";
             }
-
-            # and disable the service, too
-            service {
-                "com.apple.BluedServer":
-                    ensure => "stopped",
-                    enable => false;
-            }
         }
+    }
 
-        "10.2.0", "10.6.0": {
-            # the service has a different name in darwin10; the dialog does not appear, though,
-            # and the plist is different from 9.2.0, so no need for it here
-            service {
-                "com.apple.blued":
-                    ensure => "stopped",
-                    enable => false;
-            }
-        }
+    # The name of this service became 'blued' somewhere between 9.2.0 and
+    # 9.8.0, but since we don't have any 9.2.0 talos slaves, we can just call
+    # it blued.
+    service {
+        "com.apple.blued":
+            ensure => "stopped",
+            enable => false;
     }
 
     include buildslave::install
