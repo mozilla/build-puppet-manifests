@@ -141,6 +141,11 @@ node "buildbot-master16" inherits "masternode" {
     }
 }
 
+node "buildbot-master17" inherits "masternode" {
+    $num_masters = 0
+    # Nothing allocated to this machine yet
+}
+
 node "dev-master01" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
