@@ -6,6 +6,7 @@
 #   C:\runslave.py on Windows systems
 # - It lives in the 'buildslave' puppet module
 
+import time
 import sys
 import os
 import re
@@ -182,13 +183,21 @@ class BuildbotTac:
         if not os.path.exists(self.get_filename()):
             raise NoBuildbotTacError("no buildbot.tac found; cannot start")
         self.delete_pidfile()
-        sys.exit(subprocess.call(
+        rv = subprocess.call(
             self.options.twistd_cmd + 
                     [ '--no_save',
                       '--logfile', os.path.join(self.get_basedir(), 'twistd.log'),
                       '--python', self.get_filename(),
                     ],
-            cwd=self.get_basedir()))
+            cwd=self.get_basedir())
+
+        # sleep for long enough to let twistd daemonize; otherwise, launchd may
+        # spot the partially-daemonized process and kill it as a "stray process
+        # with PGID equal to this dead job: <runslave.py's pid>" - see bug
+        # 644310
+        if rv == 0:
+            time.sleep(10)
+        sys.exit(rv)
 
 class NSCANotifier(object):
     """
