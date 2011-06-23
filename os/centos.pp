@@ -87,6 +87,10 @@ class centos5 {
                     owner   => cltbld,
                     group   => cltbld;
 
+                "/home/cltbld/.android/debug.keystore":
+                    ensure => absent,
+                    force => true;
+
                 "/home/cltbld/.mozpass.cfg":
                     source => "${local_fileroot}/home/cltbld/.mozpass.cfg",
                     mode   => 600,
