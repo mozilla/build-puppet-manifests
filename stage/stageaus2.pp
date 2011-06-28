@@ -1,26 +1,54 @@
 class stageaus2 {
     Package{ provider => rpm, ensure => installed }
-    package {
-        "apr":
-            source => "${platform_httproot}/RPMs/apr-1.2.7-11.i386.rpm";
-        "gmp":
-            source => "${platform_httproot}/RPMs/gmp-4.1.4-10.el5.i386.rpm";
-        "php-common":
-            require => Package["gmp"],
-            source => "${platform_httproot}/RPMs/php-common-5.1.6-5.el5.i386.rpm";
-        "php-cli":
-            require => Package["php-common"],
-            source => "${platform_httproot}/RPMs/php-cli-5.1.6-5.el5.i386.rpm";
-        "apr-util":
-            require => Package["apr"],
-            source => "${platform_httproot}/RPMs/apr-util-1.2.7-6.i386.rpm";
-        "httpd":
-            require => Package["apr-util"],
-            source => "${platform_httproot}/RPMs/httpd-2.2.3-6.el5.centos.1.i386.rpm";
+    case $hardwaremodel {
+        "x86_64": {
+            package {
+                "apr":
+                    source => "${platform_httproot}/RPMs/apr-1.2.7-11.el5_5.3.x86_64.rpm";
+                "gmp":
+                    source => "${platform_httproot}/RPMs/gmp-4.1.4-10.el5.x86_64.rpm";
+                "php-common":
+                    require => Package["gmp"],
+                    source => "${platform_httproot}/RPMs/php-common-5.1.6-27.el5_5.3.x86_64.rpm";
+                "php-cli":
+                    require => Package["php-common"],
+                    source => "${platform_httproot}/RPMs/php-cli-5.1.6-27.el5_5.3.x86_64.rpm";
+                "apr-util":
+                    require => Package["apr"],
+                    source => "${platform_httproot}/RPMs/apr-util-1.2.7-11.el5_5.2.x86_64.rpm";
+                "httpd":
+                    require => Package["apr-util"],
+                    source => "${platform_httproot}/RPMs/httpd-2.2.3-45.el5.centos.x86_64.rpm";
 
-        "php":
-            require => [Package["httpd"], Package["php-cli"]],
-            source => "${platform_httproot}/RPMs/php-5.1.6-5.el5.i386.rpm";
+                "php":
+                    require => [Package["httpd"], Package["php-cli"]],
+                    source => "${platform_httproot}/RPMs/php-5.1.6-27.el5_5.3.x86_64.rpm";
+            }
+        }
+        "default": {
+            package {
+                "apr":
+                    source => "${platform_httproot}/RPMs/apr-1.2.7-11.i386.rpm";
+                "gmp":
+                    source => "${platform_httproot}/RPMs/gmp-4.1.4-10.el5.i386.rpm";
+                "php-common":
+                    require => Package["gmp"],
+                    source => "${platform_httproot}/RPMs/php-common-5.1.6-5.el5.i386.rpm";
+                "php-cli":
+                    require => Package["php-common"],
+                    source => "${platform_httproot}/RPMs/php-cli-5.1.6-5.el5.i386.rpm";
+                "apr-util":
+                    require => Package["apr"],
+                    source => "${platform_httproot}/RPMs/apr-util-1.2.7-6.i386.rpm";
+                "httpd":
+                    require => Package["apr-util"],
+                    source => "${platform_httproot}/RPMs/httpd-2.2.3-6.el5.centos.1.i386.rpm";
+
+                "php":
+                    require => [Package["httpd"], Package["php-cli"]],
+                    source => "${platform_httproot}/RPMs/php-5.1.6-5.el5.i386.rpm";
+            }
+        }
     }
     file {
         "/etc/httpd/conf.d/aus2.conf":
@@ -57,11 +85,16 @@ class stageaus2 {
             force => true,
             require => [Package["httpd"], Package["php"]];
     }
-    service { "httpd":
-        provider => "redhat",
-        enable => true,
-        ensure => "running",
-        subscribe => [Package["httpd"], Package["php"]]
+    service {
+        "httpd":
+            provider => "redhat",
+            enable => true,
+            ensure => "running",
+            subscribe => [Package["httpd"], Package["php"]];
+        "iptables":
+            provider => "redhat",
+            enable => false,
+            ensure => "stopped";
     }
     exec {
         "update-aus2":

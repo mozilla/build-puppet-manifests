@@ -2044,3 +2044,5 @@ node "talos-r3-fed64-002" inherits "staging-test-node" {
 node "preproduction-stage" inherits "stage-and-aus2-server" {
 }
 
+node "dev-stage01" inherits "stage-and-aus2-server" {
+}

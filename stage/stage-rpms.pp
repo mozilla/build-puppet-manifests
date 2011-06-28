@@ -1,18 +1,37 @@
 class stage-rpms {
 
     Package{ provider => rpm, ensure => installed }
-    package {
-        "cvs":
-            source => "${platform_httproot}/RPMs/cvs-1.11.22-5.el5.i386.rpm";
-        "python25":
-            source => "${platform_httproot}/RPMs/python25-2.5.1-0moz1.i686.rpm";
-        "mercurial":
-            source => "${platform_httproot}/RPMs/mercurial-py26-1.5.1-0moz1.i686.rpm",
-            require     => Package["python25"];
-        "p7zip":
-            source => "${platform_httproot}/RPMs/p7zip-9.13-1.el5.rf.i386.rpm";
-        "vsftpd":
-            source => "${platform_httproot}/RPMs/vsftpd-2.0.5-16.el5_6.1.i386.rpm";
+    case $hardwaremodel {
+        "x86_64": {
+            package {
+                "cvs":
+                    source => "${platform_httproot}/RPMs/cvs-1.11.22-7.el5.x86_64.rpm";
+                "python25":
+                    source => "${platform_httproot}/RPMs/python25-2.5.1-0moz1.x86_64.rpm";
+                "mercurial":
+                    source => "${platform_httproot}/RPMs/mercurial-1.6.3-0moz1.x86_64.rpm",
+                    require     => Package["python25"];
+                "p7zip":
+                    source => "${platform_httproot}/RPMs/p7zip-9.13-1.el5.rf.x86_64.rpm";
+                "vsftpd":
+                    source => "${platform_httproot}/RPMs/vsftpd-2.0.5-16.el5_5.1.x86_64.rpm";
+            }
+        }
+        default: {
+            package {
+                "cvs":
+                    source => "${platform_httproot}/RPMs/cvs-1.11.22-5.el5.i386.rpm";
+                "python25":
+                    source => "${platform_httproot}/RPMs/python25-2.5.1-0moz1.i686.rpm";
+                "mercurial":
+                    source => "${platform_httproot}/RPMs/mercurial-py26-1.5.1-0moz1.i686.rpm",
+                    require     => Package["python25"];
+                "p7zip":
+                    source => "${platform_httproot}/RPMs/p7zip-9.13-1.el5.rf.i386.rpm";
+                "vsftpd":
+                    source => "${platform_httproot}/RPMs/vsftpd-2.0.5-16.el5_6.1.i386.rpm";
+            }
+        }
     }
     file {
         "/tools":
