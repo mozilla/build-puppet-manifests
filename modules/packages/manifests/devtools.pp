@@ -10,6 +10,8 @@ class packages::devtools {
         ["/tools", "/tools/dist"]:
             ensure => directory,
             mode => 755;
+        "/tools/build-tools":
+            ensure => absent;
     }
 
     case $hardwaremodel {
@@ -77,10 +79,6 @@ class packages::devtools {
                             creates     => "/tools/jdk-1.5.0_15/bin/java",
                             version     => "1.5.0_15-0moz1",
                             subscribe   => File["/tools/jdk"];
-                        "build-tools":
-                            creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                            version     => "${buildtools_version}-0moz1",
-                            subscribe   => File["/tools/build-tools"];
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
@@ -139,10 +137,6 @@ class packages::devtools {
                             creates     => "/tools/jdk-1.6.0_17/bin/java",
                             version     => "1.6.0_17-0moz1",
                             subscribe   => File["/tools/jdk6"];
-                        "build-tools":
-                            creates     => "/tools/build-tools-$buildtools_version/stage/post_upload.py",
-                            version     => "${buildtools_version}-0moz1",
-                            subscribe   => File["/tools/build-tools"];
                         "android-sdk":
                             creates     => "/tools/android-sdk-r8/tools/android",
                             version     => "r8-0moz3",
@@ -172,10 +166,6 @@ class packages::devtools {
             }
 
             file {
-                # Ensure previous version of build-tools is gone
-                "/tools/build-tools-$old_buildtools_version":
-                    ensure => absent,
-                    force => true;
                 "/tools/gcc-4.2.3":
                     ensure => absent,
                     backup => false,
@@ -194,8 +184,6 @@ class packages::devtools {
                     ensure  => "/tools/zope-interface-3.3.0";
                 "/tools/jdk":
                     ensure  => "/tools/jdk-$jdk_version";
-                "/tools/build-tools":
-                    ensure => "/tools/build-tools-$buildtools_version";
                 "/usr/local/bin/jscoverage":
                     source => "${platform_fileroot}/usr/local/bin/jscoverage",
                     owner  => "root",
@@ -269,9 +257,6 @@ class packages::devtools {
                 "Twisted-8.0.1.dmg":
                     creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
                     subscribe   => File["/tools/twisted"];
-                "build-tools-${buildtools_version}.dmg":
-                    creates     => "/tools/build-tools-${buildtools_version}/stage/post_upload.py",
-                    subscribe   => File["/tools/build-tools"];
                 "mercurial-1.7.5.dmg":
                     creates => "/tools/mercurial-1.7.5/bin/hg",
                     require => Exec["remove-macport-hg"];
@@ -282,8 +267,6 @@ class packages::devtools {
                     ensure      => absent;
                 "/tools/twisted":
                     ensure  => "/tools/Twisted-8.0.1";
-                "/tools/build-tools":
-                    ensure => "/tools/build-tools-$buildtools_version";
                 "/tools/mercurial":
                     require => Install_dmg["mercurial-1.7.5.dmg"],
                     ensure  => "/tools/mercurial-1.7.5";
