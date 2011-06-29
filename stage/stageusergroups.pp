@@ -171,7 +171,7 @@ class stageusergroups {
             "/root/crontab":
                 owner => "root",
                 group => "root",
-                source => "${platform_fileroot}/root/crontab";
+                content => template("/etc/puppet/templates/stage.root.crontab.erb");
     }
     exec {
         "/usr/bin/crontab -u cltbld /home/cltbld/crontab":

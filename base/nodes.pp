@@ -114,7 +114,7 @@ node "stage-and-aus2-server" {
     $platform_fileroot = $location::platform_fileroot
     $local_httproot = $location::local_httproot
     $local_fileroot = $location::local_fileroot
-    include stageusergroups, stage-rpms, stagelayout, stageaus2
+    include stagelayout, stage-rpms, stageaus2
 }
 
 node "staging-node" {

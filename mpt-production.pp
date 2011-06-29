@@ -2042,7 +2042,11 @@ node "talos-r3-fed64-002" inherits "staging-test-node" {
 }
 
 node "preproduction-stage" inherits "stage-and-aus2-server" {
+    $deleteCandidatesDirs = '1'
+    include stageusergroups
 }
 
 node "dev-stage01" inherits "stage-and-aus2-server" {
+    $deleteCandidatesDirs = '0'
+    include stageusergroups
 }
