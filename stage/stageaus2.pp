@@ -25,7 +25,7 @@ class stageaus2 {
                     source => "${platform_httproot}/RPMs/php-5.1.6-27.el5_5.3.x86_64.rpm";
             }
         }
-        "default": {
+        default: {
             package {
                 "apr":
                     source => "${platform_httproot}/RPMs/apr-1.2.7-11.i386.rpm";
