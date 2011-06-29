@@ -365,6 +365,7 @@ def guess_twistd_cmd():
                 r'C:\mozilla-build\python25',
                 r'D:\mozilla-build\python25',
                 # newer mozilla-build installs in here
+                r'C:\mozilla-build\python',
                 r'D:\mozilla-build\python',
             ]:
             python_exe = os.path.join(path, 'python.exe')
