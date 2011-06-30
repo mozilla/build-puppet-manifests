@@ -96,15 +96,24 @@ class BuildbotTac:
         if slave_matches('slave', 'xserve'):
             if slave_matches('linux', 'darwin', 'mac', 'xserve'):
                 basedir = dirs['posix_build']
-            elif slave_matches('win', 'w32', 'w764', 'w64'):
+            elif slave_matches('win', 'w32', 'w64'):
                 basedir = dirs['windows_build']
         elif slave_matches('talos', '-try', 'r3'):
             if slave_matches('linux', 'ubuntu', 'fed'):
                 basedir = dirs['linux_test']
             elif slave_matches('tiger', 'leopard', 'snow'):
                 basedir = dirs['mac_test']
-            elif slave_matches('xp', 'w7'):
+            elif slave_matches('xp', 'w7', 'w764'):
                 basedir = dirs['win_test']
+
+        # if we have matched the slave to a basedir create it if it doesn't exist
+        if basedir:
+            if not os.path.exists(basedir):
+                try:
+                    os.makedirs(basedir)
+                except ValueError:
+                    print "ERROR: We were not able to create the basedir: %s" % ValueError
+                    sys.exit(1)
 
         # failing that, find a directory that exists
         if not basedir:
