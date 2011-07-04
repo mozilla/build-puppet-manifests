@@ -79,6 +79,9 @@ node "buildbot-master10" inherits "masternode" {
     # The build and test schedulers run on here, but they aren't managed by puppet
     # so install all the prereqs of buildbot, but don't actually instantiate any masters
     include buildmaster
+
+    # The selfserve agent runs here too
+    include selfserve-agent
 }
 
 node "buildbot-master11" inherits "masternode" {
@@ -144,6 +147,7 @@ node "buildbot-master16" inherits "masternode" {
 node "buildbot-master17" inherits "masternode" {
     $num_masters = 0
     # Nothing allocated to this machine yet
+    include buildmaster
 }
 
 node "dev-master01" inherits "masternode" {

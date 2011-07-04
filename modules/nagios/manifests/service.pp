@@ -13,9 +13,14 @@ class nagios::service {
     case $operatingsystem {
         Darwin: {
             $plugins_dir = "/usr/local/nagios/plugins"
+            $etcdir = "/usr/local/nagios/etc"
             file {
                 "/usr/local/nagios/etc/nrpe.cfg":
                     content => template("nagios/nrpe.cfg.erb"),
+                    owner  => "root",
+                    group  => "wheel";
+                "$etcdir/nrpe.d":
+                    ensure => directory,
                     owner  => "root",
                     group  => "wheel";
             }
@@ -26,11 +31,16 @@ class nagios::service {
                 x86_64 => "lib64"
             }
             $plugins_dir = "/usr/${libdir}/nagios/plugins"
+            $etcdir = "/etc/nagios"
             file {
                 "/etc/nagios/nrpe.cfg":
                     content => template("nagios/nrpe.cfg.erb"),
                     owner   => "root",
                     group   => "root";
+                "$etcdir/nrpe.d":
+                    ensure => directory,
+                    owner  => "root",
+                    group  => "wheel";
             }
         }
     }

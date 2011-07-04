@@ -1,0 +1,94 @@
+#! /bin/bash
+# initscript for selfserve-agent
+
+# chkconfig: 2345 50 08
+### BEGIN INIT INFO
+# Provides:          selfserve-agent
+# Required-Start:    $local_fs $network
+# Should-Start:      $remote_fs
+# Should-Stop:       $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      K 0 1 6
+# Short-Description: self-serve agent
+# Description:       self-serve agent
+### END INIT INFO
+
+# Required-Stop:     $local_fs
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DESC="self-serve agent"
+
+USER=cltbld
+
+DAEMON=/builds/buildbot/selfserve-agent/run_agent.sh
+PIDFILE=/builds/buildbot/selfserve-agent/agent.pid
+
+test -x ${DAEMON} || exit 0
+
+. /lib/lsb/init-functions
+
+start_agent() {
+    USER="$1"
+    ${PREFIXCMD} su -s /bin/bash -c "${DAEMON}" - ${USER}
+    ret=$?
+    return $?
+}
+
+stop_agent() {
+    USER="$1"
+    if [ -f $PIDFILE ]; then
+        PID=$(cat $PIDFILE)
+        ${PREFIXCMD} su -s /bin/bash -c "kill $PID" - ${USER}
+        ret=$?
+        return $?
+    fi
+    return 1
+}
+
+do_start () {
+    errors=0
+    if ! start_agent $USER; then
+         errors=1
+    fi
+    return $errors
+}
+
+do_stop () {
+    errors=0
+    if ! stop_agent $USER; then
+         errors=1
+    fi
+    return $errors
+}
+
+do_restart () {
+    errors=0
+    if ! do_stop; then
+        return 1
+    fi
+    if ! do_start; then
+        return 1
+    fi
+    return 0
+}
+
+case "$1" in
+  start)
+        do_start
+        exit $?
+        ;;
+  stop)
+        do_stop
+        exit $?
+        ;;
+  restart)
+        do_restart
+        exit $?
+        ;;
+  *)
+        log_warning_msg "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
+

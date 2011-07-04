@@ -64,7 +64,7 @@ class python::virtualenv::settings {
 # python: python executable on which to base the virtualenv
 # ensure: present or absent
 # packages: array of package names and versions to install
-define python::virtualenv($python, $ensure="present", $packages) {
+define python::virtualenv($python, $ensure="present", $packages, $user=null, $group=null) {
     include python::virtualenv::settings
 
     $virtualenv = $title
@@ -77,6 +77,40 @@ define python::virtualenv($python, $ensure="present", $packages) {
     $virtualenv_dir_req = File["$virtualenv"]
     $pip_req = Python::Package_dir_file["pip-0.8.2.tar.gz"]
     $virtualenv_py_req = Python::Package_dir_file["virtualenv.py"]
+
+    # Figure out user/group if they haven't been set
+    case $user {
+        null: {
+            case $kernel {
+                Linux: {
+                    $ve_user = "root"
+                }
+                Darwin: {
+                    $ve_user = "root"
+                }
+            }
+        }
+
+        default: {
+            $ve_user = $user
+        }
+    }
+    case $group {
+        null: {
+            case $kernel {
+                Linux: {
+                    $ve_group = "root"
+                }
+                Darwin: {
+                    $ve_group = "admin"
+                }
+            }
+        }
+
+        default: {
+            $ve_group = $group
+        }
+    }
 
     # Set up the prerequisites for building a virtualenv, which differ
     # slightly per platform
@@ -110,6 +144,8 @@ define python::virtualenv($python, $ensure="present", $packages) {
             file {
                 # create the virtualenv directory
                 "$virtualenv":
+                    owner => $ve_user,
+                    group => $ve_group,
                     ensure => directory;
             }
 
@@ -117,6 +153,7 @@ define python::virtualenv($python, $ensure="present", $packages) {
                 "virtualenv $virtualenv":
                     name => "$python ${python::virtualenv::settings::misc_python_dir}/virtualenv.py \
                             --python=$python --distribute $virtualenv",
+                    user => $ve_user,
                     logoutput => on_failure,
                     require => $virtualenv_reqs,
                     creates => "$virtualenv/bin/pip";
@@ -130,6 +167,7 @@ define python::virtualenv($python, $ensure="present", $packages) {
 #            python::package { $qualified_packages: }
             python::package {
                 $packages: 
+                    user => $ve_user,
                     virtualenv => $virtualenv;
             }
         }
@@ -197,7 +235,7 @@ define python::package_dir_file {
 # (private)
 #
 # Install the given Python package into the given virtualenv.
-define python::package($virtualenv) { # TODO: extract $virtualenv from $title (see above)
+define python::package($virtualenv, $user) { # TODO: extract $virtualenv from $title (see above)
     include python::virtualenv::settings
     include python::misc_python_dir
     include python::pip_check_py
@@ -219,6 +257,7 @@ define python::package($virtualenv) { # TODO: extract $virtualenv from $title (s
                     $pkg",
             logoutput => on_failure,
             onlyif => "$virtualenv/bin/python $pip_check_py $pkg",
+            user => $user,
             require => [
                 File[$pip_check_py],
                 Exec["virtualenv $virtualenv"],
