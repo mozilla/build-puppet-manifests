@@ -33,7 +33,7 @@ class nagios::service {
             $plugins_dir = "/usr/${libdir}/nagios/plugins"
             $etcdir = "/etc/nagios"
             file {
-                "/etc/nagios/nrpe.cfg":
+                "$etcdir/nrpe.cfg":
                     content => template("nagios/nrpe.cfg.erb"),
                     owner   => "root",
                     group   => "root";
@@ -49,7 +49,7 @@ class nagios::service {
             service {
                 "nrpe":
                     enable => "true",
-                    subscribe => File["/etc/nagios/nrpe.cfg"],
+                    subscribe => [File["$etcdir/nrpe.cfg"], File["$etcdir/nrpe.d"]],
                     ensure => "running",
                     require => $slaveType ? {
                         master => [
