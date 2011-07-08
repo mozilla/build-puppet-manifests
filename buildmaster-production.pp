@@ -155,4 +155,7 @@ node "dev-master01" inherits "masternode" {
     # This is a development machine
     # Install all the prereqs of buildbot, but don't actually instantiate any masters
     include buildmaster
+
+    # use LDAP and SSH keys for user-specific logins
+    include mozldap::logins
 }
