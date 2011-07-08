@@ -56,6 +56,18 @@ class BuildbotTac:
 
         raise NoBasedirError("Cannot determine basedir for slave %s" % self.options.slavename)
 
+    def ensure_basedir_exists(self):
+        '''
+        Ensures that the basedir exists
+        '''
+        basedir = self.get_basedir()
+        if not os.path.exists(basedir):
+            try:
+                os.makedirs(basedir)
+            except ValueError:
+                print "ERROR: We were not able to create the basedir: %s" % ValueError
+                sys.exit(1)
+
     # When the allocator is up, try to extract the basedir from the resulting
     # .tac file.  Note, however, that it's possible to get tac files which do
     # not contain a basedir, e.g., a disabled slave.  This just returns None
@@ -106,15 +118,6 @@ class BuildbotTac:
             elif slave_matches('xp', 'w7', 'w764'):
                 basedir = dirs['win_test']
 
-        # if we have matched the slave to a basedir create it if it doesn't exist
-        if basedir:
-            if not os.path.exists(basedir):
-                try:
-                    os.makedirs(basedir)
-                except ValueError:
-                    print "ERROR: We were not able to create the basedir: %s" % ValueError
-                    sys.exit(1)
-
         # failing that, find a directory that exists
         if not basedir:
             for d in dirs.values():
@@ -153,6 +156,8 @@ class BuildbotTac:
                 print >>sys.stderr, "WARNING: downloaded page did not contain validity-check string"
                 return False
 
+            # ensure the basedir exists so we can write the temp file
+            self.ensure_basedir_exists()
             # tuck it away in buildbot.tac, safely
             filename = self.get_filename()
             if self.options.verbose:
