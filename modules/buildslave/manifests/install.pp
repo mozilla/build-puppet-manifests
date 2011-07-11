@@ -247,7 +247,7 @@ class buildslave::install::old {
                 "buildbot":
                     source => "${platform_httproot}/RPMs/buildbot-0.8.0-0moz1.${hardwaremodel}.rpm",
                     provider => "rpm",
-                    ensure => latest;
+                    ensure => '0.8.0-0moz1';
             }
         }
     }

@@ -20,6 +20,7 @@ class ntp {
                         "ntpd": 
                             subscribe => File["/etc/ntp.conf"],
                             enable => true,
+                            hasstatus => true,
                             ensure => running;
                     }
                 }
@@ -27,6 +28,7 @@ class ntp {
                     service {
                         "ntpd":
                             enable => false,
+                            hasstatus => true,
                             ensure => stopped;
                     }
                 }
@@ -43,6 +45,7 @@ class ntp {
             service {
                 "ntpdate":
                     enable => false,
+                    hasstatus => true,
                     ensure => running;
             }
         }
