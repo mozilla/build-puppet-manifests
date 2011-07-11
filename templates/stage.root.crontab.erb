@@ -8,5 +8,5 @@ MAILTO=release@mozilla.com
 16 * * * *	find /data/ftp/pub/{firefox,xulrunner,mobile}/nightly/20??/ -mindepth 2 -maxdepth 2 -mtime +1 -exec rm -rf {} \;
 21 * * * *	find /data/ftp/pub/{firefox,xulrunner,mobile}/nightly/ -type l -mtime +1 -exec rm -rf {} \;
 26 * * * *	find /data/ftp/pub/{firefox,xulrunner,mobile}/nightly/latest-* -type f -mtime +1 -exec rm -f {} \;
-31 * * * *	find /data/symbols_*/ -mindepth 2 -maxdepth 2 -type d -mmin +21600 -exec rm -rf {} \;
-36 * * * *	find /data/symbols_*/ -maxdepth 0 -mmin +21600 -type f -exec rm -rf {} \;
+31 * * * *	find /data/symbols_*/ -mindepth 2 -maxdepth 2 -type d -mmin +1440 -exec rm -rf {} \;
+36 * * * *	find /data/symbols_*/ -maxdepth 0 -mmin +1440 -type f -exec rm -rf {} \;
