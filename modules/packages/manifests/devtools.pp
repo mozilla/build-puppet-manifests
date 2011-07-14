@@ -145,6 +145,10 @@ class packages::devtools {
                             creates     => "/tools/android-ndk-r4c/build/tools/make-release.sh",
                             version     => "r4c-0moz3",
                             subscribe   => File["/tools/android-ndk"];
+                        "android-ndk-r5c":
+                            creates     => "/tools/android-ndk-r5c/build/tools/make-release.sh",
+                            version     => "0moz1",
+                            subscribe   => File["/tools/android-ndk-r5"];
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
@@ -161,6 +165,8 @@ class packages::devtools {
                             ensure => "/tools/android-sdk-r8";
                         "/tools/android-ndk":
                             ensure => "/tools/android-ndk-r4c";
+                        "/tools/android-ndk-r5":
+                            ensure => "/tools/android-ndk-r5c";
                     }
                 }
             }
