@@ -1,7 +1,7 @@
 MAILTO=release@mozilla.com
 
-1 * * * *	find /data/ftp/pub/{firefox,xulrunner,mobile}/tinderbox-builds/ -mindepth 2 -maxdepth 2 -type d -mmin +43200 -name 1????????? -exec rm -rf {} \;
-6 * * * *	find /data/ftp/pub/firefox/try-builds/ -mindepth 1 -maxdepth 1 -type d -mmin +43200 -exec rm -rf {} \;
+1 * * * *	find /data/ftp/pub/{firefox,xulrunner,mobile}/tinderbox-builds/ -mindepth 2 -maxdepth 2 -type d -mmin +4320 -name 1????????? -exec rm -rf {} \;
+6 * * * *	find /data/ftp/pub/firefox/try-builds/ -mindepth 1 -maxdepth 1 -type d -mmin +4320 -exec rm -rf {} \;
 <% if scope.lookupvar('deleteCandidatesDirs') == '1' %>
 11 * * * *	find /data/ftp/pub/{firefox,xulrunner,mobile}/nightly/ -mindepth 2 -maxdepth 2 -name build? -type d -mtime +1 -exec rm -rf {} \;
 <% end %>
