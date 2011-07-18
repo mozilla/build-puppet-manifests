@@ -1,6 +1,7 @@
 # cltbld.pp
 
 class cltbld {
+    include secrets
 
     File{ mode => 644, owner => cltbld, group => cltbld, backup => false }
 
@@ -19,7 +20,7 @@ class cltbld {
                 },
         shell => "/bin/bash",
         provider => 'useradd',
-        password => "i don't think so"
+        password => $secrets::cltbld_password;
     }
 
     group { "cltbld":

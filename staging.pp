@@ -1,6 +1,7 @@
 $level = "staging"
 $puppetServer = "${level}-puppet.build.mozilla.org"
 
+import "secrets.pp"
 import "base/*"
 import "includes/*"
 import "os/*"

@@ -9,6 +9,7 @@ class master {
     include ntp
     include prefs
     include ganglia::client
+    include root-user
     packages::hg {
         "latest":
     }

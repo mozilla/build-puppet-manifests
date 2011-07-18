@@ -1,6 +1,8 @@
 # stageusergroups.pp
 
 class stageusergroups {
+    include secrets
+
     Group { ensure => 'present' }
     group {
         "cltbld":
@@ -49,7 +51,7 @@ class stageusergroups {
             uid => 500,
             gid => 500,
             groups => ["cvs", "firefox"],
-            password => "i don't think so",
+            password => $secrets::cltbld_password,
             home => "/home/cltbld";
         "buildslave":
             name => "buildslave",
