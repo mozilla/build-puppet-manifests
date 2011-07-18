@@ -3,6 +3,7 @@ $level = "production"
 
 $puppetServer = "${location}-${level}-puppet.build.mozilla.org"
 
+import "secrets.pp"
 import "base/*"
 import "includes/*"
 import "os/*"
