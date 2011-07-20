@@ -147,7 +147,7 @@ class packages::devtools {
                             subscribe   => File["/tools/android-ndk"];
                         "android-ndk5":
                             creates     => "/tools/android-ndk5/build/tools/make-release.sh",
-                            version     => "r5c-0moz2";
+                            version     => "r5c-0moz3";
                         "mercurial-py26":
                             creates     => "/tools/python-2.6.5/lib/python2.6/site-packages/mercurial/windows.py",
                             version     => "1.5.1-0moz1",
