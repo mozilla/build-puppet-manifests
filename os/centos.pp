@@ -105,9 +105,6 @@ class centos5 {
     #################################################
 
     file {
-        "/boot/grub.conf":
-            mode => 600,
-            source => "${platform_fileroot}/boot/grub.conf";
         "/etc/sysctl.conf":
             source => "${platform_fileroot}/etc/sysctl.conf";
     }
