@@ -36,7 +36,7 @@ class packages::devtools {
             }
             install_rpm {
                 "clang":
-                    version => "3.0-r132336.moz0",
+                    version => "3.0-r135210.moz0",
                     creates => "/tools/clang-3.0/bin/clang";
             }
             case $hardwaremodel {
@@ -251,10 +251,10 @@ class packages::devtools {
                     onlyif => "/bin/test -f /opt/local/bin/hg";
             }
             package {
-                "clang-3.0-r132336.moz0.dmg":
+                "clang-3.0-r135210.moz0.dmg":
                     provider    => pkgdmg,
                     ensure      => installed,
-                    source      => "${platform_httproot}/DMGs/clang-3.0-r132336.moz0.dmg";
+                    source      => "${platform_httproot}/DMGs/clang-3.0-r135210.moz0.dmg";
             }
             install_dmg {
                 "Twisted-8.0.1.dmg":
