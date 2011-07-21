@@ -38,6 +38,9 @@ class packages::devtools {
                 "clang":
                     version => "3.0-r135210.moz0",
                     creates => "/tools/clang-3.0/bin/clang";
+                "moz_binutils_2.21.1":
+                    version => "2.21.1-1",
+                    creates => "/tools/binutils-2.21.1/bin/ld.gold";
             }
             case $hardwaremodel {
         
