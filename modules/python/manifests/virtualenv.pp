@@ -76,6 +76,7 @@ define python::virtualenv($python, $ensure="present", $packages, $user=null, $gr
     # for brevity
     $virtualenv_dir_req = File["$virtualenv"]
     $pip_req = Python::Package_dir_file["pip-0.8.2.tar.gz"]
+    $distribute_req = Python::Package_dir_file["distribute-0.6.14.tar.gz"]
     $virtualenv_py_req = Python::Package_dir_file["virtualenv.py"]
 
     # Figure out user/group if they haven't been set
@@ -120,6 +121,7 @@ define python::virtualenv($python, $ensure="present", $packages, $user=null, $gr
                 Package['python-devel'],
                 $virtualenv_dir_req,
                 $pip_req,
+                $distribute_req,
                 $virtualenv_py_req,
             ]
         }
@@ -128,6 +130,7 @@ define python::virtualenv($python, $ensure="present", $packages, $user=null, $gr
             $virtualenv_reqs = [
                 $virtualenv_dir_req,
                 $pip_req,
+                $distribute_req,
                 $virtualenv_py_req,
             ]
         }
@@ -135,7 +138,10 @@ define python::virtualenv($python, $ensure="present", $packages, $user=null, $gr
 
     # instantiate the common requirements
     python::package_dir_file {
+        # these two need to be in the same dir as virtualenv.py, or it will
+        # want to download them from pypi
         "pip-0.8.2.tar.gz": ;
+        "distribute-0.6.14.tar.gz": ;
         "virtualenv.py": ;
     }
 
@@ -152,7 +158,7 @@ define python::virtualenv($python, $ensure="present", $packages, $user=null, $gr
             exec {
                 "virtualenv $virtualenv":
                     name => "$python ${python::virtualenv::settings::misc_python_dir}/virtualenv.py \
-                            --python=$python --distribute $virtualenv",
+                            --python=$python --distribute --never-download $virtualenv",
                     user => $ve_user,
                     logoutput => on_failure,
                     require => $virtualenv_reqs,
