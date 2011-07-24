@@ -48,6 +48,7 @@
 
 class buildslave::install::settings {
     $production_version = "0.8.4-pre-moz1"
+    $staging_version = "0.8.4-pre-moz2"
 }
 
 # this class simply invokes the resource type with the production version
@@ -65,9 +66,22 @@ class buildslave::install {
         # inactive previous version
         "0.8.0":
             active => false;
+    }
 
-        "$buildslave::install::settings::production_version":
-            active => true;
+    case $level {
+        staging: {
+            buildslave::install::version {
+                "$buildslave::install::settings::staging_version":
+                    active => true;
+            }
+        }
+
+        default: {
+            buildslave::install::version {
+                "$buildslave::install::settings::production_version":
+                    active => true;
+            }
+        }
     }
 }
 
@@ -119,8 +133,8 @@ define buildslave::install::version($active=false, $ensure="present") {
         }
     }
 
-    # set the parameters for the virtualenv below.  Each version should
-    # set $python and $packages explicitly.
+    # set the parameters for the virtualenv below.  Each version should set
+    # $packages explicitly.
     case $version {
         # old versions
         "0.8.0.old": { }
@@ -130,7 +144,17 @@ define buildslave::install::version($active=false, $ensure="present") {
         "0.8.0": { }
 
         # newer versions
+
         "0.8.4-pre-moz1": {
+            $packages = [
+                          "zope.interface==3.6.1",
+                          "buildbot-slave==$version",
+                          "buildbot==$version",
+                          "Twisted==10.2.0",
+                          "simplejson==2.1.3" ]
+        }
+
+        "0.8.4-pre-moz2": {
             $packages = [
                           "zope.interface==3.6.1",
                           "buildbot-slave==$version",
