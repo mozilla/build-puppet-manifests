@@ -22,6 +22,19 @@ class talos_fedora {
             ensure => '2.6.2-2.fc12';
     }
     
+    # NetworkManager kinda sucks, so disable it
+    service {
+        "network":
+            ensure => 'running',
+            enable => true,
+            hasstatus => true,
+            require => Service['NetworkManager'];
+        "NetworkManager":
+            ensure => 'stopped',
+            hasstatus => true,
+            enable => false;
+    }
+
     file {
         "/home/cltbld/.fonts.conf":
             owner => cltbld,
