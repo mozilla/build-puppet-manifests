@@ -47,7 +47,7 @@
 #  - add a new case below setting any relevant variables for the install.
 
 class buildslave::install::settings {
-    $production_version = "0.8.4-pre-moz1"
+    $production_version = "0.8.4-pre-moz2"
     $staging_version = "0.8.4-pre-moz2"
 }
 
@@ -63,9 +63,15 @@ class buildslave::install {
         "0.8.0pre":
             ensure => absent;
 
-        # inactive previous version
         "0.8.0":
-            active => false;
+            ensure => absent;
+
+        # and the most recent version, kept around for posterity and as
+        # a reminder to ensure it's absent when there's a *new* most recent
+        # version.  Note that Puppet-0.24.8 can't install multiple versions
+        # of buildbot at the same time, so this is commented out for now
+        #"0.8.4-pre-moz1":
+        #    active => false;
     }
 
     case $level {
