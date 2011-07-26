@@ -21,6 +21,11 @@ node "centos" inherits "build" {
     # This is supposedly fixed in puppet 0.25, so worth revisiting this once we
     # upgrade
     include packages, root-user
+
+    perl::module::install {
+        "Config-General":
+            version => "2.30";
+    }
 }
 
 node "centos5-i686-build" inherits "centos" {
