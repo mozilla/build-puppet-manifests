@@ -19,7 +19,7 @@ class master {
             provider => "rpm";
         # So that puppet help works
         "ruby-rdoc":
-            ensure => "1.8.5-5.el5_4.8";
+            ensure => latest;
         "screen":
             ensure => latest;
         "strace":
