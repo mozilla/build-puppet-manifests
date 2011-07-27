@@ -375,6 +375,20 @@ class NSCANotifier(object):
 
 def guess_twistd_cmd():
     if sys.platform == 'win32':
+        # first look for a buildbot virtualenv (buildbotve)
+        for buildbotve in [
+                r'C:\mozilla-build\buildbotve',
+                r'D:\mozilla-build\buildbotve',
+            ]:
+            python_exe = os.path.join(buildbotve, r'scripts\python.exe')
+            if os.path.exists(python_exe):
+                return [
+                    python_exe,
+                    os.path.join(buildbotve, r'scripts\twistd.py')
+                ]
+
+        # failing that, try the old way, where buildbot was installed in the
+        # mozilla-build Python
         for path in [
                 r'C:\mozilla-build\python25',
                 r'D:\mozilla-build\python25',
