@@ -1,0 +1,2 @@
+# MANAGED BY PUPPET DO NOT MODIFY
+*/10 * * * * root lockfile -r 0 /root/.<%= rsyncModule %>.lockfile 2>/dev/null && (rsync -a --delete --delete-before <%= rsyncHost %>::<%= rsyncModule %>/ <%= dest %>; rm -f /root/.<%= rsyncModule %>.lockfile )
