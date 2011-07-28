@@ -10,7 +10,7 @@
 # TODO: you still have to set up ssh keys!
 # TODO: determine num_masters from json (bug 647374)
 class buildmaster {
-    include master
+    include releng::master
     include secrets
     $master_user = "cltbld"
     $master_group = "cltbld"

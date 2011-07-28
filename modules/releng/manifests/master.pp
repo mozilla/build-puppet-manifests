@@ -1,7 +1,7 @@
 # master class
 # for use as a base class for master-like machines
 # (e.g. buildbot masters, puppet masters)
-class master {
+class releng::master {
     $platform_httproot = "${httproot}/${lsbdistid}-${lsbdistrelease}-${hardwaremodel}/${slaveType}"
     include nagios
     include network

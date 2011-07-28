@@ -3,8 +3,8 @@
 class prefs {
     file {
         "/root/.vimrc":
-            source => "puppet:///modules/prefs/vimrc";
+            source => "puppet:///prefs/vimrc";
         "/root/.bashrc":
-            source => "puppet:///modules/prefs/bashrc";
+            source => "puppet:///prefs/bashrc";
     }
 }
