@@ -10,6 +10,7 @@ class releng::master {
     include prefs
     include ganglia::client
     include root-user
+    include sudoers
     packages::hg {
         "latest":
     }

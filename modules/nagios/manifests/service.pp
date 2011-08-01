@@ -1,5 +1,8 @@
 # nagios class
 class nagios::service {
+    # nagios requires sudoers to run nrpe checks as root in some cases
+    include sudoers
+
     case $slaveType {
         master: {
             # This include only exists on Buildmaster Puppets, so we must

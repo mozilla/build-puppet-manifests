@@ -11,10 +11,6 @@ class centos5 {
         "/etc/inittab":
             source => "${platform_fileroot}/etc/inittab";
 
-        "/etc/sudoers":
-            mode => 440,
-            source => "${platform_fileroot}/etc/sudoers";
-
         "/etc/sysconfig/vncservers":
             source => "${platform_fileroot}/etc/sysconfig/vncservers";
 

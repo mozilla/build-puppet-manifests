@@ -27,6 +27,7 @@ debug=0
 <% if slaveType == "build" %>
 # CentOS build machines only
 command[check_buildbot]=<%=plugins_dir%>/check_procs -w 1:1 -C twistd --argument-array=buildbot.tac
+command[check_ide_smart]=sudo /usr/<%=libdir%>/nagios/plugins/check_ide_smart -n -d $ARG1$
 <% end %>
 <% if slaveType == "master" %>
 # Masters only

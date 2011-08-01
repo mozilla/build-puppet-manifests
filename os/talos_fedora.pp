@@ -55,10 +55,6 @@ class talos_fedora {
             mode => 644,
             source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
 
-        "/etc/sudoers":
-            mode => 440,
-            source => "${platform_fileroot}/etc/sudoers";
-
         # this directory is referenced by the apache configs, and must exist
         "${home}/cltbld/talos-slave/talos-data":
             ensure => directory,
@@ -80,4 +76,5 @@ class talos_fedora {
     include gui::resolution
     include network
     include boot
+    include sudoers
 }
