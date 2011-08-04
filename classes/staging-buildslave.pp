@@ -11,6 +11,7 @@ class staging-buildslave {
             include packages::devtools
             include packages::scratchbox
             include packages::moz-rpms
+            include packages::systemtap
         }
         Darwin: {
             include packages::devtools
