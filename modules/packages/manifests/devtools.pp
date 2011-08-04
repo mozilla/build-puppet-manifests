@@ -144,6 +144,9 @@ class packages::devtools {
                             creates     => "/tools/android-sdk-r8/tools/android",
                             version     => "r8-0moz3",
                             subscribe   => File["/tools/android-sdk"];
+                        "android-sdk12":
+                            creates     => "/tools/android-sdk-r12/tools/android",
+                            version     => "r12-0moz1";
                         "android-ndk":
                             creates     => "/tools/android-ndk-r4c/build/tools/make-release.sh",
                             version     => "r4c-0moz3",
