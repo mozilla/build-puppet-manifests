@@ -147,6 +147,9 @@ class BuildbotTac:
             # clear out any cached self.basedir, since we might get a new value
             self.basedir = None
 
+            # set the socket timeout
+            socket.setdefaulttimeout(self.options.timeout)
+
             # download the page
             page_file = urllib2.urlopen(full_url)
             page = self.page = page_file.read()
@@ -415,7 +418,7 @@ def main():
         usage:
             %%prog [--verbose] [--allocator-url URL] [--twistd-cmd CMD]
                         [--basedir BASEDIR] [--slavename SLAVE]
-                        [--no-start]
+                        [--no-start] [--timeout=TIMEOUT]
 
         Attempt to download a .tac file from the allocator, or use a locally cached
         version if an error occurs.  The slave name is used to determine the basedir,
@@ -447,7 +450,8 @@ def main():
     parser.add_option("-n", "--slavename", action="store", dest="slavename")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_option(      "--no-start", action="store_true", dest="no_start")
-    parser.set_defaults(allocator_url=default_allocator_url)
+    parser.add_option(      "--timeout", action="store", dest="timeout", type='int')
+    parser.set_defaults(allocator_url=default_allocator_url, timeout=60)
 
     (options, args) = parser.parse_args()
 
