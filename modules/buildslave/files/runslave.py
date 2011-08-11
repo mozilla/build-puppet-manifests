@@ -18,7 +18,6 @@ import traceback
 import subprocess
 import textwrap
 import urllib2
-import threading
 
 class RunslaveError(Exception): pass
 class NoBasedirError(RunslaveError): pass
@@ -136,26 +135,7 @@ class BuildbotTac:
         basedir = self.get_basedir()
         return os.path.join(basedir, "buildbot.tac")
 
-    def start_timer(self):
-        """Start a timer that will kill the process after TIMEOUT seconds, whether a
-        buildbot.tac has been created or not"""
-        # signal.alarm would work, but not on Windows.  This works.
-        def thd():
-            time.sleep(self.options.timeout)
-            if self.timer_active:
-                print ("runslave timeout (%ds) exceeded; aborting" %
-                        self.options.timeout)
-                os._exit(1)
-        self.timer_active = True
-        self.timer_thread = threading.Thread(target=thd)
-        self.timer_thread.setDaemon(True)
-        self.timer_thread.start()
-
-    def stop_timer(self):
-        self.timer_active = False
-
     def download(self):
-        self.start_timer()
         url = self.options.allocator_url
         slavename = self.options.slavename
         slavename = slavename.split('.', 1)[0]
@@ -191,14 +171,12 @@ class BuildbotTac:
                 if os.path.exists(filename):
                     os.unlink(filename)
             os.rename(tmpfile, filename)
-            self.stop_timer()
             return True
         except:
             print >>sys.stderr, "WARNING: error while fetching ", full_url
             if self.options.verbose:
                 traceback.print_exc()
             # oh noes!  No worries, we'll just use the existing .tac file
-            self.stop_timer()
             return False
 
     def delete_pidfile(self):
@@ -437,7 +415,7 @@ def main():
         usage:
             %%prog [--verbose] [--allocator-url URL] [--twistd-cmd CMD]
                         [--basedir BASEDIR] [--slavename SLAVE]
-                        [--no-start] [--timeout=TIMEOUT]
+                        [--no-start]
 
         Attempt to download a .tac file from the allocator, or use a locally cached
         version if an error occurs.  The slave name is used to determine the basedir,
@@ -469,8 +447,7 @@ def main():
     parser.add_option("-n", "--slavename", action="store", dest="slavename")
     parser.add_option("-v", "--verbose", action="store_true", dest="verbose")
     parser.add_option(      "--no-start", action="store_true", dest="no_start")
-    parser.add_option(      "--timeout", action="store", dest="timeout", type='int')
-    parser.set_defaults(allocator_url=default_allocator_url, timeout=60)
+    parser.set_defaults(allocator_url=default_allocator_url)
 
     (options, args) = parser.parse_args()
 
