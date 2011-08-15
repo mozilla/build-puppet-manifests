@@ -189,9 +189,13 @@ class centos5 {
                 ensure   => '2.4.2-2',
                 source   => "${platform_httproot}/RPMs/fontconfig-devel-2.4.2-2.i686.rpm";
             "qt-sdk":
-                ensure   => '4.6.3-2010.04moz1',
-                source   => "${platform_httproot}/RPMs/qt-sdk-4.6.3-2010.04moz1.i686.rpm",
+                ensure   => '4.6.3-2010.04moz2',
+                source   => "${platform_httproot}/RPMs/qt-sdk-4.6.3-2010.04moz2.i686.rpm",
                 require  => Package["fontconfig"];
+            }
+            file {
+                "/tools/qt-4.6.3":
+                    ensure => "/builds/qt-4.6.3";
             }
         }
     }
