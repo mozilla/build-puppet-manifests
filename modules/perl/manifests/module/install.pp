@@ -13,7 +13,7 @@ define perl::module::install($version) {
     exec {
         "perl-module-remove-$name-start":
             command => "rm -rf $workdir",
-            unless => "! perl -M\"$perlName $version\" -e ''",
+            unless => "perl -M\"$perlName $version\" -e ''",
             notify => Exec["perl-module-mkdir-$name"];
         "perl-module-mkdir-$name":
             command => "mkdir $workdir",
