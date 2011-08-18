@@ -41,6 +41,14 @@ class packages::devtools {
                 "moz_binutils_2.21.1":
                     version => "2.21.1-1",
                     creates => "/tools/binutils-2.21.1/bin/ld.gold";
+                "gcc45":
+                    creates     => "/tools/gcc-4.5/bin/gcc",
+                    version     => "4.5.2-0moz1";
+
+                # For testing patches to the compiler
+                "gcc45test":
+                    creates     => "/tools/gcc-4.5-test/bin/gcc",
+                    version     => "4.5.2-0moz1";
             }
             case $hardwaremodel {
         
@@ -49,9 +57,6 @@ class packages::devtools {
                         "gcc433":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
                             version     => "4.3.3-0moz1";
-                        "gcc45":
-                            creates     => "/tools/gcc-4.5/bin/gcc",
-                            version     => "4.5.2-0moz1";
                         "python25":
                             creates     => "/tools/python-2.5.1/bin/python",
                             version     => "2.5.1-0moz1",
@@ -111,9 +116,6 @@ class packages::devtools {
                         "gcc433":
                             creates     => "/tools/gcc-4.3.3/installed/bin/gcc",
                             version     => "4.3.3-0moz1";
-                        "gcc45":
-                            creates     => "/tools/gcc-4.5/bin/gcc",
-                            version     => "4.5.2-0moz1";
                         "python25":
                             creates     => "/tools/python-2.5.1/bin/python",
                             version     => "2.5.1-0moz1",
