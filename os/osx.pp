@@ -250,6 +250,10 @@ class osx {
             provider => pkgdmg,
             ensure => installed,
             source => "${platform_httproot}/DMGs/yasm-1.1.0.dmg";
+        "ccache-3.1.6.dmg":
+            provider => pkgdmg,
+            ensure => installed,
+            source => "${platform_httproot}/DMGs/ccache-3.1.6.dmg";
     }
 
     # disable bluetooth
