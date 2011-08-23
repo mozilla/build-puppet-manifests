@@ -1,0 +1,1 @@
+0 6 * * 6   source <%= addonProfile %> && bash <%= sendchangeScript %> -p <%= addonSendchangePort %> -r -a <%= addonsFile %> -m <%= fqdn %>

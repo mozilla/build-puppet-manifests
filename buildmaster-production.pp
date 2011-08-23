@@ -82,6 +82,10 @@ node "buildbot-master10" inherits "masternode" {
 
     # The selfserve agent runs here too
     include selfserve-agent
+
+    $addonProfile = "/builds/buildbot/tests_scheduler/bin/activate"
+    $addonSendchangePort = 9302
+    include addon-sendchanges
 }
 
 node "buildbot-master11" inherits "masternode" {
