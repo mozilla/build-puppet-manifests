@@ -280,6 +280,12 @@ class NSCANotifier(unittest.TestCase):
         self.assertEqual(self.notifier.nagios_name('linux-slave10'),
                          'linux-slave10.build.scl1')
 
+    def test_nagios_name_winbuild(self):
+        self.forward_dns['w64-ix-slave10.build.mozilla.org'] = '1.2.3.4'
+        self.reverse_dns['1.2.3.4'] = 'w64-ix-slave10.winbuild.scl1.mozilla.com'
+        self.assertEqual(self.notifier.nagios_name('w64-ix-slave10'),
+                         'w64-ix-slave10.winbuild.scl1')
+
     def test_nagios_name_fwd_fail(self):
         self.reverse_dns['1.2.3.4'] = 'linux-slave10.build.scl1.mozilla.com'
         self.assertEqual(self.notifier.nagios_name('linux-slave10'),
@@ -295,6 +301,7 @@ class NSCANotifier(unittest.TestCase):
             ('slave01.build.mtv1', 'bm-admin01.mozilla.org'),
             ('slave01.build.sjc1', 'bm-admin01.mozilla.org'),
             ('slave01.build.scl1', 'admin1.infra.scl1.mozilla.com'),
+            ('slave01.winbuild.scl1', 'admin1.infra.scl1.mozilla.com'),
             ('slave01.build', 'bm-admin01.mozilla.org'), # default
             ('slave01.build.tbd1', 'bm-admin01.mozilla.org'), # default
             ('slave01.mozilla.org', 'bm-admin01.mozilla.org'), # default
