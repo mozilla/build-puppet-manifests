@@ -1,1 +1,3 @@
-0 6 * * 6   source <%= addonProfile %> && bash <%= sendchangeScript %> -p <%= addonSendchangePort %> -r -a <%= addonsFile %> -m <%= fqdn %>
+MAILTO=release@mozilla.com
+
+0 6 * * 6   <%= addonSendchangeUser %> source <%= addonProfile %> && bash <%= sendchangeScript %> -p <%= addonSendchangePort %> -r -a <%= addonsFile %> -m <%= fqdn %>

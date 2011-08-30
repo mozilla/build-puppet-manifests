@@ -85,6 +85,7 @@ node "buildbot-master10" inherits "masternode" {
 
     $addonProfile = "/builds/buildbot/tests_scheduler/bin/activate"
     $addonSendchangePort = 9302
+    $addonSendchangeUser = "cltbld"
     include addon-sendchanges
 }
 
