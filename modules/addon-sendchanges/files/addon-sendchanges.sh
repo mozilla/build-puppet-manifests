@@ -49,8 +49,7 @@ if [ -e $ADDONFILE ];  then
       #echo "sending nightly builds to addontester branch for testing $ADDONURL"
       USERNAME="addons_sendchange_script"
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-macosx-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $BUILDURL$MACOSX >/dev/null
-      buildbot sendchange --master=$MASTER:$PORT --branch=addontester-macosx64-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $BUILDURL$MACOSX64
-
+      buildbot sendchange --master=$MASTER:$PORT --branch=addontester-macosx64-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $BUILDURL$MACOSX64 >/dev/null
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-win32-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $BUILDURL$WIN32 >/dev/null
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-win64-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $BUILDURL$WIN64 >/dev/null
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-linux-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $BUILDURL$LINUX >/dev/null
@@ -60,7 +59,7 @@ if [ -e $ADDONFILE ];  then
       #echo "sending latest release builds to addontester branch for testing $ADDONURL"
       USERNAME="addons_sendchange_script_releasebuilds"
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-macosx-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $RELEASEURL/mac/en-US/$MACOSX_RELEASE >/dev/null
-      buildbot sendchange --master=$MASTER:$PORT --branch=addontester-macosx64-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $RELEASEURL/mac/en-US/$MACOSX64_RELEASE
+      buildbot sendchange --master=$MASTER:$PORT --branch=addontester-macosx64-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $RELEASEURL/mac/en-US/$MACOSX64_RELEASE >/dev/null
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-win32-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $RELEASEURL/win32/en-US/$WIN32_RELEASE >/dev/null
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-win64-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $RELEASEURL/win32/en-US/$WIN64_RELEASE >/dev/null
       buildbot sendchange --master=$MASTER:$PORT --branch=addontester-linux-$TYPE --username=$USERNAME  --property addonUrl:$ADDONURL $RELEASEURL/linux-i686/en-US/$LINUX_RELEASE >/dev/null
@@ -73,7 +72,7 @@ if [ -e $ADDONFILE ];  then
     #echo "sending nightly builds to addonbaselinetester branch"
     USERNAME="addons_sendchange_script"
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-macosx-$TYPE --username=$USERNAME $BUILDURL$MACOSX >/dev/null
-    buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-macosx64-$TYPE --username=$USERNAME $BUILDURL$MACOSX64
+    buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-macosx64-$TYPE --username=$USERNAME $BUILDURL$MACOSX64 >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-win32-$TYPE --username=$USERNAME $BUILDURL$WIN32 >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-win64-$TYPE --username=$USERNAME $BUILDURL$WIN64 >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-linux-$TYPE --username=$USERNAME $BUILDURL$LINUX >/dev/null
@@ -83,7 +82,7 @@ if [ -e $ADDONFILE ];  then
     #echo "sending latest release builds to addonbaselinetester"
     USERNAME="addons_sendchange_script_releasebuilds"
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-macosx-$TYPE --username=$USERNAME $RELEASEURL/mac/en-US/$MACOSX_RELEASE >/dev/null
-    buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-macosx64-$TYPE --username=$USERNAME $RELEASEURL/mac/en-US/$MACOSX64_RELEASE
+    buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-macosx64-$TYPE --username=$USERNAME $RELEASEURL/mac/en-US/$MACOSX64_RELEASE >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-win32-$TYPE --username=$USERNAME $RELEASEURL/win32/en-US/$WIN32_RELEASE >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-win64-$TYPE --username=$USERNAME $RELEASEURL/win32/en-US/$WIN64_RELEASE >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=addonbaselinetester-linux-$TYPE --username=$USERNAME $RELEASEURL/linux-i686/en-US/$LINUX_RELEASE >/dev/null
@@ -95,7 +94,7 @@ else
     #echo 'sending nightly builds to mozilla-central branch for testing'
     USERNAME="sendchange_script"
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-macosx-$TYPE --username=$USERNAME $BUILDURL$MACOSX >/dev/null
-    buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-macosx64-$TYPE --username=$USERNAME $BUILDURL$MACOSX64
+    buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-macosx64-$TYPE --username=$USERNAME $BUILDURL$MACOSX64 >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-win32-$TYPE --username=$USERNAME $BUILDURL$WIN32 >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-win64-$TYPE --username=$USERNAME $BUILDURL$WIN64 >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-linux-$TYPE --username=$USERNAME $BUILDURL$LINUX >/dev/null
@@ -106,7 +105,7 @@ else
     #echo 'sending latest release builds to mozilla-central branch for testing'
     USERNAME="sendchange_script_releasebuilds"
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-macosx-$TYPE --username=$USERNAME $RELEASEURL/mac/en-US/$MACOSX_RELEASE >/dev/null
-    buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-macosx64-$TYPE --username=$USERNAME $RELEASEURL/mac/en-US/$MACOSX64_RELEASE
+    buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-macosx64-$TYPE --username=$USERNAME $RELEASEURL/mac/en-US/$MACOSX64_RELEASE >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-win32-$TYPE --username=$USERNAME $RELEASEURL/win32/en-US/$WIN32_RELEASE >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-win64-$TYPE --username=$USERNAME $RELEASEURL/win32/en-US/$WIN64_RELEASE >/dev/null
     buildbot sendchange --master=$MASTER:$PORT --branch=mozilla-central-linux-$TYPE --username=$USERNAME $RELEASEURL/linux-i686/en-US/$LINUX_RELEASE >/dev/null
