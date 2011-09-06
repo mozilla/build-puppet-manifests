@@ -431,10 +431,6 @@ node "moz2-darwin9-slave02" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin9-slave05" inherits "darwin9-i386-build" {
-    include buildslave
-}
-
 node "moz2-darwin9-slave06" inherits "darwin9-i386-build" {
     include buildslave
 }
@@ -486,10 +482,6 @@ node "moz2-darwin9-slave19" inherits "darwin9-i386-build" {
     include buildslave
 }
 
-node "moz2-darwin9-slave20" inherits "darwin9-i386-build" {
-    include buildslave
-}
-
 node "moz2-darwin9-slave21" inherits "darwin9-i386-build" {
     include buildslave
 }
@@ -519,10 +511,6 @@ node "moz2-darwin9-slave38" inherits "darwin9-i386-build" {
 }
 
 node "moz2-darwin9-slave39" inherits "darwin9-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin9-slave40" inherits "darwin9-i386-build" {
     include buildslave
 }
 
@@ -595,10 +583,6 @@ node "moz2-darwin9-slave57" inherits "darwin9-i386-build" {
 }
 
 node "moz2-darwin9-slave58" inherits "darwin9-i386-build" {
-    include buildslave
-}
-
-node "moz2-darwin9-slave59" inherits "darwin9-i386-build" {
     include buildslave
 }
 
