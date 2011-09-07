@@ -33,6 +33,8 @@ class packages::devtools {
                     source => "${platform_httproot}/RPMs/mercurial-1.6.3-0moz1.${hardwaremodel}.rpm",
                     ensure => latest,
                     provider => rpm;
+                "gcc45test":
+                    ensure => absent;
             }
             install_rpm {
                 "clang":
@@ -46,9 +48,9 @@ class packages::devtools {
                     version     => "4.5.2-0moz1";
 
                 # For testing patches to the compiler
-                "gcc45test":
-                    creates     => "/tools/gcc-4.5-test/bin/gcc",
-                    version     => "4.5.2-0moz1";
+                "gcc45_0moz2":
+                    creates     => "/tools/gcc-4.5-0moz2/bin/gcc",
+                    version     => "4.5.2-0moz2";
             }
             case $hardwaremodel {
         
