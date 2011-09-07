@@ -11,10 +11,10 @@ REM set screen resolution
 nircmd.exe setdisplay 1280 1024 32
 
 REM make sure Apache is running
-"C:\Program Files(x86)\Apache Software Foundation\Apache2.2\bin\httpd.exe" -w -n "Apache2.2" -k stop
-echo cleared > "C:\Program Files(x86)\Apache Software Foundation\Apache2.2\logs\access.log"
-echo cleared > "C:\Program Files(x86)\Apache Software Foundation\Apache2.2\logs\error.log"
-"C:\Program Files(x86)\Apache Software Foundation\Apache2.2\bin\httpd.exe" -w -n "Apache2.2" -k start
+"C:\Program Files (x86)\Apache Software Foundation\Apache2.2\bin\httpd.exe" -w -n "Apache2.2" -k stop
+echo cleared > "C:\Program Files (x86)\Apache Software Foundation\Apache2.2\logs\access.log"
+echo cleared > "C:\Program Files (x86)\Apache Software Foundation\Apache2.2\logs\error.log"
+"C:\Program Files (x86)\Apache Software Foundation\Apache2.2\bin\httpd.exe" -w -n "Apache2.2" -k start
 
 REM Cleanup profile, temp, and log files.
 del /F /Q C:\Users\cltbld\AppData\Roaming\Mozilla\Firefox\console.log
