@@ -12,11 +12,16 @@
 class buildmaster {
     include releng::master
     include secrets
-    $master_user = "cltbld"
-    $master_group = "cltbld"
-    $master_user_uid = 500
-    $master_group_gid = 500
-    $master_basedir = "/builds/buildbot"
+    include buildmaster::queue
+    include buildmaster::settings
+    $master_user = $buildmaster::settings::master_user
+    $master_group = $buildmaster::settings::master_group
+    $master_user_uid = $buildmaster::settings::master_user_uid
+    $master_group_gid = $buildmaster::settings::master_group_gid
+    $master_basedir = $buildmaster::settings::master_basedir
+    if $num_masters == '' {
+        fail("you must set num_masters")
+    }
     package {
         "python26":
             ensure => latest;
@@ -53,6 +58,8 @@ class buildmaster {
             name => $master_group,
             gid => $master_group_gid;
     }
+    $plugins_dir = $nagios::service::plugins_dir
+    $nagios_etcdir = $nagios::service::etcdir
     file {
         "/builds":
             ensure => directory,
@@ -75,6 +82,13 @@ class buildmaster {
         "/root/.my.cnf":
             content => template("buildmaster/my.cnf.erb"),
             mode => 600,
+            owner => "root",
+            group => "root";
+        "${nagios_etcdir}/nrpe.d/buildbot.cfg":
+            content => template("buildmaster/buildbot.cfg.erb"),
+            notify => Service["nrpe"],
+            require => Class["nagios"],
+            mode => 644,
             owner => "root",
             group => "root";
     }

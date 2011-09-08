@@ -32,7 +32,6 @@ command[check_ide_smart]=sudo /usr/<%=libdir%>/nagios/plugins/check_ide_smart -n
 <% if slaveType == "master" %>
 # Masters only
 command[check_swap]=<%=plugins_dir%>/check_swap -w $ARG1$ -c $ARG2$
-command[check_buildbot]=<%=plugins_dir%>/check_procs -c <%= num_masters %>:<%= num_masters %> -C buildbot
 command[check_mysql]=/usr/<%=libdir%>/nagios/plugins/check_mysql -H <%= scope.lookupvar('secrets::buildbot_schedulerdb_host') %> -u <%= scope.lookupvar('secrets::buildbot_schedulerdb_user') %> -p <%= scope.lookupvar('secrets::buildbot_schedulerdb_password') %>
 command[check_ntp_time]=<%=plugins_dir%>/check_ntp_time -H $ARG1$ -w $ARG2$ -c $ARG3$
 command[check_http_redirect_ip]=<%=plugins_dir%>/check_http_redirect_ip -U $ARG1$ -I $ARG2$

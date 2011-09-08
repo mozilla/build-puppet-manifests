@@ -1,0 +1,11 @@
+#!/bin/bash
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
+cd <%=master_queue_venv%>
+(
+trap "rm -f command_runner.pid" EXIT
+bin/python tools/buildbot-helpers/command_runner.py -q /dev/shm/queue/commands -r 5 -t 60 -m 60 >> command_runner.log 2>&1 &
+echo $! > command_runner.pid
+wait
+) &
+disown %1

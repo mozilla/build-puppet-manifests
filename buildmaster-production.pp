@@ -166,7 +166,6 @@ node "dev-master01" inherits "masternode" {
 }
 
 node "releng-mirror01" inherits "masternode" {
-    $num_masters = 0
     include releng::master
 
     # use LDAP and SSH keys for user-specific logins

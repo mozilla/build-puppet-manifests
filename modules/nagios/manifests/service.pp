@@ -8,9 +8,6 @@ class nagios::service {
             # This include only exists on Buildmaster Puppets, so we must
             # include it inside of this block.
             include secrets
-            if $num_masters == '' {
-                fail("you must set num_masters")
-            }
         }
     }
     case $operatingsystem {
