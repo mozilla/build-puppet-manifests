@@ -100,6 +100,7 @@ class buildmaster::queue {
                 Python::Virtualenv[$master_queue_venv],
                 File["/etc/init.d/command_runner"],
                 File["${master_queue_venv}/run_command_runner.sh"],
+                Exec["install-tools"],
                 ],
             enable => true,
             ensure => running;
@@ -109,6 +110,7 @@ class buildmaster::queue {
                 Python::Virtualenv[$master_queue_venv],
                 File["/etc/init.d/pulse_publisher"],
                 File["${master_queue_venv}/run_pulse_publisher.sh"],
+                Exec["install-tools"],
                 ],
             enable => true,
             ensure => running;
