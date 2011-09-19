@@ -162,14 +162,14 @@ node "dev-master01" inherits "masternode" {
     include buildmaster
 
     # use LDAP and SSH keys for user-specific logins
-    include mozldap::logins
+    include userlogins
 }
 
 node "releng-mirror01" inherits "masternode" {
     include releng::master
 
     # use LDAP and SSH keys for user-specific logins
-    include mozldap::logins
+    include userlogins
 
     mozilla-mirror {
         "mozilla-prereleases": ;
