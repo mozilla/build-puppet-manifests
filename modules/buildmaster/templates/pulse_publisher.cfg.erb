@@ -1,3 +1,4 @@
 ####  This file under configuration management control
 ####  DO NOT EDIT MANUALLY
 command[check_pulsepublisher]=<%=plugins_dir%>/check_procs -c 1:1 -a pulse_publisher.py
+command[check_pulsequeue]=<%=master_queue_venv%>/bin/python <%=master_queue_venv%>/tools/buildbot-helpers/check_queuedir.py /dev/shm/queue/pulse
