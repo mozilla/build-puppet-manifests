@@ -11,6 +11,7 @@ class releng::master {
     include ganglia::client
     include root-user
     include sudoers
+    include sendmail
     packages::hg {
         "latest":
     }
