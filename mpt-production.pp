@@ -2026,6 +2026,314 @@ node "talos-r3-fed64-001" inherits "staging-test-node" {
 node "talos-r3-fed64-002" inherits "staging-test-node" {
 }
 
+node "talos-r4-snow-004" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-005" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-006" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-007" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-008" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-009" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-010" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-011" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-012" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-013" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-014" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-015" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-016" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-017" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-018" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-019" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-020" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-021" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-022" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-023" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-024" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-025" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-026" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-027" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-028" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-029" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-030" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-031" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-032" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-033" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-034" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-035" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-036" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-037" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-038" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-039" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-040" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-041" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-042" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-043" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-044" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-045" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-046" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-047" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-048" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-049" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-050" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-051" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-052" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-053" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-054" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-055" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-056" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-057" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-058" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-059" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-060" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-061" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-062" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-063" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-064" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-065" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-066" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-067" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-068" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-069" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-070" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-071" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-072" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-073" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-074" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-075" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-076" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-077" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-078" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-079" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-snow-080" inherits "darwin10-i386-test" {
+    include talos_osx_rev4
+}
+
 node "preproduction-stage" inherits "stage-and-aus2-server" {
     $deleteCandidatesDirs = '1'
     include stageusergroups

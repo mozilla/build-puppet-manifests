@@ -105,7 +105,7 @@ class buildslave::startup {
                         "9.8.0":  {
                             $buildslave_pythonpath = "NONE"
                         }
-                        "10.2.0", "10.6.0": {
+                        "10.2.0", "10.6.0", "10.8.0": {
                             $buildslave_pythonpath = "/tools/buildbot/lib/python2.6/site-packages:/tools/twisted/lib/python2.6/site-packages/:/tools/twisted-core/lib/python2.6/site-packages:/tools/zope-interface/lib/python2.6/site-packages"
                         }
                     }
