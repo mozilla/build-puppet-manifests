@@ -104,6 +104,8 @@ class talos_osx_rev4 {
                     require => File["/usr/local/bin/disable-screensaver.sh"];
                 "disallow-sleep-button":
                     command => "/usr/sbin/systemsetup -setallowpowerbuttontosleepcomputer off";
+                "disable-updater":
+                    command => "/usr/sbin/softwareupdate --schedule off";
                 "set-time-server":
                     command => "/usr/sbin/systemsetup -setnetworktimeserver ntp1.build.mozilla.org";
                 # Using -w will enable the service for future boots, this command does tick the box
