@@ -62,7 +62,8 @@ class nagios::install {
         master: {
             nagios::install::plugin {
                 "check_http_redirect_ip": ;
-                "check_ganglia": ;
+                "check_ganglia":
+                    require => Class["ganglia::client"];
             }
         }
     }

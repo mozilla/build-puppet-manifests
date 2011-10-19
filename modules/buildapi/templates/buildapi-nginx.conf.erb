@@ -1,0 +1,14 @@
+####  This file under configuration management control
+#####  DO NOT EDIT MANUALLY
+
+server_names_hash_bucket_size 128;
+server {
+    listen 80; ## ipv4
+
+    server_name <%= scope::lookupvar('buildapi::settings::vhost') %>;
+    root /var/www/<%= title %>;
+
+    location / {
+        proxy_pass http://localhost:<%= scope::lookupvar('buildapi::settings::port') %>;
+    }
+}

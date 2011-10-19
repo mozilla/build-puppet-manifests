@@ -175,3 +175,13 @@ node "releng-mirror01" inherits "masternode" {
         "mozilla-prereleases": ;
     }
 }
+
+node "redis01" inherits "masternode" {
+    include redis
+    include ganglia::client
+}
+
+node "buildapi01" inherits "masternode" {
+    include buildapi
+    include ganglia::client
+}
