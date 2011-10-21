@@ -1,17 +1,14 @@
 # talos_osx_rev4.pp
-# This file is divided into a large case statement which
-# separates Mac OS X 10.6 and 10.5 followed by a section
-# where common configuration is noted
 
 class talos_osx_rev4 {
     include buildslave::install
     include buildslave::startup
     include buildslave::cleanup
     include boot
-
+    
+    
     case $macosx_productversion_major {
-        "10.6": {
-            # Mac OS X 10.6 specific configuration
+        "10.7", "10.6": {
             package {
                 "wget-1.10.2.dmg":
                     provider => pkgdmg,
@@ -21,15 +18,7 @@ class talos_osx_rev4 {
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/mercurial-1.3.1.dmg";
-                # this is a minimal Xcode installation with the bare minimum needed
-                # for our python systems to work.
-                "python-sdk-3.2.6.dmg":
-                    provider => pkgdmg,
-                    ensure => installed,
-                    source => "${platform_httproot}/DMGs/python-sdk-3.2.6.dmg",
-                    require => File['/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb'],
-                    before => Class["buildslave::install"];
-                "pyyaml-3.10.dmg": # note that this dmg installs PyYAML for py25 and py26
+                "pyyaml-3.10.dmg": # note that this dmg installs PyYAML for py25 and py26 (and py27 on 10.7)
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/pyyaml-3.10.dmg";
@@ -60,17 +49,10 @@ class talos_osx_rev4 {
                     source => "${platform_fileroot}/Users/cltbld/.bash_profile",
                     owner  => "root",
                     group  => "wheel";
-                # install_name_tool is required by our python infrastructure
-                "/usr/bin/install_name_tool":
-                    source => "${platform_fileroot}/usr/bin/install_name_tool",
-                    owner => "root",
-                    group => "staff",
-                    mode => 755,
-                    before => Package['python-sdk-3.2.6.dmg'];
                 "/usr/local/bin/disable-screensaver.sh":
                     source => "${platform_fileroot}/usr/local/bin/disable-screensaver.sh",
                     owner => "root",
-                   group => "staff",
+                    group => "staff",
                     mode => 755;
                 "/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb":
                     source => "${platform_fileroot}/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb",
@@ -108,6 +90,15 @@ class talos_osx_rev4 {
                     command => "/usr/sbin/softwareupdate --schedule off";
                 "set-time-server":
                     command => "/usr/sbin/systemsetup -setnetworktimeserver ntp1.build.mozilla.org";
+                # This checks (and sets if needed) the resolution of the machine on boot
+                # we are still deploying the launchagent for when the machine is loaned to
+                # devs.  If you change the resolution here, please change it in
+                # "${platform_fileroot}/Library/LaunchAgents/screenresolution.plist"
+                # as well
+                "verify-resolution":
+                    command => "/usr/local/bin/screenresolution set 1600x1200x32",
+                    onlyif => "/usr/local/bin/screenresolution get | /usr/bin/grep -v 'Display 0: 1600x1200x32'",
+                    require => Package["screenresolution-1.4.dmg"];
                 # Using -w will enable the service for future boots, this command does tick the box
                 # for remote-login in the Sharing prefpane (survives reboot)
                 "turn-on-ssh":
@@ -120,6 +111,76 @@ class talos_osx_rev4 {
                     command => "/usr/sbin/apachectl restart",
                     onlyif => "/bin/bash -xc '/usr/bin/curl -I localhost | grep \"HTTP/1.1 200 OK\" ; if [ $? -eq 0 ] ; then exit 1 ; else exit 0 ; fi'";
            }
+        }
+    }
+
+    case $macosx_productversion_major {
+        "10.6", "10.5": {
+            service {
+                "com.apple.blued":
+                ensure => "stopped",
+                enable => false;
+            }
+
+
+        }
+    }
+
+    case $macosx_productversion_major {
+        "10.7": {
+            package {
+                # this is a minimal Xcode installation with the bare minimum needed
+                # for our python systems to work.
+                "python-sdk-4.1.1.dmg":
+                    provider => pkgdmg,
+                    ensure => installed,
+                    source => "${platform_httproot}/DMGs/python-sdk-4.1.1.dmg",
+                    require => File['/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb'],
+                    before => Class["buildslave::install"];
+            }
+            file {
+                # install_name_tool is required by our python infrastructure
+                "/usr/bin/install_name_tool":
+                    source => "${platform_fileroot}/usr/bin/install_name_tool",
+                    owner => "root",
+                    group => "staff",
+                    mode => 755,
+                    before => Package['python-sdk-4.1.1.dmg'];
+                "/usr/local/bin/blueutil":
+                    source => "${platform_fileroot}/usr/local/bin/blueutil",
+                    owner => "root",
+                    group => "staff",
+                    mode => 755;
+            }
+            exec {
+                "disable-bluetooth":
+                    command => "/usr/local/bin/blueutil off",
+                    require => File["/usr/local/bin/blueutil"];
+                #Probably too late at this point, but lets get rid of them for the next reboot
+                "clean-saved-state":
+                    command => '/bin/rm -rf /Users/cltbld/Library/Saved\ Application\ State/*.savedState';
+            }
+        }
+        "10.6": {
+            package {
+                # this is a minimal Xcode installation with the bare minimum needed
+                # for our python systems to work.
+                "python-sdk-3.2.6.dmg":
+                    provider => pkgdmg,
+                    ensure => installed,
+                    source => "${platform_httproot}/DMGs/python-sdk-3.2.6.dmg",
+                    require => File['/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb'],
+                    before => Class["buildslave::install"];
+            }
+            file {
+                # install_name_tool is required by our python infrastructure
+                "/usr/bin/install_name_tool":
+                    source => "${platform_fileroot}/usr/bin/install_name_tool",
+                    owner => "root",
+                    group => "staff",
+                    mode => 755,
+                    before => Package['python-sdk-3.2.6.dmg'];
+            }
         }
         "10.5": {
             # Mac OS X 10.5 specific configuration
@@ -152,7 +213,7 @@ class talos_osx_rev4 {
         }
     }
 
-    # Mac OS X 10.6 and 10.5 common configuration
+    # Mac OS X 10.7, 10.6 and 10.5 common configuration
 
     file {
         ["/usr/local", "/usr/local/bin", "/usr/local/etc",
@@ -225,12 +286,6 @@ class talos_osx_rev4 {
             command => "/usr/bin/mdutil -a -i off";
         remove-index:
             command => "/usr/bin/mdutil -a -E";
-    }
-
-    service {
-        "com.apple.blued":
-            ensure => "stopped",
-            enable => false;
     }
 
 }

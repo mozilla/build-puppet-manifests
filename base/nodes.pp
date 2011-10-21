@@ -75,6 +75,9 @@ node "darwin9-i386-test" inherits "darwin-test" {
 node "darwin10-i386-test" inherits "darwin-test" {
 }
 
+node "darwin11-x86_64-test" inherits "darwin-test" {
+}
+
 # These nodes are only used for non-MPT based slaves. When they first come up
 # they will connect to the MPT puppet server. These classes will make sure
 # they get redirected to their correct server.
