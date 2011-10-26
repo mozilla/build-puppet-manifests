@@ -150,9 +150,23 @@ node "buildbot-master16" inherits "masternode" {
 }
 
 node "buildbot-master17" inherits "masternode" {
-    $num_masters = 0
-    # Nothing allocated to this machine yet
-    include buildmaster
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm17-tests1-linux":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-linux";
+    }
+}
+
+node "buildbot-master18" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm18-tests1-linux":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-linux";
+    }
 }
 
 node "dev-master01" inherits "masternode" {
