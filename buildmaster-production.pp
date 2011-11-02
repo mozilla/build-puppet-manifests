@@ -27,20 +27,20 @@ node "masternode" {
 node "buildbot-master04" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
-        "bm04-tests1":
+        "bm04-tests1-macosx":
             http_port => 8201,
             master_type => "tests",
-            basedir => "tests1";
+            basedir => "tests1-macosx";
     }
 }
 
 node "buildbot-master06" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
-        "bm06-tests1":
+        "bm06-tests1-macosx":
             http_port => 8201,
             master_type => "tests",
-            basedir => "tests1";
+            basedir => "tests1-macosx";
     }
 }
 
@@ -92,10 +92,10 @@ node "buildbot-master10" inherits "masternode" {
 node "buildbot-master11" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
-        "bm11-tests1":
+        "bm11-tests1-macosx":
             http_port => 8201,
             master_type => "tests",
-            basedir => "tests1";
+            basedir => "tests1-macosx";
     }
 }
 
