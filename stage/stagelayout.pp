@@ -40,6 +40,14 @@ class stagelayout {
             owner => "trybld",
             group => "firefox",
             mode => 775;
+        ["/home/ftp/pub/thunderbird",
+         "/home/ftp/pub/thunderbird/nightly",
+         "/home/ftp/pub/thunderbird/releases",
+         "/home/ftp/pub/thunderbird/tinderbox-builds"]:
+            ensure => directory,
+            owner => "tbirdbld",
+            group => "tbirdbld",
+            mode => 775;
         ["/builds/data/ftp/pub/mobile"]:
             ensure => directory,
             owner => "ffxbld",

@@ -41,6 +41,10 @@ class stageusergroups {
             name => "trybld",
             provider => 'groupadd',
             gid => 509;
+        "tbirdbld":
+            name => "tbirdbld",
+            provider => 'groupadd',
+            gid => 511;
     }
 
     User{ ensure => 'present', managehome => true, shell => "/bin/bash", provider => 'useradd'}
@@ -80,6 +84,11 @@ class stageusergroups {
             uid => 507,
             gid => 509,
             home => "/home/trybld";
+        "tbirdbld":
+            name => "tbirdbld",
+            uid => 511,
+            gid => 511,
+            home => "/home/tbirdbld";
     }
 
 
@@ -110,6 +119,11 @@ class stageusergroups {
                 mode => 755,
                 owner => "trybld",
                 group => "trybld",
+                ensure => directory;
+            "/home/tbirdbld/.ssh":
+                mode => 755,
+                owner => "tbirdbld",
+                group => "tbirdbld",
                 ensure => directory;
             "/home/xrbld/.ssh":
                 mode => 755,
