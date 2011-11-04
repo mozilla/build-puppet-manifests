@@ -27,6 +27,11 @@ class stagelayout {
             owner => "xrbld",
             group => "xrbld",
             mode => 775;
+        "/builds/data/symbols_tbrd":
+            ensure => directory,
+            owner => "tbirdbld",
+            group => "tbirdbld",
+            mode => 775;
         ["/builds/data/ftp/pub/firefox",
         "/builds/data/ftp/pub/firefox/nightly",
         "/builds/data/ftp/pub/firefox/releases",
@@ -105,6 +110,9 @@ class stagelayout {
         "/var/www/html/pub/mozilla.org/mobile":
             ensure => "/home/ftp/pub/mobile",
             force => true;
+        "/var/www/html/pub/mozilla.org/thunderbird":
+            ensure => "/home/ftp/pub/thunderbird",
+            force => true;
         "/var/www/html/pub/mozilla.org/mozilla":
             ensure => "/home/ftp/pub/mozilla",
             force => true;
@@ -113,6 +121,9 @@ class stagelayout {
             force => true;
         "/builds/data/ftp/pub/mozilla.org/mobile":
             ensure => "../mobile",
+            force => true;
+        "/builds/data/ftp/pub/mozilla.org/thunderbird":
+            ensure => "../thunderbird",
             force => true;
         "/builds/data/ftp/pub/mozilla.org/xulrunner":
             ensure => "../xulrunner",
