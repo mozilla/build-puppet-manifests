@@ -133,24 +133,6 @@ class centos5 {
             ensure => absent;
     }
 
-    case $hardwaremodel {
-        "x86_64": {
-        }
-        default: {
-            file {
-                "/scratchbox/users/cltbld/home/cltbld/.ssh":
-                    ensure => "directory";
-            }
-            mount {
-                "/scratchbox/users/cltbld/home/cltbld/.ssh":
-                    device  => '/home/cltbld/.ssh',
-                    fstype  => 'auto',
-                    options => 'bind',
-                    ensure  => mounted,
-                    require => File['/scratchbox/users/cltbld/home/cltbld/.ssh'],
-            }
-        }
-    }
 
     #################################################
     # Custom Packages per arch
