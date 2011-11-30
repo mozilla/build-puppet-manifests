@@ -1,8 +1,17 @@
 class redis::service {
+    include nagios
+    $nagios_plugins_dir = $nagios::service::plugins_dir
     file {
         "/etc/redis/default.conf":
             require => Class["redis::install"],
             source => "puppet:///modules/redis/default.conf";
+        "${nagios::service::etcdir}/nrpe.d/redis.cfg":
+            content => template("redis/redis.cfg.erb"),
+            require => Class["nagios"],
+            notify => Service["nrpe"],
+            mode => 644,
+            owner => "root",
+            group => "root";
     }
     service {
         "redis":
@@ -13,4 +22,3 @@ class redis::service {
             ensure => running;
     }
 }
-
