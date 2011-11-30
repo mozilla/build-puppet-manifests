@@ -22,6 +22,7 @@ node "masternode" {
     # upgrade
     $slaveType = "master"
     include packages
+    include ntp
 }
 
 node "buildbot-master04" inherits "masternode" {
