@@ -75,6 +75,7 @@ class nagios::service {
                 "/usr/local/bin/setup-nagios-user.sh":
                     owner => "root",
                     group => "staff",
+                    mode => 0755,
                     source => "puppet:///nagios/darwin/setup-nagios-user.sh";
             }
             exec { 
