@@ -47,10 +47,15 @@ class packages::devtools {
                     creates     => "/tools/gcc-4.5/bin/gcc",
                     version     => "4.5.2-0moz1";
 
-                # For testing patches to the compiler
                 "gcc45_0moz2":
                     creates     => "/tools/gcc-4.5-0moz2/bin/gcc",
                     version     => "4.5.2-0moz2";
+
+                # For testing patches to the compiler
+                "gcc45_0moz3":
+                    creates     => "/tools/gcc-4.5-0moz3/bin/gcc",
+                    version     => "4.5.2-0moz3";
+
             }
             case $hardwaremodel {
         
