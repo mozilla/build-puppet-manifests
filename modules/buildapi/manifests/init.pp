@@ -13,8 +13,6 @@ class buildapi {
             ensure => latest;
         "mysql-devel":
             ensure => latest;
-        "mercurial":
-            ensure => latest;
         "git":
             ensure => latest;
     }
