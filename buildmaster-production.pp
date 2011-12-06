@@ -192,11 +192,25 @@ node "releng-mirror01" inherits "masternode" {
 }
 
 node "redis01" inherits "masternode" {
+    include releng::master
+    # use LDAP and SSH keys for user-specific logins
+    include userlogins
     include redis
-    include ganglia::client
 }
 
 node "buildapi01" inherits "masternode" {
+    include releng::master
+    # use LDAP and SSH keys for user-specific logins
+    include userlogins
     include buildapi
-    include ganglia::client
+}
+
+node "signing1" inherits "masternode" {
+    include releng::master
+    include signingserver
+}
+
+node "signing2" inherits "masternode" {
+    include releng::master
+    include signingserver
 }

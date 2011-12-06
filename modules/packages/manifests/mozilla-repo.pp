@@ -1,6 +1,9 @@
 class packages::mozilla-repo {
     file {
-        "/etc/yum.repos.d/packages-mozilla.repo":
-            source => "puppet:///modules/packages/packages-mozilla.repo";
+        "/etc/yum.repos.d":
+            source => "puppet:///modules/packages/yum.repos.d",
+            ensure => directory,
+            recurse => true,
+            purge => true;
     }
 }

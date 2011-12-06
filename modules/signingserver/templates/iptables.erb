@@ -1,0 +1,15 @@
+*filter
+:INPUT DROP [169:21308]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [2739:330320]
+-A INPUT -p icmp -j ACCEPT
+# allow existing connections (eg, ones initianed from our side)
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT 
+# nagios
+-A INPUT -p tcp -m tcp --dport 5666 -j ACCEPT
+# signing servers
+<% signing_server_ports.each do |port| -%>
+-A INPUT -p tcp -m tcp --dport <%= port %> -j ACCEPT
+<% end -%>
+COMMIT

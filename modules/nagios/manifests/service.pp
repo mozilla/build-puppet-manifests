@@ -36,11 +36,13 @@ class nagios::service {
                 "$etcdir/nrpe.cfg":
                     content => template("nagios/nrpe.cfg.erb"),
                     owner   => "root",
-                    group   => "root";
+                    group   => "root",
+                    require => Package["nrpe"];
                 "$etcdir/nrpe.d":
                     ensure => directory,
                     owner  => "root",
-                    group  => "wheel";
+                    group  => "wheel",
+                    require => Package["nrpe"];
             }
         }
     }
