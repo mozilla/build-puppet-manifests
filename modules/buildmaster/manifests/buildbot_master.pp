@@ -69,6 +69,8 @@ define buildmaster::buildbot_master($basedir, $master_type, $http_port) {
                 File["/etc/default/buildbot.d"],
                 Exec["setup-$basedir"],
                 ];
+        "/tools":
+            ensure => "directory";
     }
     exec {
         "setup-$basedir":
