@@ -1126,10 +1126,6 @@ node "talos-r3-leopard-061" inherits "darwin9-i386-test" {
     include talosslave
 }
 
-node "talos-r3-leopard-061" inherits "darwin9-i386-test" {
-    include talosslave
-}
-
 node "talos-r3-leopard-062" inherits "darwin9-i386-test" {
     include talosslave
 }
