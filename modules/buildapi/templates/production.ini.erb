@@ -17,7 +17,7 @@ port = <%= scope::lookupvar('buildapi::settings::port') %>
 
 [filter:proxy-prefix]
 use = egg:PasteDeploy#prefix
-prefix = /
+prefix = /buildapi
 
 [app:main]
 use = egg:buildapi
