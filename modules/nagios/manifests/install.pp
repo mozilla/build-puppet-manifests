@@ -37,6 +37,7 @@ class nagios::install {
                 build: {
                     package {
                         "nagios-nrpe":
+                            alias => "nrpe",
                             source => "${platform_httproot}/RPMs/nagios-nrpe-2.5.2-1.el5.rf.$hardwaremodel.rpm",
                             ensure => installed;
                         "nagios-plugins":

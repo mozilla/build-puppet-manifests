@@ -59,7 +59,7 @@ class nagios::service {
                             Package["nrpe"]
                         ],
                         build => [
-                            Package["nagios-nrpe"]
+                            Package["nrpe"]
                         ]
                     };
             }
