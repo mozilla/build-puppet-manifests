@@ -22,10 +22,10 @@ class talos_osx_rev4 {
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/pyyaml-3.10.dmg";
-                "screenresolution-1.4.dmg":
+                "screenresolution-1.5.dmg":
                     provider => pkgdmg,
                     ensure => installed,
-                    source => "${platform_httproot}/DMGs/screenresolution-1.4.dmg";
+                    source => "${platform_httproot}/DMGs/screenresolution-1.5.dmg";
             }
 
             file {
