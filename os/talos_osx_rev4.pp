@@ -97,7 +97,7 @@ class talos_osx_rev4 {
                 # as well
                 "verify-resolution":
                     command => "/usr/local/bin/screenresolution set 1600x1200x32",
-                    onlyif => "/usr/local/bin/screenresolution get | /usr/bin/grep -v 'Display 0: 1600x1200x32'",
+                    unless => "/usr/local/bin/screenresolution get 2>&1 | /usr/bin/grep 'Display 0: 1600x1200x32'",
                     require => Package["screenresolution-1.5.dmg"];
                 # Using -w will enable the service for future boots, this command does tick the box
                 # for remote-login in the Sharing prefpane (survives reboot)
