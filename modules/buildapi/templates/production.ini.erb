@@ -1,8 +1,5 @@
-#
-# buildapi - Pylons production environment configuration
-#
-# The %(here)s variable will be replaced with the parent directory of this file
-#
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
 [DEFAULT]
 #debug = true
 # Uncomment and replace with the address which should receive any error reports
@@ -44,7 +41,7 @@ sqlalchemy.status_db.pool_recycle = 60
 set debug = false
 
 # Carrot exchange parameters
-carrot.hostname = localhost
+carrot.hostname = <%=scope.lookupvar('secrets::buildapi_rmq_host')%>
 carrot.exchange = buildapi.control
 carrot.consumer.queue = buildapi-web
 carrot.userid = buildapi
@@ -62,7 +59,7 @@ branches = mozilla-central, mozilla-2.1, mozilla-2.0, mozilla-1.9.2, mozilla-1.9
 timezone = US/Pacific
 
 # How to connect to our memory cache
-buildapi.cache = <%=scope.lookupvar('secrets::buildapi_cache_server')%>
+buildapi.cache = redis:<%=scope.lookupvar('secrets::buildapi_redis_host')%>
 
 # Logging configuration
 [loggers]

@@ -1,0 +1,6 @@
+####  This file under configuration management control
+####  DO NOT EDIT MANUALLY
+[general]
+scheduler_dburl = mysql://<%=scope.lookupvar('secrets::buildapi_schedulerdb_user')%>:<%=scope.lookupvar('secrets::buildapi_schedulerdb_password')%>@<%=scope.lookupvar('secrets::buildapi_schedulerdb_host')%>/<%=scope.lookupvar('secrets::buildapi_schedulerdb_database')%>
+dburl = mysql://<%=scope.lookupvar('secrets::buildapi_statusdb_user')%>:<%=scope.lookupvar('secrets::buildapi_statusdb_password')%>@<%=scope.lookupvar('secrets::buildapi_statusdb_host')%>/<%=scope.lookupvar('secrets::buildapi_statusdb_database')%>
+redis=<%=scope.lookupvar('secrets::buildapi_redis_host')%>

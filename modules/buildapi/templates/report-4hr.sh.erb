@@ -1,0 +1,5 @@
+#!/bin/sh
+lockfile -60 -r 3 /home/buildapi/lockfile.4hr 2>/dev/null || exit
+cd $HOME
+<%=buildapi_python%> <%=buildapi_dir%>/buildapi/scripts/reporter.py -z -o /var/www/buildapi/buildjson/builds-4hr.js.gz --starttime $(date -d 'now - 4 hours' +\%s) >> reporter-4hr.log 2>&1
+rm -f /home/buildapi/lockfile.4hr

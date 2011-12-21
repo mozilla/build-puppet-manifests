@@ -1,11 +1,12 @@
 class buildapi {
     include nginx
-    include rabbitmq
     include nagios
     include buildapi::settings
     include secrets
     $nagios_etcdir = $nagios::service::etcdir
     $plugins_dir = $nagios::service::plugins_dir
+    $buildapi_python = "/home/buildapi/bin/python"
+    $buildapi_dir = "/home/buildapi/src"
     package {
         "python26":
             ensure => latest;
@@ -32,6 +33,42 @@ class buildapi {
             notify => Service['buildapi'],
             owner => 'buildapi',
             group => 'buildapi';
+        "/home/buildapi/reporter.cfg":
+            content => template('buildapi/reporter.cfg.erb'),
+            owner => 'buildapi',
+            group => 'buildapi';
+        "/var/www/buildapi":
+            ensure => directory,
+            owner => "buildapi",
+            group => "buildapi";
+        "/var/www/buildapi/index.html":
+            source => "puppet:///modules/buildapi/buildapi-index.html",
+            owner => "buildapi",
+            group => "buildapi";
+        "/var/www/buildapi/buildjson":
+            ensure => directory,
+            owner => "buildapi",
+            group => "buildapi";
+        "/home/buildapi/bin":
+            ensure => directory,
+            owner => "buildapi",
+            group => "buildapi",
+            mode => 0755;
+        "/home/buildapi/bin/waittime_mailer.sh":
+            content => template("buildapi/waittime_mailer.sh.erb"),
+            owner => "buildapi",
+            group => "buildapi",
+            mode => 0755;
+        "/home/buildapi/bin/report-4hr.sh":
+            content => template("buildapi/report-4hr.sh.erb"),
+            owner => "buildapi",
+            group => "buildapi",
+            mode => 0755;
+        "/home/buildapi/bin/report-daily.sh":
+            content => template("buildapi/report-daily.sh.erb"),
+            owner => "buildapi",
+            group => "buildapi",
+            mode => 0755;
     }
     service {
         "buildapi":
@@ -46,20 +83,6 @@ class buildapi {
     user {
         "buildapi":
             ensure => present;
-    }
-    rabbitmq::user {
-        "buildapi":
-            password => $secrets::buildapi_rmq_password;
-    }
-    rabbitmq::vhost {
-        "/buildapi": ;
-    }
-    rabbitmq::perms {
-        "buildapi":
-            vhost => "/buildapi",
-            conf => '.*',
-            write => '.*',
-            read => '.*';
     }
     nginx::site {
         "buildapi":
@@ -116,5 +139,64 @@ class buildapi {
             command => "/home/buildapi/bin/python setup.py develop",
             creates => "/home/buildapi/lib/python2.6/site-packages/buildapi.egg-link",
             cwd => "/home/buildapi/src";
+    }
+    include service_manager::hg
+    service_manager {
+        "buildapi":
+            require => Exec["clone-buildapi"],
+            user => "buildapi",
+            service => "buildapi",
+            updatecmd => "${service_manager::hg::cmd} /home/buildapi/src",
+            minute => "*/5";
+    }
+    cron {
+        "4hour":
+            require => [
+                Exec["install-buildapi"],
+                File["/home/buildapi/reporter.cfg"],
+                File["/var/www/buildapi/buildjson"],
+                File["/home/buildapi/bin/report-4hr.sh"],
+                ],
+            user => "buildapi",
+            command => "/home/buildapi/bin/report-4hr.sh",
+            minute => "*";
+        "dailyreport":
+            require => [
+                Exec["install-buildapi"],
+                File["/home/buildapi/reporter.cfg"],
+                File["/var/www/buildapi/buildjson"],
+                File["/home/buildapi/bin/report-daily.sh"],
+                ],
+            user => "buildapi",
+            command => "/home/buildapi/bin/report-daily.sh",
+            hour => "0",
+            minute => "0";
+        "waittime-build":
+            require => [
+                Service["buildapi"],
+                File["/home/buildapi/bin/waittime_mailer.sh"],
+                ],
+            user => "buildapi",
+            command => "/home/buildapi/bin/waittime_mailer.sh buildpool -a dev-tree-management@lists.mozilla.org",
+            hour => "6",
+            minute => "1";
+        "waittime-try":
+            require => [
+                Service["buildapi"],
+                File["/home/buildapi/bin/waittime_mailer.sh"],
+                ],
+            user => "buildapi",
+            command => "/home/buildapi/bin/waittime_mailer.sh trybuildpool -a dev-tree-management@lists.mozilla.org",
+            hour => "6",
+            minute => "3";
+        "waittime-test":
+            require => [
+                Service["buildapi"],
+                File["/home/buildapi/bin/waittime_mailer.sh"],
+                ],
+            user => "buildapi",
+            command => "/home/buildapi/bin/waittime_mailer.sh testpool -a dev-tree-management@lists.mozilla.org",
+            hour => "6",
+            minute => "5";
     }
 }
