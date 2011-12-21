@@ -35,14 +35,16 @@ class packages::devtools {
                     provider => rpm;
                 "gcc45test":
                     ensure => absent;
+                "moz_binutils_2.21.1":
+                    ensure => absent;
             }
             install_rpm {
                 "clang":
                     version => "3.0-r145194.moz0",
                     creates => "/tools/clang-3.0-r145194.moz0/bin/clang";
-                "moz_binutils_2.21.1":
-                    version => "2.21.1-1",
-                    creates => "/tools/binutils-2.21.1/bin/ld.gold";
+                "moz_binutils_2.22":
+                    version => "2.22-0moz1",
+                    creates => "/tools/binutils-2.22/bin/ld.gold";
                 "gcc45":
                     creates     => "/tools/gcc-4.5/bin/gcc",
                     version     => "4.5.2-0moz1";
