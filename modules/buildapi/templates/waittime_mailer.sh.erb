@@ -1,4 +1,4 @@
 #!/bin/sh
 pool=$1
 shift
-<%=buildapi_python%> <%=buildapi_dir%>/buildapi/scripts/mailwaittimes.py -S smtp.mozilla.org -f nobody@build.mozilla.org -p $pool "$@" -W http://<%=fqdn%>>/buildapi/reports/waittimes -e $(date -d "$(date +%Y-%m-%d)" +%s) -t 10 -z 10
+<%=buildapi_python%> <%=buildapi_dir%>/buildapi/scripts/mailwaittimes.py -S smtp.mozilla.org -f nobody@build.mozilla.org -p $pool "$@" -W http://<%=fqdn%>/buildapi/reports/waittimes -e $(date -d "$(date +%Y-%m-%d)" +%s) -t 10 -z 10
