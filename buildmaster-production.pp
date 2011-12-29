@@ -190,6 +190,11 @@ node "buildbot-master20" inherits "masternode" {
     }
 }
 
+node "buildbot-master21" inherits "masternode" {
+    $num_masters = 0
+}
+
+
 node "dev-master01" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
