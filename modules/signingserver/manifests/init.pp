@@ -66,8 +66,7 @@ class signingserver {
             user           => "cltsign",
             token_secret   => $secrets::signingserver::token_secret,
             new_token_auth => $secrets::signingserver::new_token_auth,
-            # XXX: get a real key for nightly
-            mar_key_name   => "dep1",
+            mar_key_name   => "nightly1",
             require        => File["/home/cltsign/instances"];
     }
 
