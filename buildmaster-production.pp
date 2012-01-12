@@ -194,6 +194,65 @@ node "buildbot-master21" inherits "masternode" {
     $num_masters = 0
 }
 
+node "buildbot-master22" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm22-tests1-tegra":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-tegra";
+    }
+}
+
+node "buildbot-master23" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm23-tests1-windows":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-windows";
+    }
+}
+
+node "buildbot-master24" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm24-tests1-linux":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-linux";
+    }
+}
+
+node "buildbot-master25" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm25-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master26" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm26-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master27" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm27-try1":
+            http_port => 8101,
+            master_type => "try",
+            basedir => "try1";
+    }
+}
 
 node "dev-master01" inherits "masternode" {
     $num_masters = 0
