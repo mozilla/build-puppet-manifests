@@ -61,6 +61,11 @@ class buildmaster {
     $plugins_dir = $nagios::service::plugins_dir
     $nagios_etcdir = $nagios::service::etcdir
     file {
+        "/home/$master_user/.ssh":
+            mode => 700,
+            owner => $master_user,
+            group => $master_group,
+            ensure => directory;
         "/builds":
             ensure => directory,
             owner => $master_user,
