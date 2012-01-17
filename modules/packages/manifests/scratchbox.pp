@@ -12,6 +12,9 @@ class packages::scratchbox {
                     owner => "root",
                     group => "root",
                     source => "puppet:///packages/scratchbox-preun.sh";
+                "/etc/init.d/sbox":
+                    require => Exec["disable_sbox_service"],
+                    ensure => "absent";
             }
             package {
                 "scratchbox-mercurial":
@@ -40,6 +43,9 @@ class packages::scratchbox {
                 "remove-scratchbox":
                     command => "/bin/rpm -e --noscripts scratchbox",
                     refreshonly => true;
+                "disable_sbox_service":
+                    onlyif => "/usr/bin/test -e /etc/init.d/sbox",
+                    command => "/sbin/chkconfig --del sbox";
             }
         }
     }
