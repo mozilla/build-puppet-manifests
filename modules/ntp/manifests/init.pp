@@ -25,11 +25,24 @@ class ntp {
                     }
                 }
                 build: {
-                    service {
-                        "ntpd":
-                            enable => false,
-                            hasstatus => true,
-                            ensure => stopped;
+                    case $virtual {
+                        vmware: {
+                            service {
+                                "ntpd":
+                                    enable => false,
+                                    hasstatus => true,
+                                    ensure => stopped;
+                            }
+                        }
+                        default: {
+                            service {
+                                "ntpd":
+                                    subscribe => File["/etc/ntp.conf"],
+                                    enable => true,
+                                    hasstatus => true,
+                                    ensure => running;
+                            }
+                        }
                     }
                 }
             }
