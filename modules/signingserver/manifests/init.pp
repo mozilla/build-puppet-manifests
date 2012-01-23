@@ -37,7 +37,7 @@ class signingserver {
             managehome => true;
     }
 
-    $signing_server_ports = ["9000", "9010"]
+    $signing_server_ports = ["9000", "9010", "9020"]
     file {
         "/home/cltsign/instances":
             ensure => directory,
@@ -79,6 +79,17 @@ class signingserver {
             token_secret   => $secrets::signingserver::token_secret,
             new_token_auth => $secrets::signingserver::new_token_auth,
             mar_key_name   => "dep1",
+            require        => File["/home/cltsign/instances"];
+    }
+    signingserver::instance {
+        "/home/cltsign/instances/rel-key-signing-server":
+            listenaddr     => "0.0.0.0",
+            port           => "9020",
+            code_tag       => "SIGNING_SERVER",
+            user           => "cltsign",
+            token_secret   => $secrets::signingserver::token_secret,
+            new_token_auth => $secrets::signingserver::new_token_auth,
+            mar_key_name   => "rel1",
             require        => File["/home/cltsign/instances"];
     }
 }
