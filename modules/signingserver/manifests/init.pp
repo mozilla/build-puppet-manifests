@@ -22,6 +22,12 @@ class signingserver {
                     ensure => latest;
                 "libevent-devel":
                     ensure => latest;
+                "jdk1.6":
+                    provider => rpm,
+                    source => "${platform_httproot}/RPMs/jdk1.6-1.6.0_17-0moz1.i686.rpm";
+                "android-sdk":
+                    provider => rpm,
+                    source => "${platform_httproot}/RPMs/android-sdk-r8-0moz3.i686.rpm";
             }
         }
         default: {
@@ -45,6 +51,15 @@ class signingserver {
             require => User["cltsign"];
         "/etc/sysconfig/iptables":
             content => template("signingserver/iptables.erb");
+        "/home/cltsign/.ssh":
+            mode => 755,
+            owner => "cltsign",
+            group => "cltsign",
+            ensure => directory;
+        "/home/cltsign/.ssh/known_hosts":
+            owner => "cltsign",
+            group => "cltsign",
+            source => "${local_fileroot}/home/cltsign/.ssh/known_hosts";
     }
 
     service {
