@@ -8,7 +8,7 @@ server {
     server_name <%= scope::lookupvar('buildapi::settings::vhost') %>;
     root /var/www/<%= title %>;
 
-    location /builddata {
+    location /buildjson {
         autoindex on;
     }
 
