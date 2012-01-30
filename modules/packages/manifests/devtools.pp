@@ -116,6 +116,10 @@ class packages::devtools {
                             provider  => rpm,
                             ensure    => "r13-0moz1",
                             source    => "${platform_httproot}/RPMs/android-sdk13-r13-0moz1.${hardwaremodel}.rpm";
+                        "android-sdk15":
+                            provider  => rpm,
+                            ensure    => "r15-0moz1",
+                            source    => "${platform_httproot}/RPMs/android-sdk15-r15-0moz1.${hardwaremodel}.rpm";
                     }
                     packages::install_rpm {
                         "gcc411":
