@@ -34,6 +34,12 @@ class sendmail {
                     group => "root",
             }
 
+            exec {
+                newaliases:
+                    command => "/usr/bin/newaliases",
+                    refreshonly => true;
+            }
+
             service {
                 "sendmail":
                     require => File["/etc/mail/sendmail.mc"],
