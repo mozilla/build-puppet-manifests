@@ -40,8 +40,8 @@ class packages::devtools {
             }
             install_rpm {
                 "clang":
-                    version => "3.0-r145194.moz0",
-                    creates => "/tools/clang-3.0-r145194.moz0/bin/clang";
+                    version => "3.0-r149163.moz0",
+                    creates => "/tools/clang-3.0-r149163.moz0/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
@@ -277,10 +277,10 @@ class packages::devtools {
                     onlyif => "/bin/test -f /opt/local/bin/hg";
             }
             package {
-                "clang-3.0-r145194.moz0.dmg":
+                "clang-3.0-r149163.moz0.dmg":
                     provider    => pkgdmg,
                     ensure      => installed,
-                    source      => "${platform_httproot}/DMGs/clang-3.0-r145194.moz0.dmg";
+                    source      => "${platform_httproot}/DMGs/clang-3.0-r149163.moz0.dmg";
             }
             install_dmg {
                 "Twisted-8.0.1.dmg":
@@ -290,8 +290,10 @@ class packages::devtools {
                     creates => "/tools/mercurial-1.7.5/bin/hg",
                     require => Exec["remove-macport-hg"];
             }
-        
             file {
+                "/tools/clang-3.0-145194":
+                    force => true,
+                    ensure => absent;
                 "/tools/clang-2.9":
                     ensure      => absent;
                 "/tools/twisted":
