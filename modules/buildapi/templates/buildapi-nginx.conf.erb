@@ -8,7 +8,12 @@ server {
     server_name <%= scope::lookupvar('buildapi::settings::vhost') %>;
     root /var/www/<%= title %>;
 
+    gzip on;
+    gzip_types application/x-javascript;
+
     location /buildjson {
+        add_header Access-Control-Allow-Origin *;
+        expires modified 60;
         autoindex on;
     }
 
