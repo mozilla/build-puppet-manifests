@@ -24,10 +24,10 @@ class signingserver {
                     ensure => latest;
                 "jdk1.6":
                     provider => rpm,
-                    source => "${platform_httproot}/RPMs/jdk1.6-1.6.0_17-0moz1.i686.rpm";
+                    source => "${httproot}/CentOS-5.5-x86_64/master/RPMs/jdk1.6-1.6.0_17-0moz1.i686.rpm";
                 "android-sdk":
                     provider => rpm,
-                    source => "${platform_httproot}/RPMs/android-sdk-r8-0moz3.i686.rpm";
+                    source => "${httproot}/CentOS-5.5-x86_64/master/RPMs/android-sdk-r8-0moz3.i686.rpm";
             }
         }
         default: {
