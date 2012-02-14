@@ -34,6 +34,7 @@ class stagelayout {
             mode => 775;
         ["/builds/data/ftp/pub/firefox",
         "/builds/data/ftp/pub/firefox/nightly",
+        "/builds/data/ftp/pub/firefox/candidates",
         "/builds/data/ftp/pub/firefox/releases",
         "/builds/data/ftp/pub/firefox/tinderbox-builds"]:
             ensure => directory,
@@ -47,6 +48,7 @@ class stagelayout {
             mode => 775;
         ["/home/ftp/pub/thunderbird",
          "/home/ftp/pub/thunderbird/nightly",
+         "/home/ftp/pub/thunderbird/candidates",
          "/home/ftp/pub/thunderbird/releases",
          "/home/ftp/pub/thunderbird/tinderbox-builds"]:
             ensure => directory,
