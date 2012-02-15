@@ -74,9 +74,9 @@ class signingserver {
     }
 
     signingserver::instance {
-        "/home/cltsign/instances/nightly-key-signing-server":
+        "/home/cltsign/instances/nightly-key-signing-server-2":
             listenaddr     => "0.0.0.0",
-            port           => "9000",
+            port           => "9100",
             code_tag       => "SIGNING_SERVER",
             user           => "cltsign",
             token_secret   => $secrets::signingserver::token_secret,
@@ -86,9 +86,9 @@ class signingserver {
     }
 
     signingserver::instance {
-        "/home/cltsign/instances/dep-key-signing-server":
+        "/home/cltsign/instances/dep-key-signing-server-2":
             listenaddr     => "0.0.0.0",
-            port           => "9010",
+            port           => "9110",
             code_tag       => "SIGNING_SERVER",
             user           => "cltsign",
             token_secret   => $secrets::signingserver::token_secret,
@@ -97,9 +97,9 @@ class signingserver {
             require        => File["/home/cltsign/instances"];
     }
     signingserver::instance {
-        "/home/cltsign/instances/rel-key-signing-server":
+        "/home/cltsign/instances/rel-key-signing-server-2":
             listenaddr     => "0.0.0.0",
-            port           => "9020",
+            port           => "9120",
             code_tag       => "SIGNING_SERVER",
             user           => "cltsign",
             token_secret   => $secrets::signingserver::token_secret,
