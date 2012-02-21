@@ -43,7 +43,7 @@ class signingserver {
             managehome => true;
     }
 
-    $signing_server_ports = ["9000", "9010", "9020"]
+    $signing_server_ports = ["9000", "9010", "9020", "9100", "9110", "9120"]
     file {
         "/home/cltsign/instances":
             ensure => directory,
