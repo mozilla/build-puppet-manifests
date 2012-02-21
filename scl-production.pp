@@ -1474,10 +1474,6 @@ node "talos-r4-snow-084" inherits "darwin10-i386-test" {
     include talos_osx_rev4
 }
 
-node "talos-r4-snow-085" inherits "darwin10-i386-test" {
-    include talos_osx_rev4
-}
-
 node "talos-r4-lion-ref" inherits "darwin11-x86_64-test" {
     include talos_osx_rev4
 }
@@ -1815,10 +1811,6 @@ node "talos-r4-lion-083" inherits "darwin11-x86_64-test" {
 }
 
 node "talos-r4-lion-084" inherits "darwin11-x86_64-test" {
-    include talos_osx_rev4
-}
-
-node "talos-r4-lion-085" inherits "darwin11-x86_64-test" {
     include talos_osx_rev4
 }
 
