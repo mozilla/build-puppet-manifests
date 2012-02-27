@@ -40,8 +40,8 @@ class packages::devtools {
             }
             install_rpm {
                 "clang":
-                    version => "3.0-r149163.moz0",
-                    creates => "/tools/clang-3.0-r149163.moz0/bin/clang";
+                    version => "3.0-r151367.moz0",
+                    creates => "/tools/clang-3.0-r151367.moz0/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
@@ -251,6 +251,13 @@ class packages::devtools {
                 }
                 # 10.6 build machines only
                 "10.2.0": {
+                    package {
+                        "clang-3.0-r151367.moz0.dmg":
+                            provider    => pkgdmg,
+                            ensure      => installed,
+                            source      => "${platform_httproot}/DMGs/clang-3.0-r151367.moz0.dmg";
+                    }
+
                     install_dmg { 
                         "python-2.6.4.dmg":
                             creates     => "/tools/python-2.6.4/bin/smtpd.py",
@@ -276,12 +283,6 @@ class packages::devtools {
                     command => "/opt/local/bin/port uninstall mercurial",
                     onlyif => "/bin/test -f /opt/local/bin/hg";
             }
-            package {
-                "clang-3.0-r149163.moz0.dmg":
-                    provider    => pkgdmg,
-                    ensure      => installed,
-                    source      => "${platform_httproot}/DMGs/clang-3.0-r149163.moz0.dmg";
-            }
             install_dmg {
                 "Twisted-8.0.1.dmg":
                     creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
@@ -291,6 +292,9 @@ class packages::devtools {
                     require => Exec["remove-macport-hg"];
             }
             file {
+                "/tools/clang-3.0-149163":
+                    force => true,
+                    ensure => absent;
                 "/tools/clang-3.0-145194":
                     force => true,
                     ensure => absent;
