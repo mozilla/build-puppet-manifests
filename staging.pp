@@ -68,6 +68,14 @@ node "moz2-linux-slave51" inherits "centos5-i686-build" {
     include staging-buildslave, vm
 }
 
+node "linux64-ix-slave01" inherits "centos5-x86_64-build" {
+    include staging-buildslave, ix
+}
+
+node "linux64-ix-slave02" inherits "centos5-x86_64-build" {
+    include staging-buildslave, ix
+}
+
 node "moz2-darwin9-slave03" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
