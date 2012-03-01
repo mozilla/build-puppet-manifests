@@ -40,8 +40,8 @@ class packages::devtools {
             }
             install_rpm {
                 "clang":
-                    version => "3.0-r151367.moz0",
-                    creates => "/tools/clang-3.0-r151367.moz0/bin/clang";
+                    version => "3.0-r151655.moz0",
+                    creates => "/tools/clang-3.0-r151655.moz0/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
@@ -252,10 +252,10 @@ class packages::devtools {
                 # 10.6 build machines only
                 "10.2.0": {
                     package {
-                        "clang-3.0-r151367.moz0.dmg":
+                        "clang-3.0-r151655.moz0.dmg":
                             provider    => pkgdmg,
                             ensure      => installed,
-                            source      => "${platform_httproot}/DMGs/clang-3.0-r151367.moz0.dmg";
+                            source      => "${platform_httproot}/DMGs/clang-3.0-r151655.moz0.dmg";
                     }
 
                     install_dmg { 
@@ -267,6 +267,9 @@ class packages::devtools {
                             subscribe   => File["/tools/zope-interface"];
                     }
                     file {
+                        "/tools/clang-3.0-151367":
+                            force => true,
+                            ensure => absent;
                         "/tools/python":
                             ensure  => "/tools/python-2.6.4",
                             force   => true;
