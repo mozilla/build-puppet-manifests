@@ -80,16 +80,38 @@ class nagios::service {
                     mode => 0755,
                     source => "puppet:///nagios/darwin/setup-nagios-user.sh";
             }
-            exec { 
-                setup-nagios-user:
-                    creates => "/var/db/.puppet_nagios_user_setup",
-                    command => "/usr/local/bin/setup-nagios-user.sh",
-                    require => File["/etc/fstab"],
-                    subscribe => Install_dmg["nrpe-i386.dmg"];
-                enable-nrpe:
-                    creates => "/Library/LaunchDaemons/nrpe.plist",
-                    command => "/usr/local/nagios/sbin/enablenrpe",
-                    subscribe => [Install_dmg["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
+            case $macosx_productversion_major {
+                "10.7": {
+                    file {
+                        ["/usr/local/nagios", "/usr/local/nagios/etc"]:
+                            owner => root,
+                            group => wheel,
+                            ensure => directory;
+                    }
+                    exec { 
+                        setup-nagios-user:
+                            creates => "/var/db/.puppet_nagios_user_setup",
+                            command => "/usr/local/bin/setup-nagios-user.sh",
+                            subscribe => Package["nrpe-i386.dmg"];
+                        enable-nrpe:
+                            creates => "/Library/LaunchDaemons/nrpe.plist",
+                            command => "/usr/local/nagios/sbin/enablenrpe",
+                            subscribe => [Package["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
+                    }
+                 }
+                default: {
+                    exec { 
+                        setup-nagios-user:
+                            creates => "/var/db/.puppet_nagios_user_setup",
+                            command => "/usr/local/bin/setup-nagios-user.sh",
+                            require => File["/etc/fstab"],
+                            subscribe => Install_dmg["nrpe-i386.dmg"];
+                        enable-nrpe:
+                            creates => "/Library/LaunchDaemons/nrpe.plist",
+                            command => "/usr/local/nagios/sbin/enablenrpe",
+                            subscribe => [Install_dmg["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
+                    }
+                }
             }
         }
     }

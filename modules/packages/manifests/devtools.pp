@@ -226,9 +226,8 @@ class packages::devtools {
         }
 
         Darwin: {
-            case $operatingsystemrelease {
-                # 10.5 build machines only.
-                "9.2.0": {
+            case $macosx_productversion_major {
+                "10.5": {
                     install_dmg { 
                         "Python-2.5.2.dmg":
                             creates     => "/tools/Python-2.5.2/share",
@@ -249,15 +248,7 @@ class packages::devtools {
                             ensure => absent;
                     }
                 }
-                # 10.6 build machines only
-                "10.2.0": {
-                    package {
-                        "clang-3.0-r151655.moz0.dmg":
-                            provider    => pkgdmg,
-                            ensure      => installed,
-                            source      => "${platform_httproot}/DMGs/clang-3.0-r151655.moz0.dmg";
-                    }
-
+                "10.6": {
                     install_dmg { 
                         "python-2.6.4.dmg":
                             creates     => "/tools/python-2.6.4/bin/smtpd.py",
@@ -267,9 +258,6 @@ class packages::devtools {
                             subscribe   => File["/tools/zope-interface"];
                     }
                     file {
-                        "/tools/clang-3.0-151367":
-                            force => true,
-                            ensure => absent;
                         "/tools/python":
                             ensure  => "/tools/python-2.6.4",
                             force   => true;
@@ -277,40 +265,72 @@ class packages::devtools {
                             ensure  => "/tools/zope-interface-3.5.3";
                     }
                 }
+                "10.7": {
+                    package { 
+                        "python-2.7.2.dmg":
+                            source      => "${platform_httproot}/DMGs/python-2.7.2.dmg",
+                            ensure      => installed,
+                            provider    => pkgdmg,
+                            subscribe   => File["/tools/python"];
+                    }
+                    file {
+                        "/tools/python":
+                            ensure  => "/tools/python-2.7.2",
+                            force   => true;
+                    }
+                }
             }
-            # All Mac build machines
-            # devtools_home is defined above, so each platform gets a tarball specific to it
-            exec {
-                # Remove macports hg if it's installed
-                remove-macport-hg:
-                    command => "/opt/local/bin/port uninstall mercurial",
-                    onlyif => "/bin/test -f /opt/local/bin/hg";
+
+            case $macosx_productversion_major{
+                "10.6", "10.7": {
+                    package {
+                        "clang-3.0-r151655.moz0.dmg":
+                            provider    => pkgdmg,
+                            ensure      => installed,
+                            source      => "${platform_httproot}/DMGs/clang-3.0-r151655.moz0.dmg";
+                    }
+                    file {
+                        "/tools/clang-3.0-149163":
+                            force => true,
+                            ensure => absent;
+                        "/tools/clang-3.0-145194":
+                            force => true,
+                            ensure => absent;
+                        "/tools/clang-3.0-151367":
+                            force => true,
+                            ensure => absent;
+                    }
+                }
             }
-            install_dmg {
-                "Twisted-8.0.1.dmg":
-                    creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
-                    subscribe   => File["/tools/twisted"];
-                "mercurial-1.7.5.dmg":
-                    creates => "/tools/mercurial-1.7.5/bin/hg",
-                    require => Exec["remove-macport-hg"];
-            }
-            file {
-                "/tools/clang-3.0-149163":
-                    force => true,
-                    ensure => absent;
-                "/tools/clang-3.0-145194":
-                    force => true,
-                    ensure => absent;
-                "/tools/clang-2.9":
-                    ensure      => absent;
-                "/tools/twisted":
-                    ensure  => "/tools/Twisted-8.0.1";
-                "/tools/mercurial":
-                    require => Install_dmg["mercurial-1.7.5.dmg"],
-                    ensure  => "/tools/mercurial-1.7.5";
-                "/usr/local/bin/hg":
-                    ensure => "/tools/mercurial/bin/hg",
-                    require => File["/tools/mercurial"];
+            case $macosx_productversion_major{
+                "10.5", "10.6": {
+                    exec {
+                        # Remove macports hg if it's installed
+                        remove-macport-hg:
+                            command => "/opt/local/bin/port uninstall mercurial",
+                            onlyif => "/bin/test -f /opt/local/bin/hg";
+                    }
+                    install_dmg {
+                        "Twisted-8.0.1.dmg":
+                            creates     => "/tools/Twisted-8.0.1/twisted/words/xish/xpathparser.py",
+                            subscribe   => File["/tools/twisted"];
+                        "mercurial-1.7.5.dmg":
+                            creates => "/tools/mercurial-1.7.5/bin/hg",
+                            require => Exec["remove-macport-hg"];
+                    }
+                    file {
+                        "/tools/clang-2.9":
+                            ensure      => absent;
+                        "/tools/twisted":
+                            ensure  => "/tools/Twisted-8.0.1";
+                        "/tools/mercurial":
+                            require => Install_dmg["mercurial-1.7.5.dmg"],
+                            ensure  => "/tools/mercurial-1.7.5";
+                        "/usr/local/bin/hg":
+                            ensure => "/tools/mercurial/bin/hg",
+                            require => File["/tools/mercurial"];
+                    }
+                }
             }
         }
     }

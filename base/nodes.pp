@@ -43,6 +43,9 @@ node "darwin9-i386-build" inherits "darwin-build" {
 node "darwin10-i386-build" inherits "darwin-build" {
 }
 
+node "darwin11-x86_64-build" inherits "darwin-build" {
+}
+
 node "byob-repack" inherits "darwin10-i386-build" {
 }
 

@@ -9,7 +9,16 @@ class base {
         # add version checking later if necessary
         CentOS: { include centos5 }
 
-        Darwin: { include osx }
+        Darwin: { 
+            case $macosx_productversion_major {
+                10.7: {
+                    include osx_lion
+                }
+                default: {
+                    include osx
+                }
+            }
+        }
         default: { include centos5 }
     }
 

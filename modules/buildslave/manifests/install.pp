@@ -120,14 +120,19 @@ define buildslave::install::version($active=false, $ensure="present") {
         }
 
         Darwin: {
-            # luckily, Darwin build and test slaves have different versions!
-            # the better fix is in bug 637686
-            case $operatingsystemrelease {
-                "10.2.0": { # darwin10 build; talos is 10.6.0 or 10.8.0
-                    $python = "/tools/python-2.6.4/bin/python"
-                }
-                "9.2.0": { # darwin9 build; talos is 9.8.0
-                    $python = "/tools/python/bin/python"
+            case $slaveType {
+                "build": {
+                    case $macosx_productversion_major {
+                        "10.5": {
+                            $python = "/tools/python/bin/python"
+                        }
+                        "10.6": {
+                            $python = "/tools/python-2.6.4/bin/python"
+                        }
+                        "10.7": {
+                            $python = "/tools/python-2.7.2/bin/python"
+                        }
+                    }
                 }
                 default: {
                     $python = "/usr/bin/python"

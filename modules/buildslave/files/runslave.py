@@ -175,8 +175,13 @@ class BuildbotTac:
                     os.unlink(filename)
             os.rename(tmpfile, filename)
             return True
-        except:
-            print >>sys.stderr, "WARNING: error while fetching ", full_url
+        except Exception, e:
+            # This error message was changed because it did not mention that a failure to replace
+            # the file *as well as* failing to fetch the file would be caught here.  This can be
+            # triggered by chmod 0 on the build slave directory so this process can't write the tac
+            print >>sys.stderr, "WARNING: error fetching and/or replacing buildbot.tac file ", full_url
+            # Lets actually print out useful information in the error message
+            print >>sys.stderr, "Full exception: %s" % e
             if self.options.verbose:
                 traceback.print_exc()
             # oh noes!  No worries, we'll just use the existing .tac file

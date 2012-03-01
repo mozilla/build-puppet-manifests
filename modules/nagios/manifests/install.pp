@@ -51,9 +51,21 @@ class nagios::install {
             }
         }
         Darwin: {
-            install_dmg {
-                "nrpe-i386.dmg":
-                    creates => "/usr/local/nagios-i386/sbin/nrpe";
+            case $macosx_productversion_major {
+                "10.7":{
+                    package {
+                        "nrpe-i386.dmg":
+                            ensure => installed,
+                            provider => pkgdmg,
+                            source => "${platform_httproot}/DMGs/nrpe-i386.dmg";
+                    }
+                }
+                default: {
+                    install_dmg {
+                        "nrpe-i386.dmg":
+                            creates => "/usr/local/nagios-i386/sbin/nrpe";
+                    }
+                }
             }
         }
     }
