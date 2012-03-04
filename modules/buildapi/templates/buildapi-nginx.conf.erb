@@ -15,6 +15,12 @@ server {
         add_header Access-Control-Allow-Origin *;
         expires modified 60;
         autoindex on;
+        location ~* "\.js\.gz$" {
+            add_header Content-Encoding gzip;
+            types {
+                text/plain gz;
+            }
+        }
     }
 
     location /buildapi {
