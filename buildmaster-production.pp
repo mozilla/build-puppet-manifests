@@ -191,7 +191,13 @@ node "buildbot-master20" inherits "masternode" {
 }
 
 node "buildbot-master21" inherits "masternode" {
-    $num_masters = 0
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm21-tests1-macosx":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-macosx";
+    }
 }
 
 node "buildbot-master22" inherits "masternode" {
