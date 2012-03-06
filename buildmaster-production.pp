@@ -268,6 +268,15 @@ node "dev-master01" inherits "masternode" {
 
     # use LDAP and SSH keys for user-specific logins
     include userlogins
+
+    mount {
+        "builds":
+            name   => "/builds",
+            atboot => true,
+            device => "/dev/vdb1",
+            ensure => "mounted",
+            fstype => "ext3",
+    }
 }
 
 node "releng-mirror01" inherits "masternode" {
