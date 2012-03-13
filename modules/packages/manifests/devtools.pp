@@ -40,8 +40,8 @@ class packages::devtools {
             }
             install_rpm {
                 "clang":
-                    version => "3.0-r151655.moz0",
-                    creates => "/tools/clang-3.0-r151655.moz0/bin/clang";
+                    version => "3.0-r151655.moz1",
+                    creates => "/tools/clang-3.0-r151655.moz1/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
