@@ -67,6 +67,12 @@ class stagelayout {
             owner => "ffxbld",
             group => "firefox",
             mode => 755;
+        ["/builds/data/ftp/pub/b2g/nightly",
+        "/builds/data/ftp/pub/b2g/tinderbox-builds"]:
+            ensure => directory,
+            owner => "ffxbld",
+            group => "firefox",
+            mode => 755;
         "/builds/data/ftp/pub/xulrunner":
             ensure => directory,
             owner => "root",
@@ -111,6 +117,9 @@ class stagelayout {
             force => true;
         "/var/www/html/pub/mozilla.org/mobile":
             ensure => "/home/ftp/pub/mobile",
+            force => true;
+        "/var/www/html/pub/mozilla.org/b2g":
+            ensure => "/home/ftp/pub/b2g",
             force => true;
         "/var/www/html/pub/mozilla.org/thunderbird":
             ensure => "/home/ftp/pub/thunderbird",
