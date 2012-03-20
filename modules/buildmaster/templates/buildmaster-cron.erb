@@ -1,0 +1,4 @@
+MAILTO=release@mozilla.com
+@hourly cltbld <%=master_basedir%>/bin/python <%=master_basedir%>/tools/buildfarm/maintenance/watch_twistd_log.py -t .<%=master_name%>-last-time.txt -n <%=master_name%> -f cltbld@<%=fqdn%> -e release@mozilla.com <%=full_master_dir%>
+15 * * * * cltbld lockfile -60 -r 3 $HOME/lockfile.<%=master_name%>_cleanup 2>/dev/null && (nice -n 19 <%=master_basedir%>/bin/python <%=master_basedir%>/tools/buildfarm/maintenance/master_cleanup.py -t4 <%=master_basedir%>/master ; rm -f $HOME/lockfile.<%=master_name%>_cleanup) >> cleanup.log 2>&1
+@hourly cltbld find $HOME -name lockfile.bbdb -mmin +360 -delete

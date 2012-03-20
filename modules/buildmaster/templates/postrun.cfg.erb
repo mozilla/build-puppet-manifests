@@ -1,0 +1,44 @@
+{
+  "command_queue": "/dev/shm/queue/commands",
+  "pulse_queue": "/dev/shm/queue/pulse",
+
+  "statusdb.url": "mysql://<%=scope.lookupvar('secrets::buildbot_statusdb_user')%>:<%=scope.lookupvar('secrets::buildbot_statusdb_password')%>@<%=scope.lookupvar('secrets::buildbot_statusdb_host')%>/<%=scope.lookupvar('secrets::buildbot_statusdb_database')%>",
+  "statusdb.master_name": "<%=master_name%>",
+  "statusdb.master_url": "http://<%=fqdn%>:<%=http_port%>",
+
+  "schedulerdb.url": "mysql://<%=scope.lookupvar('secrets::buildbot_schedulerdb_user')%>:<%=scope.lookupvar('secrets::buildbot_schedulerdb_password')%>@<%=scope.lookupvar('secrets::buildbot_schedulerdb_host')%>/<%=scope.lookupvar('secrets::buildbot_schedulerdb_database')%>",
+
+  "mail_notifier_branches": ["try"],
+  "mail_real_author": true,
+
+  "ssh_info": {
+    "*": {
+      "*": {
+        "user": "ffxbld",
+        "host": "stage.mozilla.org"
+        },
+      "try": {
+        "user": "trybld",
+        "host": "stage.mozilla.org"
+      },
+      "shadow-central": {
+        "user": "ffxbld",
+        "sshkey": "/home/cltbld/.ssh/ffxbld_dsa",
+        "host": "dm-pvtbuild01.mozilla.org"
+      }
+    },
+    "fuzzing": {
+      "*": {
+        "user": "ffxbld",
+        "sshkey": "/home/cltbld.ssh/ffxbld_dsa",
+        "host": "dm-pvtbuild01.mozilla.org"
+      }
+    },
+    "xulrunner": {
+      "*": {
+        "user": "xrbld",
+        "host": "stage.mozilla.org"
+      }
+    }
+  }
+}

@@ -55,13 +55,13 @@ define buildmaster::buildbot_master($basedir, $master_type, $http_port) {
             group => $master_group,
             mode => 600,
             content => template("buildmaster/passwords.py.erb");
-        
-        "/home/$master_user/.${master_name}_update_from_files.conf":
+
+        "$full_master_dir/master/postrun.cfg":
             require => Exec["setup-$basedir"],
             owner => $master_user,
             group => $master_group,
             mode => 600,
-            content => template("buildmaster/update_from_files.erb");
+            content => template("buildmaster/postrun.cfg.erb");
 
         "/etc/default/buildbot.d/$basedir":
             content => $full_master_dir,
@@ -69,8 +69,16 @@ define buildmaster::buildbot_master($basedir, $master_type, $http_port) {
                 File["/etc/default/buildbot.d"],
                 Exec["setup-$basedir"],
                 ];
+
         "/tools":
             ensure => "directory";
+
+        "/etc/cron.d/$master_name":
+            require => Exec["setup-$basedir"],
+            owner => "root",
+            group => "root",
+            mode => 600,
+            content => template("buildmaster/buildmaster-cron.erb");
     }
     exec {
         "setup-$basedir":
@@ -93,16 +101,6 @@ define buildmaster::buildbot_master($basedir, $master_type, $http_port) {
                 "PIP_FLAGS=--no-deps --no-index --find-links=$python_package_dir",
                 "MASTERS_JSON=http://hg.mozilla.org/build/tools/raw-file/default/buildfarm/maintenance/production-masters.json",
             ],
-            cwd => "$master_basedir/buildbot-configs";
-
-        "cron-$basedir":
-            require => [
-                Exec["setup-$basedir"]
-                ],
-            command => "/usr/bin/make -f Makefile.setup cron BASEDIR=$full_master_dir MASTER_NAME=$master_name",
-            creates => "/etc/cron.d/$master_name",
-            user => "root",
-            logoutput => on_failure,
             cwd => "$master_basedir/buildbot-configs";
     }
 }
