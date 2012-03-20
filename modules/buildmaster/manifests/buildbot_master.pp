@@ -73,15 +73,12 @@ define buildmaster::buildbot_master($basedir, $master_type, $http_port) {
         "/tools":
             ensure => "directory";
 
-        /*
-        Disabled for initial landing of bug 713846
         "/etc/cron.d/$master_name":
             require => Exec["setup-$basedir"],
             owner => "root",
             group => "root",
             mode => 600,
             content => template("buildmaster/buildmaster-cron.erb");
-        */
     }
     exec {
         "setup-$basedir":
