@@ -11,7 +11,7 @@
 #                 the signing server, in the format username:password.
 # mar_key_name: The nickname for the key used in mar signing.
 define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secret,
-                               $new_token_auth, $mar_key_name) {
+                               $new_token_auth, $mar_key_name, $formats) {
     include secrets::network
     $package_dir_http = "http://${puppetServer}/$level/python-packages"
 
@@ -26,6 +26,8 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
     $signcode_keydir = "$secrets_dir/signcode"
     $gpg_homedir = "$secrets_dir/gpg"
     $mar_keydir = "$secrets_dir/mar"
+    $dmg_keydir = "$secrets_dir/dmg"
+    $dmg_keychain = "$dmg_keydir/signing.keychain"
     $server_certdir = "$secrets_dir/server"
     $full_private_ssl_cert = "$server_certdir/signing.server.key"
     $full_public_ssl_cert = "$server_certdir/signing.server.cert"
@@ -40,6 +42,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
     $testfile_signcode = "$testfile_dir/test.exe"
     $testfile_mar = "$testfile_dir/test.mar"
     $testfile_gpg = "$testfile_dir/test.mar"
+    $testfile_dmg = "$testfile_dir/test.tar"
     $tools_repo = "http://hg.mozilla.org/build/tools"
 
     File {
@@ -53,39 +56,64 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
             creates => "$basedir",
             command => "/usr/bin/virtualenv-2.6 $basedir",
             user => $user;
+    }
+    case $operatingsystem {
+        Darwin: {
+            exec {
+                "$basedir-pip":
+                    creates => "$basedir/bin/pip",
+                    command => "$basedir/bin/easy_install pip",
+                    user => $user,
+                    require => Exec["$basedir-virtualenv"];
+            }
+            $venv_reqs = [Exec["$basedir-virtualenv"], Exec["$basedir-pip"]]
+        }
+        default: {
+            $venv_reqs = Exec["$basedir-virtualenv"]
+        }
+    }
+    exec {
         "$basedir-clone-tools":
             creates => "$basedir/tools",
             command => "/usr/bin/hg clone -r $code_tag $tools_repo tools",
             cwd => "$basedir",
-            require => Exec["$basedir-virtualenv"];
+            require => $venv_reqs;
         "$basedir-gevent":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} gevent==0.13.6",
-            require => Exec["$basedir-virtualenv"],
+            require => $venv_reqs,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import gevent\"'";
         "$basedir-webob":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} WebOb==1.0.8",
-            require => Exec["$basedir-virtualenv"],
+            require => $venv_reqs,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import webob\"'";
         "$basedir-poster":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} poster==0.8.1",
-            require => Exec["$basedir-virtualenv"],
+            require => $venv_reqs,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import poster\"'";
         "$basedir-ipy":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} IPy==0.75",
-            require => Exec["$basedir-virtualenv"],
+            require => $venv_reqs,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import IPy\"'";
         "$basedir-greenlet":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} greenlet==0.3.1",
-            require => Exec["$basedir-virtualenv"],
+            require => $venv_reqs,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import greenlet\"'";
         "$basedir-redis":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} redis==2.4.5",
-            require => Exec["$basedir-virtualenv"],
+            require => $venv_reqs,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import redis\"'";
+        "$basedir-flufl.lock":
+            command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} flufl.lock==2.2",
+            require => $venv_reqs,
+            onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import flufl.lock\"'";
+        "$basedir-pexpect":
+            command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} pexpect==2.4",
+            require => $venv_reqs,
+            onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import pexpect\"'";
     }
     
     file {
-        ["$signed_dir", "$unsigned_dir", "$testfile_dir", "$secrets_dir", "$signcode_keydir", "$gpg_homedir", "$mar_keydir", "$server_certdir"]:
+        ["$signed_dir", "$unsigned_dir", "$testfile_dir", "$secrets_dir", "$signcode_keydir", "$gpg_homedir", "$mar_keydir", "$dmg_keydir", "$server_certdir"]:
             ensure => directory,
             require => Exec["$basedir-virtualenv"];
         "$basedir/signing.ini":
@@ -94,6 +122,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
         "$basedir/signscript.ini":
             content => template("signingserver/signscript.ini.erb"),
             require => Exec["$basedir-virtualenv"];
+        # FIXME: this installs a linux signmar binary on Mac
         "$basedir/bin/signmar":
             source => "puppet:///modules/signingserver/signmar",
             mode => 755,
@@ -102,6 +131,8 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
             source => "puppet:///modules/signingserver/test.exe";
         "$testfile_mar":
             source => "puppet:///modules/signingserver/test.mar";
+        "$testfile_dmg":
+            source => "puppet:///modules/signingserver/test.tar";
         # Private certs are explicitly not available through the puppet://
         # fileserver, because they are available to any Puppet client that
         # can authenticate.

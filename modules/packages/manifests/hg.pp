@@ -17,5 +17,4 @@ define packages::hg {
         }
         default: { fail("Unsupported operating system: $operatingsystem") }
     }
-
 }

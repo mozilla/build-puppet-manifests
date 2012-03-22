@@ -19,12 +19,12 @@ command[check_load]=<%=plugins_dir%>/check_load -w $ARG1$ -c $ARG2$
 command[check_users]=<%=plugins_dir%>/check_users -w $ARG1$ -c $ARG2$
 command[check_disk]=<%=plugins_dir%>/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
 command[check_procs]=<%=plugins_dir%>/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
-command[check_procs_regex]=<%=plugins_dir%>/check_procs -c $ARG2$:$ARG3$ --ereg-argument-array=$ARG1$
-command[check_child_procs_regex]=<%=plugins_dir%>/check_procs -c $ARG3$:$ARG4$ --ereg-argument-array=$ARG1$ -p $ARG2$
 command[check_file_age]=<%=plugins_dir%>/check_file_age -w $ARG1$ -c $ARG2$ -f $ARG3$
 
 <% if operatingsystem == "CentOS" %>
 # CentOS only (build machines and masters):
+command[check_procs_regex]=<%=plugins_dir%>/check_procs -c $ARG2$:$ARG3$ --ereg-argument-array=$ARG1$
+command[check_child_procs_regex]=<%=plugins_dir%>/check_procs -c $ARG3$:$ARG4$ --ereg-argument-array=$ARG1$ -p $ARG2$
 debug=0
 <% if slaveType == "build" %>
 # CentOS build machines only
@@ -44,5 +44,10 @@ command[check_ganglia]=<%=plugins_dir%>/check_ganglia -h $ARG1$ -s $ARG2$ -m $AR
 <% if operatingsystem == "Darwin" %>
 # Mac only:
 debug=1
+command[check_procs_regex]=<%=plugins_dir%>/check_procs -c $ARG2$:$ARG3$ -a $ARG1$
+command[check_child_procs_regex]=<%=plugins_dir%>/check_procs -c $ARG3$:$ARG4$ -a $ARG1$ -p $ARG2$
 command[check_buildbot]=<%=plugins_dir%>/check_procs -w 1:1 -C python --argument-array=buildbot.tac
+<% if slaveType == "master" %>
+command[check_ntp_time]=<%=plugins_dir%>/check_ntp -H $ARG1$ -w $ARG2$ -c $ARG3$
+<% end %>
 <% end %>

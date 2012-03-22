@@ -5,7 +5,7 @@
 # For passwords, etc.
 import "secrets.pp"
 
-$puppetServer = "master-puppet1.build.mozilla.org"
+$puppetServer = "master-puppet1.build.scl1.mozilla.com"
 $level = "production"
 $httproot = "http://${puppetServer}/${level}"
 
@@ -21,7 +21,13 @@ node "masternode" {
     # This is supposedly fixed in puppet 0.25, so worth revisiting this once we
     # upgrade
     $slaveType = "master"
-    include packages
+    # The packages module includes a file we require for some other checks
+    # on CentOS. There's no equivalent necessary on Mac.
+    case $operatingsystem {
+        CentOS: {
+            include packages
+        }
+    }
     include ntp
 }
 
@@ -305,11 +311,25 @@ node "buildapi01" inherits "masternode" {
 }
 
 node "signing1" inherits "masternode" {
+    $signing_formats = ["gpg", "signcode", "mar"]
     include releng::master
     include signingserver
 }
 
 node "signing2" inherits "masternode" {
+    $signing_formats = ["gpg", "signcode", "mar"]
+    include releng::master
+    include signingserver
+}
+
+node "mac-signing1" inherits "masternode" {
+    $signing_formats = ["gpg", "dmg"]
+    include releng::master
+    include signingserver
+}
+
+node "mac-signing2" inherits "masternode" {
+    $signing_formats = ["gpg", "dmg"]
     include releng::master
     include signingserver
 }

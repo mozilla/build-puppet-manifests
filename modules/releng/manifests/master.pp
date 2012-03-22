@@ -7,24 +7,29 @@ class releng::master {
     include network
     include boot
     include ntp
-    include prefs
-    include ganglia::client
     include root-user
     include sudoers
-    include sendmail
-    packages::hg {
-        "latest":
-    }
-    package {
-        "epel-release":
-            source => "http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm",
-            provider => "rpm";
-        # So that puppet help works
-        "ruby-rdoc":
-            ensure => latest;
-        "screen":
-            ensure => latest;
-        "strace":
-            ensure => latest;
+    include mercurial
+    case $operatingsystem {
+        CentOS: {
+            include prefs
+            include sendmail
+            include ganglia::client
+            package {
+                "epel-release":
+                    source => "http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm",
+                    provider => "rpm";
+                # So that puppet help works
+                "ruby-rdoc":
+                    ensure => latest;
+                "screen":
+                    ensure => latest;
+                "strace":
+                    ensure => latest;
+            }
+        }
+        Darwin: {
+            include puppet::config
+        }
     }
 }

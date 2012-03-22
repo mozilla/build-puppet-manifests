@@ -88,30 +88,17 @@ class nagios::service {
                             group => wheel,
                             ensure => directory;
                     }
-                    exec { 
-                        setup-nagios-user:
-                            creates => "/var/db/.puppet_nagios_user_setup",
-                            command => "/usr/local/bin/setup-nagios-user.sh",
-                            subscribe => Package["nrpe-i386.dmg"];
-                        enable-nrpe:
-                            creates => "/Library/LaunchDaemons/nrpe.plist",
-                            command => "/usr/local/nagios/sbin/enablenrpe",
-                            subscribe => [Package["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
-                    }
-                 }
-                default: {
-                    exec { 
-                        setup-nagios-user:
-                            creates => "/var/db/.puppet_nagios_user_setup",
-                            command => "/usr/local/bin/setup-nagios-user.sh",
-                            require => File["/etc/fstab"],
-                            subscribe => Install_dmg["nrpe-i386.dmg"];
-                        enable-nrpe:
-                            creates => "/Library/LaunchDaemons/nrpe.plist",
-                            command => "/usr/local/nagios/sbin/enablenrpe",
-                            subscribe => [Install_dmg["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
-                    }
                 }
+            }
+            exec { 
+                setup-nagios-user:
+                    creates => "/var/db/.puppet_nagios_user_setup",
+                    command => "/usr/local/bin/setup-nagios-user.sh",
+                    subscribe => Package["nrpe-i386.dmg"];
+                enable-nrpe:
+                    creates => "/Library/LaunchDaemons/nrpe.plist",
+                    command => "/usr/local/nagios/sbin/enablenrpe",
+                    subscribe => [Package["nrpe-i386.dmg"], File["/usr/local/nagios/etc/nrpe.plist"]];
             }
         }
     }

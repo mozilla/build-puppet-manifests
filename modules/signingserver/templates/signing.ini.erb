@@ -9,7 +9,7 @@ cleanup_interval = 600 ; 10 Minutes
 private_ssl_cert = <%=full_private_ssl_cert%>
 public_ssl_cert = <%=full_public_ssl_cert%>
 allowed_ips = <%=allowed_ips%>
-allowed_filenames = .*\.exe,.*\.mar,.*\.dll,.*\.bz2,.*\.zip,.*\.dmg,.*\.checksums,.*\.bundle,.*SUMS
+allowed_filenames = .*\.exe,.*\.mar,.*\.dll,.*\.bz2,.*\.zip,.*\.dmg,.*\.tar,.*\.checksums,.*\.bundle,.*SUMS
 min_filesize = 10
 token_secret = <%=token_secret%>
 new_token_auth = <%=new_token_auth%>
@@ -23,7 +23,8 @@ unsigned_dir = <%=unsigned_dir%>
 [signing]
 signscript = <%=signscript%>
 concurrency = 4
-testfile_signcode = <%=testfile_signcode%>
 testfile_mar = <%=testfile_mar%>
 testfile_gpg = <%=testfile_gpg%>
-formats = mar,gpg,signcode
+testfile_signcode = <%=testfile_signcode%>
+testfile_dmg = <%=testfile_dmg%>
+formats = <%=formats.join(",")%>
