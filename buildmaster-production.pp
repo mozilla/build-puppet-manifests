@@ -266,6 +266,26 @@ node "buildbot-master27" inherits "masternode" {
     }
 }
 
+node "buildbot-master30" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm30-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master31" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm31-try1":
+            http_port => 8101,
+            master_type => "try",
+            basedir => "try1";
+    }
+}
+
 node "dev-master01" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
