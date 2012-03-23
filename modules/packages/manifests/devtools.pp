@@ -40,8 +40,8 @@ class packages::devtools {
             }
             install_rpm {
                 "clang":
-                    version => "3.0-r151655.moz1",
-                    creates => "/tools/clang-3.0-r151655.moz1/bin/clang";
+                    version => "3.0-r152341.moz0",
+                    creates => "/tools/clang-3.0-r152341.moz0/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
@@ -284,12 +284,15 @@ class packages::devtools {
             case $macosx_productversion_major{
                 "10.6", "10.7": {
                     package {
-                        "clang-3.0-r151655.moz0.dmg":
+                        "clang-3.0-r152341.moz0.dmg":
                             provider    => pkgdmg,
                             ensure      => installed,
-                            source      => "${platform_httproot}/DMGs/clang-3.0-r151655.moz0.dmg";
+                            source      => "${platform_httproot}/DMGs/clang-3.0-r152341.moz0.dmg";
                     }
                     file {
+                        "/tools/clang-3.0-151655":
+                            force => true,
+                            ensure => absent;
                         "/tools/clang-3.0-149163":
                             force => true,
                             ensure => absent;
