@@ -2,6 +2,10 @@ class ganglia::client {
     $mode = "mcast"
     # Mozilla configuration
     case $fqdn {
+        /^.*\.srv\.releng\.scl3\.mozilla\.com$/: {
+            $cluster = "RelEngSCL3 Buildbot"
+            $addr = "239.2.11.210"
+        }
         /^.*\.build\.scl1\.mozilla\.com$/: {
             $cluster = "RelEngSCL1"
             $addr = "239.2.11.201"
