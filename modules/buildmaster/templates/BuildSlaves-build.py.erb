@@ -15,6 +15,7 @@ SlavePasswords = {
     'linux-mobile': '<%=scope.lookupvar('secrets::linux_build_password')%>',
     'macosx-mobile': '<%=scope.lookupvar('secrets::macosx_build_password')%>',
     'win32-mobile': '<%=scope.lookupvar('secrets::win32_build_password')%>',
+    'mock': '<%=scope.lookupvar('secrets::mock_build_password')%>',
 }
 tuxedoUsername = '<%=scope.lookupvar('secrets::tuxedo_user')%>'
 tuxedoPassword = '<%=scope.lookupvar('secrets::tuxedo_password')%>'
