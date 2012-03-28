@@ -17,7 +17,7 @@ class releng::master {
             include ganglia::client
             package {
                 "epel-release":
-                    source => "http://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm"
+                    source => "http://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm",
                     provider => "rpm";
                 # So that puppet help works
                 "ruby-rdoc":
