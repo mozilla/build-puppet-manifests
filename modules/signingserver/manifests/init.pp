@@ -6,7 +6,7 @@ class signingserver {
     case "$operatingsystem" {
         "CentOS": {
             case $operatingsystemrelease {
-                "5.5": {
+                "5.5", "5.8": {
                     package {
                         "python26":
                             ensure => latest;
