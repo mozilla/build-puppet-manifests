@@ -67,7 +67,8 @@ class stagelayout {
             owner => "ffxbld",
             group => "firefox",
             mode => 755;
-        ["/builds/data/ftp/pub/b2g/nightly",
+        ["/builds/data/ftp/pub/b2g",
+        "/builds/data/ftp/pub/b2g/nightly",
         "/builds/data/ftp/pub/b2g/tinderbox-builds"]:
             ensure => directory,
             owner => "ffxbld",
