@@ -149,6 +149,8 @@ class osx_lion {
             command => "/usr/sbin/systemsetup -setrestartpowerfailure on";
         "restart-on-panic":
             command => "/usr/sbin/systemsetup -setrestartfreeze on";
+        "turn-on-wol":
+            command => "/usr/sbin/systemsetup -setwakeonnetworkaccess on";
         "disable-screensaver":
             command => "/usr/bin/sudo -u cltbld /usr/local/bin/disable-screensaver.sh",
             require => File["/usr/local/bin/disable-screensaver.sh"];

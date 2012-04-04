@@ -84,6 +84,8 @@ class talos_osx_rev4 {
                 "disable-screensaver":
                     command => "/usr/bin/sudo -u cltbld /usr/local/bin/disable-screensaver.sh",
                     require => File["/usr/local/bin/disable-screensaver.sh"];
+                "turn-on-wol":
+                    command => "/usr/sbin/systemsetup -setwakeonnetworkaccess on";
                 "disallow-sleep-button":
                     command => "/usr/sbin/systemsetup -setallowpowerbuttontosleepcomputer off";
                 "disable-updater":
