@@ -5,6 +5,8 @@ class stageaus2 {
             package {
                 "apr":
                     source => "${platform_httproot}/RPMs/apr-1.2.7-11.el5_5.3.x86_64.rpm";
+                "postgresql-libs":
+                    source => "${platform_httproot}/RPMs/postgresql-libs-8.1.23-1.el5_7.3.x86_64.rpm";
                 "gmp":
                     source => "${platform_httproot}/RPMs/gmp-4.1.4-10.el5.x86_64.rpm";
                 "php-common":
@@ -14,7 +16,7 @@ class stageaus2 {
                     require => Package["php-common"],
                     source => "${platform_httproot}/RPMs/php-cli-5.1.6-27.el5_5.3.x86_64.rpm";
                 "apr-util":
-                    require => Package["apr"],
+                    require => [Package["apr"], Package["postgresql-libs"]],
                     source => "${platform_httproot}/RPMs/apr-util-1.2.7-11.el5_5.2.x86_64.rpm";
                 "httpd":
                     require => Package["apr-util"],
