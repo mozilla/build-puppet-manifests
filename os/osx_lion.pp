@@ -108,6 +108,16 @@ class osx_lion {
             group => "staff",
             mode => 700,
             ensure => directory;
+        "${home}/cltbld/.ssh/config":
+            owner => "cltbld",
+            group => "staff",
+            mode => 600,
+            source => "${platform_fileroot}${home}/cltbld/.ssh/config";
+        "${home}/cltbld/.ssh/known_hosts":
+            owner => "cltbld",
+            group => "staff",
+            mode => 644,
+            source => "${platform_fileroot}${home}/cltbld/.ssh/known_hosts";
         "${home}/cltbld/.ssh/authorized_keys":
             owner => "cltbld",
             group => "staff",
