@@ -305,6 +305,13 @@ node "dev-master01" inherits "masternode" {
     }
 }
 
+node "preproduction-master" inherits "masternode" {
+    $num_masters = 0
+    # This is a preproduction machine
+    # Install all the prereqs of buildbot, but don't actually instantiate any masters
+    include buildmaster
+}
+
 node "releng-mirror01" inherits "masternode" {
     include releng::master
 
