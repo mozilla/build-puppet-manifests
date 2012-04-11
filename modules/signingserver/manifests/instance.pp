@@ -158,6 +158,12 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} pexpect==2.4",
             require => $venv_reqs,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import pexpect\"'";
+        "$basedir-reload-signing-server":
+            command => "$basedir/bin/python tools/release/signing/signing-server.py -l signing.log -d signing.ini --reload",
+            cwd => "$basedir",
+            onlyif => "/bin/sh -c 'test -e $basedir/signing.pid'",
+            subscribe => File["$basedir/signing.ini"],
+            refreshonly => true;
     }
     
     file {
