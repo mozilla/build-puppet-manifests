@@ -66,9 +66,57 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
                     user => $user,
                     require => Exec["$basedir-virtualenv"];
             }
+            file {
+                "$basedir/bin/signmar":
+                    source => "puppet:///modules/signingserver/signmar-mac/signmar",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libfreebl3.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libfreebl3.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libmozsqlite3.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libmozsqlite3.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libnspr4.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libnspr4.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libnss3.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libnss3.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libnssdbm3.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libnssdbm3.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libnssutil3.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libnssutil3.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libplc4.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libplc4.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libplds4.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libplds4.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+                "$basedir/bin/libsoftokn3.dylib":
+                    source => "puppet:///modules/signingserver/signmar-mac/libsoftokn3.dylib",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+            }
             $venv_reqs = [Exec["$basedir-virtualenv"], Exec["$basedir-pip"]]
         }
         default: {
+            file {
+                "$basedir/bin/signmar":
+                    source => "puppet:///modules/signingserver/signmar",
+                    mode => 755,
+                    require => Exec["$basedir-virtualenv"];
+            }
             $venv_reqs = Exec["$basedir-virtualenv"]
         }
     }
@@ -121,11 +169,6 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
             require => Exec["$basedir-virtualenv"];
         "$basedir/signscript.ini":
             content => template("signingserver/signscript.ini.erb"),
-            require => Exec["$basedir-virtualenv"];
-        # FIXME: this installs a linux signmar binary on Mac
-        "$basedir/bin/signmar":
-            source => "puppet:///modules/signingserver/signmar",
-            mode => 755,
             require => Exec["$basedir-virtualenv"];
         "$testfile_signcode":
             source => "puppet:///modules/signingserver/test.exe";
