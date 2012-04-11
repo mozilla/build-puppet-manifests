@@ -12,7 +12,5 @@ class sudoers {
                 group => "root",
                 content => template("sudoers/sudoers.erb");
         }
-    } else {
-        notice("not managing /etc/sudoers on this system")
     }
 }
