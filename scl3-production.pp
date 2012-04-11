@@ -361,3 +361,211 @@ node "preproduction-stage" inherits "stage-and-aus2-server" {
     $deleteCandidatesDirs = '1'
     include stageusergroups
 }
+
+node "linux32-ref-platform" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-001" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-002" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-003" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-004" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-005" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-006" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-007" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-008" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-009" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-010" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-011" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-012" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-013" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-014" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-015" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-016" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-017" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-018" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-019" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-020" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-021" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-022" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-023" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-024" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-025" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-026" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-027" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-028" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-029" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-030" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-031" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-032" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-033" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-034" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-035" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-036" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-037" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-038" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "bld-centos5-32-vmw-039" inherits "centos5-i686-build" {
+    include buildslave
+}
+
+node "linux64-ref-platform" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-001" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-002" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-003" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-004" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-005" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-006" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-007" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-008" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-009" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-010" inherits "centos5-x86_64-build" {
+    include buildslave
+}
+
+node "bld-centos5-64-vmw-011" inherits "centos5-x86_64-build" {
+    include buildslave
+}
