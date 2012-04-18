@@ -26,7 +26,7 @@ cache_dir = %(here)s/data
 beaker.session.key = buildapi
 beaker.session.secret = <%=scope.lookupvar('secrets::buildapi_session_secret')%>
 
-allowed_origins = https://tbpl.mozilla.org http://tbpl.mozilla.org http://tbpl.allizom.org http://tests.themasta.com http://dev.philringnalda.com http://bbpl.dbaron.org http://tbpl.mcc.id.au http://ehsanakhgari.org http://tbpl.swatinem.de
+allowed_origins = https://tbpl.mozilla.org http://tbpl.mozilla.org http://tbpl.allizom.org http://tests.themasta.com http://dev.philringnalda.com http://bbpl.dbaron.org http://tbpl.mcc.id.au http://ehsanakhgari.org http://tbpl.swatinem.de https://tbpl-dev.allizom.org
 
 # SQLAlchemy database URL and connection settings
 sqlalchemy.scheduler_db.url = mysql://<%=scope.lookupvar('secrets::buildapi_schedulerdb_user')%>:<%=scope.lookupvar('secrets::buildapi_schedulerdb_password')%>@<%=scope.lookupvar('secrets::buildapi_schedulerdb_host')%>/<%=scope.lookupvar('secrets::buildapi_schedulerdb_database')%>
