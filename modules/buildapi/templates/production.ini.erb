@@ -43,7 +43,7 @@ set debug = false
 # Carrot exchange parameters
 carrot.hostname = <%=scope.lookupvar('secrets::buildapi_rmq_host')%>
 carrot.exchange = buildapi.control
-carrot.consumer.queue = buildapi-web
+carrot.consumer.queue = buildapi-web2
 carrot.userid = buildapi
 carrot.password = <%=scope.lookupvar('secrets::buildapi_rmq_password')%>
 carrot.vhost = /buildapi
