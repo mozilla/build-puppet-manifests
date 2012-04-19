@@ -286,6 +286,56 @@ node "buildbot-master31" inherits "masternode" {
     }
 }
 
+node "buildbot-master32" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm32-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master33" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm33-try1":
+            http_port => 8101,
+            master_type => "try",
+            basedir => "try1";
+    }
+}
+
+node "buildbot-master34" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm34-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
+node "buildbot-master35" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm35-try1":
+            http_port => 8101,
+            master_type => "try",
+            basedir => "try1";
+    }
+}
+
+node "buildbot-master36" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm36-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
 node "dev-master01" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
