@@ -123,6 +123,9 @@ class packages::devtools {
                             provider  => rpm,
                             ensure    => "r15-0moz1",
                             source    => "${platform_httproot}/RPMs/android-sdk15-r15-0moz1.${hardwaremodel}.rpm";
+                        "android-ndk":
+                            provider => rpm,
+                            ensure => absent;
                     }
                     packages::install_rpm {
                         "gcc411":
@@ -170,10 +173,6 @@ class packages::devtools {
                             creates     => "/tools/android-sdk-r8/tools/android",
                             version     => "r8-0moz3",
                             subscribe   => File["/tools/android-sdk"];
-                        "android-ndk":
-                            creates     => "/tools/android-ndk-r4c/build/tools/make-release.sh",
-                            version     => "r4c-0moz3",
-                            subscribe   => File["/tools/android-ndk"];
                         "android-ndk5":
                             creates     => "/tools/android-ndk5/build/tools/make-release.sh",
                             version     => "r5c-0moz3";
@@ -195,7 +194,7 @@ class packages::devtools {
                         "/tools/android-sdk":
                             ensure => "/tools/android-sdk-r8";
                         "/tools/android-ndk":
-                            ensure => "/tools/android-ndk-r4c";
+                            ensure => "absent";
                     }
                 }
             }
