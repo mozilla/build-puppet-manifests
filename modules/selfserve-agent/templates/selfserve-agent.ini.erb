@@ -1,5 +1,5 @@
 [db]
-url = mysql://<%=scope.lookupvar('secrets::buildapi_schedulerdb_user')%>:<%=scope.lookupvar('secrets::buildapi_schedulerdb_password')%>@<%=scope.lookupvar('secrets::buildapi_schedulerdb_host')%>/<%=scope.lookupvar('secrets::buildapi_schedulerdb_database')%>
+url = mysql://<%=scope.lookupvar('secrets::buildapi_schedulerdb_rwuser')%>:<%=scope.lookupvar('secrets::buildapi_schedulerdb_rwpassword')%>@<%=scope.lookupvar('secrets::buildapi_schedulerdb_rwhost')%>/<%=scope.lookupvar('secrets::buildapi_schedulerdb_rwdatabase')%>
 
 [carrot]
 hostname = <%=scope.lookupvar('secrets::buildapi_rmq_host')%>
