@@ -1,0 +1,18 @@
+[db]
+url = mysql://<%=scope.lookupvar('secrets::buildapi_schedulerdb_user')%>:<%=scope.lookupvar('secrets::buildapi_schedulerdb_password')%>@<%=scope.lookupvar('secrets::buildapi_schedulerdb_host')%>/<%=scope.lookupvar('secrets::buildapi_schedulerdb_database')%>
+
+[carrot]
+hostname = <%=scope.lookupvar('secrets::buildapi_rmq_host')%>
+vhost = /buildapi
+userid = buildapi
+password = <%=scope.lookupvar('secrets::buildapi_rmq_password')%>
+exchange = buildapi.control
+queue = buildapi-agent-rabbit2
+
+[masters]
+masters-url = http://hg.mozilla.org/build/tools/raw-file/default/buildfarm/maintenance/production-masters.json
+buildbot = /builds/buildbot/selfserve-agent/bin/buildbot
+sendchange-master = bm10-build_scheduler
+
+[branches]
+url = http://hg.mozilla.org/build/tools/raw-file/default/buildfarm/maintenance/production-branches.json

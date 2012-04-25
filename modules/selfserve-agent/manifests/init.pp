@@ -24,6 +24,12 @@ class selfserve-agent {
             mode => 755,
             owner => "cltbld",
             group => "cltbld";
+        "$selfserve_dir/selfserve-agent.ini":
+            require => Python::Virtualenv[$selfserve_dir],
+            content => template("selfserve-agent/selfserve-agent.ini.erb"),
+            mode => 600,
+            owner => "cltbld",
+            group => "cltbld";
         # For virtualenv
         "/tools":
             ensure => directory,
@@ -36,8 +42,10 @@ class selfserve-agent {
             require => [
                     File["/etc/init.d/selfserve-agent"],
                     File["$selfserve_dir/run_agent.sh"],
+                    File["$selfserve_dir/selfserve-agent.ini"],
                     Exec["install-buildapi"],
                     ],
+            subscribe => File["$selfserve_dir/selfserve-agent.ini"],
             ensure => running,
             enable => true;
     }

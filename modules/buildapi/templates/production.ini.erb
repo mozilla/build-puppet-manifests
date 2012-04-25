@@ -49,11 +49,10 @@ carrot.password = <%=scope.lookupvar('secrets::buildapi_rmq_password')%>
 carrot.vhost = /buildapi
 
 # Where the various masters are
-master_list = production-masters.json
 masters_url = http://hg.mozilla.org/build/tools/raw-file/default/buildfarm/maintenance/production-masters.json
 
-# What branches to handle
-branches = mozilla-central, mozilla-2.1, mozilla-2.0, mozilla-1.9.2, mozilla-1.9.1, jaegermonkey, try, maple, cedar, birch, places, build-system, mozilla-beta, mozilla-aurora, devtools, graphics, services-central, alder, holly, larch, accessibility, profiling, mozilla-inbound, ux, mozilla-release, electrolysis, fx-team, ionmonkey, ash, elm, oak, pine, mozilla-esr10, addon-sdk
+# What branches we accept
+branches_url = http://hg.mozilla.org/build/tools/raw-file/default/buildfarm/maintenance/production-branches.json
 
 # What timezone we're in
 timezone = US/Pacific
