@@ -26,6 +26,7 @@ class nagios::install {
         CentOS: {
             $centosTag = $operatingsystemrelease ? {
                 "5"   => "el5",
+                "5.0"   => "el5",
                 "5.5" => "el5",
                 "5.8" => "el5",
                 "6.2" => "el6",
