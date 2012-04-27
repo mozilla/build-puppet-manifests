@@ -34,7 +34,7 @@ class packages::moz-rpms {
             require => Packages::Install_rpm["valgrind"];
     }
     exec {
-        "/usr/bin/ccache -M 5G":
+        "/usr/bin/ccache -M 10G":
             environment => ["CCACHE_DIR=/builds/ccache", "CCACHE_COMPRESS=1"],
             user => "cltbld",
             group => "cltbld",
