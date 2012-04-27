@@ -16,14 +16,16 @@ baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-updates
 enabled=1
 gpgcheck=0
 
-[addons]
-name=Mozilla Package Repo - $basearch
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-addons
-enabled=1
-gpgcheck=0
-
 [epel]
 name=Mozilla Package Repo - $basearch
 baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.epel
 enabled=1
 gpgcheck=0
+
+<% if operatingsystemrelease == "5.5" %>
+[addons]
+name=Mozilla Package Repo - $basearch
+baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-addons
+enabled=1
+gpgcheck=0
+<% end %>

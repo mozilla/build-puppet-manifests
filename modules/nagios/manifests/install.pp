@@ -24,15 +24,20 @@ define nagios::install::plugin() {
 class nagios::install {
     case $operatingsystem {
         CentOS: {
+            $centosTag = $operatingsystemrelease ? {
+                "5.5" => "el5",
+                "5.8" => "el5",
+                "6.2" => "el6",
+            }
             case $slaveType {
                 master: {
                     package {
                         "nrpe":
-                            ensure => "2.12-16.el5";
+                            ensure => "2.12-16.${centosTag}";
                         "nagios-plugins-nrpe":
-                            ensure => "2.12-16.el5";
+                            ensure => "2.12-16.${centosTag}";
                         "nagios-plugins-all":
-                            ensure => "1.4.15-2.el5";
+                            ensure => "1.4.15-2.${centosTag}";
                     }
                 }
                 build: {

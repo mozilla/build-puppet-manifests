@@ -12,12 +12,16 @@ class releng::master {
     include mercurial
     case $operatingsystem {
         CentOS: {
+            $epel = $operatingsystemrelease ? {
+                "5.5" => "http://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm",
+                "6.2" => "http://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.epel/epel-release-6-5.noarch.rpm",
+            }
             include prefs
             include sendmail
             include ganglia::client
             package {
                 "epel-release":
-                    source => "http://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm",
+                    source => "${epel}",
                     provider => "rpm";
                 # So that puppet help works
                 "ruby-rdoc":
@@ -25,6 +29,8 @@ class releng::master {
                 "screen":
                     ensure => latest;
                 "strace":
+                    ensure => latest;
+                "redhat-lsb":
                     ensure => latest;
             }
         }

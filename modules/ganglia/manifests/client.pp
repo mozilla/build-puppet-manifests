@@ -27,7 +27,11 @@ class ganglia::client {
     package {
         ganglia-gmond:
             require => Class["packages::mozilla-repo"],
-            ensure => "3.1.7-3";
+            ensure => $operatingsystemrelease ? {
+                "5.5" => "3.1.7-3",
+                "5.8" => "3.1.7-3",
+                "6.2" => "3.1.7-3.el6",
+            };
 
         ganglia-gmond-modules-python:
             require => Class["packages::mozilla-repo"],
