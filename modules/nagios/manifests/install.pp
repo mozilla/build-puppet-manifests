@@ -32,7 +32,7 @@ class nagios::install {
                 "6.2" => "el6",
             }
             case $slaveType {
-                master: {
+                master, stage: {
                     package {
                         "nrpe":
                             ensure => "2.12-16.${centosTag}";

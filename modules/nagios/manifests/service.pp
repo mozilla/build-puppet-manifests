@@ -58,6 +58,10 @@ class nagios::service {
                             Package["nagios-plugins-all"],
                             Package["nrpe"]
                         ],
+                        stage => [
+                            Package["nagios-plugins-all"],
+                            Package["nrpe"]
+                        ],
                         build => [
                             Package["nrpe"]
                         ]

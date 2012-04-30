@@ -360,6 +360,7 @@ node "bld-lion-r5-080" inherits "darwin11-x86_64-build" {
 node "preproduction-stage" inherits "stage-and-aus2-server" {
     $deleteCandidatesDirs = '1'
     include stageusergroups
+    include nagios
 }
 
 node "linux32-ref-platform" inherits "centos5-i686-build" {
