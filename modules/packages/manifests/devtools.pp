@@ -37,11 +37,17 @@ class packages::devtools {
                     ensure => absent;
                 "moz_binutils_2.21.1":
                     ensure => absent;
+                "clang":
+                    provider  => rpm,
+                    ensure    => absent;
             }
             install_rpm {
                 "clang_154343_moz0":
                     version => "3.0-r154343.moz0",
                     creates => "/tools/clang-3.0-r154343.moz0/bin/clang";
+                "clang_155417_moz0":
+                    version => "3.0-r155417.moz0",
+                    creates => "/tools/clang-3.0-r155417.moz0/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
@@ -60,7 +66,7 @@ class packages::devtools {
 
             }
             case $hardwaremodel {
-        
+
                 "x86_64": {
                     packages::install_rpm {
                         "gcc433":
@@ -109,9 +115,6 @@ class packages::devtools {
 
                 default: {
                     package {
-                        "clang":
-                            provider  => rpm,
-                            ensure    => absent;
                         "android-sdk12":
                             provider  => rpm,
                             ensure    => absent;
@@ -293,6 +296,10 @@ class packages::devtools {
                             provider    => pkgdmg,
                             ensure      => installed,
                             source      => "${platform_httproot}/DMGs/clang-3.0-r154343.moz0.dmg";
+                        "clang-3.0-r155417.moz0.dmg":
+                            provider    => pkgdmg,
+                            ensure      => installed,
+                            source      => "${platform_httproot}/DMGs/clang-3.0-r155417.moz0.dmg";
                     }
                     file {
                         "/tools/clang-3.0-r152341.moz0":
