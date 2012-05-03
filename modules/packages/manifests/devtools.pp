@@ -40,11 +40,11 @@ class packages::devtools {
                 "clang":
                     provider  => rpm,
                     ensure    => absent;
+                "clang_154343_moz0":
+                    provider  => rpm,
+                    ensure    => absent;
             }
             install_rpm {
-                "clang_154343_moz0":
-                    version => "3.0-r154343.moz0",
-                    creates => "/tools/clang-3.0-r154343.moz0/bin/clang";
                 "clang_155417_moz0":
                     version => "3.0-r155417.moz0",
                     creates => "/tools/clang-3.0-r155417.moz0/bin/clang";
@@ -292,16 +292,15 @@ class packages::devtools {
             case $macosx_productversion_major{
                 "10.6", "10.7": {
                     package {
-                        "clang-3.0-r154343.moz0.dmg":
-                            provider    => pkgdmg,
-                            ensure      => installed,
-                            source      => "${platform_httproot}/DMGs/clang-3.0-r154343.moz0.dmg";
                         "clang-3.0-r155417.moz0.dmg":
                             provider    => pkgdmg,
                             ensure      => installed,
                             source      => "${platform_httproot}/DMGs/clang-3.0-r155417.moz0.dmg";
                     }
                     file {
+                        "/tools/clang-3.0-r154343.moz0":
+                            force => true,
+                            ensure => absent;
                         "/tools/clang-3.0-r152341.moz0":
                             force => true,
                             ensure => absent;
