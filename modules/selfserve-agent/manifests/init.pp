@@ -77,4 +77,14 @@ class selfserve-agent {
             cwd => $selfserve_dir,
             user => "cltbld";
     }
+
+    include service_manager::hg
+    service_manager {
+        "selfserve-agent":
+            require => Exec["install-buildapi"],
+            user => "cltbld",
+            service => "selfserve-agent",
+            updatecmd => "${service_manager::hg::cmd} $selfserve_dir/buildapi",
+            minute => "*/5";
+    }
 }

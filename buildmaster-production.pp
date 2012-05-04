@@ -82,18 +82,7 @@ node "buildbot-master09" inherits "masternode" {
 }
 
 node "buildbot-master10" inherits "masternode" {
-    $num_masters = 2
-    # The build and test schedulers run on here, but they aren't managed by puppet
-    # so install all the prereqs of buildbot, but don't actually instantiate any masters
-    include buildmaster
-
-    # The selfserve agent runs here too
-    include selfserve-agent
-
-    $addonProfile = "/builds/buildbot/tests_scheduler/bin/activate"
-    $addonSendchangePort = 9302
-    $addonSendchangeUser = "cltbld"
-    include addon-sendchanges
+    $num_masters = 0
 }
 
 node "buildbot-master11" inherits "masternode" {
@@ -327,13 +316,18 @@ node "buildbot-master35" inherits "masternode" {
 }
 
 node "buildbot-master36" inherits "masternode" {
-    $num_masters = 1
-    buildmaster::buildbot_master {
-        "bm36-build1":
-            http_port => 8001,
-            master_type => "build",
-            basedir => "build1";
-    }
+    $num_masters = 2
+    # The build and test schedulers run on here, but they aren't managed by puppet
+    # so install all the prereqs of buildbot, but don't actually instantiate any masters
+    include buildmaster
+
+    # The selfserve agent runs here too
+    include selfserve-agent
+
+    $addonProfile = "/builds/buildbot/tests_scheduler/bin/activate"
+    $addonSendchangePort = 9302
+    $addonSendchangeUser = "cltbld"
+    include addon-sendchanges
 }
 
 node "dev-master01" inherits "masternode" {
