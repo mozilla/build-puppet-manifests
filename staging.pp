@@ -51,31 +51,6 @@ node "ix-vm-test02" inherits "centos5-i686-build" {
     include buildslave, ix
 }
 
-node "moz2-linux-slave03" inherits "centos5-i686-build" {
-    include staging-buildslave, vm
-}
-
-node "moz2-linux-slave04" inherits "centos5-i686-build" {
-    include staging-buildslave, vm
-}
-
-node "moz2-linux-slave10" inherits "centos5-i686-build" {
-    include staging-buildslave, vm
-}
-
-node "moz2-linux-slave17" inherits "centos5-i686-build" {
-    include staging-buildslave, vm
-}
-
-node "moz2-linux64-slave07" inherits "centos5-x86_64-build" {
-    include staging-buildslave, vm
-}
-
-node "moz2-linux64-slave10" inherits "centos5-x86_64-build" {
-    include staging-buildslave, vm
-}
-
-
 node "mv-moz2-linux-ix-slave01" inherits "centos5-i686-build" {
     include staging-buildslave, ix
 }
@@ -90,10 +65,6 @@ node "linux-ix-slave04" inherits "centos5-i686-build" {
 
 node "linux-ix-slave05" inherits "centos5-i686-build" {
     include staging-buildslave, ix
-}
-
-node "moz2-linux-slave51" inherits "centos5-i686-build" {
-    include staging-buildslave, vm
 }
 
 node "linux64-ix-slave01" inherits "centos5-x86_64-build" {
