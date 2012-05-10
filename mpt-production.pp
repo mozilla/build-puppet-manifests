@@ -1932,8 +1932,3 @@ node "talos-r4-snow-079" inherits "darwin10-i386-test" {
 node "talos-r4-snow-080" inherits "darwin10-i386-test" {
     include talos_osx_rev4
 }
-
-node "dev-stage01" inherits "stage-and-aus2-server" {
-    $deleteCandidatesDirs = '0'
-    include stageusergroups
-}

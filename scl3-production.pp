@@ -570,3 +570,8 @@ node "bld-centos5-64-vmw-010" inherits "centos5-x86_64-build" {
 node "bld-centos5-64-vmw-011" inherits "centos5-x86_64-build" {
     include buildslave
 }
+
+node "dev-stage01" inherits "stage-and-aus2-server" {
+    $deleteCandidatesDirs = '0'
+    include stageusergroups
+}
