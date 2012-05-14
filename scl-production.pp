@@ -20,9 +20,11 @@ import "gui"
 node "linux64-ix-ref" inherits "centos5-x86_64-build" {
     include buildslave, ix
 }
-
 node "linux64-ix-slave01" inherits "centos5-x86_64-build" {
     include buildslave, ix
+}
+node "linux64-ix-slave02" inherits "centos5-x86_64-build" {
+    include staging-buildslave, ix
 }
 node "linux64-ix-slave03" inherits "centos5-x86_64-build" {
     include buildslave, ix
