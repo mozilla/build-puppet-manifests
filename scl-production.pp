@@ -1864,6 +1864,10 @@ node "byob-repack05" inherits "byob-repack" {
     include byob-repackslave
 }
 
+node "r5-mini-001" inherits "darwin11-x86_64-build" {
+    include buildslave
+    }
+
 node "r5-mini-002" inherits "darwin11-x86_64-build" {
     include buildslave
     }
