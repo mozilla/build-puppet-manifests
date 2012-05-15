@@ -5,6 +5,7 @@
 
 class staging-buildslave {
     include nagios
+    include packages::tooltool
     case $operatingsystem {
         CentOS: {
             include packages::debuginfopackages
