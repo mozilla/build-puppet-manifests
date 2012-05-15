@@ -48,10 +48,10 @@ class signingserver {
                         "GPGTools-20111224.dmg":
                             ensure => installed,
                             source => "${httproot}/Darwin10/GPGTools-20111224.dmg";
-                        "xcode-3.2.6.dmg":
+                        "xcode_4.2_for_snow_leopard.dmg":
                             ensure => installed,
                             provider => pkgdmg,
-                            source => "${httproot}/Darwin10/xcode-3.2.6.dmg";
+                            source => "${httproot}/Darwin10/xcode_4.2_for_snow_leopard.dmg";
                         "libevent-2.0.17.dmg":
                             ensure => installed,
                             provider => pkgdmg,
