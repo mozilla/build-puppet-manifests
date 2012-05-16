@@ -65,6 +65,15 @@ class packages::devtools {
                     version     => "4.5.2-0moz3";
 
             }
+            file {
+                # clang symlinks
+                "/tools/clang-3.0":
+                    ensure  => "/tools/clang-3.0-r155417.moz0",
+                    force => true;
+                "/tools/clang":
+                    ensure  => "/tools/clang-3.0",
+                    force => true;
+            }
             case $hardwaremodel {
 
                 "x86_64": {
@@ -298,6 +307,14 @@ class packages::devtools {
                             source      => "${platform_httproot}/DMGs/clang-3.0-r155417.moz0.dmg";
                     }
                     file {
+                        # clang symlinks
+                        "/tools/clang-3.0":
+                            ensure  => "/tools/clang-3.0-r155417.moz0",
+                            force => true;
+                        "/tools/clang":
+                            ensure  => "/tools/clang-3.0",
+                            force => true;
+                        # old clang packages
                         "/tools/clang-3.0-r154343.moz0":
                             force => true,
                             ensure => absent;
