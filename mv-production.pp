@@ -169,6 +169,10 @@ node "moz2-darwin10-ref" inherits "darwin10-i386-build" {
     include buildslave
 }
 
+node "moz2-darwin10-slave02" inherits "darwin10-i386-build" {
+    include buildslave
+}
+
 node "moz2-darwin10-slave40" inherits "darwin10-i386-build" {
     include buildslave
 }
