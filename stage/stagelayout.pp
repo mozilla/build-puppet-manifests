@@ -34,7 +34,7 @@ class stagelayout {
             mode => 775;
         ["/builds/data/ftp/pub/firefox",
         "/builds/data/ftp/pub/firefox/nightly",
-        "/builds/data/ftp/pub/firefox/nightly/2xxx",
+        "/builds/data/ftp/pub/firefox/nightly/20xx",
         "/builds/data/ftp/pub/firefox/nightly/latest-mozilla-central",
         "/builds/data/ftp/pub/firefox/candidates",
         "/builds/data/ftp/pub/firefox/releases",
@@ -50,7 +50,7 @@ class stagelayout {
             mode => 775;
         ["/builds/data/ftp/pub/thunderbird",
          "/builds/data/ftp/pub/thunderbird/nightly",
-         "/builds/data/ftp/pub/thunderbird/nightly/2xxx",
+         "/builds/data/ftp/pub/thunderbird/nightly/20xx",
          "/builds/data/ftp/pub/thunderbird/nightly/latest-comm-central",
          "/builds/data/ftp/pub/thunderbird/candidates",
          "/builds/data/ftp/pub/thunderbird/releases",
@@ -71,7 +71,7 @@ class stagelayout {
             mode => 775;
         ["/builds/data/ftp/pub/mobile/candidates",
         "/builds/data/ftp/pub/mobile/nightly",
-        "/builds/data/ftp/pub/mobile/nightly/2xxx",
+        "/builds/data/ftp/pub/mobile/nightly/20xx",
         "/builds/data/ftp/pub/mobile/nightly/latest-mozilla-central-android",
         "/builds/data/ftp/pub/mobile/tinderbox-builds"]:
             ensure => directory,
@@ -94,7 +94,7 @@ class stagelayout {
             group => "xulrunner",
             mode => 775;
         ["/builds/data/ftp/pub/xulrunner/nightly",
-        "/builds/data/ftp/pub/xulrunner/nightly/2xxx",
+        "/builds/data/ftp/pub/xulrunner/nightly/20xx",
         "/builds/data/ftp/pub/xulrunner/nightly/latest-mozilla-central",
         "/builds/data/ftp/pub/xulrunner/tinderbox-builds"]:
             ensure => directory,
