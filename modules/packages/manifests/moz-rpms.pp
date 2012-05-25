@@ -17,7 +17,7 @@ class packages::moz-rpms {
             source => "${platform_httproot}/RPMs/yasm-1.1.0-1.$rpm_arch.rpm",
             ensure => latest;
         "ccache":
-            source => "${platform_httproot}/RPMs/ccache-3.0.1-99.11.$rpm_arch.rpm",
+            source => "${platform_httproot}/RPMs/ccache-3.1.7-moz0.$rpm_arch.rpm",
             ensure => latest;
     }
     packages::install_rpm {
