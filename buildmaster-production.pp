@@ -410,3 +410,15 @@ node "mac-signing2" inherits "masternode" {
     include releng::master
     include signingserver
 }
+
+node "mac-signing3" inherits "masternode" {
+    $signing_formats = ["gpg", "dmg", "mar"]
+    include releng::master
+    include signingserver
+}
+
+node "mac-signing4" inherits "masternode" {
+    $signing_formats = ["gpg", "dmg", "mar"]
+    include releng::master
+    include signingserver
+}
