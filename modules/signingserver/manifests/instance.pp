@@ -49,7 +49,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
         owner => $user
     }
     Exec {
-        user => $user
+        user => $user,
     }
     exec {
         "$basedir-virtualenv":
@@ -109,6 +109,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
                     require => Exec["$basedir-virtualenv"];
             }
             $venv_reqs = [Exec["$basedir-virtualenv"], Exec["$basedir-pip"]]
+            $compile_env = "ARCHFLAGS=-arch i386 -arch x86_64"
         }
         default: {
             file {
@@ -118,6 +119,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
                     require => Exec["$basedir-virtualenv"];
             }
             $venv_reqs = Exec["$basedir-virtualenv"]
+            $compile_env = ""
         }
     }
     exec {
@@ -129,6 +131,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
         "$basedir-gevent":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} gevent==0.13.6",
             require => $venv_reqs,
+            environment => $compile_env,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import gevent\"'";
         "$basedir-webob":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} WebOb==1.0.8",
@@ -145,6 +148,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
         "$basedir-greenlet":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} greenlet==0.3.1",
             require => $venv_reqs,
+            environment => $compile_env,
             onlyif => "/bin/sh -c '! $basedir/bin/python -c \"import greenlet\"'";
         "$basedir-redis":
             command => "$basedir/bin/pip install --no-deps --no-index --find-links=${package_dir_http} redis==2.4.5",

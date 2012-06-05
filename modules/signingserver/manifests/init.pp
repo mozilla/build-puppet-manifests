@@ -58,6 +58,11 @@ class signingserver {
                             source => "${httproot}/Darwin10/libevent-2.0.17.dmg",
                             alias => "libevent";
                     }
+                    file {
+                        "/usr/bin/gcc-4.2":
+                            source => "/usr/bin/gcc",
+                            subscribe => Package["xcode_4.2_for_snow_leopard.dmg"];
+                    }
                 }
             }
         }
