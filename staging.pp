@@ -111,10 +111,6 @@ node "moz2-darwin9-slave68" inherits "darwin9-i386-build" {
     include staging-buildslave
 }
 
-node "talos-r3-fed-001" inherits "fedora12-i686-test" {
-    include talosslave
-}
-
 node "talos-r3-fed-002" inherits "fedora12-i686-test" {
     include talosslave
 }
