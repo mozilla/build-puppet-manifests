@@ -48,9 +48,6 @@ class packages::devtools {
                 "clang_155417_moz0":
                     version => "3.0-r155417.moz0",
                     creates => "/tools/clang-3.0-r155417.moz0/bin/clang";
-                "clang_158158_moz0":
-                    version => "3.0-r158158.moz0",
-                    creates => "/tools/clang-3.0-r158158.moz0/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
@@ -308,10 +305,6 @@ class packages::devtools {
                             provider    => pkgdmg,
                             ensure      => installed,
                             source      => "${platform_httproot}/DMGs/clang-3.0-r155417.moz0.dmg";
-                        "clang-3.0-r158158.moz0.dmg":
-                            provider    => pkgdmg,
-                            ensure      => installed,
-                            source      => "${platform_httproot}/DMGs/clang-3.0-r158158.moz0.dmg";
                     }
                     file {
                         # clang symlinks
