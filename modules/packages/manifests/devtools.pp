@@ -40,6 +40,9 @@ class packages::devtools {
                 "clang":
                     provider  => rpm,
                     ensure    => absent;
+                "clang_158158_moz0":
+                    provider  => rpm,
+                    ensure    => absent;
                 "clang_154343_moz0":
                     provider  => rpm,
                     ensure    => absent;
@@ -315,22 +318,20 @@ class packages::devtools {
                             ensure  => "/tools/clang-3.0",
                             force => true;
                         # old clang packages
-                        "/tools/clang-3.0-r154343.moz0":
-                            force => true,
-                            ensure => absent;
-                        "/tools/clang-3.0-r152341.moz0":
-                            force => true,
-                            ensure => absent;
-                        "/tools/clang-3.0-151655":
-                            force => true,
-                            ensure => absent;
-                        "/tools/clang-3.0-149163":
-                            force => true,
-                            ensure => absent;
-                        "/tools/clang-3.0-145194":
-                            force => true,
-                            ensure => absent;
-                        "/tools/clang-3.0-151367":
+                        ["/tools/clang-3.0-r158158.moz0",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-r158158.moz0.dmg",
+                        "/tools/clang-3.0-r154343.moz0",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-r154343.moz0.dmg",
+                        "/tools/clang-3.0-r152341.moz0",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-r152341.moz0.dmg",
+                        "/tools/clang-3.0-151655",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-151655.dmg",
+                        "/tools/clang-3.0-149163",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-149163.dmg",
+                        "/tools/clang-3.0-145194",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-145194.dmg",
+                        "/tools/clang-3.0-151367",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-151367.dmg"]:
                             force => true,
                             ensure => absent;
                     }
