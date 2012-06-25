@@ -303,7 +303,7 @@ class packages::devtools {
                         "/tools/clang-3.0-149163",
                         "/var/db/.puppet_pkgdmg_installed_clang-3.0-149163.dmg",
                         "/tools/clang-3.0-r145194",
-                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-r145194.dmg",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-r145194.moz0.dmg",
                         "/tools/clang-3.0-145194",
                         "/var/db/.puppet_pkgdmg_installed_clang-3.0-145194.dmg",
                         "/tools/clang-3.0-151367",
