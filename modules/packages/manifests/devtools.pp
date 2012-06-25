@@ -12,6 +12,9 @@ class packages::devtools {
             mode => 755;
         "/tools/build-tools":
             ensure => absent;
+        ["/tools/clang-3.0", "/tools/clang"]:
+            force => true,
+            ensure => absent;
     }
 
     case $hardwaremodel {
@@ -37,20 +40,11 @@ class packages::devtools {
                     ensure => absent;
                 "moz_binutils_2.21.1":
                     ensure => absent;
-                "clang":
-                    provider  => rpm,
-                    ensure    => absent;
-                "clang_158158_moz0":
-                    provider  => rpm,
-                    ensure    => absent;
-                "clang_154343_moz0":
+                ["clang", "clang_158158_moz0", "clang_154343_moz0", "clang_155417_moz0"]:
                     provider  => rpm,
                     ensure    => absent;
             }
             install_rpm {
-                "clang_155417_moz0":
-                    version => "3.0-r155417.moz0",
-                    creates => "/tools/clang-3.0-r155417.moz0/bin/clang";
                 "moz_binutils_2.22":
                     version => "2.22-0moz1",
                     creates => "/tools/binutils-2.22/bin/ld.gold";
@@ -67,15 +61,6 @@ class packages::devtools {
                     creates     => "/tools/gcc-4.5-0moz3/bin/gcc",
                     version     => "4.5.2-0moz3";
 
-            }
-            file {
-                # clang symlinks
-                "/tools/clang-3.0":
-                    ensure  => "/tools/clang-3.0-r155417.moz0",
-                    force => true;
-                "/tools/clang":
-                    ensure  => "/tools/clang-3.0",
-                    force => true;
             }
             case $hardwaremodel {
 
@@ -303,23 +288,12 @@ class packages::devtools {
 
             case $macosx_productversion_major{
                 "10.6", "10.7": {
-                    package {
-                        "clang-3.0-r155417.moz0.dmg":
-                            provider    => pkgdmg,
-                            ensure      => installed,
-                            source      => "${platform_httproot}/DMGs/clang-3.0-r155417.moz0.dmg";
-                    }
                     file {
-                        # clang symlinks
-                        "/tools/clang-3.0":
-                            ensure  => "/tools/clang-3.0-r155417.moz0",
-                            force => true;
-                        "/tools/clang":
-                            ensure  => "/tools/clang-3.0",
-                            force => true;
                         # old clang packages
                         ["/tools/clang-3.0-r158158.moz0",
                         "/var/db/.puppet_pkgdmg_installed_clang-3.0-r158158.moz0.dmg",
+                        "/tools/clang-3.0-r155417.moz0",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-r155417.moz0.dmg",
                         "/tools/clang-3.0-r154343.moz0",
                         "/var/db/.puppet_pkgdmg_installed_clang-3.0-r154343.moz0.dmg",
                         "/tools/clang-3.0-r152341.moz0",
@@ -328,6 +302,8 @@ class packages::devtools {
                         "/var/db/.puppet_pkgdmg_installed_clang-3.0-151655.dmg",
                         "/tools/clang-3.0-149163",
                         "/var/db/.puppet_pkgdmg_installed_clang-3.0-149163.dmg",
+                        "/tools/clang-3.0-r145194",
+                        "/var/db/.puppet_pkgdmg_installed_clang-3.0-r145194.dmg",
                         "/tools/clang-3.0-145194",
                         "/var/db/.puppet_pkgdmg_installed_clang-3.0-145194.dmg",
                         "/tools/clang-3.0-151367",
