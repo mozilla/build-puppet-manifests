@@ -59,6 +59,13 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secr
     }
     case $operatingsystem {
         Darwin: {
+            $mac_cert_subject_ou = $name ? {
+                dep => "Release Engineering",
+                # The OU on the Developer ID certificates is set to a random-ish string
+                # that is consistent for all certs from the same account.
+                nightly => "43AQ936H96",
+                release => "43AQ936H96",
+            }
             exec {
                 "$basedir-pip":
                     creates => "$basedir/bin/pip",
