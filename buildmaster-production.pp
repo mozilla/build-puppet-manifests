@@ -306,12 +306,18 @@ node "buildbot-master34" inherits "masternode" {
 }
 
 node "buildbot-master35" inherits "masternode" {
-    $num_masters = 1
+    $num_masters = 2
     buildmaster::buildbot_master {
         "bm35-try1":
             http_port => 8101,
             master_type => "try",
             basedir => "try1";
+    }
+    buildmaster::buildbot_master {
+        "bm35-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
     }
 }
 
