@@ -96,6 +96,8 @@ class buildmaster {
             mode => 644,
             owner => "root",
             group => "root";
+        "/tools":
+            ensure => "directory";
     }
     exec {
         "clone-configs":
