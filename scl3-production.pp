@@ -357,6 +357,70 @@ node "bld-lion-r5-080" inherits "darwin11-x86_64-build" {
     include buildslave
 }
 
+node "bld-lion-r5-081" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-082" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-083" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-084" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-085" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-086" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-087" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-088" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-089" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-090" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-091" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-092" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-093" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-094" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-095" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
+node "bld-lion-r5-096" inherits "darwin11-x86_64-build" {
+    include buildslave
+}
+
 node "preproduction-stage" inherits "stage-and-aus2-server" {
     $deleteCandidatesDirs = '1'
     include stageusergroups
