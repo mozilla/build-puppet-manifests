@@ -94,6 +94,7 @@ class stagelayout {
             group => "xulrunner",
             mode => 775;
         ["/builds/data/ftp/pub/xulrunner/nightly",
+        "/builds/data/ftp/pub/xulrunner/candidates",
         "/builds/data/ftp/pub/xulrunner/nightly/20xx",
         "/builds/data/ftp/pub/xulrunner/nightly/latest-mozilla-central",
         "/builds/data/ftp/pub/xulrunner/tinderbox-builds"]:
