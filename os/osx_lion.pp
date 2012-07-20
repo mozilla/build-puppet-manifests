@@ -199,6 +199,13 @@ class osx_lion {
         # finishing puppet
         "verify-xcode":
             command => "/usr/bin/defaults read /Developer/Library/XcodeTools Version | grep '^4.1$'";
+        #increase maximum ccache size  
+        "setmaxccachesize":
+            command=> "/usr/local/bin/ccache -M 10G",
+            environment => ["CCACHE_DIR=/builds/ccache", "CCACHE_COMPRESS=1"],
+            user => "cltbld",
+            group => "admin",
+            require => [ Package["ccache-3.1.7.dmg"], File["/builds/ccache"]];
     }
 
     include buildslave::install
