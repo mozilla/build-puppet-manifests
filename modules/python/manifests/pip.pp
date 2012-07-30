@@ -6,11 +6,8 @@ class python::pip {
                     creates => "/usr/local/bin/pip",
                     command => "/usr/bin/easy_install pip";
             }
-            default: {
-                python::user_pip_conf {
-                    # $pip_user gets set in secrets.pp
-                    "$pip_user" : ;
-                }
+            python::user_pip_conf {
+                "cltbld" : ;
             }
         }
     }
