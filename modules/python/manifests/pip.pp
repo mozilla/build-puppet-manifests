@@ -1,4 +1,5 @@
 class python::pip {
+    include secrets
     case $operatingsystem {
         Darwin : {
             exec {
@@ -7,7 +8,8 @@ class python::pip {
                     command => "/usr/bin/easy_install pip";
             }
             python::user_pip_conf {
-                "cltbld" : ;
+                # $pip_user gets set in secrets.pp
+                "$secrets::pip_user" : ;
             }
         }
     }
