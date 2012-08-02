@@ -1,31 +1,31 @@
 [mozilla]
 name=Mozilla Package Repo - $basearch
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.mozilla
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.mozilla
 enabled=1
 gpgcheck=0
 
 [base]
 name=Mozilla Package Repo - $basearch
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-base
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-base
 enabled=1
 gpgcheck=0
 
 [updates]
 name=Mozilla Package Repo - $basearch
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-updates
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-updates
 enabled=1
 gpgcheck=0
 
 [epel]
 name=Mozilla Package Repo - $basearch
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.epel
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.epel
 enabled=1
 gpgcheck=0
 
 <% if operatingsystemrelease == "5.5" %>
 [addons]
 name=Mozilla Package Repo - $basearch
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-addons
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-addons
 enabled=1
 gpgcheck=0
 <% end %>

@@ -12,25 +12,25 @@
 
 [base]
 name=CentOS-$releasever - Base
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-base
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-base
 gpgcheck=0
 
 #released updates 
 [updates]
 name=CentOS-$releasever - Updates
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-updates
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-updates
 gpgcheck=0
 
 #additional packages that may be useful
 [extras]
 name=CentOS-$releasever - Extras
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-extras
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-extras
 gpgcheck=0
 
 <% if operatingsystemrelease == "5.5" %>
 #packages used/produced in the build but not released
 [addons]
 name=CentOS-$releasever - Addons
-baseurl=http://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-addons
+baseurl=https://mrepo.mozilla.org/mrepo/$releasever-$basearch/RPMS.centos-addons
 gpgcheck=0
 <% end %>

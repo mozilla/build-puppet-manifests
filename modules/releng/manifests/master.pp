@@ -13,9 +13,9 @@ class releng::master {
     case $operatingsystem {
         CentOS: {
             $epel = $operatingsystemrelease ? {
-                "5.5" => "http://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm",
-                "5.8" => "http://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm",
-                "6.2" => "http://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.epel/epel-release-6-5.noarch.rpm",
+                "5.5" => "https://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm",
+                "5.8" => "https://mrepo.mozilla.org/mrepo/5-x86_64/RPMS.epel/epel-release-5-4.noarch.rpm",
+                "6.2" => "https://mrepo.mozilla.org/mrepo/6-x86_64/RPMS.epel/epel-release-6-5.noarch.rpm",
             }
             include prefs
             include sendmail
