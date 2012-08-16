@@ -82,7 +82,13 @@ node "buildbot-master09" inherits "masternode" {
 }
 
 node "buildbot-master10" inherits "masternode" {
-    $num_masters = 0
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm10-tests1-tegra":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-tegra";
+    }
 }
 
 node "buildbot-master11" inherits "masternode" {
