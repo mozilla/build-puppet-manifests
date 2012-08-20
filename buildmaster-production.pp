@@ -429,3 +429,23 @@ node "mac-signing4" inherits "masternode" {
     include releng::master
     include signingserver
 }
+
+node "buildbot-master37" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm37-tests1-macosx":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-macosx";
+    }
+ }
+    
+ node "buildbot-master38" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm38-tests1-macosx":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-macosx";
+    }   
+}
