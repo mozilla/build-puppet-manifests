@@ -1,6 +1,8 @@
 class signingserver {
     include secrets
-    include secrets::signingserver
+    include secrets::signingserver::dep
+    include secrets::signingserver::nightly
+    include secrets::signingserver::release
     include python::pip
 
     case "$operatingsystem" {

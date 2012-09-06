@@ -14,7 +14,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user,
                                $token_secret, $token_secret0,
                                $new_token_auth, $new_token_auth0,
                                $mar_key_name, $formats,
-                               $signcode_timestamp="yes",
+                               $signcode_timestamp="yes"
                                ) {
     include secrets::network
     $package_dir_http = "http://${puppetServer}/$level/python-packages"
