@@ -154,8 +154,10 @@ class signingserver {
             port           => "9100",
             code_tag       => "SIGNING_SERVER",
             user           => "cltsign",
-            token_secret   => $secrets::signingserver::token_secret,
-            new_token_auth => $secrets::signingserver::new_token_auth,
+            token_secret   => $secrets::signingserver::nightly::token_secret,
+            token_secret0  => $secrets::signingserver::nightly::token_secret0,
+            new_token_auth => $secrets::signingserver::nightly::new_token_auth,
+            new_token_auth0=> $secrets::signingserver::nightly::new_token_auth0,
             mar_key_name   => "nightly1",
             formats        => $signing_formats,
             require        => [File["${homedir}/instances"], Package["mercurial"], Package["libevent"]];
@@ -168,10 +170,13 @@ class signingserver {
             port           => "9110",
             code_tag       => "SIGNING_SERVER",
             user           => "cltsign",
-            token_secret   => $secrets::signingserver::token_secret,
-            new_token_auth => $secrets::signingserver::new_token_auth,
+            token_secret   => $secrets::signingserver::dep::token_secret,
+            token_secret0  => $secrets::signingserver::dep::token_secret0,
+            new_token_auth => $secrets::signingserver::dep::new_token_auth,
+            new_token_auth0=> $secrets::signingserver::dep::new_token_auth0,
             mar_key_name   => "dep1",
             formats        => $signing_formats,
+            signcode_timestamp => "no",
             require        => [File["${homedir}/instances"], Package["mercurial"], Package["libevent"]];
     }
     signingserver::instance {
@@ -181,8 +186,10 @@ class signingserver {
             port           => "9120",
             code_tag       => "SIGNING_SERVER",
             user           => "cltsign",
-            token_secret   => $secrets::signingserver::token_secret,
-            new_token_auth => $secrets::signingserver::new_token_auth,
+            token_secret   => $secrets::signingserver::release::token_secret,
+            token_secret0  => $secrets::signingserver::release::token_secret0,
+            new_token_auth => $secrets::signingserver::release::new_token_auth,
+            new_token_auth0=> $secrets::signingserver::release::new_token_auth0,
             mar_key_name   => "rel1",
             formats        => $signing_formats,
             require        => [File["${homedir}/instances"], Package["mercurial"], Package["libevent"]];

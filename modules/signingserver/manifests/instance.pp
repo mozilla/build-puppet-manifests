@@ -10,8 +10,12 @@
 # new_token_auth: The username and password required to create new tokens with
 #                 the signing server, in the format username:password.
 # mar_key_name: The nickname for the key used in mar signing.
-define signingserver::instance($listenaddr, $port, $code_tag, $user, $token_secret,
-                               $new_token_auth, $mar_key_name, $formats) {
+define signingserver::instance($listenaddr, $port, $code_tag, $user,
+                               $token_secret, $token_secret0,
+                               $new_token_auth, $new_token_auth0,
+                               $mar_key_name, $formats,
+                               $signcode_timestamp="yes",
+                               ) {
     include secrets::network
     $package_dir_http = "http://${puppetServer}/$level/python-packages"
 
