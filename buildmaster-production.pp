@@ -261,6 +261,16 @@ node "buildbot-master27" inherits "masternode" {
     }
 }
 
+node "buildbot-master29" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm29-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+}
+
 node "buildbot-master30" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
