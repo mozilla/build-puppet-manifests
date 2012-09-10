@@ -21,3 +21,18 @@ SlavePasswords = {
     'tegra_android-xul': '<%=scope.lookupvar('secrets::tegra_android_tests_password')%>',
     'tegra_android-o': '<%=scope.lookupvar('secrets::tegra_android_tests_password')%>',
 }
+
+datazillaAuth = {
+    'talos': {
+        'oauthKey': '<%=scope.lookupvar('secrets::talos_oauth_key')%>',
+        'oauthSecret': '<%=scope.lookupvar('secrets::talos_oauth_secret')%>',
+    },
+    'jetperf': {
+        'oauthKey': '<%=scope.lookupvar('secrets::jetperf_oauth_key')%>',
+        'oauthSecret': '<%=scope.lookupvar('secrets::jetperf_oauth_secret')%>',
+    },
+    'test': {
+        'oauthKey': '84c76536-5bea-4858-990b-434ad3bbadc1',
+        'oauthSecret': '92e1d99d-fd5a-45a7-b07e-ec5a9f59c844',
+    },
+}
