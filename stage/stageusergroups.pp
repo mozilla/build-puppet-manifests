@@ -45,6 +45,18 @@ class stageusergroups {
             name => "tbirdbld",
             provider => 'groupadd',
             gid => 511;
+        "tbirdtry":
+            name => "tbirdtry",
+            provider => 'groupadd',
+            gid => 512;
+        "b2gbld":
+            name => "b2gbld",
+            provider => 'groupadd',
+            gid => 513;
+        "b2gtry":
+            name => "b2gtry",
+            provider => 'groupadd',
+            gid => 514;
     }
 
     User{ ensure => 'present', managehome => true, shell => "/bin/bash", provider => 'useradd'}
@@ -89,6 +101,21 @@ class stageusergroups {
             uid => 511,
             gid => 511,
             home => "/home/tbirdbld";
+        "tbirdtry":
+            name => "tbirdtry",
+            uid => 512,
+            gid => 512,
+            home => "/home/tbirdtry";
+        "b2gbld":
+            name => "b2gbld",
+            uid => 513,
+            gid => 513,
+            home => "/home/b2gbld";
+        "b2gtry":
+            name => "b2gtry",
+            uid => 514,
+            gid => 514,
+            home => "/home/b2gtry";
     }
 
 
@@ -130,6 +157,16 @@ class stageusergroups {
                 owner => "xrbld",
                 group => "xrbld",
                 ensure => directory;
+            "/home/b2gbld/.ssh":
+                mode => 755,
+                owner => "b2gbld",
+                group => "b2gbld",
+                ensure => directory;
+            "/home/b2gtry/.ssh":
+                mode => 755,
+                owner => "b2gtry",
+                group => "b2gtry",
+                ensure => directory;
             "/home/cltbld/.ssh/config":
                 mode => 600,
                 source => "${local_fileroot}/home/cltbld/.ssh/config";
@@ -159,6 +196,16 @@ class stageusergroups {
                 owner => "xrbld",
                 group => "xrbld",
                 source => "${local_fileroot}/home/xrbld/.ssh/authorized_keys";
+            "/home/b2gbld/.ssh/authorized_keys":
+                mode => 644,
+                owner => "b2gbld",
+                group => "b2gbld",
+                source => "${local_fileroot}/home/b2gbld/.ssh/authorized_keys";
+            "/home/b2gtry/.ssh/authorized_keys":
+                mode => 644,
+                owner => "b2gtry",
+                group => "b2gtry",
+                source => "${local_fileroot}/home/b2gtry/.ssh/authorized_keys";
             "/home/cltbld/crontab":
                 source => "${platform_fileroot}/home/cltbld/crontab";
             "/root/.ssh":
