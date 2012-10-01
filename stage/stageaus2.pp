@@ -65,19 +65,25 @@ class stageaus2 {
             owner => "cltbld",
             group => "cltbld",
             mode => 755;
-        ["/builds/opt/aus2/incoming/", "/builds/opt/aus2/incoming/3",
+        ["/builds/opt/aus2/incoming/",
         "/builds/opt/aus2/incoming/0", "/builds/opt/aus2/snippets",
-        "/builds/opt/aus2/snippets/backup",
+        "/builds/opt/aus2/snippets/backup", "/builds/opt/aus2/snippets/pushed",
         "/builds/opt/aus2/snippets/staging", "/builds/opt/aus2/build",
         "/builds/opt/aus2/build/0"]:
             ensure => directory,
-            owner => "cltbld",
-            group => "cltbld",
+            owner => "ffxbld",
+            group => "users",
             mode => 775;
-        ["/builds/opt/aus2/incoming/2"]:
+        ["/builds/opt/aus2/incoming/2/Firefox", "/builds/opt/aus2/incoming/2/Fennec",
+         "/builds/opt/aus2/incoming/3/Firefox", "/builds/opt/aus2/incoming/3/Fennec"]:
             ensure => directory,
             owner => "ffxbld",
             group => "ffxbld",
+            mode => 775;
+        ["/builds/opt/aus2/incoming/2/Thunderbird", "/builds/opt/aus2/incoming/3/Thunderbird"]:
+            ensure => directory,
+            owner => "tbirdbld",
+            group => "tbirdbld",
             mode => 775;
         "/opt":
             ensure => "/builds/opt",
