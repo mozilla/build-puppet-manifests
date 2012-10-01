@@ -38,6 +38,7 @@ class stagelayout {
         "/builds/data/ftp/pub/firefox/nightly/latest-mozilla-central",
         "/builds/data/ftp/pub/firefox/candidates",
         "/builds/data/ftp/pub/firefox/releases",
+        "/builds/data/ftp/pub/firefox/bundles",
         "/builds/data/ftp/pub/firefox/tinderbox-builds"]:
             ensure => directory,
             owner => "cltbld",
@@ -54,6 +55,7 @@ class stagelayout {
          "/builds/data/ftp/pub/thunderbird/nightly/latest-comm-central",
          "/builds/data/ftp/pub/thunderbird/candidates",
          "/builds/data/ftp/pub/thunderbird/releases",
+         "/builds/data/ftp/pub/thunderbird/bundles",
          "/builds/data/ftp/pub/thunderbird/tinderbox-builds"]:
             ensure => directory,
             owner => "tbirdbld",
@@ -165,6 +167,18 @@ class stagelayout {
         "/usr/local/bin/tools.sh":
             source => "${platform_fileroot}/usr/local/bin/tools.sh",
             mode => 755;
+        "/pub/mozilla.org/firefox/bundles/try.hg":
+            ensure => link,
+            owner => ffxbld,
+            group => firefox,
+            target => "mozilla-central.hg",
+            force => true;
+        "/pub/mozilla.org/thunderbird/bundles/try-comm-central.hg":
+            ensure => link,
+            owner => tbirdbld,
+            group => tbirdbld,
+            target => "comm-central.hg",
+            force => true;
     }
     exec {
         "cltbld-bin":
