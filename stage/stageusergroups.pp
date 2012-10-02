@@ -206,6 +206,8 @@ class stageusergroups {
                 owner => "b2gtry",
                 group => "b2gtry",
                 source => "${local_fileroot}/home/b2gtry/.ssh/authorized_keys";
+            "/home/ffxbld/crontab":
+                source => "${platform_fileroot}/home/ffxbld/crontab";
             "/home/cltbld/crontab":
                 source => "${platform_fileroot}/home/cltbld/crontab";
             "/root/.ssh":
@@ -241,5 +243,7 @@ class stageusergroups {
             subscribe => File["/home/cltbld/crontab"];
         "/usr/bin/crontab -u root /root/crontab":
             subscribe => File["/root/crontab"];
+        "/usr/bin/crontab -u ffxbld /home/ffxbld/crontab":
+            subscribe => File["/home/ffxbld/crontab"];
     }
 }
