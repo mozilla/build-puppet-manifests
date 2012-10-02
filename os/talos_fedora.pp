@@ -21,7 +21,7 @@ class talos_fedora {
             source => "${platform_httproot}/RPMs/python-devel-2.6.2-2.fc12.${hardwaremodel}.rpm",
             ensure => '2.6.2-2.fc12';
     }
-    
+
     # NetworkManager kinda sucks, so disable it
     service {
         "network":
@@ -66,6 +66,19 @@ class talos_fedora {
             owner => "cltbld",
             group => "cltbld",
             mode => 775;
+    }
+
+    case $hardwaremodel {
+        'i686': {
+            file {
+                # bug 789651
+                # softlink /usr/lib/libGL.so -> /usr/lib/libGL.so.1.2
+                "/usr/lib/libGL.so":
+                    ensure => "/usr/lib/libGL.so.1.2",
+                    owner => "root",
+                    group => "root";
+            }
+        }
     }
 
     # this really applies to all fedora hosts, but since those are all talos, too,
