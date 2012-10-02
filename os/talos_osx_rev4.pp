@@ -139,6 +139,11 @@ class talos_osx_rev4 {
                     source => "${platform_httproot}/DMGs/python-sdk-4.1.1.dmg",
                     require => File['/Library/Ruby/Gems/1.8/gems/puppet-0.24.8/lib/puppet/provider/package/pkgdmg.rb'],
                     before => Class["buildslave::install"];
+                   # the Java dmg is available from https://developer.apple.com/downloads
+                  "JavaForOSX.dmg":
+                    provider => pkgdmg,
+                    ensure => installed,
+                    source => "${platform_httproot}/DMGs/JavaForOSX.dmg";
             }
             file {
                 # install_name_tool is required by our python infrastructure
