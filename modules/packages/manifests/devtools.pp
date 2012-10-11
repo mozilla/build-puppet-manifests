@@ -123,6 +123,10 @@ class packages::devtools {
                             provider  => rpm,
                             ensure    => "r15-0moz1",
                             source    => "${platform_httproot}/RPMs/android-sdk15-r15-0moz1.${hardwaremodel}.rpm";
+                        "android-sdk16":
+                            provider  => rpm,
+                            ensure    => "r16-0moz2",
+                            source    => "${platform_httproot}/RPMs/android-sdk16-r16-0moz2.${hardwaremodel}.rpm";
                         "android-ndk":
                             provider => rpm,
                             ensure => absent;
