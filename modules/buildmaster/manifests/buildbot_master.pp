@@ -33,7 +33,7 @@ define buildmaster::buildbot_master($basedir, $master_type, $http_port) {
             $buildslaves_template = 'BuildSlaves-tests.py.erb'
         }
         'scheduler': {
-            $buildslaves_template = undef
+            $buildslaves_template = 'BuildSlaves-scheduler.py.erb'
         }
     }
 
