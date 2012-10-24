@@ -3,6 +3,12 @@
 class talos_fedora {
     Package{ provider => rpm, ensure => installed }
 
+    # remove gnome-screensaver and its circular dependencies
+    exec { "rpm -e fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver":
+        onlyif => "rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed'",
+        path   => ["/bin"],
+    }
+
     package {
         "mercurial":
             source => "${platform_httproot}/RPMs/mercurial-1.5.1-1.fc12.${hardwaremodel}.rpm",
