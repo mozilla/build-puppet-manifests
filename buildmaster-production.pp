@@ -450,7 +450,7 @@ node "buildbot-master37" inherits "masternode" {
     }
  }
     
- node "buildbot-master38" inherits "masternode" {
+node "buildbot-master38" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
         "bm38-tests1-macosx":
@@ -458,4 +458,104 @@ node "buildbot-master37" inherits "masternode" {
             master_type => "tests",
             basedir => "tests1-macosx";
     }   
-}
+ }
+    
+node "buildbot-master39" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm39-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+
+node "buildbot-master40" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm40-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master41" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm41-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master42" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm42-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master43" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm43-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master44" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm44-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master45" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm45-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master46" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm46-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master47" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm47-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
+ 
+node "buildbot-master48" inherits "masternode" {
+    $num_masters = 1
+    buildmaster::buildbot_master {
+        "bm48-tests1-panda":
+            http_port => 8201,
+            master_type => "tests",
+            basedir => "tests1-panda";
+    }
+ }
