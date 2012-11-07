@@ -5,6 +5,9 @@ class packages::tooltool {
         CentOS: {
             $python = '/tools/python-2.6.5/bin/python'
         }
+        fedora: {
+            $python = '/tools/buildbot/bin/python'
+        }
         default: {
             $python = '/tools/python/bin/python'
         }

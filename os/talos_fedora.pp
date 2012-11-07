@@ -97,6 +97,7 @@ class talos_fedora {
     include buildslave::install
     include buildslave::startup
     include buildslave::cleanup
+    include packages::tooltool
     include gui::resolution
     include network
     include boot
