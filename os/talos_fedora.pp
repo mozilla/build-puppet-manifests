@@ -4,9 +4,9 @@ class talos_fedora {
     Package{ provider => rpm, ensure => installed }
 
     # remove gnome-screensaver and its circular dependencies
-    exec { "rpm -e fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver":
-        onlyif => "rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed'",
-        path   => ["/bin"],
+    exec { "rpm -e `rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed'`":
+        onlyif => "test `rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed' | wc -l` -gt 0",
+        path   => ["/bin","/usr/bin"],
     }
 
     package {
