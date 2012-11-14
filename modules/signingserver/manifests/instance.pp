@@ -13,8 +13,9 @@
 define signingserver::instance($listenaddr, $port, $code_tag, $user,
                                $token_secret, $token_secret0,
                                $new_token_auth, $new_token_auth0,
-                               $mar_key_name, $formats,
-                               $signcode_timestamp="yes"
+                               $mar_key_name, $jar_key_name,
+                               $b2g_key0, $b2g_key1, $b2g_key2,
+                               $formats, $signcode_timestamp="yes"
                                ) {
     include secrets::network
     $package_dir_http = "http://${puppetServer}/$level/python-packages"
@@ -30,6 +31,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user,
     $signcode_keydir = "$secrets_dir/signcode"
     $gpg_homedir = "$secrets_dir/gpg"
     $mar_keydir = "$secrets_dir/mar"
+    $jar_keystore = "$secrets_dir/jar"
     $dmg_keydir = "$secrets_dir/dmg"
     $dmg_keychain = "$dmg_keydir/signing.keychain"
     $mac_cert_subject_ou = $name ? {
@@ -50,6 +52,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user,
     $new_token_allowed_ips = $secrets::network::masterIPs
     $signscript = "$basedir/bin/python2.6 $script_dir/signscript.py -c $basedir/signscript.ini"
     $mar_cmd = "$basedir/bin/signmar -d $basedir/secrets/mar -n $mar_key_name -s"
+    $b2gmar_cmd = "$basedir/bin/signmar -d $basedir/secrets/b2gmar -n0 $b2g_key0 -n1 $b2g_key1 -n2 $b2g_key2 -s"
     $testfile_signcode = "$testfile_dir/test.exe"
     $testfile_mar = "$testfile_dir/test.mar"
     $testfile_gpg = "$testfile_dir/test.mar"

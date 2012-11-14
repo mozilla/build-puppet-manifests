@@ -28,6 +28,7 @@ class signingserver {
                         "libevent-devel":
                             ensure => latest,
                             alias => "libevent";
+                        # If this package is updated, make sure to update the symlink below
                         "jdk1.6":
                             provider => rpm,
                             source => "${httproot}/CentOS-5.5-x86_64/master/RPMs/jdk1.6-1.6.0_17-0moz1.i686.rpm";
@@ -35,6 +36,12 @@ class signingserver {
                             provider => rpm,
                             source => "${httproot}/CentOS-5.5-x86_64/master/RPMs/android-sdk-r8-0moz3.i686.rpm";
                     }
+                   file {
+                        # Make sure jarsigner is in $PATH for signing
+                        "/usr/local/bin/jarsigner":
+                            require => Package["jdk1.6"],
+                            ensure => "/tools/jdk-1.6.0_17/bin/jarsigner";
+                   }
                 }
             }
         }
@@ -161,6 +168,10 @@ class signingserver {
             new_token_auth => $secrets::signingserver::nightly::new_token_auth,
             new_token_auth0=> $secrets::signingserver::nightly::new_token_auth0,
             mar_key_name   => "nightly1",
+            jar_key_name   => "nightly",
+            b2g_key0       => "test-oem-1",
+            b2g_key1       => "test-carrier-1",
+            b2g_key2       => "test-mozilla-1",
             formats        => $signing_formats,
             require        => [File["${homedir}/instances"], Package["mercurial"], Package["libevent"]];
     }
@@ -177,6 +188,10 @@ class signingserver {
             new_token_auth => $secrets::signingserver::dep::new_token_auth,
             new_token_auth0=> $secrets::signingserver::dep::new_token_auth0,
             mar_key_name   => "dep1",
+            jar_key_name   => "nightly",
+            b2g_key0       => "test-oem-1",
+            b2g_key1       => "test-carrier-1",
+            b2g_key2       => "test-mozilla-1",
             formats        => $signing_formats,
             signcode_timestamp => "no",
             require        => [File["${homedir}/instances"], Package["mercurial"], Package["libevent"]];
@@ -193,6 +208,10 @@ class signingserver {
             new_token_auth => $secrets::signingserver::release::new_token_auth,
             new_token_auth0=> $secrets::signingserver::release::new_token_auth0,
             mar_key_name   => "rel1",
+            jar_key_name   => "release",
+            b2g_key0       => "test-oem-1",
+            b2g_key1       => "test-carrier-1",
+            b2g_key2       => "test-mozilla-1",
             formats        => $signing_formats,
             require        => [File["${homedir}/instances"], Package["mercurial"], Package["libevent"]];
     }

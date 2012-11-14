@@ -399,19 +399,19 @@ node "buildapi01" inherits "masternode" {
 }
 
 node "signing1" inherits "masternode" {
-    $signing_formats = ["gpg", "signcode", "mar"]
+    $signing_formats = ["gpg", "signcode", "mar", "jar", "b2gmar"]
     include releng::master
     include signingserver
 }
 
 node "signing2" inherits "masternode" {
-    $signing_formats = ["gpg", "signcode", "mar"]
+    $signing_formats = ["gpg", "signcode", "mar", "jar", "b2gmar"]
     include releng::master
     include signingserver
 }
 
 node "signing3" inherits "masternode" {
-    $signing_formats = ["gpg", "signcode", "mar"]
+    $signing_formats = ["gpg", "signcode", "mar", "jar", "b2gmar"]
     include releng::master
     include signingserver
 }

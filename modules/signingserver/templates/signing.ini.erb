@@ -1,9 +1,16 @@
+[logging]
+log_maxfiles = 100
+log_maxsize = 10485760 ; 10 MB
+loglevel = INFO
+logfile = signing.log
+
 [server]
 listen = <%=listenaddr%>
 port = <%=port%>
 redis = redis01.build.scl1.mozilla.com
 max_file_age = 43200 ; 12 hours
 cleanup_interval = 600 ; 10 Minutes
+daemonize = yes
 
 [security]
 private_ssl_cert = <%=full_private_ssl_cert%>
@@ -31,6 +38,7 @@ unsigned_dir = <%=unsigned_dir%>
 signscript = <%=signscript%>
 concurrency = 4
 testfile_mar = <%=testfile_mar%>
+testfile_b2gmar = <%=testfile_mar%>
 testfile_gpg = <%=testfile_gpg%>
 testfile_signcode = <%=testfile_signcode%>
 testfile_dmg = <%=testfile_dmg%>
