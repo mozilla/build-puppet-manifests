@@ -57,6 +57,7 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user,
     $testfile_mar = "$testfile_dir/test.mar"
     $testfile_gpg = "$testfile_dir/test.mar"
     $testfile_dmg = "$testfile_dir/test.tar.gz"
+    $testfile_jar = "$testfile_dir/test.zip"
     $tools_repo = "http://hg.mozilla.org/build/tools"
 
     File {
@@ -201,6 +202,8 @@ define signingserver::instance($listenaddr, $port, $code_tag, $user,
             source => "puppet:///modules/signingserver/test.mar";
         "$testfile_dmg":
             source => "puppet:///modules/signingserver/test.tar.gz";
+        "$testfile_jar":
+            source => "puppet:///modules/signingserver/test.zip";
         # Private certs are explicitly not available through the puppet://
         # fileserver, because they are available to any Puppet client that
         # can authenticate.
