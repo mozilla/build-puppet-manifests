@@ -347,6 +347,22 @@ node "buildbot-master36" inherits "masternode" {
     include selfserve-agent
 }
 
+node "buildbot-master49" inherits "masternode" {
+    $num_masters = 2
+    buildmaster::buildbot_master {
+        "bm49-try1":
+            http_port => 8101,
+            master_type => "try",
+            basedir => "try1";
+    }
+    buildmaster::buildbot_master {
+        "bm49-build1":
+            http_port => 8001,
+            master_type => "build",
+            basedir => "build1";
+    }
+}
+
 node "dev-master01" inherits "masternode" {
     $num_masters = 0
     # This is a development machine
