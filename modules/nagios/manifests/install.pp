@@ -35,9 +35,9 @@ class nagios::install {
                 master, stage: {
                     package {
                         "nrpe":
-                            ensure => "2.12-16.${centosTag}";
+                            ensure => "2.13-1.${centosTag}";
                         "nagios-plugins-nrpe":
-                            ensure => "2.12-16.${centosTag}";
+                            ensure => "2.13-1.${centosTag}";
                         "nagios-plugins-all":
                             ensure => "1.4.15-2.${centosTag}";
                     }
