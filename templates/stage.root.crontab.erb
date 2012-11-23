@@ -1,12 +1,14 @@
 MAILTO=release@mozilla.com
 
+# This crontab is managed by puppet.
+
 1 * * * *	find /data/ftp/pub/{firefox,thunderbird,xulrunner,mobile}/tinderbox-builds/ -mindepth 2 -maxdepth 2 -type d -mmin +4320 -name 1????????? -exec rm -rf {} \;
 6 * * * *	find /data/ftp/pub/{firefox,thunderbird}/try-builds/ -mindepth 1 -maxdepth 1 -type d -mmin +4320 -exec rm -rf {} \;
 <% if scope.lookupvar('deleteCandidatesDirs') == '1' %>
 11 * * * *	find /data/ftp/pub/{firefox,thunderbird,xulrunner,mobile}/nightly/ -mindepth 2 -maxdepth 2 -name build? -type d -mtime +1 -exec rm -rf {} \;
 <% end %>
 16 * * * *	find /data/ftp/pub/{firefox,thunderbird,xulrunner,mobile}/nightly/20??/ -mindepth 2 -maxdepth 2 -mtime +1 -exec rm -rf {} \;
-21 * * * *	find /data/ftp/pub/{firefox,thunderbird,xulrunner,mobile}/nightly/ -type l -mtime +1 -exec rm -rf {} \;
+21 * * * *	find /data/ftp/pub/{firefox,thunderbird,xulrunner,mobile}/nightly/ -type l -mtime +1 '!' -name 'latest-*' -exec rm -rf {} \;
 26 * * * *	find /data/ftp/pub/{firefox,thunderbird,xulrunner,mobile}/nightly/latest-* -type f -mtime +1 -exec rm -f {} \;
 31 * * * *	find /data/symbols_*/ -mindepth 2 -maxdepth 2 -type d -mmin +1440 -exec rm -rf {} \;
 36 * * * *	find /data/symbols_*/ -maxdepth 0 -mmin +1440 -type f -exec rm -rf {} \;
