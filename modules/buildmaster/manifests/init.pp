@@ -14,6 +14,11 @@ class buildmaster {
     include secrets
     include buildmaster::queue
     include buildmaster::settings
+    sysctl {
+        "net.ipv4.tcp_keepalive_time":
+            value => "240";
+    }
+
     $master_user = $buildmaster::settings::master_user
     $master_group = $buildmaster::settings::master_group
     $master_user_uid = $buildmaster::settings::master_user_uid
