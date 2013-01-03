@@ -612,6 +612,30 @@ node "talos-r3-fed-076" inherits "fedora12-i686-test" {
     include talosslave
 }
 
+node "talos-r3-fed-077" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-078" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-079" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-080" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-081" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
+node "talos-r3-fed-082" inherits "fedora12-i686-test" {
+    include talosslave
+}
+
 node "talos-r3-fed64-ref" inherits "fedora12-x86_64-test" {
     include talosslave
 }
