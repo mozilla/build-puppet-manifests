@@ -1187,9 +1187,6 @@ node "talos-r3-fed64-040" inherits "scl-test-node" {
 node "talos-r3-fed64-041" inherits "scl-test-node" {
 }
 
-node "talos-r3-fed64-042" inherits "scl-test-node" {
-}
-
 node "talos-r3-fed64-043" inherits "scl-test-node" {
 }
 

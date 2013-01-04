@@ -792,10 +792,6 @@ node "talos-r3-fed64-041" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 
-node "talos-r3-fed64-042" inherits "fedora12-x86_64-test" {
-    include talosslave
-}
-
 node "talos-r3-fed64-043" inherits "fedora12-x86_64-test" {
     include talosslave
 }
