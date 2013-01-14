@@ -276,15 +276,15 @@ class packages::devtools {
                 }
                 "10.7": {
                     package { 
-                        "python-2.7.2.dmg":
-                            source      => "${platform_httproot}/DMGs/python-2.7.2.dmg",
+                        "python-2.7.3.dmg":
+                            source      => "${platform_httproot}/DMGs/python-2.7.3.dmg",
                             ensure      => installed,
                             provider    => pkgdmg,
                             subscribe   => File["/tools/python"];
                     }
                     file {
                         "/tools/python":
-                            ensure  => "/tools/python-2.7.2",
+                            ensure  => "/tools/python-2.7.3",
                             force   => true;
                     }
                 }
