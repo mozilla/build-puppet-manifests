@@ -130,7 +130,7 @@ define buildslave::install::version($active=false, $ensure="present") {
                             $python = "/tools/python-2.6.4/bin/python"
                         }
                         "10.7": {
-                            $python = "/tools/python-2.7.3/bin/python"
+                            $python = "/tools/python-2.7.2/bin/python"
                         }
                     }
                 }
