@@ -71,27 +71,17 @@ class centos5 {
                     force => true;
 
                 "/home/cltbld/.android":
-                    mode   => 775,
-                    owner  => cltbld,
-                    group  => cltbld,
-                    ensure => directory;
-
-                "/home/cltbld/.android/android.keystore":
-                    require => File["/home/cltbld/.android"],
-                    source  => "${local_fileroot}/home/cltbld/.android/android.keystore",
-                    mode    => 600,
-                    owner   => cltbld,
-                    group   => cltbld;
+                    ensure => absent,
+                    recurse => true,
+                    force => true;
 
                 "/home/cltbld/.android/debug.keystore":
                     ensure => absent,
                     force => true;
 
                 "/home/cltbld/.mozpass.cfg":
-                    source => "${local_fileroot}/home/cltbld/.mozpass.cfg",
-                    mode   => 600,
-                    owner  => cltbld,
-                    group  => cltbld;
+                    ensure => absent,
+                    force => true;
             }
         }
     }
