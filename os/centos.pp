@@ -70,18 +70,10 @@ class centos5 {
                     ensure => absent,
                     force => true;
 
-                "/home/cltbld/.android":
-                    ensure => absent,
-                    recurse => true,
-                    force => true;
-
                 "/home/cltbld/.android/debug.keystore":
                     ensure => absent,
                     force => true;
 
-                "/home/cltbld/.mozpass.cfg":
-                    ensure => absent,
-                    force => true;
             }
         }
     }
