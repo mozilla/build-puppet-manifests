@@ -71,6 +71,21 @@ class buildmaster {
             owner => $master_user,
             group => $master_group,
             ensure => directory;
+        "/home/$master_user/.ssh/config":
+            mode => 600,
+            owner => $master_user,
+            group => $master_group,
+            source => "puppet:///${level}//home/cltbld/.ssh/config";
+        "/home/$master_user/.ssh/known_hosts":
+            mode => 644,
+            owner => $master_user,
+            group => $master_group,
+            source => "puppet:///${level}//home/cltbld/.ssh/known_hosts";
+        "/home/$master_user/.ssh/authorized_keys":
+            owner => $master_user,
+            group => $master_group,
+            mode => 644,
+            source => "puppet:///${level}//home/cltbld/.ssh/authorized_keys";
         "/builds":
             ensure => directory,
             owner => $master_user,
