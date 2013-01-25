@@ -60,9 +60,7 @@ class talos_fedora {
             group => "cltbld",
             mode => 644,
             source => "${platform_fileroot}${home}/cltbld/.ssh/authorized_keys";
-        "${home}/cltbld/bin/node.exe":
-            owner => "cltbld",
-            group => "cltbld",
+        "/usr/bin/node":
             mode => 755,
             source => "${platform_fileroot}${home}/cltbld/bin/node.exe";
 
