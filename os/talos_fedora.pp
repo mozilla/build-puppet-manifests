@@ -3,10 +3,25 @@
 class talos_fedora {
     Package{ provider => rpm, ensure => installed }
 
-    # remove gnome-screensaver and its circular dependencies
-    exec { "rpm -e `rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed'`":
-        onlyif => "test `rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed' | wc -l` -gt 0",
-        path   => ["/bin","/usr/bin"],
+    exec {
+        # remove gnome-screensaver and its circular dependencies
+        "rpm -e `rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed'`":
+            onlyif => "test `rpm -q fedora-screensaver-theme fedorainfinity-screensaver-theme gnome-screensaver | grep -v 'is not installed' | wc -l` -gt 0",
+            path   => ["/bin","/usr/bin"];
+        "/bin/rpm -U ${platform_httproot}/RPMs/alsa-plugins-pulseaudio-1.0.22-1.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-0.9.21-6.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-gdm-hooks-0.9.21-6.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-libs-0.9.21-6.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-libs-glib2-0.9.21-6.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-module-bluetooth-0.9.21-6.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-module-gconf-0.9.21-6.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-module-x11-0.9.21-6.fc12.${hardwaremodel}.rpm \
+            ${platform_httproot}/RPMs/pulseaudio-utils-0.9.21-6.fc12.${hardwaremodel}.rpm":
+                unless => "/bin/rpm -q pulseaudio-0.9.21-6.fc12 pulseaudio-gdm-hooks-0.9.21-6.fc12 \
+                           pulseaudio-libs-0.9.21-6.fc12 pulseaudio-libs-glib2-0.9.21-6.fc12 \
+                           pulseaudio-module-bluetooth-0.9.21-6.fc12 pulseaudio-module-gconf-0.9.21-6.fc12 \
+                           pulseaudio-module-x11-0.9.21-6.fc12 pulseaudio-utils-0.9.21-6.fc12 \
+                           alsa-plugins-pulseaudio-1.0.22-1.fc12 > /dev/null";
     }
 
     package {
