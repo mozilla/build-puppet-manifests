@@ -1760,10 +1760,6 @@ node "talos-r4-lion-057" inherits "darwin11-x86_64-test" {
     include talos_osx_rev4
 }
 
-node "talos-r4-lion-058" inherits "darwin11-x86_64-test" {
-    include talos_osx_rev4
-}
-
 node "talos-r4-lion-059" inherits "darwin11-x86_64-test" {
     include talos_osx_rev4
 }
