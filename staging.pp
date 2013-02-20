@@ -131,26 +131,6 @@ node "talos-r3-fed64-010" inherits "fedora12-x86_64-test" {
     include talosslave
 }
 
-node "talos-r3-leopard-001" inherits "darwin9-i386-test" {
-    include talosslave
-}
-
-node "talos-r3-leopard-002" inherits "darwin9-i386-test" {
-    include talosslave
-}
-
-node "talos-r3-leopard-010" inherits "darwin9-i386-test" {
-    include talosslave
-}
-
-node "talos-r3-snow-001" inherits "darwin10-i386-test" {
-    include talosslave
-}
-
-node "talos-r3-snow-002" inherits "darwin10-i386-test" {
-    include talosslave
-}
-
 node "rev4-testing" inherits "darwin10-i386-test" {
     include talos_osx_rev4
 }
@@ -489,10 +469,6 @@ node "talos-r4-snow-079" inherits "darwin10-i386-test" {
 
 node "talos-r4-snow-080" inherits "darwin10-i386-test" {
     include talos_osx_rev4
-}
-
-node "talos-r3-snow-010" inherits "darwin10-i386-test" {
-    include talosslave
 }
 
 node "talos-r4-lion-001" inherits "darwin11-x86_64-test" {
