@@ -14,9 +14,24 @@ class buildmaster {
     include secrets
     include buildmaster::queue
     include buildmaster::settings
+    # Configure the kernel to send keepalive packets every 120s on idle tcp
+    # connections, and fail after a total of 180s of no response.  This is
+    # pretty conservative, but allows us to fail fast when a TCP connection
+    # silently goes away.  This is more common than you might think: it is
+    # often caused by session state loss on firewalls, or by a host failure at
+    # the other end of the connection.
     sysctl {
-        "net.ipv4.tcp_keepalive_time":
-            value => "240";
+        # wait 120 seconds since last data packet (or good probe response) is
+        # received before sending the first probe
+        'net.ipv4.tcp_keepalive_time':
+            value => 120;
+        # when a keepalive probe fails (times out), send another after 5
+        # seconds
+        'net.ipv4.tcp_keepalive_intvl':
+            value => 5;
+        # kill the TCP connection after 12 probes with no response
+        'net.ipv4.tcp_keepalive_probes':
+            value => 12;
     }
 
     $master_user = $buildmaster::settings::master_user
