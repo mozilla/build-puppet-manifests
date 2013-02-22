@@ -163,6 +163,10 @@ class talos_osx_rev4 {
                 "disable-bluetooth":
                     command => "/usr/local/bin/blueutil off",
                     require => File["/usr/local/bin/blueutil"];
+                "disable-bluetooth-mouse":
+                    command => "/usr/bin/defaults write /Library/Preferences/com.apple.Bluetooth BluetoothAutoSeekPointingDevice -bool NO";
+                "disable-bluetooth-keyboard":
+                     command => "/usr/bin/defaults write /Library/Preferences/com.apple.Bluetooth BluetoothAutoSeekKeyboard -bool NO";                    
                 #Probably too late at this point, but lets get rid of them for the next reboot
                 "clean-saved-state":
                     command => '/bin/rm -rf /Users/cltbld/Library/Saved\ Application\ State/*.savedState';
