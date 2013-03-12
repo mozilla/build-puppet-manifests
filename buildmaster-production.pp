@@ -549,29 +549,29 @@ node "buildbot-master45" inherits "masternode" {
 node "buildbot-master46" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
-        "bm46-tests1-panda":
+        "bm46-tests1-windows":
             http_port => 8201,
             master_type => "tests",
-            basedir => "tests1-panda";
+            basedir => "tests1-windows";
     }
  }
  
 node "buildbot-master47" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
-        "bm47-tests1-panda":
+        "bm47-tests1-windows":
             http_port => 8201,
             master_type => "tests",
-            basedir => "tests1-panda";
+            basedir => "tests1-windows";
     }
  }
  
 node "buildbot-master48" inherits "masternode" {
     $num_masters = 1
     buildmaster::buildbot_master {
-        "bm48-tests1-panda":
+        "bm48-tests1-windows":
             http_port => 8201,
             master_type => "tests",
-            basedir => "tests1-panda";
+            basedir => "tests1-windows";
     }
  }
