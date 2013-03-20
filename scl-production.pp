@@ -312,10 +312,6 @@ node "linux-ix-slave42" inherits "centos5-i686-build" {
     include buildslave, ix
 }
 
-node "moz2-darwin10-ref" inherits "darwin10-i386-build" {
-    include buildslave
-}
-
 node "talos-r3-fed-ref" inherits "fedora12-i686-test" {
     include talosslave
 }

@@ -166,18 +166,13 @@ class BuildbotTac(unittest.TestCase):
     # guess_basedir tests
 
     known_hostname = {
-        'bm-xserveNN' : '/builds/slave',
         'linux-ix-slaveNN' : '/builds/slave',
         'linux64-ix-slaveNN' : '/builds/slave',
-        'moz2-darwin10-slaveNN' : '/builds/slave',
-        'moz2-darwin9-slaveNN' : '/builds/slave',
-        'moz2-linux-slaveNN' : '/builds/slave',
-        'moz2-linux64-slaveNN' : '/builds/slave',
-        'moz2-win32-slaveNN' : 'e:\\builds\\moz2_slave',
         'mv-moz2-linux-ix-slaveNN' : '/builds/slave',
         'mw32-ix-slaveNN' : 'e:\\builds\\moz2_slave',
         'mw64-ix-slaveNN' : 'e:\\builds\\moz2_slave',
         't-r3-w764-NN' : 'c:\\talos-slave',
+        't-w864-ix-NNN' : 'c:\\slave',
         'talos-r3-fed-NN' : '/home/cltbld/talos-slave',
         'talos-r3-fed64-NN' : '/home/cltbld/talos-slave',
         'talos-r3-w7-NN' : 'c:\\talos-slave',
