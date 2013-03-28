@@ -49,6 +49,10 @@ class buildapi {
             ensure => directory,
             owner => "buildapi",
             group => "buildapi";
+        "/var/www/buildapi/l10n_reports":
+            ensure => directory,
+            owner => "buildapi",
+            group => "buildapi";
         "/home/buildapi/bin":
             ensure => directory,
             owner => "buildapi",
@@ -66,6 +70,11 @@ class buildapi {
             mode => 0755;
         "/home/buildapi/bin/report-daily.sh":
             content => template("buildapi/report-daily.sh.erb"),
+            owner => "buildapi",
+            group => "buildapi",
+            mode => 0755;
+        "/home/buildapi/bin/report-today.sh":
+            content => template("buildapi/report-today.sh.erb"),
             owner => "buildapi",
             group => "buildapi",
             mode => 0755;
@@ -184,6 +193,18 @@ class buildapi {
             command => "/home/buildapi/bin/report-daily.sh",
             hour => "0",
             minute => "0";
+        "todayreport":
+            require => [
+                Exec["install-buildapi"],
+                File["/home/buildapi/reporter.cfg"],
+                File["/var/www/buildapi/buildjson"],
+                File["/var/www/buildapi/l10n_reports"],
+                File["/home/buildapi/bin/report-today.sh"],
+                ],
+            user => "buildapi",
+            command => "/home/buildapi/bin/report-today.sh",
+            hour => "*",
+            minute => "*/15";
         "waittime-build":
             require => [
                 Service["buildapi"],
