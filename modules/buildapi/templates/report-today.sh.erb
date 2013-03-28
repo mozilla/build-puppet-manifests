@@ -2,6 +2,6 @@
 lockfile -60 -r 3 /home/buildapi/lockfile.daily 2>/dev/null || exit
 cd $HOME
 <%=buildapi_python%> <%=buildapi_dir%>/buildapi/scripts/reporter.py -z -o /var/www/buildapi/buildjson/builds-$(date +\%Y-\%m-\%d).js.gz --startdate $(date +\%Y-\%m-\%d) >> reporter-daily.log 
-<%=buildapi_python%> <%=buildapi_dir%>/buildapi/scripts/l10n_report.py -o /var/www/buildapi/l10n_reports/$(date -d yesterday +\%Y-\%m-\%d).txt /var/www/buildapi/buildjson/builds-$(date +\%Y-\%m-\%d).js.gz /var/www/buildapi/buildjson/builds-$(date +\%Y-\%m-\%d).js.gz
+<%=buildapi_python%> <%=buildapi_dir%>/buildapi/scripts/l10n_report.py -o /var/www/buildapi/l10n_reports/$(date +\%Y-\%m-\%d).txt /var/www/buildapi/buildjson/builds-$(date -d yesterday +\%Y-\%m-\%d).js.gz /var/www/buildapi/buildjson/builds-$(date +\%Y-\%m-\%d).js.gz
 ln -sf /var/www/buildapi/l10n_reports/$(date +\%Y-\%m-\%d).txt /var/www/buildapi/l10n_reports/latest
 rm -f /home/buildapi/lockfile.daily
