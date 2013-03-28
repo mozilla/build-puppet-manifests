@@ -23,6 +23,10 @@ server {
         }
     }
 
+    location /l10n_reports {
+        autoindex on;
+    }
+
     location /buildapi {
         proxy_pass http://localhost:<%= scope::lookupvar('buildapi::settings::port') %>;
     }
