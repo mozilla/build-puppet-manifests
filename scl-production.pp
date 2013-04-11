@@ -1668,6 +1668,30 @@ node "talos-r4-lion-084" inherits "darwin11-x86_64-test" {
     include talos_osx_rev4
 }
 
+node "talos-r4-lion-085" inherits "darwin11-x86_64-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-lion-086" inherits "darwin11-x86_64-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-lion-087" inherits "darwin11-x86_64-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-lion-088" inherits "darwin11-x86_64-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-lion-089" inherits "darwin11-x86_64-test" {
+    include talos_osx_rev4
+}
+
+node "talos-r4-lion-090" inherits "darwin11-x86_64-test" {
+    include talos_osx_rev4
+}
+
 node "linux-hgwriter-slave03" inherits "centos5-i686-build" {
     include buildslave, kvm
 }
