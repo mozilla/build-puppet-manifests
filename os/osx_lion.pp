@@ -204,7 +204,6 @@ class osx_lion {
             command=> "/usr/local/bin/ccache -M 10G",
             environment => ["CCACHE_DIR=/builds/ccache", "CCACHE_COMPRESS=1"],
             user => "cltbld",
-            group => "admin",
             require => [ Package["ccache-3.1.7.dmg"], File["/builds/ccache"]];
     }
 
