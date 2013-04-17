@@ -49,7 +49,7 @@ class buildapi {
             ensure => directory,
             owner => "buildapi",
             group => "buildapi";
-        "/var/www/buildapi/l10n_reports":
+        "/var/www/buildapi/buildjson/l10n_reports":
             ensure => directory,
             owner => "buildapi",
             group => "buildapi";
@@ -198,7 +198,7 @@ class buildapi {
                 Exec["install-buildapi"],
                 File["/home/buildapi/reporter.cfg"],
                 File["/var/www/buildapi/buildjson"],
-                File["/var/www/buildapi/l10n_reports"],
+                File["/var/www/buildapi/buildjson/l10n_reports"],
                 File["/home/buildapi/bin/report-today.sh"],
                 ],
             user => "buildapi",
