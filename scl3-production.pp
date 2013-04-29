@@ -413,14 +413,6 @@ node "bld-lion-r5-094" inherits "darwin11-x86_64-build" {
     include buildslave
 }
 
-node "bld-lion-r5-095" inherits "darwin11-x86_64-build" {
-    include buildslave
-}
-
-node "bld-lion-r5-096" inherits "darwin11-x86_64-build" {
-    include buildslave
-}
-
 node "preproduction-stage" inherits "stage-and-aus2-server" {
     $deleteCandidatesDirs = '1'
     include stageusergroups
