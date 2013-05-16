@@ -7,6 +7,14 @@ REM "C:\Users\cltbld\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Start
 REM wait a bit for things to settle
 C:\mozilla-build\msys\bin\sleep.exe 20
 
+REM Cleanup temp files
+attrib -H -A -S -I -R C:\Users\cltbld\AppData\Local\Temp /S
+rd /S /Q C:\Users\cltbld\AppData\Local\Temp
+md C:\Users\cltbld\AppData\Local\Temp
+attrib -H -A -S -I -R C:\Users\cltbld\Desktop /S
+rd /S /Q C:\Users\cltbld\Desktop
+md C:\Users\cltbld\Desktop
+
 cd C:\mozilla-build
 REM start-buildbot.bat calls C:\runslave.py
 start /min start-buildbot.bat
