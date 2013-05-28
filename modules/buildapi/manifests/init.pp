@@ -181,6 +181,7 @@ class buildapi {
                 ],
             user => "buildapi",
             command => "/home/buildapi/bin/report-4hr.sh",
+            environment => ["MAILTO=release@mozilla.com"],
             minute => "*";
         "dailyreport":
             require => [
@@ -191,6 +192,7 @@ class buildapi {
                 ],
             user => "buildapi",
             command => "/home/buildapi/bin/report-daily.sh",
+            environment => ["MAILTO=release@mozilla.com"],
             hour => "0",
             minute => "0";
         "todayreport":
@@ -203,6 +205,7 @@ class buildapi {
                 ],
             user => "buildapi",
             command => "/home/buildapi/bin/report-today.sh",
+            environment => ["MAILTO=release@mozilla.com"],
             hour => "*",
             minute => "*/15";
         "waittime-build":
@@ -212,6 +215,7 @@ class buildapi {
                 ],
             user => "buildapi",
             command => "/home/buildapi/bin/waittime_mailer.sh buildpool -a dev-tree-management@lists.mozilla.org",
+            environment => ["MAILTO=release@mozilla.com"],
             hour => "6",
             minute => "1";
         "waittime-try":
@@ -221,6 +225,7 @@ class buildapi {
                 ],
             user => "buildapi",
             command => "/home/buildapi/bin/waittime_mailer.sh trybuildpool -a dev-tree-management@lists.mozilla.org",
+            environment => ["MAILTO=release@mozilla.com"],
             hour => "6",
             minute => "3";
         "waittime-test":
@@ -230,6 +235,7 @@ class buildapi {
                 ],
             user => "buildapi",
             command => "/home/buildapi/bin/waittime_mailer.sh testpool -a dev-tree-management@lists.mozilla.org",
+            environment => ["MAILTO=release@mozilla.com"],
             hour => "6",
             minute => "5";
         "running":
@@ -240,6 +246,7 @@ class buildapi {
                 ],
             user => "buildapi",
             command => "/home/buildapi/bin/report-running.sh",
+            environment => ["MAILTO=release@mozilla.com"],
             minute => "*";
     }
 }

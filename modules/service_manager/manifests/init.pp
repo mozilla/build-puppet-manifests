@@ -18,6 +18,7 @@ define service_manager($service, $updatecmd, $minute, $user) {
     cron {
         "$name-service_manager":
             command => "sudo -u ${user} ${updatecmd} && /etc/init.d/${service} restart",
+            environment => ["MAILTO=release@mozilla.com"],
             user => 'root',
             minute => $minute;
     }
