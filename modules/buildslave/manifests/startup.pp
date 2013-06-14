@@ -91,6 +91,9 @@ class buildslave::startup {
                         "10.5":  {
                             $buildslave_pythonpath = "NONE"
                         }
+                        "10.7": {
+                            $buildslave_pythonpath = "/Library/Python/2.7/site-packages"
+                        }
                         default: {
                             $buildslave_pythonpath = "/Library/Python/2.5/site-packages"
                         }
