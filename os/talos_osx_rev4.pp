@@ -6,41 +6,7 @@ class talos_osx_rev4 {
     include buildslave::cleanup
     include boot
     
-    case $macosx_productversion_major {
-        # Mercurial 2.5.4 is built against py 2.7, so make sure that py2.7
-        # is used by default.
-        "10.6": {
-            package {
-                "mercurial-1.3.1.dmg":
-                    provider => pkgdmg,
-                    ensure => installed,
-                    source => "${platform_httproot}/DMGs/mercurial-1.3.1.dmg";
-            }
-            file {
-                "/Users/cltbld/bin/python":
-                    ensure => "/usr/bin/python2.5",
-                    owner  => "root",
-                    group  => "staff",
-                    alias  => "create_python_symlink";
-            }
-        }
-        "10.7": {
-            package {
-                "mercurial-2.5.4.dmg":
-                    provider => pkgdmg,
-                    ensure => installed,
-                    source => "${platform_httproot}/DMGs/mercurial-2.5.4.dmg";
-            }
-            file {
-                "/Users/cltbld/bin/python":
-                    ensure => "/usr/bin/python2.7",
-                    owner  => "root",
-                    group  => "staff",
-                    alias  => "create_python_symlink";
-            }
-        }
-    }
-
+    
     case $macosx_productversion_major {
         "10.7", "10.6": {
             package {
@@ -48,6 +14,10 @@ class talos_osx_rev4 {
                     provider => pkgdmg,
                     ensure => installed,
                     source => "${platform_httproot}/DMGs/wget-1.10.2.dmg";
+                "mercurial-1.3.1.dmg":
+                    provider => pkgdmg,
+                    ensure => installed,
+                    source => "${platform_httproot}/DMGs/mercurial-1.3.1.dmg";
                 "pyyaml-3.10.dmg": # note that this dmg installs PyYAML for py25 and py26 (and py27 on 10.7)
                     provider => pkgdmg,
                     ensure => installed,
@@ -64,6 +34,11 @@ class talos_osx_rev4 {
                     owner => "root",
                     group => "wheel",
                     mode => 440;
+                "/Users/cltbld/bin/python":
+                    ensure => "/usr/bin/python2.5",
+                    owner  => "root",
+                    group  => "staff",
+                    alias  => "create_python_symlink";
                 "/Users/cltbld/bin":
                     ensure => "directory",
                     owner  => "cltbld",
