@@ -48,6 +48,9 @@ start() {
     count=1
 	while [[ $RETVAL != 0 ]]
 	do
+        # XXX don't retry - just start buildbot - bug 884615
+        RETVAL=0
+        break
         count=$((count+1))
         if [ $count -gt 10 ]; then
             # If DHCP fails to get a (correct) IP address for this system, then
