@@ -214,7 +214,7 @@ class buildapi {
                 File["/home/buildapi/bin/waittime_mailer.sh"],
                 ],
             user => "buildapi",
-            command => "/home/buildapi/bin/waittime_mailer.sh buildpool -a dev-tree-management@lists.mozilla.org",
+            command => "/home/buildapi/bin/waittime_mailer.sh buildpool -a dev-tree-management@lists.mozilla.org -x 480",
             environment => ["MAILTO=release@mozilla.com"],
             hour => "6",
             minute => "1";
@@ -224,7 +224,7 @@ class buildapi {
                 File["/home/buildapi/bin/waittime_mailer.sh"],
                 ],
             user => "buildapi",
-            command => "/home/buildapi/bin/waittime_mailer.sh trybuildpool -a dev-tree-management@lists.mozilla.org",
+            command => "/home/buildapi/bin/waittime_mailer.sh trybuildpool -a dev-tree-management@lists.mozilla.org -x 480",
             environment => ["MAILTO=release@mozilla.com"],
             hour => "6",
             minute => "3";
@@ -234,7 +234,7 @@ class buildapi {
                 File["/home/buildapi/bin/waittime_mailer.sh"],
                 ],
             user => "buildapi",
-            command => "/home/buildapi/bin/waittime_mailer.sh testpool -a dev-tree-management@lists.mozilla.org",
+            command => "/home/buildapi/bin/waittime_mailer.sh testpool -a dev-tree-management@lists.mozilla.org -x 480",
             environment => ["MAILTO=release@mozilla.com"],
             hour => "6",
             minute => "5";
