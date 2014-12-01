@@ -1,5 +1,0 @@
-#!/bin/sh
-lockfile -60 -r 3 /home/buildapi/lockfile.daily 2>/dev/null || exit
-cd $HOME
-<%=buildapi_python%> <%=buildapi_dir%>/buildapi/scripts/reporter.py -z -o /var/www/buildapi/buildjson/builds-$(date -d yesterday +\%Y-\%m-\%d).js.gz --startdate $(date -d yesterday +\%Y-\%m-\%d) >> reporter-daily.log 
-rm -f /home/buildapi/lockfile.daily
